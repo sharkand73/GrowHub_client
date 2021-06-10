@@ -5,18 +5,20 @@ import Login from '../components/user/Login';
 import HomePageContainer from './HomePageContainer';
 import Request from '../helpers/request';
 import NavBar from '../components/NavBar';
+import PrivateRoute from '../components/user/PrivateRoute';
 
 // This container is responsible for State, initial requests to DB to GET, and other requests (post new etc.)
 // Renders HomePageContainer once user is logged in
 // Props passed down: all, to HomePageContainer (we also pass 1 user here. The currentUser who has logged in, methodology TBC..)
 
 const MainContainer = () =>{
-    const [currentUser, setCurrentUser] = useState([]); // Currently no user is set. Our Login function should setCurrentUser
+    const [currentUser, setCurrentUser] = useState(null); // Currently no user is set. Our Login function should setCurrentUser
     const [plots, setPlots] = useState([]);
     const [knowHows, setKnowHows] = useState([]);
     const [bulletins, setBulletins] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [tips, setTips] = useState([]);
+
 
 
     // This function makes an instance of the helpers/Request.js class, and GETS all our required state objects from DB, from localhost:8080/api
@@ -28,10 +30,10 @@ const MainContainer = () =>{
         const jobsPromise = request.get('/jobs');
         const tipsPromise = request.get('/tips');
         // May need another promise here once we have logged in sorted
-        const currentUserPromise = request.get('/user/:id');
+        // const currentUserPromise = request.get('/user/:id');
 
         // Completing the operation^
-        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, currentUserPromise])
+        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise])
             .then((data) => {
                 setPlots(data[0]);
                 setKnowHows(data[1]);
@@ -39,7 +41,7 @@ const MainContainer = () =>{
                 setJobs(data[3]);
                 setTips(data[4]);
                 // Likewise as above, may need one of these for currentUser if promised
-                setCurrentUser(data[5]);
+                // setCurrentUser(data[5]);
             })}
 
     useEffect(()=>{requestAll()}, [])
@@ -87,27 +89,17 @@ const MainContainer = () =>{
         }
     }
 
-
     return(
         <Router>
+
         <> 
             <NavBar/> 
 
             <h1>This is the Main Container</h1>
 
-
-             {/*    If user logged in, set Route to /home. 
-                    Else set route to /login
-                    Probably don't need the Switch for this. Just a conditional render based on currentUser state?
-                        *****Currently could not get it to work with an if statement ****
-                        The routes set up ok, no errors, but it wasn't going to the routes when we open up localhost:3000
-                        I'd expect it to open up, go "oh, no user logged in, let me route to /login"
-            */}
-
-        <Switch>
-            
-                <Route path="/home" render={() => {
-                    return(
+            <Switch>
+                <PrivateRoute path="/home" component={() => {
+                    return (
                         <HomePageContainer 
                             currentUser = {currentUser}
                             plots = {plots}
@@ -118,19 +110,21 @@ const MainContainer = () =>{
                             // also pass in the handlePost method once working. 
                             // And handleEdit and handleDelete once onto extensions
                         />)
-                }}/>
+                    }} currentUser={currentUser} /> 
 
-                <Route render={() => {
+                <Route path = "/login" render={() => {
                     // This is the default render, till we set the Route to /home once we have logged in
                     return(
                         <>
                             <h3>Please login to continue</h3>
-                            <Login/>
+                            <Login
+                                currentUser = {currentUser}
+                            />
                         </>
                     )
                 }}/>
 
-        </Switch>
+            </Switch>
         </>
         </Router>
     )
