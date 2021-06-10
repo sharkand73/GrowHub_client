@@ -4,7 +4,7 @@ import React from 'react';
 
 // Incoming props = BulletinItem
 
-const Bulletin = () =>{
+const Bulletin = ({bulletin, currentUser}) =>{
     
     return (
         <>

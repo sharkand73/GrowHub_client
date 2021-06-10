@@ -8,7 +8,7 @@ import React from 'react';
     // Renders a KnowHow object for the KnowHowList
 
 
-const KnowHow = () =>{
+const KnowHow = ({knowHow, currentUser}) =>{
     return(
         <p>Dis is a knowhow prop</p>
     )
