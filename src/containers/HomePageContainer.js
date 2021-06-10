@@ -25,6 +25,13 @@ import PrivateRoute from '../components/user/PrivateRoute';
 
 const HomePageContainer = ({currentUser, plots, knowHows, bulletins, jobs, tips}) =>{
 
+    const findPlotById = (plotId) => {
+        return plots.find((plot) => {
+            return plot.id === parseInt(plotId)
+            }
+        )
+    }
+
     return(
         <>
         <h2>This is our home page container</h2>
@@ -45,6 +52,12 @@ const HomePageContainer = ({currentUser, plots, knowHows, bulletins, jobs, tips}
             <PrivateRoute path = '/home/plots' component = {() =>{
                 return <PlotList currentUser={currentUser} plots={plots} />
             }} currentUser={currentUser}/>
+
+            <PrivateRoute path = '/home/plots/:id' component = {(props) => {
+                const id = props.match.params.id;
+                const foundPlot = findPlotById(id);
+                return <PlotDetail currentUser={currentUser} plot={foundPlot} />
+            }} currentUser={currentUser} />
 
             <PrivateRoute path = '/home/community' component = {() =>{
                 return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>

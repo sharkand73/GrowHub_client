@@ -13,12 +13,21 @@ import React from 'react';
 
 // Requires a function to map through our plots prop, and render all our Plot objects, that takes in the plot prop
 
-const PlotList = () =>{
+const PlotList = ({currentUser, plots}) =>{
+
+    const plotArray = plots.map((plot, index) => {
+        return(
+            <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+        )
+    })
 
     return(
         <>
             <h3>This is our list of plots, that renders many Plot objects</h3>
             <p> We can click on a Plot, to access PlotDetail</p>
+            <ul>
+                {plotArray}
+            </ul>
         </>
     )
 
