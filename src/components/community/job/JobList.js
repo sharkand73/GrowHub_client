@@ -8,7 +8,7 @@ import Job from './Job.js'
 
 // Outgoing props = user
 
-const BulletinList = ({jobs, currentUser}) =>{
+const JobList = ({jobs, currentUser}) =>{
 
 // map through Jobs prop and render a Job.js for each job it comes across
 const jobArray = jobs.map((job, index) => {

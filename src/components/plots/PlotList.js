@@ -1,4 +1,5 @@
 import React from 'react';
+import Plot from './Plot';
 
 // Props Incoming = plots, user and onClick of some kind
 

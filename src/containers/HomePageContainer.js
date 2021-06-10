@@ -6,6 +6,7 @@ import PlotList from '../components/plots/PlotList';
 import KnowHowList from '../components/knowHows/KnowHowList';
 import Community from '../components/community/Community';
 import PrivateRoute from '../components/user/PrivateRoute';
+import PlotDetail from '../components/plots/PlotDetail';
 
 // Renders weather widgets etc
 // Renders buttons for areas of the site
@@ -49,21 +50,21 @@ const HomePageContainer = ({currentUser, plots, knowHows, bulletins, jobs, tips}
         </Link>
 
         <Switch>
-            <PrivateRoute path = '/home/plots' component = {() =>{
+            <PrivateRoute path = '/plots' component = {() =>{
                 return <PlotList currentUser={currentUser} plots={plots} />
             }} currentUser={currentUser}/>
 
-            <PrivateRoute path = '/home/plots/:id' component = {(props) => {
+            <PrivateRoute path = '/plots/:id' component = {(props) => {
                 const id = props.match.params.id;
                 const foundPlot = findPlotById(id);
                 return <PlotDetail currentUser={currentUser} plot={foundPlot} />
             }} currentUser={currentUser} />
 
-            <PrivateRoute path = '/home/community' component = {() =>{
+            <PrivateRoute path = '/community' component = {() =>{
                 return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
             }} currentUser={currentUser}/>
 
-            <PrivateRoute path = '/home/knowhows' component = {() =>{
+            <PrivateRoute path = '/knowhows' component = {() =>{
                 return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
             }} currentUser={currentUser}/>
 

@@ -95,7 +95,7 @@ const MainContainer = () =>{
         <> 
             <NavBar/> 
 
-            <h1>This is the Main Container</h1>
+            <h1>Villcumin to GrowHub</h1>
 
             {/* FROM ALLY:
                  Remember you will need to change the rest of your routes as well to use PrivateRoute 
@@ -103,7 +103,7 @@ const MainContainer = () =>{
             */}
 
             <Switch>
-                <PrivateRoute path="/home" component={() => {
+                <PrivateRoute exact path="/" component={() => {
                     return (
                         <HomePageContainer 
                             currentUser = {currentUser}
@@ -126,6 +126,14 @@ const MainContainer = () =>{
                         </>
                     )
                 }}/>
+
+                <Route render={() => {
+                    return(
+                        <>
+                            <h1>DIS PAGE NO EXIST</h1> 
+                        </>
+                    )
+                }} />
 
             </Switch>
         </>
