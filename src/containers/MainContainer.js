@@ -22,15 +22,16 @@ const MainContainer = () =>{
     // This function makes an instance of the helpers/Request.js class, and GETS all our required state objects from DB, from localhost:8080/api
     const requestAll = function(){
         const request = new Request();
-        // May need another promise here once we have logged in sorted, for currentUserPromise = request.get('/user/:id')...ish
         const plotsPromise = request.get('/plots');
         const knowHowsPromise = request.get('/knowHows');
         const bulletinsPromise = request.get('/bulletins');
         const jobsPromise = request.get('/jobs');
         const tipsPromise = request.get('/tips');
+        // May need another promise here once we have logged in sorted
+        const currentUserPromise = request.get('/user/:id');
 
         // Completing the operation^
-        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise])
+        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, currentUserPromise])
             .then((data) => {
                 setPlots(data[0]);
                 setKnowHows(data[1]);
@@ -38,6 +39,7 @@ const MainContainer = () =>{
                 setJobs(data[3]);
                 setTips(data[4]);
                 // Likewise as above, may need one of these for currentUser if promised
+                setCurrentUser(data[5]);
             })}
 
     useEffect(()=>{requestAll()}, [])
@@ -93,13 +95,17 @@ const MainContainer = () =>{
 
             <h1>This is the Main Container</h1>
 
-             {/* If user logged in, set Route to HomePageContainer. Else set route to Login screen. 
-                Easiest way is to make a Login.js component to render?
-                */}
 
+             {/*    If user logged in, set Route to /home. 
+                    Else set route to /login
+                    Probably don't need the Switch for this. Just a conditional render based on currentUser state?
+                        *****Currently could not get it to work with an if statement ****
+                        The routes set up ok, no errors, but it wasn't going to the routes when we open up localhost:3000
+                        I'd expect it to open up, go "oh, no user logged in, let me route to /login"
+            */}
 
-            <Switch>
-
+        <Switch>
+            
                 <Route path="/home" render={() => {
                     return(
                         <HomePageContainer 
@@ -112,6 +118,16 @@ const MainContainer = () =>{
                             // also pass in the handlePost method once working. 
                             // And handleEdit and handleDelete once onto extensions
                         />)
+                }}/>
+
+                <Route render={() => {
+                    // This is the default render, till we set the Route to /home once we have logged in
+                    return(
+                        <>
+                            <h3>Please login to continue</h3>
+                            <Login/>
+                        </>
+                    )
                 }}/>
 
         </Switch>

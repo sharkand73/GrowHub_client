@@ -6,15 +6,23 @@ const NavBar = () => {
         <header>
 
         <ul>
+
+            <li className="navBarItem">
+            <Link to="/home">Home</Link>
+            </li>
+
             <li className="navBarItem">
             <Link to="/plots">Plots</Link>
             </li>
+
             <li className="navBarItem">
             <Link to="/knowhows">Know Hows</Link>
             </li>
+
             <li className="navBarItem">
             <Link to="/community">Community</Link>
             </li>
+
         </ul>
 
         </header>
