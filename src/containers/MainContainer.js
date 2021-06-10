@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
+import Login from '../components/user/Login';
 import HomePageContainer from './HomePageContainer';
 import Request from '../helpers/request';
 import NavBar from '../components/NavBar';
@@ -71,15 +72,15 @@ const MainContainer = () =>{
     const handlePost = (newObject) => {
         const request = new Request();
         if (newObject instanceof knowHows[0]){
-            request.post("/knowHow", knowHow)
+            request.post("/knowHow", newObject)
             .then(() => window.location = '/knowHows')
         }
         if (newObject instanceof jobs[0]){
-            request.post("/job", job)
+            request.post("/job", newObject)
             .then(() => window.location = '/jobs')
         }
         if (newObject instanceof bulletins[0]){
-            request.post("/bulletin", bulletin)
+            request.post("/bulletin", newObject)
             .then(() => window.location = '/bulletins') 
         }
     }
@@ -92,9 +93,8 @@ const MainContainer = () =>{
 
             <h1>This is the Main Container</h1>
 
-             {/* If user logged in, render HomePageContainer. Else render Login screen. 
+             {/* If user logged in, set Route to HomePageContainer. Else set route to Login screen. 
                 Easiest way is to make a Login.js component to render?
-                Can we have if statements in our Switches to check the state of currentUser?
                 */}
 
 
