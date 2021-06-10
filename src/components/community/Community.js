@@ -9,7 +9,7 @@ import React from 'react';
 const Community = () => {
 
     return(
-        <h1>This is the BulletinList AND JobList</h1>
+        <h3>This is the Community page, where 2 lists will be rendered</h3> 
     )
 }
 

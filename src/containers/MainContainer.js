@@ -97,6 +97,11 @@ const MainContainer = () =>{
 
             <h1>This is the Main Container</h1>
 
+            {/* FROM ALLY:
+                 Remember you will need to change the rest of your routes as well to use PrivateRoute 
+                (apart from login) otherwise unauthorised users will be able to visit those. 
+            */}
+
             <Switch>
                 <PrivateRoute path="/home" component={() => {
                     return (
@@ -112,14 +117,12 @@ const MainContainer = () =>{
                         />)
                     }} currentUser={currentUser} /> 
 
+
                 <Route path = "/login" render={() => {
-                    // This is the default render, till we set the Route to /home once we have logged in
                     return(
                         <>
                             <h3>Please login to continue</h3>
-                            <Login
-                                currentUser = {currentUser}
-                            />
+                            <Login currentUser = {currentUser}/>
                         </>
                     )
                 }}/>

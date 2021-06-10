@@ -4,7 +4,8 @@ import {Route, Switch} from 'react-router-dom';
 
 import PlotList from '../components/plots/PlotList';
 import KnowHowList from '../components/knowHows/KnowHowList';
-import Community from '../components/community/Community'
+import Community from '../components/community/Community';
+import PrivateRoute from '../components/user/PrivateRoute';
 
 // Renders weather widgets etc
 // Renders buttons for areas of the site
@@ -24,11 +25,6 @@ import Community from '../components/community/Community'
 
 const HomePageContainer = ({currentUser, plots, knowHows, bulletins, jobs, tips}) =>{
 
-    // Conditional to prevent access to /Home without logging in
-    if (!currentUser){
-        return (<p>Loading Home...</p>)
-    }
-
     return(
         <>
         <h2>This is our home page container</h2>
@@ -46,18 +42,17 @@ const HomePageContainer = ({currentUser, plots, knowHows, bulletins, jobs, tips}
         </Link>
 
         <Switch>
-
-            <Route exact path = '/plots' render = {() =>{
+            <PrivateRoute path = '/home/plots' component = {() =>{
                 return <PlotList currentUser={currentUser} plots={plots} />
-            }}/>
+            }} currentUser={currentUser}/>
 
-            <Route exact path = '/community' render = {() =>{
+            <PrivateRoute path = '/home/community' component = {() =>{
                 return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
-            }}/>
+            }} currentUser={currentUser}/>
 
-            <Route exact path = '/knowhows' render = {() =>{
+            <PrivateRoute path = '/home/knowhows' component = {() =>{
                 return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
-            }}/>
+            }} currentUser={currentUser}/>
 
         </Switch>
 
