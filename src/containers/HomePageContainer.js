@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {Route, Switch} from 'react-router-dom';
+import {Link, Switch} from 'react-router-dom';
 
 import PlotList from '../components/plots/PlotList';
 import KnowHowList from '../components/knowHows/KnowHowList';
@@ -36,6 +35,10 @@ const HomePageContainer = ({currentUser, plots, knowHows, bulletins, jobs, tips}
     return(
         <>
         <h2>This is our home page container</h2>
+        {/* 
+            We want to render our widgets etc here.
+            And we want them conditionally 
+            */}
 
         <Link to="/plots">
             <button>Plots</button>

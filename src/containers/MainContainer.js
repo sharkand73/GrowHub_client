@@ -18,6 +18,7 @@ const MainContainer = () =>{
     const [bulletins, setBulletins] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [tips, setTips] = useState([]);
+    const [allUsers, setAllUsers] = useState([]);
 
 
 
@@ -29,19 +30,21 @@ const MainContainer = () =>{
         const bulletinsPromise = request.get('/bulletins');
         const jobsPromise = request.get('/jobs');
         const tipsPromise = request.get('/tips');
+        const allUsersPromise = request.get('/users');
         // May need another promise here once we have logged in sorted
         // const currentUserPromise = request.get('/user/:id');
 
         // Completing the operation^
-        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise])
+        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise])
             .then((data) => {
                 setPlots(data[0]);
                 setKnowHows(data[1]);
                 setBulletins(data[2]);
                 setJobs(data[3]);
                 setTips(data[4]);
+                setTips(data[5]);
                 // Likewise as above, may need one of these for currentUser if promised
-                // setCurrentUser(data[5]);
+                // setCurrentUser(data[6]);
             })}
 
     useEffect(()=>{requestAll()}, [])
@@ -97,11 +100,6 @@ const MainContainer = () =>{
 
             <h1>Villcumin to GrowHub</h1>
 
-            {/* FROM ALLY:
-                 Remember you will need to change the rest of your routes as well to use PrivateRoute 
-                (apart from login) otherwise unauthorised users will be able to visit those. 
-            */}
-
             <Switch>
                 <PrivateRoute exact path="/" component={() => {
                     return (
@@ -112,8 +110,7 @@ const MainContainer = () =>{
                             bulletins = {bulletins}
                             jobs = {jobs}
                             tips = {tips}
-                            // also pass in the handlePost method once working. 
-                            // And handleEdit and handleDelete once onto extensions
+  
                         />)
                     }} currentUser={currentUser} /> 
 
@@ -122,7 +119,7 @@ const MainContainer = () =>{
                     return(
                         <>
                             <h3>Please login to continue</h3>
-                            <Login currentUser = {currentUser}/>
+                            <Login users={allUsers} currentUser = {currentUser} setCurrentUser={setCurrentUser}/>
                         </>
                     )
                 }}/>
