@@ -25,11 +25,11 @@ const MainContainer = () =>{
     // This function makes an instance of the helpers/Request.js class, and GETS all our required state objects from DB, from localhost:8080/api
     const requestAll = function(){
         const request = new Request();
-        const plotsPromise = request.get('/plots');
-        const knowHowsPromise = request.get('/knowHows');
-        const bulletinsPromise = request.get('/bulletins');
-        const jobsPromise = request.get('/jobs');
-        const tipsPromise = request.get('/tips');
+        const plotsPromise = request.get('/api/plots');
+        const knowHowsPromise = request.get('/api/knowHows');
+        const bulletinsPromise = request.get('/api/bulletins');
+        const jobsPromise = request.get('/api/jobs');
+        const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
         // May need another promise here once we have logged in sorted
         // const currentUserPromise = request.get('/user/:id');

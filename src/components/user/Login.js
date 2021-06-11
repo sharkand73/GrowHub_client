@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 
 const Login = ({users, currentUser, setCurrentUser}) => {
@@ -38,18 +38,20 @@ const Login = ({users, currentUser, setCurrentUser}) => {
             if (foundUser.password === formData.password){
                 console.log("user found, password matched")
                 setCurrentUser(foundUser);
-                <Redirect to="/" />
+                // return <Redirect to="/" />
+                // window.location ="/"
+       
             } 
             // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
             else {
                 console.log("user password not match")
-                // refreshPage();
+                refreshPage();
             }
         }
         // If the user has not been found
         else {
             console.log("user not found")
-            // refreshPage();
+            refreshPage();
         }
     }
 
