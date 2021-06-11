@@ -4,7 +4,7 @@ import React from 'react';
 
 // Incoming props = Jobs
 
-const Job = () =>{
+const Job = ({job, currentUser}) =>{
     
     return (
         <>
