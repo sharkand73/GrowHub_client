@@ -97,36 +97,6 @@ const MainContainer = () =>{
         )
     }
 
-    let loginCheckVariable = false;
-    
-    const handleLogin = (username, password) => {
-        console.log("findUser function starting to run")
-
-        // Find the user in the database with the same username
-        const foundUser = allUsers.find((user) => user.shortName === username)
-
-        // If a user has been found
-        if (foundUser){
-            console.log("user has been found")
-
-            // And if the password is the same as the one entered:
-            if (foundUser.password === password){
-                console.log("user found, password matched")
-                setCurrentUser(foundUser);
-            } 
-            // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
-            else {
-                console.log("user password not match")
-                // refreshPage();
-            }
-        }
-        // If the user has not been found
-        else {
-            console.log("user not found")
-            // refreshPage();
-        }
-    }
-
     return(
 
         <Router>
@@ -137,7 +107,6 @@ const MainContainer = () =>{
             <h1>Villcumin to GrowHub</h1>
 
             <Switch>
-                
                 <PrivateRoute exact path="/" component={() => {
                     return (
                         <HomePageContainer 
@@ -170,18 +139,18 @@ const MainContainer = () =>{
                     return(
                         <>
                             <h3>Please login to continue</h3>
-                            <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser} handleLogin={handleLogin}/>
+                            <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
                         </>
                     )
                 }}/>
 
-                {/* <Route render={() => {
+                <Route render={() => {
                     return(
                         <>
                             <h1>DIS PAGE NO EXIST</h1> 
                         </>
                     )
-                }} /> */}
+                }} />
 
             </Switch>
         </>

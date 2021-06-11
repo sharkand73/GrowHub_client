@@ -2,10 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {Redirect, Link} from 'react-router-dom';
 
 
-const Login = ({users, setCurrentUser, handleLogin, currentUser}) => {
+const Login = ({users, setCurrentUser, currentUser}) => {
 
     const [formData, setFormData] = useState({})
-
 
     // Handler to update formData with the user input of 'username' and 'password'
     // We may want two handlers when we come to encrypting the password. One for username, one for pw
@@ -17,14 +16,40 @@ const Login = ({users, setCurrentUser, handleLogin, currentUser}) => {
     // When we click submit for form, run findUser function
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleLogin(formData.username, formData.password); 
+        handleLogin();
     }
 
     const refreshPage = () => {
         window.location.reload();
     }
 
+    const handleLogin = () => {
+        console.log("findUser function starting to run")
 
+        // Find the user in the database with the same username
+        const foundUser = users.find((user) => user.shortName === formData.username)
+
+        // If a user has been found
+        if (foundUser){
+            console.log("user has been found")
+
+            // And if the password is the same as the one entered:
+            if (foundUser.password === formData.password){
+                console.log("user found, password matched")
+                setCurrentUser(foundUser);
+            } 
+            // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
+            else {
+                console.log("user password not match")
+                refreshPage();
+            }
+        }
+        // If the user has not been found
+        else {
+            console.log("user not found")
+            refreshPage();
+        }
+    }
 
     return(
         <>
