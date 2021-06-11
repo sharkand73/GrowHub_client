@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Redirect, Link} from 'react-router-dom';
 
 
-const Login = ({users, setCurrentUser, handleLogin}) => {
+const Login = ({users, setCurrentUser, handleLogin, currentUser}) => {
 
     const [formData, setFormData] = useState({})
+
 
     // Handler to update formData with the user input of 'username' and 'password'
     // We may want two handlers when we come to encrypting the password. One for username, one for pw
@@ -23,36 +24,7 @@ const Login = ({users, setCurrentUser, handleLogin}) => {
         window.location.reload();
     }
 
-    // const findUser = () => {
-    //     console.log("findUser function starting to run")
-  
 
-    //     // Find the user in the database with the same username
-    //     const foundUser = users.find((user) => user.shortName === formData.username)
-
-    //     // If a user has been found
-    //     if (foundUser){
-    //         console.log("user has been found")
-
-    //         // And if the password is the same as the one entered:
-    //         if (foundUser.password === formData.password){
-    //             console.log("user found, password matched")
-    //             setCurrentUser(foundUser);
-    //             // return <Redirect to="/" />
-       
-    //         } 
-    //         // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
-    //         else {
-    //             console.log("user password not match")
-    //             refreshPage();
-    //         }
-    //     }
-    //     // If the user has not been found
-    //     else {
-    //         console.log("user not found")
-    //         refreshPage();
-    //     }
-    // }
 
     return(
         <>
@@ -65,8 +37,9 @@ const Login = ({users, setCurrentUser, handleLogin}) => {
                 <label name='password'>Enter your password:</label>
                 <input type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
 
-                <button type='submit'>Login</button>
+                <button type='submit' >Login</button>
 
+                {currentUser ? <Redirect to="/" /> : null}
             </form>
         </>
     )

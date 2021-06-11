@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 import Login from '../components/user/Login';
 import HomePageContainer from './HomePageContainer';
@@ -25,9 +25,6 @@ const MainContainer = () =>{
     const [tips, setTips] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
 
-
-
-    // This function makes an instance of the helpers/Request.js class, and GETS all our required state objects from DB, from localhost:8080/api
     const requestAll = function(){
         const request = new Request();
         const plotsPromise = request.get('/api/plots');
@@ -36,10 +33,7 @@ const MainContainer = () =>{
         const jobsPromise = request.get('/api/jobs');
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
-        // May need another promise here once we have logged in sorted
-        // const currentUserPromise = request.get('/user/:id');
 
-        // Completing the operation^
         Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise])
             .then((data) => {
                 setPlots(data[0]);
@@ -48,8 +42,7 @@ const MainContainer = () =>{
                 setJobs(data[3]);
                 setTips(data[4]);
                 setAllUsers(data[5]);
-                // Likewise as above, may need one of these for currentUser if promised
-                // setCurrentUser(data[6]);
+
             })}
 
     useEffect(()=>{requestAll()}, [])
@@ -103,6 +96,8 @@ const MainContainer = () =>{
             }
         )
     }
+
+    let loginCheckVariable = false;
     
     const handleLogin = (username, password) => {
         console.log("findUser function starting to run")
@@ -118,7 +113,6 @@ const MainContainer = () =>{
             if (foundUser.password === password){
                 console.log("user found, password matched")
                 setCurrentUser(foundUser);
-                // <Redirect to="/" />
             } 
             // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
             else {
@@ -134,6 +128,7 @@ const MainContainer = () =>{
     }
 
     return(
+
         <Router>
 
         <> 
@@ -142,8 +137,6 @@ const MainContainer = () =>{
             <h1>Villcumin to GrowHub</h1>
 
             <Switch>
-
-                {/* {currentUser ? <Redirect to="/"/> : null} */}
                 
                 <PrivateRoute exact path="/" component={() => {
                     return (
@@ -177,7 +170,7 @@ const MainContainer = () =>{
                     return(
                         <>
                             <h3>Please login to continue</h3>
-                            <Login users={allUsers} setCurrentUser={setCurrentUser} handleLogin={handleLogin}/>
+                            <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser} handleLogin={handleLogin}/>
                         </>
                     )
                 }}/>
