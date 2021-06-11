@@ -24,26 +24,32 @@ const Login = ({users, currentUser, setCurrentUser}) => {
     }
 
     const findUser = () => {
+        console.log("findUser function starting to run")
+  
 
         // Find the user in the database with the same username
-        const foundUser = users.find((user) => user.username === formData.username)
+        const foundUser = users.find((user) => user.shortName === formData.username)
 
         // If a user has been found
-        if (foundUser !== undefined){
+        if (foundUser){
+            console.log("user has been found")
 
             // And if the password is the same as the one entered:
             if (foundUser.password === formData.password){
+                console.log("user found, password matched")
                 setCurrentUser(foundUser);
                 <Redirect to="/" />
             } 
             // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
             else {
-                refreshPage();
+                console.log("user password not match")
+                // refreshPage();
             }
         }
         // If the user has not been found
         else {
-            refreshPage();
+            console.log("user not found")
+            // refreshPage();
         }
     }
 

@@ -30,7 +30,7 @@ const MainContainer = () =>{
         const bulletinsPromise = request.get('/bulletins');
         const jobsPromise = request.get('/jobs');
         const tipsPromise = request.get('/tips');
-        const allUsersPromise = request.get('/users');
+        const allUsersPromise = request.get('/api/users');
         // May need another promise here once we have logged in sorted
         // const currentUserPromise = request.get('/user/:id');
 
@@ -42,7 +42,7 @@ const MainContainer = () =>{
                 setBulletins(data[2]);
                 setJobs(data[3]);
                 setTips(data[4]);
-                setTips(data[5]);
+                setAllUsers(data[5]);
                 // Likewise as above, may need one of these for currentUser if promised
                 // setCurrentUser(data[6]);
             })}

@@ -1,12 +1,12 @@
 class Request {
 
     constructor(){
-      this.baseUrl = "http://localhost:8080/api" //default, change to whatevz
+      this.baseUrl = "http://localhost:8080/api"
   
     }
   
       get(url) {
-        return fetch(this.baseUrl + url)
+        return fetch(url)
         .then((res) => res.json());
       }
   
