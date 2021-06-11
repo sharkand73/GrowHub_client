@@ -28,7 +28,7 @@ const MainContainer = () =>{
     const requestAll = function(){
         const request = new Request();
         const plotsPromise = request.get('/api/plots');
-        const knowHowsPromise = request.get('/api/knowHows');
+        const knowHowsPromise = request.get('/api/knowhows');
         const bulletinsPromise = request.get('/api/bulletins');
         const jobsPromise = request.get('/api/jobs');
         const tipsPromise = request.get('/api/tips');
