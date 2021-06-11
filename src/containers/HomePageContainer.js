@@ -6,6 +6,7 @@ import KnowHowList from '../components/knowHows/KnowHowList';
 import Community from '../components/community/Community';
 import PrivateRoute from '../components/user/PrivateRoute';
 import PlotDetail from '../components/plots/PlotDetail';
+import Bulletin from '../components/community/bulletin/Bulletin';
 
 // Renders weather widgets etc
 // Renders buttons for areas of the site
@@ -24,6 +25,15 @@ import PlotDetail from '../components/plots/PlotDetail';
     // Makes the Rendering a bit simpler. Don't need to have all the HTML here under one giant conditional render
 
 const HomePageContainer = ({currentUser, bulletins, tips}) =>{
+
+    const committeeBulletins = bulletins.map((bulletin, index) => {
+            if (bulletin.author.position !== "NONE" || "INACTIVE"){
+                return(
+                    <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
+                )
+            }
+            return null;
+        })
 
     return(
         <>
@@ -45,6 +55,11 @@ const HomePageContainer = ({currentUser, bulletins, tips}) =>{
             <button>Community</button>
         </Link>
 
+        <div>
+            <ul>
+            {committeeBulletins}
+            </ul>
+        </div>
         </>
     )
 
