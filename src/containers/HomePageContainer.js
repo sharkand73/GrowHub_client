@@ -23,14 +23,7 @@ import PlotDetail from '../components/plots/PlotDetail';
     // It will probably be easier to actually make separate components for weather widgets, quick bulletins, tips etc
     // Makes the Rendering a bit simpler. Don't need to have all the HTML here under one giant conditional render
 
-const HomePageContainer = ({currentUser, plots, knowHows, bulletins, jobs, tips}) =>{
-
-    const findPlotById = (plotId) => {
-        return plots.find((plot) => {
-            return plot.id === parseInt(plotId)
-            }
-        )
-    }
+const HomePageContainer = ({currentUser, bulletins, tips}) =>{
 
     return(
         <>
@@ -51,27 +44,6 @@ const HomePageContainer = ({currentUser, plots, knowHows, bulletins, jobs, tips}
         <Link to="/community">
             <button>Community</button>
         </Link>
-
-        <Switch>
-            <PrivateRoute path = '/plots' component = {() =>{
-                return <PlotList currentUser={currentUser} plots={plots} />
-            }} currentUser={currentUser}/>
-
-            <PrivateRoute path = '/plots/:id' component = {(props) => {
-                const id = props.match.params.id;
-                const foundPlot = findPlotById(id);
-                return <PlotDetail currentUser={currentUser} plot={foundPlot} />
-            }} currentUser={currentUser} />
-
-            <PrivateRoute path = '/community' component = {() =>{
-                return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
-            }} currentUser={currentUser}/>
-
-            <PrivateRoute path = '/knowhows' component = {() =>{
-                return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
-            }} currentUser={currentUser}/>
-
-        </Switch>
 
         </>
     )

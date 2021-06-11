@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Redirect, Link} from 'react-router-dom';
 
 
-const Login = ({users, currentUser, setCurrentUser}) => {
+const Login = ({users, setCurrentUser, handleLogin}) => {
 
     const [formData, setFormData] = useState({})
 
@@ -16,54 +16,53 @@ const Login = ({users, currentUser, setCurrentUser}) => {
     // When we click submit for form, run findUser function
     const handleSubmit = (e) => {
         e.preventDefault();
-        findUser(); 
+        handleLogin(formData.username, formData.password); 
     }
 
     const refreshPage = () => {
         window.location.reload();
     }
 
-    const findUser = () => {
-        console.log("findUser function starting to run")
+    // const findUser = () => {
+    //     console.log("findUser function starting to run")
   
 
-        // Find the user in the database with the same username
-        const foundUser = users.find((user) => user.shortName === formData.username)
+    //     // Find the user in the database with the same username
+    //     const foundUser = users.find((user) => user.shortName === formData.username)
 
-        // If a user has been found
-        if (foundUser){
-            console.log("user has been found")
+    //     // If a user has been found
+    //     if (foundUser){
+    //         console.log("user has been found")
 
-            // And if the password is the same as the one entered:
-            if (foundUser.password === formData.password){
-                console.log("user found, password matched")
-                setCurrentUser(foundUser);
-                // return <Redirect to="/" />
-                // window.location ="/"
+    //         // And if the password is the same as the one entered:
+    //         if (foundUser.password === formData.password){
+    //             console.log("user found, password matched")
+    //             setCurrentUser(foundUser);
+    //             // return <Redirect to="/" />
        
-            } 
-            // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
-            else {
-                console.log("user password not match")
-                refreshPage();
-            }
-        }
-        // If the user has not been found
-        else {
-            console.log("user not found")
-            refreshPage();
-        }
-    }
+    //         } 
+    //         // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
+    //         else {
+    //             console.log("user password not match")
+    //             refreshPage();
+    //         }
+    //     }
+    //     // If the user has not been found
+    //     else {
+    //         console.log("user not found")
+    //         refreshPage();
+    //     }
+    // }
 
     return(
         <>
             <h4>Please Login to Continue.</h4>
 
             <form onSubmit={handleSubmit}>
-                <label for name='username'>Enter your username:</label>
+                <label name='username'>Enter your username:</label>
                 <input type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
 
-                <label for name='password'>Enter your password:</label>
+                <label name='password'>Enter your password:</label>
                 <input type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
 
                 <button type='submit'>Login</button>

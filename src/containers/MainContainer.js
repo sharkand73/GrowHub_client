@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 import Login from '../components/user/Login';
 import HomePageContainer from './HomePageContainer';
 import Request from '../helpers/request';
 import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
+import PlotList from '../components/plots/PlotList';
+import KnowHowList from '../components/knowHows/KnowHowList';
+import Community from '../components/community/Community';
+import PlotDetail from '../components/plots/PlotDetail';
 
 // This container is responsible for State, initial requests to DB to GET, and other requests (post new etc.)
 // Renders HomePageContainer once user is logged in
@@ -92,6 +97,42 @@ const MainContainer = () =>{
         }
     }
 
+    const findPlotById = (plotId) => {
+        return plots.find((plot) => {
+            return plot.id === parseInt(plotId)
+            }
+        )
+    }
+    
+    const handleLogin = (username, password) => {
+        console.log("findUser function starting to run")
+
+        // Find the user in the database with the same username
+        const foundUser = allUsers.find((user) => user.shortName === username)
+
+        // If a user has been found
+        if (foundUser){
+            console.log("user has been found")
+
+            // And if the password is the same as the one entered:
+            if (foundUser.password === password){
+                console.log("user found, password matched")
+                setCurrentUser(foundUser);
+                // <Redirect to="/" />
+            } 
+            // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
+            else {
+                console.log("user password not match")
+                // refreshPage();
+            }
+        }
+        // If the user has not been found
+        else {
+            console.log("user not found")
+            // refreshPage();
+        }
+    }
+
     return(
         <Router>
 
@@ -101,36 +142,53 @@ const MainContainer = () =>{
             <h1>Villcumin to GrowHub</h1>
 
             <Switch>
+
+                {/* {currentUser ? <Redirect to="/"/> : null} */}
+                
                 <PrivateRoute exact path="/" component={() => {
                     return (
                         <HomePageContainer 
                             currentUser = {currentUser}
-                            plots = {plots}
-                            knowHows = {knowHows}
                             bulletins = {bulletins}
-                            jobs = {jobs}
                             tips = {tips}
   
                         />)
                     }} currentUser={currentUser} /> 
 
+                <PrivateRoute path = '/plots' component = {() =>{
+                    return <PlotList currentUser={currentUser} plots={plots} />
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute path = '/plots/:id' component = {(props) => {
+                    const id = props.match.params.id;
+                    const foundPlot = findPlotById(id);
+                    return <PlotDetail currentUser={currentUser} plot={foundPlot} />
+                }} currentUser={currentUser} />
+
+                <PrivateRoute path = '/community' component = {() =>{
+                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute path = '/knowhows' component = {() =>{
+                    return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
+                }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {
                     return(
                         <>
                             <h3>Please login to continue</h3>
-                            <Login users={allUsers} currentUser = {currentUser} setCurrentUser={setCurrentUser}/>
+                            <Login users={allUsers} setCurrentUser={setCurrentUser} handleLogin={handleLogin}/>
                         </>
                     )
                 }}/>
 
-                <Route render={() => {
+                {/* <Route render={() => {
                     return(
                         <>
                             <h1>DIS PAGE NO EXIST</h1> 
                         </>
                     )
-                }} />
+                }} /> */}
 
             </Switch>
         </>
