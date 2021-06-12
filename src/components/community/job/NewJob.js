@@ -20,6 +20,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
     });
 
     const date = getDate();
+
     formData['date'] = date;
     formData['author'] = currentUser;
 

@@ -55,18 +55,21 @@ const MainContainer = () =>{
     useEffect(()=>{requestAll()}, [])
 
     const postKnowHow = (knowHow) => {
+        knowHows.push(knowHow);
         const request = new Request();
-        request.post("/api/knowhows", knowHow)
+        request.post("/api/knowhows", knowHow);
     }
 
     const postBulletin = (bulletin) => {
+        bulletins.push(bulletin);
         const request = new Request();
-        request.post("/api/bulletins", bulletin)
+        request.post("/api/bulletins", bulletin);
     }
 
     const postJob = (job) => {
+        jobs.push(job);
         const request = new Request();
-        request.post("/api/jobs", job)
+        request.post("/api/jobs", job);
     }
 
     const findPlotById = (plotId) => {
