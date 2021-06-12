@@ -52,6 +52,8 @@ const MainContainer = () =>{
 
     useEffect(()=>{requestAll()}, [])
 
+
+
     const postKnowHow = (knowHow) => {
         knowHows.push(knowHow);
         const request = new Request();
@@ -87,6 +89,67 @@ const MainContainer = () =>{
         return `${dd}/${mm}/${yyyy}`
     }
 
+
+// weather data and api fetch
+    
+    const nullData = {
+        "coord": {
+        "lon": 0,
+        "lat": 0
+        },
+        "weather": [
+        {
+        "id": 0,
+        "main": "",
+        "description": "",
+        "icon": ""
+        }
+        ],
+        "base": "",
+        "main": {
+        "temp": 0,
+        "feels_like": 0,
+        "temp_min": 0,
+        "temp_max": 0,
+        "pressure": 0,
+        "humidity": 0
+        },
+        "visibility": 0,
+        "wind": {
+        "speed": 0,
+        "deg": 0
+        },
+        "clouds": {
+        "all": 0
+        },
+        "dt": 1623496264,
+        "sys": {
+        "type": 1,
+        "id": 1441,
+        "country": "GB",
+        "sunrise": 0,
+        "sunset": 0
+        },
+        "timezone": 3600,
+        "id": 2648579,
+        "name": "Glasgow",
+        "cod": 200
+        }
+    const [weatherData, setWeatherData] = useState(nullData);
+    const APIKey = "0d820993802bd0122435be9caac2043d";
+    const location = "Glasgow";
+
+    const getData = function(){
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=Glasgow&appid=0d820993802bd0122435be9caac2043d")
+            .then(results => results.json() )
+            .then(data => {setWeatherData(data)})
+        };
+    
+    useEffect(() => getData(), []);
+
+
+
+
     return(
 
         <Router>
@@ -103,6 +166,7 @@ const MainContainer = () =>{
                             currentUser = {currentUser}
                             bulletins = {bulletins}
                             tips = {tips}
+                            weatherData = {weatherData}
   
                         />)
                     }} currentUser={currentUser} /> 
