@@ -7,6 +7,8 @@ import Community from '../components/community/Community';
 import PrivateRoute from '../components/user/PrivateRoute';
 import PlotDetail from '../components/plots/PlotDetail';
 import Bulletin from '../components/community/bulletin/Bulletin';
+import Tip from '../components/community/tip/Tip';
+
 
 // Renders weather widgets etc
 // Renders buttons for areas of the site
@@ -59,6 +61,10 @@ const HomePageContainer = ({currentUser, bulletins, tips}) =>{
             <ul>
             {committeeBulletins}
             </ul>
+
+            <div>
+                <Tip tips = {tips} />
+            </div>
         </div>
         </>
     )
