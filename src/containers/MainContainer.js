@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 import Login from '../components/user/Login';
 import HomePageContainer from './HomePageContainer';
@@ -127,11 +128,13 @@ const MainContainer = () =>{
                     return <PlotList currentUser={currentUser} plots={plots} />
                 }} currentUser={currentUser}/>
 
-                <PrivateRoute exact path = '/plots/:id' component = {(props) => {
+
+
+                <Route exact path = "/plots/:id" render = {(props) => {
                     const id = props.match.params.id;
                     const foundPlot = findPlotById(id);
-                    return <PlotDetail currentUser={currentUser} plot={foundPlot} />
-                }} currentUser={currentUser} />
+                    return foundPlot ? <PlotDetail currentUser={currentUser} plot={foundPlot} />: <Redirect to="/plots" />
+                }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
                     return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>

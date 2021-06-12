@@ -16,6 +16,20 @@ const PlotList = ({currentUser, plots}) =>{
         )
     })
 
+
+    // This array would (should) return a single array with the users plots first
+    // const newPlotsArray = () => {
+    //     for (let userPlot in userPlots){
+    //         for (let plot in plots){
+    //             if (plot === userPlot){
+    //                 plots.remove(plot);
+    //                 plot.unshift(plot);
+    //             }
+    //         }
+    //     }
+    //     return plotArray
+    // }
+
     return(
         <>
             <h3>This is our list of plots, that renders many Plot objects</h3>
@@ -29,6 +43,11 @@ const PlotList = ({currentUser, plots}) =>{
             <ul>
                 {plotArray}
             </ul>
+
+            {/* <p>shifted plots</p>
+            <ul>
+                {newPlotsArray()}
+            </ul> */}
         </>
     )
 
