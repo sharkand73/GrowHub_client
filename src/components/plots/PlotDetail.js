@@ -1,21 +1,16 @@
 import React from 'react';
 
-// Props:
-    // plot
-    // user - if this user is not the user who owns the plot then they cannot add comments
+const PlotDetail = ({currentUser, plot}) =>{
 
-// Purpose:
-    // Plot Name
-    // Plot Ownwer
-    // Year the plot ownwer started on the plot
-    // Comments
-    // Size & Slope?
-    // Possibly images
 
-const PlotDetail = () =>{
     return(
         <>
-            <p>This is the PlotDetail page</p>
+            <h3>This is the plot detail page</h3>
+            <ul>
+                <li>Plot Number: {plot.plotNumber}</li>
+                <li>Dimensions: {plot.length}m x {plot.width}m</li>
+                <li> {plot.isFlat ? "This plot is flat!" : "This plot is as flat as plant Earth (not flat)"}</li>
+            </ul>
         </>
     )
 

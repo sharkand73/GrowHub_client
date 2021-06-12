@@ -11,13 +11,16 @@ import {Link} from 'react-router-dom'
 
 const Plot = ({plot, currentUser}) =>{
 
-    const url = "/plots" + plot.id;
+    const url = "/plots/" + plot.id;
 
     return(
-        <>
-        <p> This is a plot.js </p>
-        <Link to={url}><p> This is {plot.number} </p></Link>
-        </>
+        <div>
+        <Link to={url} >
+            <button>
+                <h4> {plot.areaName} </h4>
+            </button>
+        </Link>
+        </div>
     )
 
 }
