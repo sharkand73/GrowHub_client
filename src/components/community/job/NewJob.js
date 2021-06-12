@@ -10,26 +10,51 @@ import {Redirect} from 'react-router-dom';
         // or by combining the arrays here
     // map through the areas, print an option? (but 70+ plots.. thats a lot of areas)
 
-const NewJob = ({currentUser, postJob, communalAreas}) => {
+const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
 
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        date: "",
+        author: null,
+        title: "",
+        body: "",
+        area: null,
+        deadline: "",
+        difficulty: 0
+    })
+
     const [formCheck, setFormCheck] = useState(null);
 
     const communalAreaOptions = communalAreas.map((communalArea, index) => {
         return <option value={index} key={index}>{communalArea.areaName}</option>
     });
 
+    const date = getDate();
+
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
-        // May need to convert difficulty string to int here
         setFormData(formData)
       }
 
+    const handleArea = (e) => {
+        formData['area'] = communalAreas[e.target.value];
+        setFormData(formData);
+    }
+
+    const handleDifficulty = (e) => {
+        formData['difficulty'] = parseInt(e.target.value)
+        setFormData(formData);
+    }
+
     const handleSubmit = (e) => {
+        formData['date'] = date;
+        formData['author'] = currentUser;
         e.preventDefault();
-        formData['user'] = currentUser; 
+        console.log("Handle submit of formdata:")
+        console.log(formData);
+
         postJob(formData);
-        setFormCheck(1);
+
+        // setFormCheck(1);
     }
 
     return(
@@ -40,10 +65,6 @@ const NewJob = ({currentUser, postJob, communalAreas}) => {
 
 
         <form onSubmit={handleSubmit}>
-            {/* This date field should be obsolete once we have a function to get todays date */}
-            <label name='date'>Enter todays Date:</label>
-            <input type='date' name='date' id='date' onChange={handleChange} required/>
-
             <label name='title'>Title:</label>
             <input type='text' name='title' id='title' onChange={handleChange} required />
 
@@ -51,16 +72,16 @@ const NewJob = ({currentUser, postJob, communalAreas}) => {
             <input type='text' name='body' id='body' onChange={handleChange} required /> 
 
             <label name='area'>Area it applies to:</label>
-            <select name='area' id='area' onChange={handleChange}>
-                <option value='' selected disabled>Area</option>
+            <select name='area' id='area' onChange={handleArea}>
+                <option selected disabled>Area</option>
                 {communalAreaOptions}
             </select>
             
             <label name='deadline'>Due Date:</label>
-            <input type='date' name='title' id='title' onChange={handleChange} required />
+            <input type='text' name='deadline' id='deadline' placeholder={date} onChange={handleChange} required />
 
             <label name='difficulty'>Difficulty:</label>
-            <input type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleChange} required />
+            <input type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} required />
 
             <button type='submit'>Submit New Job</button>
         </form>

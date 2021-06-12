@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
+const NewBulletin = ({currentUser, postBulletin, getDate}) => {
 
-// The purpose of this file is to render a new bulletin form
-
-
-const NewBulletin = ({currentUser, postBulletin}) => {
-
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        date: "",
+        author: null,
+        title: "",
+        body: ""
+    })
     const [formCheck, setFormCheck] = useState(null);
+
+    const date = getDate();
 
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
@@ -17,18 +20,17 @@ const NewBulletin = ({currentUser, postBulletin}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        formData['user'] = currentUser; 
+        formData['date'] = date;
+        formData['author'] = currentUser;
+        setFormData(formData);
         postBulletin(formData);
         setFormCheck(1);
     }
 
-    // Date, User, Title, Body
     return(
     <>
          <h3>Enter your new Bulletin here!</h3>
             <form onSubmit={handleSubmit}>
-                <label name='date'>Enter the Date:</label>
-                <input type='date' name='date' id='date' onChange={handleChange} required/>
 
                 <label name='title'>Title:</label>
                 <input type='text' name='title' id='title' onChange={handleChange} required />

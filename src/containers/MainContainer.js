@@ -29,10 +29,6 @@ const MainContainer = () =>{
     // temporary array of months till we hook up enums somehow
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-    const monthOptions = months.map((month, index) => {
-        return <option value={index} key={index}>{month}</option>
-    });
-
     const requestAll = function(){
         const request = new Request();
         const plotsPromise = request.get('/api/plots');
@@ -42,7 +38,6 @@ const MainContainer = () =>{
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
         const communalAreasPromise = request.get('/api/communals');
-        // const monthsPromise = request.get('/api/months');
 
         Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise])
             .then((data) => {
@@ -53,55 +48,43 @@ const MainContainer = () =>{
                 setTips(data[4]);
                 setAllUsers(data[5]);
                 setCommunalAreas(data[6]);
-                // setMonths(data[7]);
             })}
 
     useEffect(()=>{requestAll()}, [])
 
     const postKnowHow = (knowHow) => {
+        knowHows.push(knowHow);
         const request = new Request();
-        request.post("/knowHow", knowHow)
-        .then(() => window.location = '/knowHows')
+        request.post("/api/knowhows", knowHow);
     }
 
     const postBulletin = (bulletin) => {
+        bulletins.push(bulletin);
         const request = new Request();
-        request.post("/bulletin", bulletin)
-        .then(() => window.location = '/bulletins') 
+        request.post("/api/bulletins", bulletin);
     }
 
     const postJob = (job) => {
+        jobs.push(job);
+        console.log("postJob, job:")
+        console.log(job);
         const request = new Request();
-        request.post("/job", job)
-        .then(() => window.location = '/jobs')
+        request.post("/api/jobs", job);
     }
-
-    // Trialling what the above refactor would look like:
-        // Problem is, we don't have an Object to compare it to
-        // so can't do "if newObject is instance of knowHow"
-        // Trying: "if new Object is instance of knowHows[0]" ?? 
-
-    // const handlePost = (newObject) => {
-    //     const request = new Request();
-    //     if (newObject instanceof knowHows[0]){
-    //         request.post("/knowHow", newObject)
-    //         .then(() => window.location = '/knowHows')
-    //     }
-    //     if (newObject instanceof jobs[0]){
-    //         request.post("/job", newObject)
-    //         .then(() => window.location = '/jobs')
-    //     }
-    //     if (newObject instanceof bulletins[0]){
-    //         request.post("/bulletin", newObject)
-    //         .then(() => window.location = '/bulletins') 
-    //     }
-    // }
 
     const findPlotById = (plotId) => {
         return plots.find((plot) => {
             return plot.id === parseInt(plotId)
             }
         )
+    }
+
+    const getDate = () => {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
+        return `${dd}/${mm}/${yyyy}`
     }
 
     return(
@@ -141,11 +124,11 @@ const MainContainer = () =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
-                    return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas}/>
+                    return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/bulletins/new' component = {() =>{
-                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin}/>
+                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
@@ -153,7 +136,7 @@ const MainContainer = () =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{
-                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} monthOptions={monthOptions}/>
+                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {
