@@ -140,7 +140,7 @@ const MainContainer = () =>{
     const location = "Glasgow";
 
     const getData = function(){
-        fetch("https://api.openweathermap.org/data/2.5/weather?q=Glasgow&appid=0d820993802bd0122435be9caac2043d")
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}`)
             .then(results => results.json() )
             .then(data => {setWeatherData(data)})
         };
