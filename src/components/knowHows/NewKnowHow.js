@@ -28,9 +28,10 @@ const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         formData['date'] = date;
         formData['author'] = currentUser;
-        e.preventDefault();
+        setFormData(formData);
         postKnowHow(formData);
         setFormCheck(1);
     }
