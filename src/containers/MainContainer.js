@@ -76,6 +76,14 @@ const MainContainer = () =>{
         )
     }
 
+    const getDate = () => {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
+        return `${dd}/${mm}/${yyyy}`
+    }
+
     return(
 
         <Router>
@@ -113,11 +121,11 @@ const MainContainer = () =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
-                    return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas}/>
+                    return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/bulletins/new' component = {() =>{
-                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin}/>
+                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
@@ -125,7 +133,7 @@ const MainContainer = () =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{
-                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months}/>
+                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {

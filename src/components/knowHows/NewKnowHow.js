@@ -11,19 +11,14 @@ import {Redirect} from 'react-router-dom';
         // we want our server knowHows to take in date objects
         // can then just make the date equal to todays date here. User doesn't need to do anything
 
-const NewKnowHow = ({currentUser, postKnowHow, months}) =>{
+const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
 
     const [formData, setFormData] = useState({})
     const [formCheck, setFormCheck] = useState(null);
 
-    const today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const yyyy = today.getFullYear();
-
-    formData['date'] = `${mm}/${dd}/${yyyy}`
+    const date = getDate();
+    formData['date'] = date;
     formData['author'] = currentUser;
-
 
     const monthOptions = months.map((month, index) => {
         return <option value={index} key={index}>{month}</option>
