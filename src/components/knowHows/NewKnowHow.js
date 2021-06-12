@@ -14,9 +14,14 @@ import {Redirect} from 'react-router-dom';
 const NewKnowHow = ({currentUser, postKnowHow, months}) =>{
 
     const [formData, setFormData] = useState({})
-    // const [formCheck, setFormCheck] = useState(null);
+    const [formCheck, setFormCheck] = useState(null);
 
-    formData['date'] = "23/4"
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+
+    formData['date'] = `${mm}/${dd}/${yyyy}`
     formData['author'] = currentUser;
 
 
@@ -38,7 +43,7 @@ const NewKnowHow = ({currentUser, postKnowHow, months}) =>{
         postKnowHow(formData);
         console.log(formData);
 
-        // setFormCheck(1);
+        setFormCheck(1);
     }
 
     // Date string, User object, Title string, Body string, Month ENUM (currently string made here)
@@ -62,7 +67,7 @@ const NewKnowHow = ({currentUser, postKnowHow, months}) =>{
                 <button type='submit'>Submit New Know How</button>
             </form>
 
-            {/* {formCheck ? <Redirect to="/knowhows" />:null} */}
+            {formCheck ? <Redirect to="/knowhows" />:null}
 
         </>
     )

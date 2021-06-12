@@ -124,9 +124,9 @@ const MainContainer = () =>{
                     return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
                 }} currentUser={currentUser}/>
 
-                <Route exact path = '/knowhows/new' component = {() =>{
+                <PrivateRoute exact path = '/knowhows/new' component = {() =>{
                     return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months}/>
-                }}/>
+                }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {
                     return(
