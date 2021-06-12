@@ -1,26 +1,21 @@
 import React from 'react';
 import Plot from './Plot';
 
-// Props Incoming = plots, user and onClick of some kind
-
-// Props outgoing: 
-    //  Plot = Plot, and maybe our onclick methodology, selecting plot for plotDetail
-    //  PlotDetail = SelectedPlot
-
-// Initially this will render a list of all Plots
-// Then when we click on a Plot, it will render PlotDetail
-// Conditional rendering, useState. If selected plot, render plotdetail. If not, continue rendering plotlist
-
-
-// Requires a function to map through our plots prop, and render all our Plot objects, that takes in the plot prop
-
 const PlotList = ({currentUser, plots}) =>{
 
+    // Renders a Plot object for each plot in plots
     const plotArray = plots.map((plot, index) => {
         return(
             <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
         )
     })
+
+    // Takes the above array, and moves the users plot to the top
+    // For each plot in the user.plot array, remove them from plots array, and add them to the start of the plots array
+    // then map through each one and make an <li>
+
+    // const foundPlots = currentUser.plots.find((plot) => plot === plots.map((plot, index) => {}))
+
 
     return(
         <>
