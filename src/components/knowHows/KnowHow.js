@@ -1,16 +1,19 @@
 import React from 'react';
 
-
-// Props incoming:
-    // knowHow
-
-// Purpose:
-    // Renders a KnowHow object for the KnowHowList
-
+// Date
+// Author
+// Title
+// body
 
 const KnowHow = ({knowHow, currentUser}) =>{
     return(
-        <p>Dis is a knowhow prop</p>
+        <div>
+            <h4>{knowHow.title}</h4>
+            <ul>
+                <li>{knowHow.body}</li>
+                <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
+            </ul>
+        </div>
     )
 
 }

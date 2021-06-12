@@ -1,15 +1,20 @@
 import React from 'react';
 
-// The purpose of this file is to render one jobbie
 
-// Incoming props = Jobs
 
 const Job = ({job, currentUser}) =>{
     
     return (
-        <>
-            <h1>This is one jobbie</h1>
-        </>
+        <div>
+            <h3>{job.title}</h3>
+            <ul>
+                <li>{job.body}</li>
+                <li>Area: {job.area.areaName}</li>
+                <li>Deadline: {job.deadline}</li>
+                <li>Difficulty: {job.difficulty} carrots</li>
+                <li>Posted by {job.author.shortName} - <i>{job.date}</i></li>
+            </ul>
+        </div>
     );
     }
 
