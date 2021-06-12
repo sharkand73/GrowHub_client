@@ -15,7 +15,8 @@ import PlotDetail from '../components/plots/PlotDetail';
 import NewJob from '../components/community/job/NewJob';
 import NewBulletin from '../components/community/bulletin/NewBulletin';
 
-const MainContainer = () =>{
+const MainContainer = ({allotmentSettings}) =>{
+
     const [currentUser, setCurrentUser] = useState(null);
     const [plots, setPlots] = useState([]);
     const [knowHows, setKnowHows] = useState([]);
@@ -38,6 +39,7 @@ const MainContainer = () =>{
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
         const communalAreasPromise = request.get('/api/communals');
+        
 
         Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise])
             .then((data) => {
@@ -136,16 +138,18 @@ const MainContainer = () =>{
         "cod": 200
         }
     const [weatherData, setWeatherData] = useState(nullData);
-    const APIKey = "0d820993802bd0122435be9caac2043d";
-    const location = "Glasgow";
 
     const getData = function(){
+        const APIKey = allotmentSettings.apikey;
+        const location = allotmentSettings.location;
+        // const APIKey = "0d820993802bd0122435be9caac2043d";
+        // const location = "Glasgow";
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}`)
             .then(results => results.json() )
             .then(data => {setWeatherData(data)})
         };
     
-    useEffect(() => getData(), []);
+    useEffect(() => getData(), [allotmentSettings]);
 
 
 
