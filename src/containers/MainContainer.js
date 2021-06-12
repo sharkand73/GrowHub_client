@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {Redirect, Link} from 'react-router-dom';
 
 import Login from '../components/user/Login';
 import HomePageContainer from './HomePageContainer';
@@ -9,21 +8,29 @@ import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
 import PlotList from '../components/plots/PlotList';
 import KnowHowList from '../components/knowHows/KnowHowList';
+import NewKnowHow from '../components/knowHows/NewKnowHow';
 import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
-
-// This container is responsible for State, initial requests to DB to GET, and other requests (post new etc.)
-// Renders HomePageContainer once user is logged in
-// Props passed down: all, to HomePageContainer (we also pass 1 user here. The currentUser who has logged in, methodology TBC..)
+import NewJob from '../components/community/job/NewJob';
+import NewBulletin from '../components/community/bulletin/NewBulletin';
 
 const MainContainer = () =>{
-    const [currentUser, setCurrentUser] = useState(null); // Currently no user is set. Our Login function should setCurrentUser
+    const [currentUser, setCurrentUser] = useState(null);
     const [plots, setPlots] = useState([]);
     const [knowHows, setKnowHows] = useState([]);
     const [bulletins, setBulletins] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [tips, setTips] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
+    const [communalAreas, setCommunalAreas] = useState([]);
+    // const [months, setMonths] = useState([]);
+
+    // temporary array of months till we hook up enums somehow
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+    const monthOptions = months.map((month, index) => {
+        return <option value={index} key={index}>{month}</option>
+    });
 
     const requestAll = function(){
         const request = new Request();
@@ -33,8 +40,10 @@ const MainContainer = () =>{
         const jobsPromise = request.get('/api/jobs');
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
+        const communalAreasPromise = request.get('/api/communals');
+        // const monthsPromise = request.get('/api/months');
 
-        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise])
+        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise])
             .then((data) => {
                 setPlots(data[0]);
                 setKnowHows(data[1]);
@@ -42,28 +51,25 @@ const MainContainer = () =>{
                 setJobs(data[3]);
                 setTips(data[4]);
                 setAllUsers(data[5]);
-
+                setCommunalAreas(data[6]);
+                // setMonths(data[7]);
             })}
 
     useEffect(()=>{requestAll()}, [])
 
-
-    // We currently need this handlePost for knowHow, Jobs, Bulletins etc. Can we condense it to one, via object type?
-            // Means we only need to pass ONE prop down instead of 3. As posters should go in main container
-    // Also could just have them in their relevant files, but requests SHOULD go in main container
-    const handlePostKnowHow = (knowHow) => {
+    const postKnowHow = (knowHow) => {
         const request = new Request();
         request.post("/knowHow", knowHow)
-        .then(() => window.location = '/knowHows') //Not reaally sure what this does
+        .then(() => window.location = '/knowHows')
     }
 
-    const handlePostBulletin = (bulletin) => {
+    const postBulletin = (bulletin) => {
         const request = new Request();
         request.post("/bulletin", bulletin)
         .then(() => window.location = '/bulletins') 
     }
 
-    const handlePostJob = (job) => {
+    const postJob = (job) => {
         const request = new Request();
         request.post("/job", job)
         .then(() => window.location = '/jobs')
@@ -74,21 +80,21 @@ const MainContainer = () =>{
         // so can't do "if newObject is instance of knowHow"
         // Trying: "if new Object is instance of knowHows[0]" ?? 
 
-    const handlePost = (newObject) => {
-        const request = new Request();
-        if (newObject instanceof knowHows[0]){
-            request.post("/knowHow", newObject)
-            .then(() => window.location = '/knowHows')
-        }
-        if (newObject instanceof jobs[0]){
-            request.post("/job", newObject)
-            .then(() => window.location = '/jobs')
-        }
-        if (newObject instanceof bulletins[0]){
-            request.post("/bulletin", newObject)
-            .then(() => window.location = '/bulletins') 
-        }
-    }
+    // const handlePost = (newObject) => {
+    //     const request = new Request();
+    //     if (newObject instanceof knowHows[0]){
+    //         request.post("/knowHow", newObject)
+    //         .then(() => window.location = '/knowHows')
+    //     }
+    //     if (newObject instanceof jobs[0]){
+    //         request.post("/job", newObject)
+    //         .then(() => window.location = '/jobs')
+    //     }
+    //     if (newObject instanceof bulletins[0]){
+    //         request.post("/bulletin", newObject)
+    //         .then(() => window.location = '/bulletins') 
+    //     }
+    // }
 
     const findPlotById = (plotId) => {
         return plots.find((plot) => {
@@ -117,22 +123,34 @@ const MainContainer = () =>{
                         />)
                     }} currentUser={currentUser} /> 
 
-                <PrivateRoute path = '/plots' component = {() =>{
+                <PrivateRoute exact path = '/plots' component = {() =>{
                     return <PlotList currentUser={currentUser} plots={plots} />
                 }} currentUser={currentUser}/>
 
-                <PrivateRoute path = '/plots/:id' component = {(props) => {
+                <PrivateRoute exact path = '/plots/:id' component = {(props) => {
                     const id = props.match.params.id;
                     const foundPlot = findPlotById(id);
                     return <PlotDetail currentUser={currentUser} plot={foundPlot} />
                 }} currentUser={currentUser} />
 
-                <PrivateRoute path = '/community' component = {() =>{
+                <PrivateRoute exact path = '/community' component = {() =>{
                     return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
                 }} currentUser={currentUser}/>
 
-                <PrivateRoute path = '/knowhows' component = {() =>{
+                <PrivateRoute exact path = '/jobs/new' component = {() =>{
+                    return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute exact path = '/bulletins/new' component = {() =>{
+                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute exact path = '/knowhows' component = {() =>{
                     return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute exact path = '/knowhows/new' component = {() =>{
+                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} monthOptions={monthOptions}/>
                 }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {

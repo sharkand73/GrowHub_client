@@ -1,5 +1,6 @@
 import React from 'react';
-import Job from './Job.js'
+import Job from './Job.js';
+import {Link} from 'react-router-dom';
 
 // The purpose of this file is to render a list of jobbies and also render the 
 // new jobbie file
@@ -20,10 +21,15 @@ const jobArray = jobs.map((job, index) => {
 return (
     <>
         <h1>This is the list of jobbies</h1>
-        <p>Also have a button to add a new jobbie</p>
         <ul>
             {jobArray}
         </ul>
+
+        <button>
+                <Link to='/jobs/new'>
+                    New Job
+                </Link>
+            </button>
     </>
 );
 }

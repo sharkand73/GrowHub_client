@@ -1,11 +1,6 @@
 import React from 'react';
-import {Link, Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-import PlotList from '../components/plots/PlotList';
-import KnowHowList from '../components/knowHows/KnowHowList';
-import Community from '../components/community/Community';
-import PrivateRoute from '../components/user/PrivateRoute';
-import PlotDetail from '../components/plots/PlotDetail';
 import Bulletin from '../components/community/bulletin/Bulletin';
 
 // Renders weather widgets etc
