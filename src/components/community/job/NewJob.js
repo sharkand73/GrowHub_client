@@ -12,7 +12,16 @@ import {Redirect} from 'react-router-dom';
 
 const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
 
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        date: "",
+        author: null,
+        title: "",
+        body: "",
+        area: null,
+        deadline: "",
+        difficulty: 0
+    })
+
     const [formCheck, setFormCheck] = useState(null);
 
     const communalAreaOptions = communalAreas.map((communalArea, index) => {
@@ -21,9 +30,6 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
 
     const date = getDate();
 
-    formData['date'] = date;
-    formData['author'] = currentUser;
-
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
         setFormData(formData)
@@ -31,17 +37,23 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
 
     const handleArea = (e) => {
         formData['area'] = communalAreas[e.target.value];
+        setFormData(formData);
     }
 
     const handleDifficulty = (e) => {
         formData['difficulty'] = parseInt(e.target.value)
+        setFormData(formData);
     }
 
     const handleSubmit = (e) => {
+        formData['date'] = date;
+        formData['author'] = currentUser;
         e.preventDefault();
-        formData['author'] = currentUser; 
-        postJob(formData);
+        console.log("Handle submit of formdata:")
         console.log(formData);
+
+        postJob(formData);
+
         // setFormCheck(1);
     }
 

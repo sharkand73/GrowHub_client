@@ -38,7 +38,6 @@ const MainContainer = () =>{
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
         const communalAreasPromise = request.get('/api/communals');
-        // const monthsPromise = request.get('/api/months');
 
         Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise])
             .then((data) => {
@@ -49,7 +48,6 @@ const MainContainer = () =>{
                 setTips(data[4]);
                 setAllUsers(data[5]);
                 setCommunalAreas(data[6]);
-                // setMonths(data[7]);
             })}
 
     useEffect(()=>{requestAll()}, [])
@@ -68,6 +66,8 @@ const MainContainer = () =>{
 
     const postJob = (job) => {
         jobs.push(job);
+        console.log("postJob, job:")
+        console.log(job);
         const request = new Request();
         request.post("/api/jobs", job);
     }

@@ -1,24 +1,18 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
-// Purpose
-    // Form for adding a new know how
-
-// Status
-    // Form has been made
-    // months is currently a local string. Need to access server side enums, then convert them to strings, for the <options>
-    // the user also has to put in the date manually as a string right now
-        // we want our server knowHows to take in date objects
-        // can then just make the date equal to todays date here. User doesn't need to do anything
-
 const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
 
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        date: "",
+        author: null,
+        title: "",
+        body: "",
+        month: ""
+    })
     const [formCheck, setFormCheck] = useState(null);
 
     const date = getDate();
-    formData['date'] = date;
-    formData['author'] = currentUser;
 
     const monthOptions = months.map((month, index) => {
         return <option value={index} key={index}>{month}</option>
@@ -34,6 +28,8 @@ const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
     }
 
     const handleSubmit = (e) => {
+        formData['date'] = date;
+        formData['author'] = currentUser;
         e.preventDefault();
         postKnowHow(formData);
         setFormCheck(1);
