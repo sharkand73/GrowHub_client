@@ -22,7 +22,7 @@ const KnowHowList = ({currentUser, knowHows}) =>{
 
             <button>
                 <Link to='/knowhows/new'>
-                    New KnowHow
+                    New Know How
                 </Link>
             </button>
 

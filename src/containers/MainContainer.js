@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {Redirect, Link} from 'react-router-dom';
 
 import Login from '../components/user/Login';
 import HomePageContainer from './HomePageContainer';
@@ -13,6 +12,7 @@ import NewKnowHow from '../components/knowHows/NewKnowHow';
 import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
 import NewJob from '../components/community/job/NewJob';
+import NewBulletin from '../components/community/bulletin/NewBulletin';
 
 const MainContainer = () =>{
     const [currentUser, setCurrentUser] = useState(null);
@@ -80,21 +80,21 @@ const MainContainer = () =>{
         // so can't do "if newObject is instance of knowHow"
         // Trying: "if new Object is instance of knowHows[0]" ?? 
 
-    const handlePost = (newObject) => {
-        const request = new Request();
-        if (newObject instanceof knowHows[0]){
-            request.post("/knowHow", newObject)
-            .then(() => window.location = '/knowHows')
-        }
-        if (newObject instanceof jobs[0]){
-            request.post("/job", newObject)
-            .then(() => window.location = '/jobs')
-        }
-        if (newObject instanceof bulletins[0]){
-            request.post("/bulletin", newObject)
-            .then(() => window.location = '/bulletins') 
-        }
-    }
+    // const handlePost = (newObject) => {
+    //     const request = new Request();
+    //     if (newObject instanceof knowHows[0]){
+    //         request.post("/knowHow", newObject)
+    //         .then(() => window.location = '/knowHows')
+    //     }
+    //     if (newObject instanceof jobs[0]){
+    //         request.post("/job", newObject)
+    //         .then(() => window.location = '/jobs')
+    //     }
+    //     if (newObject instanceof bulletins[0]){
+    //         request.post("/bulletin", newObject)
+    //         .then(() => window.location = '/bulletins') 
+    //     }
+    // }
 
     const findPlotById = (plotId) => {
         return plots.find((plot) => {
@@ -139,6 +139,10 @@ const MainContainer = () =>{
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
                     return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute exact path = '/bulletins/new' component = {() =>{
+                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{

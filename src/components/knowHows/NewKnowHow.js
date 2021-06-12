@@ -14,7 +14,7 @@ import {Redirect} from 'react-router-dom';
 const NewKnowHow = ({currentUser, postKnowHow, monthOptions}) =>{
 
     const [formData, setFormData] = useState({})
-    const [formCheck, setFormCheck] = useState();
+    const [formCheck, setFormCheck] = useState(null);
 
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
@@ -50,7 +50,7 @@ const NewKnowHow = ({currentUser, postKnowHow, monthOptions}) =>{
 
                 </select>
 
-                <button type='submit' >Login</button>
+                <button type='submit'>Submit New Know How</button>
             </form>
 
             {formCheck ? <Redirect to="/knowhows" />:null}

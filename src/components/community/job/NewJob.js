@@ -13,7 +13,7 @@ import {Redirect} from 'react-router-dom';
 const NewJob = ({currentUser, postJob, communalAreas}) => {
 
     const [formData, setFormData] = useState({})
-    const [formCheck, setFormCheck] = useState();
+    const [formCheck, setFormCheck] = useState(null);
 
     const communalAreaOptions = communalAreas.map((communalArea, index) => {
         return <option value={index} key={index}>{communalArea.areaName}</option>
@@ -51,10 +51,10 @@ const NewJob = ({currentUser, postJob, communalAreas}) => {
             <input type='text' name='body' id='body' onChange={handleChange} required /> 
 
             <label name='area'>Area it applies to:</label>
-                <select name='area' id='area' onChange={handleChange}>
-                    <option value='' selected disabled>Area</option>
-                    {communalAreaOptions}
-                </select>
+            <select name='area' id='area' onChange={handleChange}>
+                <option value='' selected disabled>Area</option>
+                {communalAreaOptions}
+            </select>
             
             <label name='deadline'>Due Date:</label>
             <input type='date' name='title' id='title' onChange={handleChange} required />
@@ -62,7 +62,7 @@ const NewJob = ({currentUser, postJob, communalAreas}) => {
             <label name='difficulty'>Difficulty:</label>
             <input type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleChange} required />
 
-            <button type='submit' >Submit New Job</button>
+            <button type='submit'>Submit New Job</button>
         </form>
 
         {formCheck ? <Redirect to="/community" />:null}

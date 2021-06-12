@@ -1,5 +1,6 @@
 import React from 'react';
-import Bulletin from './Bulletin.js'
+import Bulletin from './Bulletin.js';
+import {Link} from 'react-router-dom';
 
 // The purpose of this file is to render a list of bullletins and also render the 
 // new bulletin file
@@ -20,11 +21,16 @@ const bulletinArray = bulletins.map((bulletin, index) => {
 
 return (
     <>
-        <h1>This is the list of bulletin items</h1>
-        <p>Also have a button to add a new bulletin item</p>
+        <h3>This is the list of bulletin items</h3>
         <ul>
             {bulletinArray}
         </ul>
+
+        <button>
+                <Link to='/bulletins/new'>
+                    New Bulletin
+                </Link>
+            </button>
     </>
 );
 }
