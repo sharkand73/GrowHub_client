@@ -11,6 +11,7 @@ import PlotList from '../components/plots/PlotList';
 import KnowHowList from '../components/knowHows/KnowHowList';
 import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
+import "../css/Login.css";
 
 // This container is responsible for State, initial requests to DB to GET, and other requests (post new etc.)
 // Renders HomePageContainer once user is logged in
@@ -104,8 +105,6 @@ const MainContainer = () =>{
         <> 
             <NavBar/> 
 
-            <h1>Villcumin to GrowHub</h1>
-
             <Switch>
                 <PrivateRoute exact path="/" component={() => {
                     return (
@@ -138,7 +137,6 @@ const MainContainer = () =>{
                 <Route path = "/login" render={() => {
                     return(
                         <>
-                            <h3>Please login to continue</h3>
                             <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
                         </>
                     )

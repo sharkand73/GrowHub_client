@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Redirect, Link} from 'react-router-dom';
-
+// import '.../css/aerial.png';
 
 const Login = ({users, setCurrentUser, currentUser}) => {
 
@@ -53,7 +53,14 @@ const Login = ({users, setCurrentUser, currentUser}) => {
 
     return(
         <>
-            <h4>Please Login to Continue.</h4>
+
+        {/* <div id="bg">
+        <img src="aerial.png" alt=""/>
+        </div> */}
+
+        <div class = "background">
+            <h1 class="welcome">Welcome to GrowHub</h1>
+            <h4>Please login to Continue.</h4>
 
             <form onSubmit={handleSubmit}>
                 <label name='username'>Enter your username:</label>
@@ -66,6 +73,7 @@ const Login = ({users, setCurrentUser, currentUser}) => {
 
                 {currentUser ? <Redirect to="/" /> : null}
             </form>
+        </div>
         </>
     )
 }
