@@ -10,17 +10,22 @@ const PlotList = ({currentUser, plots}) =>{
         )
     })
 
-    // Takes the above array, and moves the users plot to the top
-    // For each plot in the user.plot array, remove them from plots array, and add them to the start of the plots array
-    // then map through each one and make an <li>
-
-    // const foundPlots = currentUser.plots.find((plot) => plot === plots.map((plot, index) => {}))
-
+    const userPlots = currentUser.plots.map((plot, index) => {
+        return(
+            <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+        )
+    })
 
     return(
         <>
             <h3>This is our list of plots, that renders many Plot objects</h3>
-            <p> We can click on a Plot, to access PlotDetail</p>
+
+            <p>Your Plot(s):</p>
+            <ul>
+                {userPlots}
+            </ul>
+
+            <p>All Plots</p>
             <ul>
                 {plotArray}
             </ul>
