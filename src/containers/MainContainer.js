@@ -29,10 +29,6 @@ const MainContainer = () =>{
     // temporary array of months till we hook up enums somehow
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-    const monthOptions = months.map((month, index) => {
-        return <option value={index} key={index}>{month}</option>
-    });
-
     const requestAll = function(){
         const request = new Request();
         const plotsPromise = request.get('/api/plots');
@@ -60,42 +56,18 @@ const MainContainer = () =>{
 
     const postKnowHow = (knowHow) => {
         const request = new Request();
-        request.post("/knowHow", knowHow)
-        .then(() => window.location = '/knowHows')
+        request.post("/api/knowhows", knowHow)
     }
 
     const postBulletin = (bulletin) => {
         const request = new Request();
-        request.post("/bulletin", bulletin)
-        .then(() => window.location = '/bulletins') 
+        request.post("/api/bulletins", bulletin)
     }
 
     const postJob = (job) => {
         const request = new Request();
-        request.post("/job", job)
-        .then(() => window.location = '/jobs')
+        request.post("/api/jobs", job)
     }
-
-    // Trialling what the above refactor would look like:
-        // Problem is, we don't have an Object to compare it to
-        // so can't do "if newObject is instance of knowHow"
-        // Trying: "if new Object is instance of knowHows[0]" ?? 
-
-    // const handlePost = (newObject) => {
-    //     const request = new Request();
-    //     if (newObject instanceof knowHows[0]){
-    //         request.post("/knowHow", newObject)
-    //         .then(() => window.location = '/knowHows')
-    //     }
-    //     if (newObject instanceof jobs[0]){
-    //         request.post("/job", newObject)
-    //         .then(() => window.location = '/jobs')
-    //     }
-    //     if (newObject instanceof bulletins[0]){
-    //         request.post("/bulletin", newObject)
-    //         .then(() => window.location = '/bulletins') 
-    //     }
-    // }
 
     const findPlotById = (plotId) => {
         return plots.find((plot) => {
@@ -152,9 +124,9 @@ const MainContainer = () =>{
                     return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
                 }} currentUser={currentUser}/>
 
-                <PrivateRoute exact path = '/knowhows/new' component = {() =>{
-                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} monthOptions={monthOptions}/>
-                }} currentUser={currentUser}/>
+                <Route exact path = '/knowhows/new' component = {() =>{
+                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months}/>
+                }}/>
 
                 <Route path = "/login" render={() => {
                     return(
