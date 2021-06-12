@@ -12,20 +12,25 @@ import KnowHowList from '../components/knowHows/KnowHowList';
 import NewKnowHow from '../components/knowHows/NewKnowHow';
 import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
-
-// This container is responsible for State, initial requests to DB to GET, and other requests (post new etc.)
-// Renders HomePageContainer once user is logged in
-// Props passed down: all, to HomePageContainer (we also pass 1 user here. The currentUser who has logged in, methodology TBC..)
+import NewJob from '../components/community/job/NewJob';
 
 const MainContainer = () =>{
-    const [currentUser, setCurrentUser] = useState(null); // Currently no user is set. Our Login function should setCurrentUser
+    const [currentUser, setCurrentUser] = useState(null);
     const [plots, setPlots] = useState([]);
     const [knowHows, setKnowHows] = useState([]);
     const [bulletins, setBulletins] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [tips, setTips] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
+    const [communalAreas, setCommunalAreas] = useState([]);
     // const [months, setMonths] = useState([]);
+
+    // temporary array of months till we hook up enums somehow
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+    const monthOptions = months.map((month, index) => {
+        return <option value={index} key={index}>{month}</option>
+    });
 
     const requestAll = function(){
         const request = new Request();
@@ -35,9 +40,10 @@ const MainContainer = () =>{
         const jobsPromise = request.get('/api/jobs');
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
+        const communalAreasPromise = request.get('/api/communals');
         // const monthsPromise = request.get('/api/months');
 
-        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise])
+        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise])
             .then((data) => {
                 setPlots(data[0]);
                 setKnowHows(data[1]);
@@ -45,7 +51,8 @@ const MainContainer = () =>{
                 setJobs(data[3]);
                 setTips(data[4]);
                 setAllUsers(data[5]);
-                // setMonths(data[6]);
+                setCommunalAreas(data[6]);
+                // setMonths(data[7]);
             })}
 
     useEffect(()=>{requestAll()}, [])
@@ -130,12 +137,16 @@ const MainContainer = () =>{
                     return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
                 }} currentUser={currentUser}/>
 
+                <PrivateRoute exact path = '/jobs/new' component = {() =>{
+                    return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas}/>
+                }} currentUser={currentUser}/>
+
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
                     return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{
-                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} />
+                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} monthOptions={monthOptions}/>
                 }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {
