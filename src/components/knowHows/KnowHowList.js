@@ -1,5 +1,6 @@
 import React from 'react';
-import KnowHow from './KnowHow.js'
+import KnowHow from './KnowHow.js';
+import {Link} from 'react-router-dom';
 
 // Props Incoming:
     // knowHows & user
@@ -25,11 +26,17 @@ const KnowHowList = ({currentUser, knowHows}) =>{
 
     return(
         <>
-            <h3>This will be our KnowHowList</h3>
-            <p> And a button for a 'Add your knowHow!'</p>
+            <h3>Here are all the Know Hows</h3>
             <ul>
                 {knowHowArray}
             </ul>
+
+            <button>
+                <Link to='/knowhows/new'>
+                    New KnowHow
+                </Link>
+            </button>
+
         </>
     )
 }

@@ -9,6 +9,7 @@ import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
 import PlotList from '../components/plots/PlotList';
 import KnowHowList from '../components/knowHows/KnowHowList';
+import NewKnowHow from '../components/knowHows/NewKnowHow';
 import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
 
@@ -24,6 +25,7 @@ const MainContainer = () =>{
     const [jobs, setJobs] = useState([]);
     const [tips, setTips] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
+    // const [months, setMonths] = useState([]);
 
     const requestAll = function(){
         const request = new Request();
@@ -33,6 +35,7 @@ const MainContainer = () =>{
         const jobsPromise = request.get('/api/jobs');
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
+        // const monthsPromise = request.get('/api/months');
 
         Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise])
             .then((data) => {
@@ -42,28 +45,24 @@ const MainContainer = () =>{
                 setJobs(data[3]);
                 setTips(data[4]);
                 setAllUsers(data[5]);
-
+                // setMonths(data[6]);
             })}
 
     useEffect(()=>{requestAll()}, [])
 
-
-    // We currently need this handlePost for knowHow, Jobs, Bulletins etc. Can we condense it to one, via object type?
-            // Means we only need to pass ONE prop down instead of 3. As posters should go in main container
-    // Also could just have them in their relevant files, but requests SHOULD go in main container
-    const handlePostKnowHow = (knowHow) => {
+    const postKnowHow = (knowHow) => {
         const request = new Request();
         request.post("/knowHow", knowHow)
-        .then(() => window.location = '/knowHows') //Not reaally sure what this does
+        .then(() => window.location = '/knowHows')
     }
 
-    const handlePostBulletin = (bulletin) => {
+    const postBulletin = (bulletin) => {
         const request = new Request();
         request.post("/bulletin", bulletin)
         .then(() => window.location = '/bulletins') 
     }
 
-    const handlePostJob = (job) => {
+    const postJob = (job) => {
         const request = new Request();
         request.post("/job", job)
         .then(() => window.location = '/jobs')
@@ -117,22 +116,26 @@ const MainContainer = () =>{
                         />)
                     }} currentUser={currentUser} /> 
 
-                <PrivateRoute path = '/plots' component = {() =>{
+                <PrivateRoute exact path = '/plots' component = {() =>{
                     return <PlotList currentUser={currentUser} plots={plots} />
                 }} currentUser={currentUser}/>
 
-                <PrivateRoute path = '/plots/:id' component = {(props) => {
+                <PrivateRoute exact path = '/plots/:id' component = {(props) => {
                     const id = props.match.params.id;
                     const foundPlot = findPlotById(id);
                     return <PlotDetail currentUser={currentUser} plot={foundPlot} />
                 }} currentUser={currentUser} />
 
-                <PrivateRoute path = '/community' component = {() =>{
+                <PrivateRoute exact path = '/community' component = {() =>{
                     return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
                 }} currentUser={currentUser}/>
 
-                <PrivateRoute path = '/knowhows' component = {() =>{
+                <PrivateRoute exact path = '/knowhows' component = {() =>{
                     return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute exact path = '/knowhows/new' component = {() =>{
+                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} />
                 }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {
