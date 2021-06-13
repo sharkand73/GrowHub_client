@@ -8,7 +8,7 @@ const Job = ({job, currentUser}) =>{
     return (
         <div>
             <span id="job-item">{job.title}</span> 
-            <FontAwesomeIcon icon={faCarrot} id="carrot"/>
+            {job.carrots}
         </div>
     );
     }
