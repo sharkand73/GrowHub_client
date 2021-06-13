@@ -2,17 +2,16 @@ import React from 'react';
 import Job from './Job.js';
 import {Link} from 'react-router-dom';
 
-// The purpose of this file is to render a list of jobbies and also render the 
-// new jobbie file
-
-// Inward props = user & Jobs & onClick for new jobs and edit jobs
-
-// Outgoing props = user
-
 const JobList = ({jobs, currentUser}) =>{
 
-// map through Jobs prop and render a Job.js for each job it comes across
-const jobArray = jobs.map((job, index) => {
+// Sort jobs into reverse date order (newest up top)
+const jobsInDateOrder = jobs.sort((a, b) => {
+    a = a.date.split('/').reverse().join('');
+    b = b.date.split('/').reverse().join('');
+    return a > b ? -1 : a < b ? 1 : 0;
+});
+
+const jobArray = jobsInDateOrder.map((job, index) => {
     return(
         <li key={index}><Job job={job} currentUser={currentUser}/></li>
     )
@@ -26,10 +25,10 @@ return (
         </ul>
 
         <button>
-                <Link to='/jobs/new'>
-                    New Job
-                </Link>
-            </button>
+            <Link to='/jobs/new'>
+                New Job
+            </Link>
+        </button>
     </>
 );
 }

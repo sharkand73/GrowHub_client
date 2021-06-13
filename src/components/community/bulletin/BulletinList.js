@@ -9,17 +9,10 @@ import {Link} from 'react-router-dom';
 
 // Outgoing props = user
 
-const BulletinList = ({bulletins, currentUser}) =>{
-
-// Sort the bulletins via reverse date order
-const bulletinsInDateOrder = bulletins.sort((a, b) => {
-    a = a.date.split('/').reverse().join('');
-    b = b.date.split('/').reverse().join('');
-    return a > b ? -1 : a < b ? 1 : 0;
-});
+const BulletinList = ({currentUser, sortedBulletins}) =>{
 
 // map through BulletinItems prop and render a Bulletin.js for each bulletin it comes across
-const bulletinArray = bulletinsInDateOrder.map((bulletin, index) => {
+const bulletinArray = sortedBulletins.map((bulletin, index) => {
     return(
         <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
     )

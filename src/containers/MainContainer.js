@@ -116,6 +116,16 @@ const MainContainer = ({allotmentSettings}) =>{
         return `${dd}/${mm}/${yyyy}`
     }
 
+    const sortByReverseDate = (array) => {
+        const sortedArray = array.sort((a, b) => {
+            a = a.date.split('/').reverse().join('');
+            b = b.date.split('/').reverse().join('');
+            return a > b ? -1 : a < b ? 1 : 0;
+        });
+        return sortedArray
+    }
+
+    const sortedBulletins = sortByReverseDate(bulletins);
 
 // weather data and api fetch
     
@@ -191,11 +201,10 @@ const MainContainer = ({allotmentSettings}) =>{
                     return (
                         <HomePageContainer 
                             currentUser = {currentUser}
-                            bulletins = {bulletins}
                             tips = {tips}
                             weatherData = {weatherData}
                             getDate = {getDate}
-  
+                            sortedBulletins = {sortedBulletins}
                         />)
                     }} currentUser={currentUser} /> 
 
@@ -212,7 +221,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
+                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
