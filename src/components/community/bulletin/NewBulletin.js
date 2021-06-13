@@ -3,15 +3,16 @@ import {Redirect} from 'react-router-dom';
 
 const NewBulletin = ({currentUser, postBulletin, getDate}) => {
 
+    const date = getDate();
+
     const [formData, setFormData] = useState({
-        date: "",
-        author: null,
+        date: date,
+        author: currentUser,
         title: "",
         body: ""
     })
     const [formCheck, setFormCheck] = useState(null);
 
-    const date = getDate();
 
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
@@ -20,8 +21,6 @@ const NewBulletin = ({currentUser, postBulletin, getDate}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        formData['date'] = date;
-        formData['author'] = currentUser;
         setFormData(formData);
         postBulletin(formData);
         setFormCheck(1);

@@ -12,9 +12,11 @@ import {Redirect} from 'react-router-dom';
 
 const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
 
+    const date = getDate();
+
     const [formData, setFormData] = useState({
-        date: "",
-        author: null,
+        date: date,
+        author: currentUser,
         title: "",
         body: "",
         area: null,
@@ -27,8 +29,6 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
     const communalAreaOptions = communalAreas.map((communalArea, index) => {
         return <option value={index} key={index}>{communalArea.areaName}</option>
     });
-
-    const date = getDate();
 
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;

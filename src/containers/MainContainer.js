@@ -14,6 +14,7 @@ import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
 import NewJob from '../components/community/job/NewJob';
 import NewBulletin from '../components/community/bulletin/NewBulletin';
+import NewUser from '../components/user/NewUser.js';
 
 const MainContainer = () =>{
     const [currentUser, setCurrentUser] = useState(null);
@@ -70,6 +71,12 @@ const MainContainer = () =>{
         console.log(job);
         const request = new Request();
         request.post("/api/jobs", job);
+    }
+
+    const postUser = (user) => {
+        allUsers.push(user);
+        const request = new Request();
+        request.post("/api/users", user);
     }
 
     const findPlotById = (plotId) => {
@@ -146,6 +153,10 @@ const MainContainer = () =>{
                             <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
                         </>
                     )
+                }}/>
+
+                <Route exact path = '/users/new' render = {() =>{
+                    return <NewUser postUser={postUser} getDate={getDate}/>
                 }}/>
 
                 <Route render={() => {
