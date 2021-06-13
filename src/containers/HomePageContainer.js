@@ -1,12 +1,10 @@
 import React from 'react';
-import {Link, Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-import PlotList from '../components/plots/PlotList';
-import KnowHowList from '../components/knowHows/KnowHowList';
-import Community from '../components/community/Community';
-import PrivateRoute from '../components/user/PrivateRoute';
-import PlotDetail from '../components/plots/PlotDetail';
 import Bulletin from '../components/community/bulletin/Bulletin';
+import Tip from '../components/community/tip/Tip';
+import Weather from '../components/community/weather';
+
 
 // Renders weather widgets etc
 // Renders buttons for areas of the site
@@ -24,7 +22,7 @@ import Bulletin from '../components/community/bulletin/Bulletin';
     // It will probably be easier to actually make separate components for weather widgets, quick bulletins, tips etc
     // Makes the Rendering a bit simpler. Don't need to have all the HTML here under one giant conditional render
 
-const HomePageContainer = ({currentUser, bulletins, tips}) =>{
+const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate}) =>{
 
     const committeeBulletins = bulletins.map((bulletin, index) => {
             if (bulletin.author.position !== "NONE" || "INACTIVE"){
@@ -59,6 +57,16 @@ const HomePageContainer = ({currentUser, bulletins, tips}) =>{
             <ul>
             {committeeBulletins}
             </ul>
+
+            <div>
+                <Tip tips = {tips} />
+            </div>
+            <div>
+                <h3>Todays date:</h3>
+                {getDate()}
+            </div>
+            <div><Weather weatherData={weatherData}/></div>
+        
         </div>
         </>
     )

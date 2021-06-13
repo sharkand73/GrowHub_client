@@ -1,16 +1,24 @@
 import React from 'react';
 
-
-// Props incoming:
-    // knowHow
-
-// Purpose:
-    // Renders a KnowHow object for the KnowHowList
-
+// Date
+// Author
+// Title
+// body
 
 const KnowHow = ({knowHow, currentUser}) =>{
+
+    const monthLower = knowHow.month.toLowerCase();
+    const month = monthLower[0].toUpperCase() + monthLower.slice(1);
+
     return(
-        <p>Dis is a knowhow prop</p>
+        <div>
+            <h4>{knowHow.title}</h4>
+            <ul>
+                <li>{knowHow.body}</li>
+                <li>Applies to month: {month}</li>
+                <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
+            </ul>
+        </div>
     )
 
 }

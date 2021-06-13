@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 import Login from '../components/user/Login';
 import HomePageContainer from './HomePageContainer';
@@ -9,22 +9,28 @@ import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
 import PlotList from '../components/plots/PlotList';
 import KnowHowList from '../components/knowHows/KnowHowList';
+import NewKnowHow from '../components/knowHows/NewKnowHow';
 import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
-// import "../css/Login.css";
 
-// This container is responsible for State, initial requests to DB to GET, and other requests (post new etc.)
-// Renders HomePageContainer once user is logged in
-// Props passed down: all, to HomePageContainer (we also pass 1 user here. The currentUser who has logged in, methodology TBC..)
+import NewJob from '../components/community/job/NewJob';
+import NewBulletin from '../components/community/bulletin/NewBulletin';
+import NewUser from '../components/user/NewUser.js';
 
-const MainContainer = () =>{
-    const [currentUser, setCurrentUser] = useState(null); // Currently no user is set. Our Login function should setCurrentUser
+
+const MainContainer = ({allotmentSettings}) =>{
+
+    const [currentUser, setCurrentUser] = useState(null);
     const [plots, setPlots] = useState([]);
     const [knowHows, setKnowHows] = useState([]);
     const [bulletins, setBulletins] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [tips, setTips] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
+    const [communalAreas, setCommunalAreas] = useState([]);
+    const [newUserCheck, setNewUserCheck] = useState(0);
+
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
     const requestAll = function(){
         const request = new Request();
@@ -34,8 +40,10 @@ const MainContainer = () =>{
         const jobsPromise = request.get('/api/jobs');
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
+        const communalAreasPromise = request.get('/api/communals');
+        
 
-        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise])
+        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise])
             .then((data) => {
                 setPlots(data[0]);
                 setKnowHows(data[1]);
@@ -43,52 +51,56 @@ const MainContainer = () =>{
                 setJobs(data[3]);
                 setTips(data[4]);
                 setAllUsers(data[5]);
-
+                setCommunalAreas(data[6]);
             })}
 
     useEffect(()=>{requestAll()}, [])
 
 
-    // We currently need this handlePost for knowHow, Jobs, Bulletins etc. Can we condense it to one, via object type?
-            // Means we only need to pass ONE prop down instead of 3. As posters should go in main container
-    // Also could just have them in their relevant files, but requests SHOULD go in main container
-    const handlePostKnowHow = (knowHow) => {
+
+    const postKnowHow = (knowHow) => {
+        knowHows.push(knowHow);
         const request = new Request();
-        request.post("/knowHow", knowHow)
-        .then(() => window.location = '/knowHows') //Not reaally sure what this does
+        request.post("/api/knowhows", knowHow);
     }
 
-    const handlePostBulletin = (bulletin) => {
+    const postBulletin = (bulletin) => {
+        bulletins.push(bulletin);
         const request = new Request();
-        request.post("/bulletin", bulletin)
-        .then(() => window.location = '/bulletins') 
+        request.post("/api/bulletins", bulletin);
     }
 
-    const handlePostJob = (job) => {
+    const postJob = (job) => {
+        jobs.push(job);
+        console.log("postJob, job:")
+        console.log(job);
         const request = new Request();
-        request.post("/job", job)
-        .then(() => window.location = '/jobs')
+        request.post("/api/jobs", job);
     }
 
-    // Trialling what the above refactor would look like:
-        // Problem is, we don't have an Object to compare it to
-        // so can't do "if newObject is instance of knowHow"
-        // Trying: "if new Object is instance of knowHows[0]" ?? 
 
-    const handlePost = (newObject) => {
+    const postUser = (newUser) => {
+        // Re-initialize the newUserCheck state
+        setNewUserCheck(0);
+        // Sets a maximum number of users allowed
+        if (allUsers.length > 100){
+            return setNewUserCheck(4)
+        }
+        for (let i in allUsers){
+            // Checks to see if username matches any existing in DB
+            if (allUsers[i].shortName === newUser.shortName){
+                return setNewUserCheck(1)
+            }
+            // Checks to see if email matches any existing in DB
+            if (allUsers[i].email === newUser.email){
+                return setNewUserCheck(2)
+            }
+        }
+    
+        allUsers.push(newUser);
         const request = new Request();
-        if (newObject instanceof knowHows[0]){
-            request.post("/knowHow", newObject)
-            .then(() => window.location = '/knowHows')
-        }
-        if (newObject instanceof jobs[0]){
-            request.post("/job", newObject)
-            .then(() => window.location = '/jobs')
-        }
-        if (newObject instanceof bulletins[0]){
-            request.post("/bulletin", newObject)
-            .then(() => window.location = '/bulletins') 
-        }
+        request.post("/api/users", newUser);
+        return setNewUserCheck(3)
     }
 
     const findPlotById = (plotId) => {
@@ -97,6 +109,75 @@ const MainContainer = () =>{
             }
         )
     }
+
+    const getDate = () => {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
+        return `${dd}/${mm}/${yyyy}`
+    }
+
+
+// weather data and api fetch
+    
+    const nullData = {
+        "coord": {
+        "lon": 0,
+        "lat": 0
+        },
+        "weather": [
+        {
+        "id": 0,
+        "main": "",
+        "description": "",
+        "icon": ""
+        }
+        ],
+        "base": "",
+        "main": {
+        "temp": 0,
+        "feels_like": 0,
+        "temp_min": 0,
+        "temp_max": 0,
+        "pressure": 0,
+        "humidity": 0
+        },
+        "visibility": 0,
+        "wind": {
+        "speed": 0,
+        "deg": 0
+        },
+        "clouds": {
+        "all": 0
+        },
+        "dt": 1623496264,
+        "sys": {
+        "type": 1,
+        "id": 1441,
+        "country": "GB",
+        "sunrise": 0,
+        "sunset": 0
+        },
+        "timezone": 3600,
+        "id": 2648579,
+        "name": "Glasgow",
+        "cod": 200
+        }
+    const [weatherData, setWeatherData] = useState(nullData);
+
+    const getData = function(){
+        const APIKey = allotmentSettings.apikey;
+        const location = allotmentSettings.location;
+        // const APIKey = "0d820993802bd0122435be9caac2043d";
+        // const location = "Glasgow";
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}`)
+            .then(results => results.json() )
+            .then(data => {setWeatherData(data)})
+        };
+    
+    useEffect(() => getData(), [allotmentSettings]);
+
 
     return(
 
@@ -112,26 +193,42 @@ const MainContainer = () =>{
                             currentUser = {currentUser}
                             bulletins = {bulletins}
                             tips = {tips}
+                            weatherData = {weatherData}
+                            getDate = {getDate}
   
                         />)
                     }} currentUser={currentUser} /> 
 
-                <PrivateRoute path = '/plots' component = {() =>{
-                    return <PlotList currentUser={currentUser} plots={plots} />
+                <PrivateRoute exact path = '/plots' component = {() =>{
+                    return <PlotList currentUser={currentUser} plots={plots} allotmentSettings={allotmentSettings} />
                 }} currentUser={currentUser}/>
 
-                <PrivateRoute path = '/plots/:id' component = {(props) => {
+
+
+                <Route exact path = "/plots/:id" render = {(props) => {
                     const id = props.match.params.id;
                     const foundPlot = findPlotById(id);
-                    return <PlotDetail currentUser={currentUser} plot={foundPlot} />
-                }} currentUser={currentUser} />
+                    return foundPlot ? <PlotDetail currentUser={currentUser} plot={foundPlot} />: <Redirect to="/plots" />
+                }} currentUser={currentUser} /> 
 
-                <PrivateRoute path = '/community' component = {() =>{
+                <PrivateRoute exact path = '/community' component = {() =>{
                     return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
                 }} currentUser={currentUser}/>
 
-                <PrivateRoute path = '/knowhows' component = {() =>{
+                <PrivateRoute exact path = '/jobs/new' component = {() =>{
+                    return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas} getDate={getDate}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute exact path = '/bulletins/new' component = {() =>{
+                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin} getDate={getDate}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute exact path = '/knowhows' component = {() =>{
                     return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
+                }} currentUser={currentUser}/>
+
+                <PrivateRoute exact path = '/knowhows/new' component = {() =>{
+                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {
@@ -140,6 +237,10 @@ const MainContainer = () =>{
                             <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
                         </>
                     )
+                }}/>
+
+                <Route exact path = '/users/new' render = {() =>{
+                    return <NewUser postUser={postUser} getDate={getDate} newUserCheck={newUserCheck}/>
                 }}/>
 
                 <Route render={() => {

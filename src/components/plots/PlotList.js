@@ -1,34 +1,74 @@
 import React from 'react';
 import Plot from './Plot';
 
-// Props Incoming = plots, user and onClick of some kind
+const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
-// Props outgoing: 
-    //  Plot = Plot, and maybe our onclick methodology, selecting plot for plotDetail
-    //  PlotDetail = SelectedPlot
+    // const plotsMap = allotmentSettings.mapFilepath;
+    
+    // Current user's plots. ***There is currently an issue with this at the back end!***
+    const currentUserPlots = currentUser.plots;
+    const currentUserPlotsTally = currentUserPlots.length;
+    const plotsPlural = (currentUserPlotsTally > 1);
+    // This filters out the above plot items from {plots}.  
+    // A plot of the current user will have an index of 0,1,2, etc. in currentUserPlots.  
+    // A non-plot will have indexOf returning -1, on the other hand.
 
-// Initially this will render a list of all Plots
-// Then when we click on a Plot, it will render PlotDetail
-// Conditional rendering, useState. If selected plot, render plotdetail. If not, continue rendering plotlist
+    const otherPlots = plots.filter((plot) => (currentUserPlots.indexOf(plot) === -1));
 
+    // Renders a Plot object for current user plot
+    const currentUserPlotArray = currentUserPlots.map((plot, index) => {
+    return(
+        <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+    )
+})
 
-// Requires a function to map through our plots prop, and render all our Plot objects, that takes in the plot prop
-
-const PlotList = ({currentUser, plots}) =>{
-
-    const plotArray = plots.map((plot, index) => {
+    // Renders a Plot object for each plot in otherPlots
+    const otherPlotArray = otherPlots.map((plot, index) => {
         return(
-            <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+
+            <li key={index + currentUserPlotsTally}><Plot plot={plot} currentUser={currentUser}/></li>
+            
         )
     })
+
+    // const userPlots = currentUser.plots.map((plot, index) => {
+    //     return(
+    //         <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+    //     )
+    // })
+
+
+    // This array would (should) return a single array with the users plots first
+    // const newPlotsArray = () => {
+    //     for (let userPlot in userPlots){
+    //         for (let plot in plots){
+    //             if (plot === userPlot){
+    //                 plots.remove(plot);
+    //                 plot.unshift(plot);
+    //             }
+    //         }
+    //     }
+    //     return plotArray
+    // }
 
     return(
         <>
             <h3>This is our list of plots, that renders many Plot objects</h3>
-            <p> We can click on a Plot, to access PlotDetail</p>
+
+            <p>Your Plot{plotsPlural? <span>s</span>: null}:</p>
             <ul>
-                {plotArray}
+                {currentUserPlotArray}
             </ul>
+
+            <p>Other Plots:</p>
+            <ul>
+                {otherPlotArray}
+            </ul>
+
+            {/* <p>shifted plots</p>
+            <ul>
+                {newPlotsArray()}
+            </ul> */}
         </>
     )
 

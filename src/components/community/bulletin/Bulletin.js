@@ -8,7 +8,9 @@ const Bulletin = ({bulletin, currentUser}) =>{
     
     return (
         <>
-            <h1>This is one bulletin item</h1>
+            <h1>{bulletin.title}</h1>
+            <h3><span>{bulletin.author.shortName}</span> <span>{bulletin.date}</span></h3>
+            <p>{bulletin.body}</p>
         </>
     );
     }

@@ -14,8 +14,8 @@ const Community = ({currentUser, bulletins, jobs}) => {
 
     return(
         <>
-        <h3>This is the Community page, where 2 lists will be rendered</h3> 
         <BulletinList bulletins={bulletins} currentUser={currentUser} />
+
         <JobList jobs={jobs} currentUser={currentUser} />
         </>
     )
