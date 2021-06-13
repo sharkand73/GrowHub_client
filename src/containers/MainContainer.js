@@ -194,6 +194,7 @@ const MainContainer = ({allotmentSettings}) =>{
                             bulletins = {bulletins}
                             tips = {tips}
                             weatherData = {weatherData}
+                            getDate = {getDate}
   
                         />)
                     }} currentUser={currentUser} /> 

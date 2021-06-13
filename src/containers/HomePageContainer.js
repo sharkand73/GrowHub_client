@@ -22,7 +22,7 @@ import Weather from '../components/community/weather';
     // It will probably be easier to actually make separate components for weather widgets, quick bulletins, tips etc
     // Makes the Rendering a bit simpler. Don't need to have all the HTML here under one giant conditional render
 
-const HomePageContainer = ({currentUser, bulletins, tips, weatherData}) =>{
+const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate}) =>{
 
     const committeeBulletins = bulletins.map((bulletin, index) => {
             if (bulletin.author.position !== "NONE" || "INACTIVE"){
@@ -60,6 +60,10 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData}) =>{
 
             <div>
                 <Tip tips = {tips} />
+            </div>
+            <div>
+                <h3>Todays date:</h3>
+                {getDate()}
             </div>
             <div><Weather weatherData={weatherData}/></div>
         
