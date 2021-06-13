@@ -152,8 +152,6 @@ const MainContainer = ({allotmentSettings}) =>{
     useEffect(() => getData(), [allotmentSettings]);
 
 
-
-
     return(
 
         <Router>

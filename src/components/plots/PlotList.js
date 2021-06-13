@@ -3,18 +3,34 @@ import Plot from './Plot';
 
 const PlotList = ({currentUser, plots}) =>{
 
-    // Renders a Plot object for each plot in plots
-    const plotArray = plots.map((plot, index) => {
+    // Current user's plots. ***There is currently an issue with this at the back end!***
+    const currentUserPlots = currentUser.plots;
+    const currentUserPlotsTally = currentUserPlots.length;
+    // This filters out the above plot items from {plots}.  
+    // A plot of the current user will have an index of 0,1,2, etc. in currentUserPlots.  
+    // A non-plot will have indexOf returning -1, on the other hand.
+
+    const otherPlots = plots.filter((plot) => (currentUserPlots.indexOf(Plot) === -1));
+
+   // Renders a Plot object for current user plot
+   const currentUserPlotArray = currentUserPlots.map((plot, index) => {
+    return(
+        <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+    )
+})
+
+    // Renders a Plot object for each plot in otherPlots
+    const otherPlotArray = otherPlots.map((plot, index) => {
         return(
-            <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+            <li key={index + currentUserPlotsTally}><Plot plot={plot} currentUser={currentUser}/></li>
         )
     })
 
-    const userPlots = currentUser.plots.map((plot, index) => {
-        return(
-            <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
-        )
-    })
+    // const userPlots = currentUser.plots.map((plot, index) => {
+    //     return(
+    //         <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+    //     )
+    // })
 
 
     // This array would (should) return a single array with the users plots first
@@ -36,12 +52,12 @@ const PlotList = ({currentUser, plots}) =>{
 
             <p>Your Plot(s):</p>
             <ul>
-                {userPlots}
+                {currentUserPlots}
             </ul>
 
-            <p>All Plots</p>
+            <p>Other Plots:</p>
             <ul>
-                {plotArray}
+                {otherPlotArray}
             </ul>
 
             {/* <p>shifted plots</p>
