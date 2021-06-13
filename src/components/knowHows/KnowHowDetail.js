@@ -8,29 +8,31 @@ const KnowHowDetail = ({knowHow, currentUser}) => {
     // String date, User author, String title, String body, Month month
 
 
-    const replies = knowHow.replies.map((reply, index) => {
-        return (
-            <li key={index}>
-                <ul>
-                    <li>{reply.body}</li>
-                    <li>By: {reply.author} on {reply.date}</li>
-                </ul>
-            </li>
-        )
-    })
+    const getReplies = () => {
+        return knowHow.replies.map((reply, index) => {
+                return (
+                    <li key={index}>
+                        <ul>
+                            <li>{reply.body}</li>
+                            <li>By: {reply.author} on {reply.date}</li>
+                        </ul>
+                    </li>
+                )
+        })
+    }
 
-    // If there are replies to the KnowHow, render a div with an UL of all knowHows
-    const repliesRender = () => {
-        if (knowHow.replies.length > 0){
+    const getRepliesSection = () => {
+        if (knowHow.replies){
             return(
                 <div>
                     <h3>Replies:</h3>
                     <ul>
-                        {replies}
+                        {getReplies()}
                     </ul>
                 </div>
             )
         }
+        return
     }
 
     return(
@@ -42,7 +44,7 @@ const KnowHowDetail = ({knowHow, currentUser}) => {
                 <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
             </ul>
 
-            {repliesRender()}
+            {getRepliesSection()}
         </>
     )
 }
