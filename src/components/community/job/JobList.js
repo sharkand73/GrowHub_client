@@ -33,12 +33,6 @@ return (
         <ul>
             {jobsRenderedByDeadline}
         </ul>
-
-        <button>
-            <Link to='/jobs/new'>
-                New Job
-            </Link>
-        </button>
     </>
 );
 }

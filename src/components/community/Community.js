@@ -32,6 +32,11 @@ const Community = ({currentUser, sortedBulletins, jobs}) => {
                 <div id="jobs-container">
                     <h2>Job List</h2>
                     <JobList jobs={jobs} currentUser={currentUser} />
+                    <h3>
+                    <Link to='/jobs/new' id="new-job">
+                        New Job
+                    </Link>
+                    </h3>
                 </div>
         </div>    
         </>

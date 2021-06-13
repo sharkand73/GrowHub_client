@@ -112,6 +112,9 @@
 #jobs-container {
     background-color: #f5f5f5;
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0 auto;
     padding: 0;
     color: darkblue;
@@ -119,6 +122,19 @@
     font-size: 30px;
 }
 
+#jobs-container li {
+    padding-bottom: 15px;
+}
+
 .carrot {
     color: #ef7215;
+}
+
+#new-job {
+    text-decoration: none;
+}
+
+#new-job:hover {
+    color: cornflowerblue;
+    text-decoration: none;
 }
