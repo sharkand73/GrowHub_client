@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
 
 const Job = ({job, currentUser}) =>{
@@ -7,7 +8,7 @@ const Job = ({job, currentUser}) =>{
     return (
         <div>
             <span id="job-item">{job.title}</span> 
-            <span id="job-difficulty">{job.difficulty} carrots</span>
+            <FontAwesomeIcon icon={faCarrot} id="carrot"/>
         </div>
     );
     }
