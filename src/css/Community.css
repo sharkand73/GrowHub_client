@@ -57,21 +57,21 @@
     background:#fdc;
   }
 
-  ul li div{
+  #noticeboard ul li div{
     transform: rotate(-6deg);
   }
 
-  ul li:nth-child(even) div{
+  #noticeboard ul li:nth-child(even) div{
     transform:rotate(4deg);
     position:relative;
     top:5px;
   }
-  ul li:nth-child(3n) div{
+  #noticeboard ul li:nth-child(3n) div{
     transform:rotate(-3deg);
     position:relative;
     top:-5px;
   }
-  ul li:nth-child(5n) div{
+  #noticeboard ul li:nth-child(5n) div{
     transform:rotate(5deg);
     position:relative;
     top:-10px;
@@ -81,10 +81,27 @@
     margin:1em;
   }
 
-  #bulletin-author {
+  #noticeboard #bulletin-author {
       float: left;
   }
 
-  #bulletin-date {
+  #noticeboard #bulletin-date {
     float: right;
+}
+
+/* #noticeboard:link {
+    color: white;
+    text-decoration: none;
+} */
+
+#new-bulletin {
+    link-style: none;
+    color: white;
+    text-decoration: none;
+}
+
+#new-bulletin:hover {
+    link-style: none;
+    color: cyan;
+    text-decoration: none;
 }
