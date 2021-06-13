@@ -41,18 +41,6 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate})
             And we want them conditionally 
             */}
 
-        <Link to="/plots">
-            <button>Plots</button>
-        </Link>
-
-        <Link to="/knowhows">
-            <button>Know Hows</button>
-        </Link>
-
-        <Link to="/community">
-            <button>Community</button>
-        </Link>
-
         <div>
             <ul>
             {committeeBulletins}
@@ -68,6 +56,19 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate})
             <div><Weather weatherData={weatherData}/></div>
         
         </div>
+
+        <Link to="/plots">
+            <button>Plots</button>
+        </Link>
+
+        <Link to="/knowhows">
+            <button>Know Hows</button>
+        </Link>
+
+        <Link to="/community">
+            <button>Community</button>
+        </Link>
+        
         </>
     )
 

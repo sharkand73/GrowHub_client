@@ -1,7 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({currentUser, setCurrentUser}) => {
+
+    const hello = currentUser? `Hello ${currentUser.shortName}!` : null;
+
+    const logout = () =>{
+        setCurrentUser(null);
+    }
+
     return(
         <header>
 
@@ -22,8 +29,20 @@ const NavBar = () => {
             <li className="navBarItem">
             <Link to="/community">Community</Link>
             </li>
+            
+            {currentUser ?
+            <>
+                <li>
+                    <p>{hello}</p>
+                </li>
+                <li>
+                    <button onClick={() => {logout()}}>Logout </button>
+                </li>
+            </>
+            : null}
 
         </ul>
+        
 
         </header>
     )

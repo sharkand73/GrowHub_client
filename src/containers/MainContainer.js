@@ -182,7 +182,7 @@ const MainContainer = ({allotmentSettings}) =>{
         <Router>
 
         <> 
-            <NavBar/> 
+            <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/> 
 
             <h1>Villcumin to GrowHub</h1>
 
