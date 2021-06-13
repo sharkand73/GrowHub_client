@@ -4,9 +4,9 @@ import '../css/NavBar.css';
 
 const NavBar = () => {
     return(
-        <header>
+        <header class="navLine">
 
-        <ul class="navWrap">
+        <ul class="navWrap navLine">
 
             <li class="left">
             <Link class="navItem" to="/plots">Plots</Link>

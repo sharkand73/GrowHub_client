@@ -1,4 +1,25 @@
-/* Login */
+ /* GRID */
+
+ #login-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+    grid-template-rows: repeat(4, 3fr);
+  }
+
+#logo-grid{
+    grid-column-start:2;
+    grid-row-start: 2;
+  }
+
+
+#login-grid{
+    grid-column-start:2;
+    grid-row-start: 4;
+  }
+
+
+/* OTHER */
+
 .background{
     background-image: url(Aerial.png);
     background-position: center center;
@@ -79,24 +100,4 @@ input::placeholder {
         padding: 20px;
     }
 
-
-
-    /* GRID */
-
-#login-grid-container {
-        display: grid;
-        grid-template-columns: repeat(3, 4fr);
-        grid-template-rows: repeat(4, 3fr);
-      }
-
-#logo-grid{
-        grid-column-start:2;
-        grid-row-start: 2;
-      }
-
-
-#login-grid{
-        grid-column-start:2;
-        grid-row-start: 4;
-      }
 

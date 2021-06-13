@@ -46,18 +46,12 @@
 /* SCROLLING NEWS */
 
 .fixedHeightContainer {
-
     float:none;
-    /* height: 450px;
-    width: 600px;  */
     padding:3px; 
     background:white;
 }
 
 .content {
-    /* font-size: 15px;
-    font-family: 'Montserrat', sans-serif; */
-    /* height:150px; */
     overflow:auto;
     background:#fff;
 }

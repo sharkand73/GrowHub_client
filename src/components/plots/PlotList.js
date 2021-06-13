@@ -1,6 +1,9 @@
 import React from 'react';
 import Plot from './Plot';
 
+import '../../css/Plots.css';
+import LogoSmall from '../../css/LogoSmall.png';
+
 const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
     // const plotsMap = allotmentSettings.mapFilepath;
@@ -53,7 +56,12 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
     return(
         <>
-            <h3>This is our list of plots, that renders many Plot objects</h3>
+
+            <div id="logo-grid2">
+                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            </div>
+
+            {/* <h3>Adding history to your plot is optional. </h3> */}
 
             <p>Your Plot{plotsPlural? <span>s</span>: null}:</p>
             <ul>
