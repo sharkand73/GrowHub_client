@@ -5,7 +5,7 @@ import '../css/NavBar.css';
 const NavBar = () => {
     return(
         <header>
-        {/* <div class="navWrap"> */}
+
         <ul class="navWrap">
 
             <li class="left">
@@ -25,7 +25,6 @@ const NavBar = () => {
             </li>
 
         </ul>
-        {/* </div> */}
 
         </header>
     )

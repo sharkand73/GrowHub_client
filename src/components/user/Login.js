@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Redirect, Link} from 'react-router-dom';
-// import '.../css/aerial.png';
+import Logo from '../../css/Logo.png';
+import '../../css/Login.css';
+
+
 
 const Login = ({users, setCurrentUser, currentUser}) => {
 
@@ -53,26 +56,28 @@ const Login = ({users, setCurrentUser, currentUser}) => {
 
     return(
         <>
-
-        {/* <div id="bg">
-        <img src="aerial.png" alt=""/>
-        </div> */}
-
-        <div class = "background">
-            <h1 class="welcome">Welcome to GrowHub</h1>
-            <h4>Please login to Continue.</h4>
-
+        {/* <div class="background"> */}
+        <div class="background">
+            {/* <h1 class="welcome">GrowHub</h1> */}
+            <img class="logo" src={Logo} alt="Logo" />;
+            
+            <div id="polytunnel">
+            {/* <h4>Please login to continue</h4> */}
             <form onSubmit={handleSubmit}>
-                <label name='username'>Enter your username:</label>
-                <input type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
-
-                <label name='password'>Enter your password:</label>
-                <input type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
-
-                <button type='submit' >Login</button>
-
+                <div class="form-inner">
+                <label class="label" name='username'>Username:</label>
+                <input class="input" type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
+                </div>
+                <div class="form-inner">
+                <label class="label" name='password'>Password:</label>
+                <input class="input" type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
+                </div>
+                <div class="button_center">
+                <button class="loginbutton" type='submit' >LOGIN</button>
+                </div>
                 {currentUser ? <Redirect to="/" /> : null}
             </form>
+            </div>
         </div>
         </>
     )

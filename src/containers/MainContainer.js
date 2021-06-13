@@ -11,7 +11,7 @@ import PlotList from '../components/plots/PlotList';
 import KnowHowList from '../components/knowHows/KnowHowList';
 import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
-import "../css/Login.css";
+// import "../css/Login.css";
 
 // This container is responsible for State, initial requests to DB to GET, and other requests (post new etc.)
 // Renders HomePageContainer once user is logged in
