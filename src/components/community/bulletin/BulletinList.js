@@ -20,7 +20,7 @@ const bulletinArray = sortedBulletins.map((bulletin, index) => {
 
 return (
     <>
-        <h2>Bulletin Board</h2>
+        <h1>Bulletin Board</h1>
         <ul>
             {bulletinArray}
         </ul>
