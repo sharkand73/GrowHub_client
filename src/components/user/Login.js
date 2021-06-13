@@ -57,13 +57,14 @@ const Login = ({users, setCurrentUser, currentUser}) => {
     return(
         <>
         {/* <div class="background"> */}
-        <div class="background">
+        <div class="background" id="login-grid-container">
             {/* <h1 class="welcome">GrowHub</h1> */}
-            <img class="logo" src={Logo} alt="Logo" />;
+            <img id="logo-grid" class="logo" src={Logo} alt="Logo" />;
             
-            <div id="polytunnel">
-            {/* <h4>Please login to continue</h4> */}
+            <div id="login-grid" class="polytunnel" >
+
             <form onSubmit={handleSubmit}>
+                {/* <p class="slogan form-inner">Grow, Share, Enjoy!</p> */}
                 <div class="form-inner">
                 <label class="label" name='username'>Username:</label>
                 <input class="input" type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
@@ -72,8 +73,8 @@ const Login = ({users, setCurrentUser, currentUser}) => {
                 <label class="label" name='password'>Password:</label>
                 <input class="input" type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
                 </div>
-                <div class="button_center">
-                <button class="loginbutton" type='submit' >LOGIN</button>
+                <div class="form-inner">
+                <button class="loginbutton" type='submit' >Login</button>
                 </div>
                 {currentUser ? <Redirect to="/" /> : null}
             </form>

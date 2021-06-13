@@ -1,7 +1,6 @@
 /* Login */
 .background{
     background-image: url(Aerial.png);
-    /* background-size: contain;   */
     background-position: center center;
     background-repeat: no-repeat;
     height: 100vh; 
@@ -10,19 +9,13 @@
     max-height: 100%;
     background-size: 100%;
     background-attachment:fixed;
-
-}
-
-
-.welcome{
-    color: whitesmoke;
 }
 
 .logo{
     height: 300px;  
 }
 
-#polytunnel{
+.polytunnel{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,50 +28,75 @@
     height: 400px;
 }
 
+.slogan{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    /* color:green; */
+    padding-bottom: 20px;
+}
+
 .label{
-    /* grid-column: 1 / 2; */
     text-align:right;
-    margin-top: 30px;
+    margin-top: 15px;
     font-size: 20px;
     font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
     }
     
-  .input{
+.input{
     border: 0;
     outline: 0;
     background: transparent;
     border-bottom: 2px solid black;
-    padding: 0px 30px;
-    }
-    
-  .form-submit-button{
-      grid-column: 2 / 3;
-      border: none;
-      font-size: 30px;
-      font-weight: 300;
-      color: rgb(99, 174, 218);
-      background-color: white;
-      cursor: pointer;
-      margin: 10px 10px;
-      padding: 10px;
+    padding: 0px 20px;
+    margin: 20px;
+    font-family: 'Montserrat', sans-serif;
     }
 
-    .form-inner{
+input::placeholder {
+        /* color:green; */
+        font-size: 1.0em;
+      }
+
+
+.form-inner{
         display: flex;
-        /* position: relative; */
         align-content: center;
         justify-content: center;
     }
 
-    .loginbutton{
-        font-size: 20px;
+.loginbutton{
+        font-size: 25px;
+        font-weight: 300;
+        font-family: 'Montserrat', sans-serif;
+        color:green;
         appearance: none;
         background: none;
         border: none;
         outline: none;
-
+        cursor: pointer;
+        padding: 20px;
     }
 
-    .button_center{
 
-    }
+
+    /* GRID */
+
+#login-grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 4fr);
+        grid-template-rows: repeat(4, 3fr);
+      }
+
+#logo-grid{
+        grid-column-start:2;
+        grid-row-start: 2;
+      }
+
+
+#login-grid{
+        grid-column-start:2;
+        grid-row-start: 4;
+      }
+
