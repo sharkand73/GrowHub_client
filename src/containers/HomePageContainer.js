@@ -5,57 +5,26 @@ import Bulletin from '../components/community/bulletin/Bulletin';
 import Tip from '../components/community/tip/Tip';
 import Weather from '../components/community/weather';
 
+const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulletins}) =>{
+    
+    // Filter out non-committee member posts
+    const committeeBulletins = sortedBulletins.filter(bulletin => bulletin.author.position !== "NONE" || "INACTIVE");
 
-// Renders weather widgets etc
-// Renders buttons for areas of the site
-// Renders some recent news bulletins (requires loop, find 3 most recent from bulletins prop, or something)
-// Renders tip of the month
-// Renders "hello {user}" message
+    // Slice the most recent 3
+    const threeBulletins = committeeBulletins.slice(0,3);
 
-// Props to pass down:
-    // Plots = Plots & User
-    // KnowHows = KnowsHows & User
-    // Community = Bulletins, Jobs, User
-
-
-// OTHER INFO:
-    // It will probably be easier to actually make separate components for weather widgets, quick bulletins, tips etc
-    // Makes the Rendering a bit simpler. Don't need to have all the HTML here under one giant conditional render
-
-const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate}) =>{
-
-    const committeeBulletins = bulletins.map((bulletin, index) => {
-            if (bulletin.author.position !== "NONE" || "INACTIVE"){
-                return(
-                    <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
-                )
-            }
-            return null;
-        })
-
+    // Map through the threeBulletins to create an li element
+    const bulletinsForRender = threeBulletins.map((bulletin, index) => {
+        return <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
+    })
+    
     return(
         <>
         <h2>This is our home page container</h2>
-        {/* 
-            We want to render our widgets etc here.
-            And we want them conditionally 
-            */}
-
-        <Link to="/plots">
-            <button>Plots</button>
-        </Link>
-
-        <Link to="/knowhows">
-            <button>Know Hows</button>
-        </Link>
-
-        <Link to="/community">
-            <button>Community</button>
-        </Link>
 
         <div>
             <ul>
-            {committeeBulletins}
+                {bulletinsForRender}
             </ul>
 
             <div>
@@ -68,6 +37,19 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate})
             <div><Weather weatherData={weatherData}/></div>
         
         </div>
+
+        <Link to="/plots">
+            <button>Plots</button>
+        </Link>
+
+        <Link to="/knowhows">
+            <button>Know Hows</button>
+        </Link>
+
+        <Link to="/community">
+            <button>Community</button>
+        </Link>
+        
         </>
     )
 
