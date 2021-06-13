@@ -9,6 +9,8 @@ const Login = ({users, setCurrentUser, currentUser}) => {
 
     const [formData, setFormData] = useState({})
 
+    const [loginCheck, setLoginCheck] = useState(0)
+
     // Handler to update formData with the user input of 'username' and 'password'
     // We may want two handlers when we come to encrypting the password. One for username, one for pw
     const handleChange = (e) => {
@@ -16,41 +18,34 @@ const Login = ({users, setCurrentUser, currentUser}) => {
       setFormData(formData)
     }
 
-    // When we click submit for form, run findUser function
     const handleSubmit = (e) => {
         e.preventDefault();
         handleLogin();
     }
 
-    const refreshPage = () => {
-        window.location.reload();
-    }
-
     const handleLogin = () => {
-        console.log("findUser function starting to run")
+
+        // Re-initialise the state that provides us with the conditional render errors for wrong username/password
+        setLoginCheck(0)
 
         // Find the user in the database with the same username
         const foundUser = users.find((user) => user.shortName === formData.username)
 
         // If a user has been found
         if (foundUser){
-            console.log("user has been found")
 
             // And if the password is the same as the one entered:
             if (foundUser.password === formData.password){
-                console.log("user found, password matched")
                 setCurrentUser(foundUser);
             } 
-            // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
+            // Else return an error, via setLoginCheck and conditional rendering
             else {
-                console.log("user password not match")
-                refreshPage();
+                setLoginCheck(1);
             }
         }
-        // If the user has not been found
+        // If the user has not been found, as above
         else {
-            console.log("user not found")
-            refreshPage();
+            setLoginCheck(2);
         }
     }
 
@@ -76,16 +71,22 @@ const Login = ({users, setCurrentUser, currentUser}) => {
                 <div class="form-inner">
                 <button class="loginbutton" type='submit' >Login</button>
                 </div>
+                <div class="form-inner">
+                {loginCheck === 1 ? <h3>Incorrect Password</h3> :null}
+                {loginCheck === 2 ? <h3>User does not exist</h3> :null}
+                </div>
                 {currentUser ? <Redirect to="/" /> : null}
             </form>
+
+
 
             </div>
         </div>
 
 
-            <button>
-                <Link to="/users/new">Create Account</Link>
-            </button>
+        <button>
+            <Link to="/users/new">Create Account</Link>
+        </button>
 
         </>
     )
