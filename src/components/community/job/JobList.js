@@ -18,9 +18,7 @@ const jobsRenderedByDeadline = jobsByDeadline.map((job, index) => {
 });
 
 return (
-    <>
-        <h1>This is the list of jobbies</h1>
-        
+    <>    
         <ul>
             {jobsRenderedByDeadline}
         </ul>

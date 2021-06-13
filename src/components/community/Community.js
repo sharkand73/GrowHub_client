@@ -16,6 +16,7 @@ const Community = ({currentUser, sortedBulletins, jobs}) => {
 
     return(
         <>
+        <div id="community-container">
             <div id="noticeboard">
                 <h1>Bulletin Board</h1>
                 <div id="noticeboard-inner">
@@ -28,9 +29,11 @@ const Community = ({currentUser, sortedBulletins, jobs}) => {
                 </h2>
             
             </div>
-                    <div id="jobs-container">
-                <JobList jobs={jobs} currentUser={currentUser} />
-            </div>
+                <div id="jobs-container">
+                    <h2>Job List</h2>
+                    <JobList jobs={jobs} currentUser={currentUser} />
+                </div>
+        </div>    
         </>
     )
 }

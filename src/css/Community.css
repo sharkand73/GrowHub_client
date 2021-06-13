@@ -1,3 +1,8 @@
+#community-container {
+    display: flex;
+}
+
+
 #noticeboard {
     width: 60%;
     height: 800;
@@ -95,13 +100,21 @@
 } */
 
 #new-bulletin {
-    link-style: none;
     color: white;
     text-decoration: none;
 }
 
 #new-bulletin:hover {
-    link-style: none;
     color: cyan;
     text-decoration: none;
+}
+
+#jobs-container {
+    background-color: #f5f5f5;
+    width: 30%;
+    margin: 0 auto;
+    padding: 0;
+    color: darkblue;
+    font-family: 'Reenie Beanie';
+    font-size: 30px;
 }
