@@ -1,8 +1,10 @@
 import React from 'react';
 import Plot from './Plot';
 
-const PlotList = ({currentUser, plots}) =>{
+const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
+    // const plotsMap = allotmentSettings.mapFilepath;
+    
     // Current user's plots. ***There is currently an issue with this at the back end!***
     const currentUserPlots = currentUser.plots;
     const currentUserPlotsTally = currentUserPlots.length;
@@ -23,7 +25,9 @@ const PlotList = ({currentUser, plots}) =>{
     // Renders a Plot object for each plot in otherPlots
     const otherPlotArray = otherPlots.map((plot, index) => {
         return(
+
             <li key={index + currentUserPlotsTally}><Plot plot={plot} currentUser={currentUser}/></li>
+            
         )
     })
 

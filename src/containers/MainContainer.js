@@ -174,7 +174,7 @@ const MainContainer = ({allotmentSettings}) =>{
                     }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/plots' component = {() =>{
-                    return <PlotList currentUser={currentUser} plots={plots} />
+                    return <PlotList currentUser={currentUser} plots={plots} allotmentSettings={allotmentSettings} />
                 }} currentUser={currentUser}/>
 
 
