@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
+import '../../css/Plots.css';
+
 // Props Incoming:
     // Takes in a plot prop
 
@@ -14,10 +16,10 @@ const Plot = ({plot, currentUser}) =>{
     const url = "/plots/" + plot.id;
 
     return(
-        <div>
-        <Link to={url} >
-            <button>
-                <h4> {plot.areaName} </h4>
+        <div >
+        <Link  to={url} >
+            <button class="plotSpacing">
+                <h4 class="plotText"> {plot.areaName} </h4>
             </button>
         </Link>
         </div>

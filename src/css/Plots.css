@@ -1,0 +1,43 @@
+.flexWrapper{
+    display: flex;
+    flex-flow: row wrap;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    height: 300px;
+    width: 75%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.flexPlots{
+    
+    flex: 0 0 32%;
+    /* flex-direction: column; */
+    padding: 0 20px;
+    list-style: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* flex: 0 0 20%; */
+    padding: 0 20px;
+    /* height: 100px;
+    width: 25%; */
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.plotSpacing{
+    padding: 10px;
+    margin: 10px 30px;
+}
+
+.plotText{
+    padding: 10px;
+    margin: 5px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+}
