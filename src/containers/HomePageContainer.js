@@ -5,6 +5,8 @@ import Bulletin from '../components/community/bulletin/Bulletin';
 import Tip from '../components/community/tip/Tip';
 import Weather from '../components/community/weather';
 
+import '../css/Dash.css';
+
 
 // Renders weather widgets etc
 // Renders buttons for areas of the site
@@ -35,39 +37,51 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate})
 
     return(
         <>
-        <h2>This is our home page container</h2>
+        <div id="dash-grid-container" >
+
         {/* 
             We want to render our widgets etc here.
             And we want them conditionally 
             */}
+                 <div>
+                    <Link to="/plots">
+                        <button>Plots</button>
+                    </Link>
 
-        <Link to="/plots">
-            <button>Plots</button>
-        </Link>
+                    <Link to="/knowhows">
+                        <button>Know Hows</button>
+                    </Link>
 
-        <Link to="/knowhows">
-            <button>Know Hows</button>
-        </Link>
+                    <Link to="/community">
+                        <button>Community</button>
+                    </Link>
+                </div>
 
-        <Link to="/community">
-            <button>Community</button>
-        </Link>
 
-        <div>
-            <ul>
-            {committeeBulletins}
-            </ul>
+                <div class="FixedHeightContainer">
+                    <ul class="content">
+                    {committeeBulletins}
+                    </ul>
+                </div>
 
-            <div>
-                <Tip tips = {tips} />
-            </div>
-            <div>
-                <h3>Todays date:</h3>
-                {getDate()}
-            </div>
-            <div><Weather weatherData={weatherData}/></div>
-        
+
+                <div>
+                    <Tip tips = {tips} />
+                </div>
+
+
+                <div>
+                        <h3>Todays date:</h3>
+                        {getDate()}
+                </div>
+
+
+                <div>
+                    <Weather weatherData={weatherData}/>
+                </div>
+                
         </div>
+
         </>
     )
 
