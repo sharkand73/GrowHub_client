@@ -13,7 +13,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     // A plot of the current user will have an index of 0,1,2, etc. in currentUserPlots.  
     // A non-plot will have indexOf returning -1, on the other hand.
 
-    const otherPlots = plots.filter((plot) => (currentUserPlots.indexOf(Plot) === -1));
+    const otherPlots = plots.filter((plot) => (currentUserPlots.indexOf(plot) === -1));
 
     // Renders a Plot object for current user plot
     const currentUserPlotArray = currentUserPlots.map((plot, index) => {
