@@ -12,9 +12,11 @@ import KnowHowList from '../components/knowHows/KnowHowList';
 import NewKnowHow from '../components/knowHows/NewKnowHow';
 import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
+
 import NewJob from '../components/community/job/NewJob';
 import NewBulletin from '../components/community/bulletin/NewBulletin';
 import NewUser from '../components/user/NewUser.js';
+
 
 const MainContainer = ({allotmentSettings}) =>{
 
@@ -184,8 +186,6 @@ const MainContainer = ({allotmentSettings}) =>{
         <> 
             <NavBar/> 
 
-            <h1>Villcumin to GrowHub</h1>
-
             <Switch>
                 <PrivateRoute exact path="/" component={() => {
                     return (
@@ -234,7 +234,6 @@ const MainContainer = ({allotmentSettings}) =>{
                 <Route path = "/login" render={() => {
                     return(
                         <>
-                            <h3>Please login to continue</h3>
                             <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
                         </>
                     )

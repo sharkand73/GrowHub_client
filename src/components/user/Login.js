@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Redirect, Link} from 'react-router-dom';
+import Logo from '../../css/Logo.png';
+import '../../css/Login.css';
+
 
 
 const Login = ({users, setCurrentUser, currentUser}) => {
@@ -53,23 +56,37 @@ const Login = ({users, setCurrentUser, currentUser}) => {
 
     return(
         <>
-            <h4>Please Login to Continue.</h4>
+        {/* <div class="background"> */}
+        <div class="background" id="login-grid-container">
+            {/* <h1 class="welcome">GrowHub</h1> */}
+            <img id="logo-grid" class="logo" src={Logo} alt="Logo" />;
+            
+            <div id="login-grid" class="polytunnel" >
 
             <form onSubmit={handleSubmit}>
-                <label name='username'>Enter your username:</label>
-                <input type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
-
-                <label name='password'>Enter your password:</label>
-                <input type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
-
-                <button type='submit' >Login</button>
-
+                {/* <p class="slogan form-inner">Grow, Share, Enjoy!</p> */}
+                <div class="form-inner">
+                <label class="label" name='username'>Username:</label>
+                <input class="input" type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
+                </div>
+                <div class="form-inner">
+                <label class="label" name='password'>Password:</label>
+                <input class="input" type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
+                </div>
+                <div class="form-inner">
+                <button class="loginbutton" type='submit' >Login</button>
+                </div>
                 {currentUser ? <Redirect to="/" /> : null}
             </form>
+
+            </div>
+        </div>
+
 
             <button>
                 <Link to="/users/new">Create Account</Link>
             </button>
+
         </>
     )
 }

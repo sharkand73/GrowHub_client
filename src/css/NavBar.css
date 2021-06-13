@@ -1,0 +1,31 @@
+/* NavBar */
+.navWrap{
+    background-color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.navItem{
+    color:rgb(84, 167, 71);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.left{
+
+    list-style: none;
+    margin-right: 1rem;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+.right{
+
+    list-style: none;
+    margin-left: auto;
+    padding-right: 20px;
+}
