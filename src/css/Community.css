@@ -3,7 +3,7 @@
     height: 800;
     /* font-family: lucida handwriting; */
     font-family: 'Reenie Beanie';
-    background:black;
+    background:#666;
     color:white;
     text-align: center;
     padding-top: 5px;
@@ -44,7 +44,7 @@
   }
   #noticeboard ul li div{
     text-decoration:none;
-    color:#666;
+    color: black;
     background:#ffc;
     display:block;
     height:10em;
@@ -57,6 +57,25 @@
     background:#fdc;
   }
 
+  ul li div{
+    transform: rotate(-6deg);
+  }
+
+  ul li:nth-child(even) div{
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+  }
+  ul li:nth-child(3n) div{
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+  }
+  ul li:nth-child(5n) div{
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+  }
 
   #noticeboard ul li{
     margin:1em;
