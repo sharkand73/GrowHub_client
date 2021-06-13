@@ -6,6 +6,7 @@ import Tip from '../components/community/tip/Tip';
 import Weather from '../components/community/weather';
 
 import '../css/Dash.css';
+import LogoSmall from '../css/LogoSmall.png';
 
 
 // Renders weather widgets etc
@@ -39,47 +40,43 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate})
         <>
         <div id="dash-grid-container" >
 
-        {/* 
-            We want to render our widgets etc here.
-            And we want them conditionally 
-            */}
-                 <div>
+                 <div id="logo-grid2">
+                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                 </div>
+
+                 <div id="paths-grid">
                     <Link to="/plots">
-                        <button>Plots</button>
+                        <button class="path-button">Plots</button>
                     </Link>
 
                     <Link to="/knowhows">
-                        <button>Know Hows</button>
+                        <button class="path-button">Know Hows</button>
                     </Link>
 
                     <Link to="/community">
-                        <button>Community</button>
+                        <button class="path-button">Community</button>
                     </Link>
                 </div>
 
+                <div  id="weather-grid" class="weather-text">
+                    <h3>Todays date:</h3>
+                    {getDate()}
 
-                <div class="FixedHeightContainer">
-                    <ul class="content">
+                    <Weather weatherData={weatherData}/>
+                </div>
+                
+
+                <div class="fixedHeightContainer" id="news-grid">
+                    <ul class="content news-text">
                     {committeeBulletins}
                     </ul>
                 </div>
 
 
-                <div>
+                <div id="tips-grid" class="tip-text">
                     <Tip tips = {tips} />
                 </div>
 
-
-                <div>
-                        <h3>Todays date:</h3>
-                        {getDate()}
-                </div>
-
-
-                <div>
-                    <Weather weatherData={weatherData}/>
-                </div>
-                
         </div>
 
         </>

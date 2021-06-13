@@ -1,48 +1,106 @@
-    /* GRID */
+/* GRID */
 
 #dash-grid-container {
-        display: grid;
-        grid-template-columns: 30% 40% 30%;
-        grid-template-rows: repeat(4, 0.1fr);
+        display: inline-grid;
+        grid-template-columns: 4fr 20fr 3fr 50fr 3fr 24fr 4fr;
+        grid-template-rows: repeat(8, 0.075fr);
       }
 
 #news-grid{
-        grid-column-start:2;
+        display: grid;
+        grid-column-start:4;
+        grid-column-end:4;
         grid-row-start: 2;
+        grid-row-end: 7;
       }
 
 
 #weather-grid{
         grid-column-start:2;
-        grid-row-start: 4;
+        grid-column-end:3;
+        grid-row-start: 2;
       }
 
-#tip-grid{
-        grid-column-start:2;
-        grid-row-start: 4;
+#tips-grid{
+        grid-column-start:6;
+        grid-column-end:6;
+        grid-row-start: 2;
       }
 
 #paths-grid{
-        grid-column-start:2;
-        grid-row-start: 4;
+        grid-column-start:4;
+        grid-row-start: 8;
+        grid-row-end: 8;
+        text-align: center;
+      }
+
+#logo-grid2{
+        grid-column-start:4;
+        grid-row-start: 1;
+        grid-row-end: 1;
+        text-align: center;
       }
 
 
 
+/* SCROLLING NEWS */
 
+.fixedHeightContainer {
 
-.FixedHeightContainer {
     float:none;
-    height: 450px;
-    width: 600px; 
+    /* height: 450px;
+    width: 600px;  */
     padding:3px; 
     background:white;
 }
 
-.Content {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 5px;
-    height:150px;
+.content {
+    /* font-size: 15px;
+    font-family: 'Montserrat', sans-serif; */
+    /* height:150px; */
     overflow:auto;
     background:#fff;
+}
+
+
+/* PATH BUTTONS */
+
+.path-button{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color:green;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;
+}
+
+/* LOGO */
+
+.logo2{
+    height: 150px;  
+}
+
+/* TEXT */
+
+.tip-text{
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+}
+
+.news-text{
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    list-style: none;
+}
+
+.weather-text{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
 }
