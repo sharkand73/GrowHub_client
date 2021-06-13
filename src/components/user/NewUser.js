@@ -29,6 +29,7 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
         postUser(formData);
     }
 
+    // Conditional renders set by state in MainContainer/postUser() for 'newUserCheck'
     const submitResponse = () => {
         if (newUserCheck === 1){
             console.log("login for submitresponse")
@@ -44,6 +45,9 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
                         <Link to='/login'>Login</Link>
                         </button>
                     </div>
+        }
+        if (newUserCheck === 4){
+            return <h4>Max number of users allowed has been reached. Contact administrator</h4>
         }
     }
 

@@ -74,13 +74,19 @@ const MainContainer = () =>{
 
 
     const postUser = (newUser) => {
+        // Re-initialize the newUserCheck state
+        setNewUserCheck(0);
+        // Sets a maximum number of users allowed
+        if (allUsers.length > 100){
+            return setNewUserCheck(4)
+        }
         for (let i in allUsers){
+            // Checks to see if username matches any existing in DB
             if (allUsers[i].shortName === newUser.shortName){
-                console.log("matching username found")
                 return setNewUserCheck(1)
             }
+            // Checks to see if email matches any existing in DB
             if (allUsers[i].email === newUser.email){
-                console.log("matching email found")
                 return setNewUserCheck(2)
             }
         }
