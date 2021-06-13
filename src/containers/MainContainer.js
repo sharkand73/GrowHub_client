@@ -15,7 +15,8 @@ import PlotDetail from '../components/plots/PlotDetail';
 import NewJob from '../components/community/job/NewJob';
 import NewBulletin from '../components/community/bulletin/NewBulletin';
 
-const MainContainer = () =>{
+const MainContainer = ({allotmentSettings}) =>{
+
     const [currentUser, setCurrentUser] = useState(null);
     const [plots, setPlots] = useState([]);
     const [knowHows, setKnowHows] = useState([]);
@@ -38,6 +39,7 @@ const MainContainer = () =>{
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
         const communalAreasPromise = request.get('/api/communals');
+        
 
         Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise])
             .then((data) => {
@@ -51,6 +53,8 @@ const MainContainer = () =>{
             })}
 
     useEffect(()=>{requestAll()}, [])
+
+
 
     const postKnowHow = (knowHow) => {
         knowHows.push(knowHow);
@@ -87,6 +91,67 @@ const MainContainer = () =>{
         return `${dd}/${mm}/${yyyy}`
     }
 
+
+// weather data and api fetch
+    
+    const nullData = {
+        "coord": {
+        "lon": 0,
+        "lat": 0
+        },
+        "weather": [
+        {
+        "id": 0,
+        "main": "",
+        "description": "",
+        "icon": ""
+        }
+        ],
+        "base": "",
+        "main": {
+        "temp": 0,
+        "feels_like": 0,
+        "temp_min": 0,
+        "temp_max": 0,
+        "pressure": 0,
+        "humidity": 0
+        },
+        "visibility": 0,
+        "wind": {
+        "speed": 0,
+        "deg": 0
+        },
+        "clouds": {
+        "all": 0
+        },
+        "dt": 1623496264,
+        "sys": {
+        "type": 1,
+        "id": 1441,
+        "country": "GB",
+        "sunrise": 0,
+        "sunset": 0
+        },
+        "timezone": 3600,
+        "id": 2648579,
+        "name": "Glasgow",
+        "cod": 200
+        }
+    const [weatherData, setWeatherData] = useState(nullData);
+
+    const getData = function(){
+        const APIKey = allotmentSettings.apikey;
+        const location = allotmentSettings.location;
+        // const APIKey = "0d820993802bd0122435be9caac2043d";
+        // const location = "Glasgow";
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}`)
+            .then(results => results.json() )
+            .then(data => {setWeatherData(data)})
+        };
+    
+    useEffect(() => getData(), [allotmentSettings]);
+
+
     return(
 
         <Router>
@@ -103,12 +168,13 @@ const MainContainer = () =>{
                             currentUser = {currentUser}
                             bulletins = {bulletins}
                             tips = {tips}
+                            weatherData = {weatherData}
   
                         />)
                     }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/plots' component = {() =>{
-                    return <PlotList currentUser={currentUser} plots={plots} />
+                    return <PlotList currentUser={currentUser} plots={plots} allotmentSettings={allotmentSettings} />
                 }} currentUser={currentUser}/>
 
 

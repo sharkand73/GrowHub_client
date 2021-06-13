@@ -30,7 +30,6 @@ const Tip = ({tips}) => {
             */}
             
 
-
         </div>
     )
 }
