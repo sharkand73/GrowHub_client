@@ -66,6 +66,10 @@ const Login = ({users, setCurrentUser, currentUser}) => {
 
                 {currentUser ? <Redirect to="/" /> : null}
             </form>
+
+            <button>
+                <Link to="/users/new">Create Account</Link>
+            </button>
         </>
     )
 }

@@ -14,6 +14,7 @@ import Community from '../components/community/Community';
 import PlotDetail from '../components/plots/PlotDetail';
 import NewJob from '../components/community/job/NewJob';
 import NewBulletin from '../components/community/bulletin/NewBulletin';
+import NewUser from '../components/user/NewUser.js';
 
 const MainContainer = ({allotmentSettings}) =>{
 
@@ -25,9 +26,8 @@ const MainContainer = ({allotmentSettings}) =>{
     const [tips, setTips] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
     const [communalAreas, setCommunalAreas] = useState([]);
-    // const [months, setMonths] = useState([]);
+    const [newUserCheck, setNewUserCheck] = useState(0);
 
-    // temporary array of months till we hook up enums somehow
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
     const requestAll = function(){
@@ -74,6 +74,31 @@ const MainContainer = ({allotmentSettings}) =>{
         console.log(job);
         const request = new Request();
         request.post("/api/jobs", job);
+    }
+
+
+    const postUser = (newUser) => {
+        // Re-initialize the newUserCheck state
+        setNewUserCheck(0);
+        // Sets a maximum number of users allowed
+        if (allUsers.length > 100){
+            return setNewUserCheck(4)
+        }
+        for (let i in allUsers){
+            // Checks to see if username matches any existing in DB
+            if (allUsers[i].shortName === newUser.shortName){
+                return setNewUserCheck(1)
+            }
+            // Checks to see if email matches any existing in DB
+            if (allUsers[i].email === newUser.email){
+                return setNewUserCheck(2)
+            }
+        }
+    
+        allUsers.push(newUser);
+        const request = new Request();
+        request.post("/api/users", newUser);
+        return setNewUserCheck(3)
     }
 
     const findPlotById = (plotId) => {
@@ -212,6 +237,10 @@ const MainContainer = ({allotmentSettings}) =>{
                             <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
                         </>
                     )
+                }}/>
+
+                <Route exact path = '/users/new' render = {() =>{
+                    return <NewUser postUser={postUser} getDate={getDate} newUserCheck={newUserCheck}/>
                 }}/>
 
                 <Route render={() => {
