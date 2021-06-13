@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
-const NewUser = ({postUser, getDate}) => {
-
-    // public User(String shortName, String email, String password, PositionType position, int yearJoined) {
+const NewUser = ({postUser, getDate, newUserCheck}) => {
 
     const year = getDate().slice(6, 11)
 
@@ -14,7 +12,6 @@ const NewUser = ({postUser, getDate}) => {
             position: "ORDINARY",
             yearJoined: year
     })
-    const [formCheck, setFormCheck] = useState(null);
 
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
@@ -30,7 +27,24 @@ const NewUser = ({postUser, getDate}) => {
         e.preventDefault();
         setFormData(formData);
         postUser(formData);
-        setFormCheck(1);
+    }
+
+    const submitResponse = () => {
+        if (newUserCheck === 1){
+            console.log("login for submitresponse")
+            return <h4>That username already exists. Please try another</h4>
+        }
+        if (newUserCheck === 2){
+            return <h4>That email address already exists. Please try another or contact administrator</h4>
+        }
+        if (newUserCheck === 3){
+            return <div>
+                        <h4>Account created successfully. Click 'Login' to be redirected to the login page</h4>
+                        <button>
+                        <Link to='/login'>Login</Link>
+                        </button>
+                    </div>
+        }
     }
 
     return(
@@ -54,14 +68,7 @@ const NewUser = ({postUser, getDate}) => {
                     <button type='submit'>Create Account</button>
                 </form>
 
-                {formCheck ? 
-                    <div>
-                        <h3>Account successfully created. Click here to go back to the login screen</h3>
-                        <button>
-                        <Link to='/login'>Login</Link>
-                        </button>
-                    </div>
-                    : null}
+                {submitResponse()}
         </>
     )
 

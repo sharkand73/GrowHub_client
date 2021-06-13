@@ -25,9 +25,8 @@ const MainContainer = () =>{
     const [tips, setTips] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
     const [communalAreas, setCommunalAreas] = useState([]);
-    // const [months, setMonths] = useState([]);
+    const [newUserCheck, setNewUserCheck] = useState(0);
 
-    // temporary array of months till we hook up enums somehow
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
     const requestAll = function(){
@@ -73,10 +72,23 @@ const MainContainer = () =>{
         request.post("/api/jobs", job);
     }
 
-    const postUser = (user) => {
-        allUsers.push(user);
+
+    const postUser = (newUser) => {
+        for (let i in allUsers){
+            if (allUsers[i].shortName === newUser.shortName){
+                console.log("matching username found")
+                return setNewUserCheck(1)
+            }
+            if (allUsers[i].email === newUser.email){
+                console.log("matching email found")
+                return setNewUserCheck(2)
+            }
+        }
+    
+        allUsers.push(newUser);
         const request = new Request();
-        request.post("/api/users", user);
+        request.post("/api/users", newUser);
+        return setNewUserCheck(3)
     }
 
     const findPlotById = (plotId) => {
@@ -156,7 +168,7 @@ const MainContainer = () =>{
                 }}/>
 
                 <Route exact path = '/users/new' render = {() =>{
-                    return <NewUser postUser={postUser} getDate={getDate}/>
+                    return <NewUser postUser={postUser} getDate={getDate} newUserCheck={newUserCheck}/>
                 }}/>
 
                 <Route render={() => {
