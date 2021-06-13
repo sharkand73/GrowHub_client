@@ -1,0 +1,38 @@
+#noticeboard {
+    width: 600;
+    height: 600;
+}
+
+#noticeboard h2 {
+    color: magenta;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+   
+  #noticeboard p {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+   
+ #noticeboard ul,li{
+    list-style:none;
+  }
+
+ #noticeboard ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #noticeboard ul li div{
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+    height:10em;
+    width:10em;
+    padding:1em;
+  }
+
+  #noticeboard ul li{
+    margin:1em;
+  }

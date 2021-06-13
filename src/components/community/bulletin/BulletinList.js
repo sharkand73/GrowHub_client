@@ -14,13 +14,13 @@ const BulletinList = ({currentUser, sortedBulletins}) =>{
 // map through BulletinItems prop and render a Bulletin.js for each bulletin it comes across
 const bulletinArray = sortedBulletins.map((bulletin, index) => {
     return(
-        <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
+        <li className="bulletin-postit" key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
     )
 })
 
 return (
     <>
-        <h3>This is the list of bulletin items</h3>
+        <h2>Bulletin Board</h2>
         <ul>
             {bulletinArray}
         </ul>

@@ -7,11 +7,11 @@ import React from 'react';
 const Bulletin = ({bulletin, currentUser}) =>{
     
     return (
-        <>
-            <h1>{bulletin.title}</h1>
+        <div className="post-it-container">
+            <h2>{bulletin.title}</h2>
             <h3><span>{bulletin.author.shortName}</span> <span>{bulletin.date}</span></h3>
             <p>{bulletin.body}</p>
-        </>
+        </div >
     );
     }
 
