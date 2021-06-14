@@ -58,7 +58,6 @@ const Login = ({users, setCurrentUser, currentUser}) => {
             <img id="logo-grid" class="logo" src={Logo} alt="Logo" />;
             
             <div id="login-grid" class="polytunnel" >
-      
                 <form onSubmit={handleSubmit}>
                     {/* <p class="slogan form-inner">Grow, Share, Enjoy!</p> */}
                     <div class="form-inner">
@@ -75,7 +74,7 @@ const Login = ({users, setCurrentUser, currentUser}) => {
                     <div class="form-inner">
                         {loginCheck === 1 ? <h3>Incorrect Password</h3> :null}
                         {loginCheck === 2 ? <h3>User does not exist</h3> :null}
-                     </div>
+                    </div>
                     {currentUser ? <Redirect to="/" /> : null}
 
                 </form>
