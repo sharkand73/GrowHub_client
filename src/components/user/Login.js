@@ -37,8 +37,7 @@ const Login = ({users, setCurrentUser, currentUser}) => {
             // And if the password is the same as the one entered:
             if (foundUser.password === formData.password){
                 setCurrentUser(foundUser);
-                console.log(currentUser);
-            } 
+                        } 
             // Else return an error, via setLoginCheck and conditional rendering
             else {
                 setLoginCheck(1);

@@ -5,24 +5,23 @@ const KnowHowDetail = ({knowHow, currentUser}) => {
     const monthLower = knowHow.month.toLowerCase();
     const month = monthLower[0].toUpperCase() + monthLower.slice(1);
 
-    // String date, User author, String title, String body, Month month
-
-
     const getReplies = () => {
         return knowHow.replies.map((reply, index) => {
                 return (
                     <li key={index}>
-                        <ul>
-                            <li>{reply.body}</li>
-                            <li>By: {reply.author} on {reply.date}</li>
-                        </ul>
+                        <div>
+                            <h4>{reply.body}</h4>
+                            <p><i>By: {reply.author.shortName} on {reply.date}</i></p>
+                        </div>
+                        {/* LINE BREAK, DELETE ONCE CSS IS IN */}
+                        <br></br>
                     </li>
                 )
         })
     }
 
     const getRepliesSection = () => {
-        if (knowHow.replies){
+        if (knowHow.replies.length >=2){
             return(
                 <div>
                     <h3>Replies:</h3>

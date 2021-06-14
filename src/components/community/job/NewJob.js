@@ -10,7 +10,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
         author: currentUser,
         title: "",
         body: "",
-        area: {},
+        communal: {},
         deadline: "",
         difficulty: 0
     })
@@ -29,9 +29,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
       }
 
     const handleArea = (e) => {
-        formData.area = communalAreas[e.target.value];
-        // If we want to make plots selectable, when we select a plot we need to make area['type'] = plot
-        formData.area['type'] = 'communal'
+        formData.communal = communalAreas[e.target.value];
         setFormData(formData);
     }
 
