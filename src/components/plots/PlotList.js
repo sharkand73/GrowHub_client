@@ -65,17 +65,17 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
             {/* <h3>Adding history to your plot is optional. </h3> */}
 
             <div id="your-plots-grid">
-                <p>Your Plot{plotsPlural? <span>s</span>: null}:</p>
+                <p class="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>
         
                 <div>
-                    <ul>
+                    <ul class="flexWrapper">
                         {currentUserPlotArray}
                     </ul>
                 </div>
             </div>
 
             <div id="other-plots-grid">
-                <p>Other Plots:</p>
+                <p class="plotText2">Other Plots:</p>
 
                 <div>
                     <ul class="flexWrapper">

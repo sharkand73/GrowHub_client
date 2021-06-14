@@ -3,8 +3,8 @@
 #plots-grid-container{
     display: grid;
     width: 100vw;
-    height: 100vh;
-    grid-template-columns: 15% 70% 15%;
+    height: auto;
+    grid-template-columns: 4% 11% 70% 11% 4%;
     grid-template-rows: 20% 30% 45% 5%;
 }
 
@@ -14,15 +14,15 @@
 }
 
 #your-plots-grid{
-    grid-column-start:2;
+    grid-column-start:3;
     grid-row-start: 2;
 }
 
 #other-plots-grid{
-    grid-column-start:2;
+    grid-column-start:3;
     grid-row-start: 3;
     grid-row-end: 3;
-    overflow: hidden;
+    /* overflow: hidden; */
     
 }
 
@@ -54,14 +54,20 @@
 }
 
 .plotText{
+    font-size: 23px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
     padding: 10px;
     margin: 5px 30px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 100px;
-    font-size: 20px;
     color: black;
 }
 
 .no-decoration{
     text-decoration: none;
+}
+
+.plotText2{
+font-size: 25px;
+font-weight: 200;
+font-family: 'Montserrat', sans-serif;
 }
