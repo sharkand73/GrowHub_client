@@ -56,33 +56,40 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
     return(
         <>
+        <div id="plots-grid-container">
 
-            <div id="logo-grid2">
+            <div id="logo-grid">
                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
 
             {/* <h3>Adding history to your plot is optional. </h3> */}
 
+            <div id="your-plots-grid">
                 <p>Your Plot{plotsPlural? <span>s</span>: null}:</p>
-            
-            <div class="flexWrapper">
-                <ul class="flexPlots" >
-                    {currentUserPlotArray}
-                </ul>
+        
+                <div>
+                    <ul>
+                        {currentUserPlotArray}
+                    </ul>
+                </div>
             </div>
 
+            <div id="other-plots-grid">
                 <p>Other Plots:</p>
 
-            <div  class="flexWrapper">
-                <ul class="flexPlots">
-                    {otherPlotArray}
-                </ul>
+                <div  class="flexWrapper">
+                    <ul class="flexPlots">
+                        {otherPlotArray}
+                    </ul>
+                </div>
             </div>
 
             {/* <p>shifted plots</p>
             <ul>
                 {newPlotsArray()}
             </ul> */}
+
+        </div>
         </>
     )
 

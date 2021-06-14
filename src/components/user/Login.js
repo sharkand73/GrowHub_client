@@ -62,30 +62,31 @@ const Login = ({users, setCurrentUser, currentUser}) => {
             <img id="logo-grid" class="logo" src={Logo} alt="Logo" />;
             
             <div id="login-grid" class="polytunnel" >
+                <form onSubmit={handleSubmit}>
+                    {/* <p class="slogan form-inner">Grow, Share, Enjoy!</p> */}
+                    <div class="form-inner">
+                        <label class="label" name='username'>Username:</label>
+                        <input class="input" type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
+                    </div>
+                    <div class="form-inner">
+                        <label class="label" name='password'>Password:</label>
+                        <input class="input" type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
+                    </div>
+                    <div class="form-inner">
+                        <button class="loginPageButton" type='submit' >Login</button>
+                    </div>
+                    {currentUser ? <Redirect to="/" /> : null}
 
-            <form onSubmit={handleSubmit}>
-                {/* <p class="slogan form-inner">Grow, Share, Enjoy!</p> */}
-                <div class="form-inner">
-                <label class="label" name='username'>Username:</label>
-                <input class="input" type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
-                </div>
-                <div class="form-inner">
-                <label class="label" name='password'>Password:</label>
-                <input class="input" type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
-                </div>
-                <div class="form-inner">
-                <button class="loginbutton" type='submit' >Login</button>
-                </div>
-                {currentUser ? <Redirect to="/" /> : null}
-            </form>
-
+                </form>
             </div>
-        </div>
 
-
-            <button>
-                <Link to="/users/new">Create Account</Link>
+            <div id="account-grid" class="create-background">
+            <button  class="loginPageButton">
+                    <Link class="create-account" to="/users/new">Create Account</Link>
             </button>
+            </div>
+           
+        </div>
 
         </>
     )
