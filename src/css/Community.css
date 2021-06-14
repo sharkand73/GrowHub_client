@@ -124,7 +124,13 @@
 
 #jobs-container li {
     padding-bottom: 15px;
+    list-style: none;
+    border-bottom: 1px dotted #ccc;
+    text-indent: 25px;
+    height: auto;
+    padding: 10px;
 }
+
 
 .carrot {
     color: #ef7215;
