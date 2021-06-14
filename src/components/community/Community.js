@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import BulletinList from './bulletin/BulletinList.js'
+import BulletinDetails from './bulletin/BulletinDetails.js'
 import JobList from './job/JobList.js'
 import {Link} from 'react-router-dom';
 import '../../css/Community.css';
@@ -14,13 +15,26 @@ import '../../css/Community.css';
 
 const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob}) => {
 
+    const [selectedBulletin, setSelectedBulletin] = useState();
+
+    const displayBulletin = (result) => {
+        setSelectedBulletin(result);
+        console.log(selectedBulletin);
+    }
+
+    const clickAway = () => {
+        setSelectedBulletin(null);
+    }
+
     return(
         <>
         <div id="community-container">
             <div id="noticeboard">
                 <h1>Bulletin Board</h1>
+                
                 <div id="noticeboard-inner">
-                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} deleteBulletin={deleteBulletin}/>
+                    {selectedBulletin? <BulletinDetails bulletin={selectedBulletin} clickAway={clickAway}/>:
+                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} deleteBulletin={deleteBulletin} displayBulletin={displayBulletin}/>}
                 </div>
                 <h2>
                 <Link to='/bulletins/new' id="new-bulletin">
