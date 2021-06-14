@@ -172,6 +172,7 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const sortedBulletins = sortByReverseDate(bulletins);
 
+
 // weather data and api fetch
     
     const nullData = {

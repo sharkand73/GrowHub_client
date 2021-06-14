@@ -10,7 +10,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
         author: currentUser,
         title: "",
         body: "",
-        area: {},
+        communal: {},
         deadline: "",
         difficulty: 0
     })
@@ -29,7 +29,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
       }
 
     const handleArea = (e) => {
-        formData.area = communalAreas[e.target.value];
+        formData.communal = communalAreas[e.target.value];
         setFormData(formData);
     }
 
