@@ -242,15 +242,15 @@ const MainContainer = ({allotmentSettings}) =>{
                     return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
                 }} currentUser={currentUser}/>
 
+                <PrivateRoute exact path = '/knowhows/new' component = {() =>{
+                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months} getDate={getDate}/>
+                }} currentUser={currentUser}/>
+
                 <Route exact path = "/knowhows/:id" render = {(props) => {
                     const id = props.match.params.id;
                     const foundKnowHow = findKnowHowById(id);
                     return foundKnowHow? <KnowHowDetail currentUser={currentUser} knowHow={foundKnowHow} />: <Redirect to="/knowhows" />
                 }} currentUser={currentUser} />                 
-
-                <PrivateRoute exact path = '/knowhows/new' component = {() =>{
-                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months} getDate={getDate}/>
-                }} currentUser={currentUser}/>
 
                 <Route path = "/login" render={() => {
                     return(
