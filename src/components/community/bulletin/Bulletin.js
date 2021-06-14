@@ -9,8 +9,8 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Bulletin = ({bulletin, currentUser, deleteBulletin, displayBulletin}) =>{
 
-    const onClick = (e) => {
-        displayBulletin(e.target.value);
+    const onClick = (item) => {
+        displayBulletin(item);
     }
     
 
@@ -28,7 +28,7 @@ const Bulletin = ({bulletin, currentUser, deleteBulletin, displayBulletin}) =>{
     }
     
     return (
-        <button type="button" class="post-it" onClick={onClick} value={bulletin}>
+        <button type="button" class="post-it" onClick={()=> onClick(bulletin)} value={bulletin}>
                 {bulletinEditDelete()}
                 <h2>{bulletin.title}</h2>
                 <h3>{bulletin.author.shortName}</h3>

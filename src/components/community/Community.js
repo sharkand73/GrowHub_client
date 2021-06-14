@@ -15,7 +15,7 @@ import '../../css/Community.css';
 
 const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob}) => {
 
-    const [selectedBulletin, setSelectedBulletin] = useState(null);
+    const [selectedBulletin, setSelectedBulletin] = useState();
 
     const displayBulletin = (result) => {
         setSelectedBulletin(result);
