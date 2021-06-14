@@ -1,18 +1,26 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 // The purpose of this file is to render one bulletin item
 
 // Incoming props = BulletinItem
 
-const Bulletin = ({bulletin, currentUser, deleteBulletin}) =>{
+const Bulletin = ({bulletin, currentUser, deleteBulletin, displayBulletin}) =>{
+
+    const onClick = (e) => {
+        displayBulletin(e.target.value);
+    }
+    
 
     const bulletinEditDelete = () => {
         if (currentUser.email === bulletin.author.email) {
             return(
                 <>
-                <div>
-                    <span className="edit">Edit</span>
-                    <span className="delete" onClick={() => deleteBulletin(bulletin)}>Delete</span>
+                <div className = "edit-delete">
+                    <FontAwesomeIcon icon={faEdit} className="edit"/>
+                    <FontAwesomeIcon icon={faTrashAlt} className="delete" onClick={() => deleteBulletin(bulletin)}/>
                 </div>
                 </>
             )
@@ -20,13 +28,14 @@ const Bulletin = ({bulletin, currentUser, deleteBulletin}) =>{
     }
     
     return (
-        <button id="post-it">
-            <h2>{bulletin.title}</h2>
-            <h3><span id="bulletin-author">{bulletin.author.shortName}</span> <span value={bulletin.id} id="bulletin-date">{bulletin.date}</span></h3>
-            {/* <p>{bulletin.body}</p> */}
-            <>{bulletinEditDelete()}</>
+        <button type="button" class="post-it" onClick={onClick} value={bulletin}>
+                {bulletinEditDelete()}
+                <h2>{bulletin.title}</h2>
+                <h3>{bulletin.author.shortName}</h3>
+                <h4>{bulletin.date}</h4>
         </button>
     );
     }
 
 export default Bulletin;
+
