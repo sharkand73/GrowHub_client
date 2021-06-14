@@ -13,8 +13,18 @@ const KnowHowList = ({currentUser, knowHows}) =>{
     (<option key={index} value={month.toUpperCase()}>{month}</option>)
     )
 
+    const onChange = (e) => {
+        let monthSelected = e.target.value;
+        //console.log(monthSelected);
+        let tempKnowhows = [];
+        if (monthSelected === "All"){monthSelected = ""};
+        tempKnowhows = knowHows.filter((item) =>
+            (item.month.includes(monthSelected)));
+        setFilteredKnowhows(tempKnowhows);
+        }
+    
 
-    const knowHowArray = knowHows.map((knowHow, index) => {
+    const knowHowArray = filteredKnowhows.map((knowHow, index) => {
         return(
             <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser}/></li>
         )
@@ -24,7 +34,8 @@ const KnowHowList = ({currentUser, knowHows}) =>{
         <>
             <h3>Month-related gardening advice:</h3>
             <form>
-                <select>
+                <label htmlFor="month-select">By month</label>
+                <select onChange={onChange}>
                     <option value='All'>All</option>
                     {monthOptions}
                 </select>
@@ -35,7 +46,7 @@ const KnowHowList = ({currentUser, knowHows}) =>{
 
             <button>
                 <Link to='/knowhows/new'>
-                    New Know How
+                    Add know-how
                 </Link>
             </button>
 
