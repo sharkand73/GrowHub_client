@@ -62,10 +62,38 @@ const MainContainer = ({allotmentSettings}) =>{
         request.post("/api/knowhows", knowHow);
     }
 
+    const findKnowHowById = (knowHowId) => {
+        return knowHows.find((knowHow) => {
+            return knowHow.id === parseInt(knowHowId)
+            }
+        )
+    }
+
+    const deleteKnowHow = (knowHow) => {
+        const knowHowId = findKnowHowById(knowHow.id);
+        knowHows.splice(knowHowId);
+        const request = new Request();
+        request.delete("/api/knowhows", knowHow)
+    }
+
     const postBulletin = (bulletin) => {
         bulletins.push(bulletin);
         const request = new Request();
         request.post("/api/bulletins", bulletin);
+    }
+
+    const findBulletinById = (bulletinId) => {
+        return bulletins.find((bulletin) => {
+            return bulletin.id === parseInt(bulletinId)
+            }
+        )
+    }
+
+    const deleteBulletin = (bulletin) => {
+        const bulletinId = findBulletinById(bulletin.id);
+        bulletins.splice(bulletinId);
+        const request = new Request();
+        request.delete("/api/bulletins", bulletin)
     }
 
     const postJob = (job) => {
@@ -74,6 +102,20 @@ const MainContainer = ({allotmentSettings}) =>{
         console.log(job);
         const request = new Request();
         request.post("/api/jobs", job);
+    }
+
+    const findJobById = (jobId) => {
+        return jobs.find((job) => {
+            return job.id === parseInt(jobId)
+            }
+        )
+    }
+
+    const deleteJob = (job) => {
+        const jobId = findBulletinById(job.id);
+        jobs.splice(jobId);
+        const request = new Request();
+        request.delete("/api/jobs", jobs)
     }
 
     const findPlotById = (plotId) => {
@@ -152,7 +194,7 @@ const MainContainer = ({allotmentSettings}) =>{
     useEffect(() => getData(), [allotmentSettings]);
 
     const deleteClick = (e) => {
-        console.log(e.target.value)
+        
     }
 
     const editClick = (e) => {
