@@ -76,8 +76,6 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const postJob = (job) => {
         jobs.push(job);
-        console.log("postJob, job:")
-        console.log(job);
         const request = new Request();
         request.post("/api/jobs", job);
     }
