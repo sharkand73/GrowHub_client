@@ -3,16 +3,17 @@ import {Redirect} from 'react-router-dom';
 
 const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
 
+    const date = getDate();
+
     const [formData, setFormData] = useState({
-        date: "",
-        author: null,
+        date: date,
+        author: currentUser,
         title: "",
         body: "",
         month: ""
     })
     const [formCheck, setFormCheck] = useState(null);
 
-    const date = getDate();
 
     const monthOptions = months.map((month, index) => {
         return <option value={index} key={index}>{month}</option>
@@ -29,8 +30,6 @@ const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        formData['date'] = date;
-        formData['author'] = currentUser;
         setFormData(formData);
         postKnowHow(formData);
         setFormCheck(1);

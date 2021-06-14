@@ -1,68 +1,70 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import moment from 'moment';
 
 import Bulletin from '../components/community/bulletin/Bulletin';
 import Tip from '../components/community/tip/Tip';
 import Weather from '../components/community/weather';
 
-
-// Renders weather widgets etc
-// Renders buttons for areas of the site
-// Renders some recent news bulletins (requires loop, find 3 most recent from bulletins prop, or something)
-// Renders tip of the month
-// Renders "hello {user}" message
-
-// Props to pass down:
-    // Plots = Plots & User
-    // KnowHows = KnowsHows & User
-    // Community = Bulletins, Jobs, User
+import '../css/Dash.css';
+import LogoSmall from '../css/LogoSmall.png';
 
 
-// OTHER INFO:
-    // It will probably be easier to actually make separate components for weather widgets, quick bulletins, tips etc
-    // Makes the Rendering a bit simpler. Don't need to have all the HTML here under one giant conditional render
+const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulletins}) =>{
+    
+    // Filter out non-committee member posts
+    const committeeBulletins = sortedBulletins.filter(bulletin => bulletin.author.position !== "NONE" || "INACTIVE");
 
-const HomePageContainer = ({currentUser, bulletins, tips, weatherData}) =>{
 
-    const committeeBulletins = bulletins.map((bulletin, index) => {
-            if (bulletin.author.position !== "NONE" || "INACTIVE"){
-                return(
-                    <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
-                )
-            }
-            return null;
-        })
+    // Slice the most recent 3
+    const threeBulletins = committeeBulletins.slice(0,3);
 
+    // Map through the threeBulletins to create an li element
+    const bulletinsForRender = threeBulletins.map((bulletin, index) => {
+        return <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
+    })
+    
     return(
         <>
-        <h2>This is our home page container</h2>
-        {/* 
-            We want to render our widgets etc here.
-            And we want them conditionally 
-            */}
+        <div id="dash-grid-container" >
 
-        <Link to="/plots">
-            <button>Plots</button>
-        </Link>
+                 <div id="logo-grid2">
+                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                 </div>
 
-        <Link to="/knowhows">
-            <button>Know Hows</button>
-        </Link>
+                 <div id="paths-grid">
+                    <Link to="/plots">
+                        <button class="path-button">Plots</button>
+                    </Link>
 
-        <Link to="/community">
-            <button>Community</button>
-        </Link>
+                    <Link to="/knowhows">
+                        <button class="path-button">Know Hows</button>
+                    </Link>
 
-        <div>
-            <ul>
-            {committeeBulletins}
-            </ul>
+                    <Link to="/community">
+                        <button class="path-button">Community</button>
+                    </Link>
+                </div>
 
-            <div>
-                <Tip tips = {tips} />
-            </div>
-            <div><Weather weatherData={weatherData}/></div>
-        
+                <div  id="weather-grid" class="weather-text">
+                    <h3>Todays date:</h3>
+                    {moment().format('DD MMMM YYYY')}
+
+                    <Weather weatherData={weatherData}/>
+                </div>
+                
+
+                <div class="fixedHeightContainer" id="news-grid">
+                    <ul class="content news-text">
+                    {bulletinsForRender}
+                    </ul>
+                </div>
+
+
+                <div id="tips-grid" class="tip-text">
+                    <Tip tips = {tips} />
+                </div>
+
         </div>
         </>
     )

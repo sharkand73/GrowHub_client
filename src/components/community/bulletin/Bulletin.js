@@ -22,12 +22,12 @@ const Bulletin = ({bulletin, currentUser, deleteBulletin}) =>{
     }
     
     return (
-        <>
-            <h1>{bulletin.title}</h1>
-            <h3><span>{bulletin.author.shortName}</span> <span>{bulletin.date}</span></h3>
-            <p>{bulletin.body}</p>
+        <div className="post-it-container">
+            <h2>{bulletin.title}</h2>
+            <h3><span id="bulletin-author">{bulletin.author.shortName}</span> <span id="bulletin-date">{bulletin.date}</span></h3>
+            {/* <p>{bulletin.body}</p> */}
             <>{bulletinEditDelete()}</>
-        </>
+        </div >
     );
     }
 

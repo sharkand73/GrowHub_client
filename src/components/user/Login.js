@@ -1,10 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Redirect, Link} from 'react-router-dom';
+import Logo from '../../css/Logo.png';
+import '../../css/Login.css';
+
 
 
 const Login = ({users, setCurrentUser, currentUser}) => {
 
     const [formData, setFormData] = useState({})
+
+    const [loginCheck, setLoginCheck] = useState(0)
 
     // Handler to update formData with the user input of 'username' and 'password'
     // We may want two handlers when we come to encrypting the password. One for username, one for pw
@@ -13,60 +18,78 @@ const Login = ({users, setCurrentUser, currentUser}) => {
       setFormData(formData)
     }
 
-    // When we click submit for form, run findUser function
     const handleSubmit = (e) => {
         e.preventDefault();
         handleLogin();
     }
 
-    const refreshPage = () => {
-        window.location.reload();
-    }
-
     const handleLogin = () => {
-        console.log("findUser function starting to run")
+
+        // Re-initialise the state that provides us with the conditional render errors for wrong username/password
+        setLoginCheck(0)
 
         // Find the user in the database with the same username
         const foundUser = users.find((user) => user.shortName === formData.username)
 
         // If a user has been found
         if (foundUser){
-            console.log("user has been found")
 
             // And if the password is the same as the one entered:
             if (foundUser.password === formData.password){
-                console.log("user found, password matched")
                 setCurrentUser(foundUser);
                 console.log(currentUser);
             } 
-            // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
+            // Else return an error, via setLoginCheck and conditional rendering
             else {
-                console.log("user password not match")
-                refreshPage();
+                setLoginCheck(1);
             }
         }
-        // If the user has not been found
+        // If the user has not been found, as above
         else {
-            console.log("user not found")
-            refreshPage();
+            setLoginCheck(2);
         }
     }
 
     return(
         <>
-            <h4>Please Login to Continue.</h4>
+        {/* <div class="background"> */}
+        <div class="background" id="login-grid-container">
+            {/* <h1 class="welcome">GrowHub</h1> */}
+            <img id="logo-grid" class="logo" src={Logo} alt="Logo" />;
+            
+            <div id="login-grid" class="polytunnel" >
+      
+                <form onSubmit={handleSubmit}>
+                    {/* <p class="slogan form-inner">Grow, Share, Enjoy!</p> */}
+                    <div class="form-inner">
+                        <label class="label" name='username'>Username:</label>
+                        <input class="input" type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
+                    </div>
+                    <div class="form-inner">
+                        <label class="label" name='password'>Password:</label>
+                        <input class="input" type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
+                    </div>
+                    <div class="form-inner">
+                        <button class="loginPageButton" type='submit' >Login</button>
+                    </div>
+                    <div class="form-inner">
+                        {loginCheck === 1 ? <h3>Incorrect Password</h3> :null}
+                        {loginCheck === 2 ? <h3>User does not exist</h3> :null}
+                     </div>
+                    {currentUser ? <Redirect to="/" /> : null}
 
-            <form onSubmit={handleSubmit}>
-                <label name='username'>Enter your username:</label>
-                <input type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
+                </form>
 
-                <label name='password'>Enter your password:</label>
-                <input type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
+            </div>
 
-                <button type='submit' >Login</button>
+            <div id="account-grid" class="create-background">
+              <button  class="loginPageButton">
+                    <Link class="create-account" to="/users/new">Create Account</Link>
+              </button>
+            </div>
+           
+        </div>
 
-                {currentUser ? <Redirect to="/" /> : null}
-            </form>
         </>
     )
 }

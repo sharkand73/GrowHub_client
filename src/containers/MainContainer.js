@@ -7,13 +7,20 @@ import HomePageContainer from './HomePageContainer';
 import Request from '../helpers/request';
 import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
-import PlotList from '../components/plots/PlotList';
+
 import KnowHowList from '../components/knowHows/KnowHowList';
+import KnowHowDetail from '../components/knowHows/KnowHowDetail';
 import NewKnowHow from '../components/knowHows/NewKnowHow';
+
 import Community from '../components/community/Community';
+
+import PlotList from '../components/plots/PlotList';
 import PlotDetail from '../components/plots/PlotDetail';
+
 import NewJob from '../components/community/job/NewJob';
 import NewBulletin from '../components/community/bulletin/NewBulletin';
+import NewUser from '../components/user/NewUser.js';
+
 
 const MainContainer = ({allotmentSettings}) =>{
 
@@ -25,9 +32,8 @@ const MainContainer = ({allotmentSettings}) =>{
     const [tips, setTips] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
     const [communalAreas, setCommunalAreas] = useState([]);
-    // const [months, setMonths] = useState([]);
+    const [newUserCheck, setNewUserCheck] = useState(0);
 
-    // temporary array of months till we hook up enums somehow
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
     const requestAll = function(){
@@ -98,12 +104,10 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const postJob = (job) => {
         jobs.push(job);
-        console.log("postJob, job:")
-        console.log(job);
         const request = new Request();
         request.post("/api/jobs", job);
     }
-
+    
     const findJobById = (jobId) => {
         return jobs.find((job) => {
             return job.id === parseInt(jobId)
@@ -116,6 +120,29 @@ const MainContainer = ({allotmentSettings}) =>{
         jobs.splice(index);
         const request = new Request();
         request.delete("/api/jobs", job.id)
+
+    const postUser = (newUser) => {
+        // Re-initialize the newUserCheck state
+        setNewUserCheck(0);
+        // Sets a maximum number of users allowed
+        if (allUsers.length > 100){
+            return setNewUserCheck(4)
+        }
+        for (let i in allUsers){
+            // Checks to see if username matches any existing in DB
+            if (allUsers[i].shortName === newUser.shortName){
+                return setNewUserCheck(1)
+            }
+            // Checks to see if email matches any existing in DB
+            if (allUsers[i].email === newUser.email){
+                return setNewUserCheck(2)
+            }
+        }
+    
+        allUsers.push(newUser);
+        const request = new Request();
+        request.post("/api/users", newUser);
+        return setNewUserCheck(3)
     }
 
     const findPlotById = (plotId) => {
@@ -123,6 +150,12 @@ const MainContainer = ({allotmentSettings}) =>{
             return plot.id === parseInt(plotId)
             }
         )
+    }
+
+    const findKnowHowById = (knowHowId) => {
+        return knowHows.find((knowHow) => {
+            return knowHow.id === parseInt(knowHowId)
+        })
     }
 
     const getDate = () => {
@@ -133,6 +166,16 @@ const MainContainer = ({allotmentSettings}) =>{
         return `${dd}/${mm}/${yyyy}`
     }
 
+    const sortByReverseDate = (array) => {
+        const sortedArray = array.sort((a, b) => {
+            a = a.date.split('/').reverse().join('');
+            b = b.date.split('/').reverse().join('');
+            return a > b ? -1 : a < b ? 1 : 0;
+        });
+        return sortedArray
+    }
+
+    const sortedBulletins = sortByReverseDate(bulletins);
 
 // weather data and api fetch
     
@@ -198,27 +241,23 @@ const MainContainer = ({allotmentSettings}) =>{
         <Router>
 
         <> 
-            <NavBar/> 
-
-            <h1>Villcumin to GrowHub</h1>
+            <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/> 
 
             <Switch>
                 <PrivateRoute exact path="/" component={() => {
                     return (
                         <HomePageContainer 
                             currentUser = {currentUser}
-                            bulletins = {bulletins}
                             tips = {tips}
                             weatherData = {weatherData}
-  
+                            getDate = {getDate}
+                            sortedBulletins = {sortedBulletins}
                         />)
                     }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/plots' component = {() =>{
                     return <PlotList currentUser={currentUser} plots={plots} allotmentSettings={allotmentSettings} />
                 }} currentUser={currentUser}/>
-
-
 
                 <Route exact path = "/plots/:id" render = {(props) => {
                     const id = props.match.params.id;
@@ -227,7 +266,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob}/>
+                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
@@ -246,13 +285,22 @@ const MainContainer = ({allotmentSettings}) =>{
                     return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
+                <Route exact path = "/knowhows/:id" render = {(props) => {
+                    const id = props.match.params.id;
+                    const foundKnowHow = findKnowHowById(id);
+                    return foundKnowHow? <KnowHowDetail currentUser={currentUser} knowHow={foundKnowHow} />: <Redirect to="/knowhows" />
+                }} currentUser={currentUser} />                 
+
                 <Route path = "/login" render={() => {
                     return(
                         <>
-                            <h3>Please login to continue</h3>
-                            <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser} />
+                            <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
                         </>
                     )
+                }}/>
+
+                <Route exact path = '/users/new' render = {() =>{
+                    return <NewUser postUser={postUser} getDate={getDate} newUserCheck={newUserCheck}/>
                 }}/>
 
                 <Route render={() => {

@@ -1,6 +1,9 @@
 import React from 'react';
 import Plot from './Plot';
 
+import '../../css/Plots.css';
+import LogoSmall from '../../css/LogoSmall.png';
+
 const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
     // const plotsMap = allotmentSettings.mapFilepath;
@@ -53,22 +56,40 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
     return(
         <>
-            <h3>This is our list of plots, that renders many Plot objects</h3>
+        <div id="plots-grid-container">
 
-            <p>Your Plot{plotsPlural? <span>s</span>: null}:</p>
-            <ul>
-                {currentUserPlotArray}
-            </ul>
+            <div id="logo-grid">
+                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            </div>
 
-            <p>Other Plots:</p>
-            <ul>
-                {otherPlotArray}
-            </ul>
+            {/* <h3>Adding history to your plot is optional. </h3> */}
+
+            <div id="your-plots-grid">
+                <p class="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>
+        
+                <div>
+                    <ul class="flexWrapper">
+                        {currentUserPlotArray}
+                    </ul>
+                </div>
+            </div>
+
+            <div id="other-plots-grid">
+                <p class="plotText2">Other Plots:</p>
+
+                <div>
+                    <ul class="flexWrapper">
+                        {otherPlotArray}
+                    </ul>
+                </div>
+            </div>
 
             {/* <p>shifted plots</p>
             <ul>
                 {newPlotsArray()}
             </ul> */}
+
+        </div>
         </>
     )
 

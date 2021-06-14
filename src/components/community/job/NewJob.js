@@ -1,34 +1,27 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
-
-// The purpose of this file is to render a new job form
-
-// TO DO
-    // Import all the areas (plots and communal) 
-        // either by a new db route for /areas
-        // or by combining the arrays here
-    // map through the areas, print an option? (but 70+ plots.. thats a lot of areas)
-
 const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
 
+    const date = getDate();
+
     const [formData, setFormData] = useState({
-        date: "",
-        author: null,
+        date: date,
+        author: currentUser,
         title: "",
         body: "",
-        area: null,
+        area: {},
         deadline: "",
         difficulty: 0
     })
 
     const [formCheck, setFormCheck] = useState(null);
 
+
     const communalAreaOptions = communalAreas.map((communalArea, index) => {
         return <option value={index} key={index}>{communalArea.areaName}</option>
     });
 
-    const date = getDate();
 
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
@@ -36,7 +29,9 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
       }
 
     const handleArea = (e) => {
-        formData['area'] = communalAreas[e.target.value];
+        formData.area = communalAreas[e.target.value];
+        // If we want to make plots selectable, when we select a plot we need to make area['type'] = plot
+        formData.area['type'] = 'communal'
         setFormData(formData);
     }
 
@@ -46,23 +41,14 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
     }
 
     const handleSubmit = (e) => {
-        formData['date'] = date;
-        formData['author'] = currentUser;
         e.preventDefault();
-        console.log("Handle submit of formdata:")
-        console.log(formData);
-
         postJob(formData);
-
-        // setFormCheck(1);
+        setFormCheck(1);
     }
 
     return(
     <>
         <h3>Use this form to enter a new job needing doing</h3>
-
-       {/* Job(String date, User author, String title, String body, Area area, String deadline, int difficulty) */}
-
 
         <form onSubmit={handleSubmit}>
             <label name='title'>Title:</label>

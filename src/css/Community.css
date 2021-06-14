@@ -1,0 +1,146 @@
+#community-container {
+    display: flex;
+}
+
+
+#noticeboard {
+    width: 60%;
+    height: 800;
+    /* font-family: lucida handwriting; */
+    font-family: 'Reenie Beanie';
+    background:#666;
+    color:white;
+    text-align: center;
+    padding-top: 5px;
+    border-width:20px;
+    border-style: solid;
+    border-color: tan;
+    border-radius: 5%;
+}
+
+#noticeboard h1 {
+    font-weight: bold;
+    font-size: 3rem;
+  }
+
+#noticeboard h2 {
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+
+  #noticeboard h3 {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+   
+  #noticeboard p {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+   
+ #noticeboard ul,li{
+    list-style:none;
+  }
+
+ #noticeboard ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #noticeboard ul li div{
+    text-decoration:none;
+    color: black;
+    background:#ffc;
+    display:block;
+    height:10em;
+    width:10em;
+    padding:1em;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  }
+
+  #noticeboard ul li div:hover{
+    background:#fdc;
+  }
+
+  #noticeboard ul li div{
+    transform: rotate(-6deg);
+  }
+
+  #noticeboard ul li:nth-child(even) div{
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+  }
+  #noticeboard ul li:nth-child(3n) div{
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+  }
+  #noticeboard ul li:nth-child(5n) div{
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+  }
+
+  #noticeboard ul li{
+    margin:1em;
+  }
+
+  #noticeboard #bulletin-author {
+      float: left;
+  }
+
+  #noticeboard #bulletin-date {
+    float: right;
+}
+
+/* #noticeboard:link {
+    color: white;
+    text-decoration: none;
+} */
+
+#new-bulletin {
+    color: white;
+    text-decoration: none;
+}
+
+#new-bulletin:hover {
+    color: cyan;
+    text-decoration: none;
+}
+
+#jobs-container {
+    background-color: #f5f5f5;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    color: darkblue;
+    font-family: 'Reenie Beanie';
+    font-size: 30px;
+}
+
+#jobs-container li {
+    padding-bottom: 15px;
+    list-style: none;
+    border-bottom: 1px dotted #ccc;
+    text-indent: 25px;
+    height: auto;
+    padding: 10px;
+}
+
+
+.carrot {
+    color: #ef7215;
+}
+
+#new-job {
+    text-decoration: none;
+}
+
+#new-job:hover {
+    color: cornflowerblue;
+    text-decoration: none;
+}
