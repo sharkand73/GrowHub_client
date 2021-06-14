@@ -3,12 +3,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
 
-const Job = ({job, currentUser}) =>{
+const Job = ({job, currentUser, deleteJob}) =>{
+
+    const jobEditDelete = () => {
+        if (currentUser.email === job.author.email) {
+            return(
+                <>
+                <div>
+                    <button type='button' onClick={() => deleteJob(job)}>Delete</button>
+                </div>
+                <div>
+                    <button type='button'>Edit</button>
+                </div>
+                </>
+            )
+        }
+    }
     
     return (
         <div>
             <span id="job-item">{job.title}</span> 
             {job.carrots}
+            <>{jobEditDelete()}</>
         </div>
     );
     }

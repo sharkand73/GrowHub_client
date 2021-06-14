@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
-const JobList = ({jobs, currentUser}) =>{
+const JobList = ({jobs, currentUser, deleteJob}) =>{
 
 // Sorts jobs by deadline date, most urgent at top
 const jobsByDeadline = jobs.sort((a, b) => {
@@ -22,7 +22,7 @@ jobsByDeadline.forEach((job) => {
 
 const jobsRenderedByDeadline = jobsByDeadline.map((job, index) => {
     return(
-        <li key={index}><Job job={job} currentUser={currentUser}/></li>
+        <li key={index}><Job job={job} currentUser={currentUser} deleteJob={deleteJob}/></li>
     )
 });
 

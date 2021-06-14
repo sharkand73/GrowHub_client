@@ -11,8 +11,8 @@ import '../../css/Community.css';
 
 // Outgoing props = BulletinItems, Jobs, User, onClick, onSubmit
 
-const Community = ({currentUser, sortedBulletins, jobs}) => {
 
+const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob}) => {
 
     return(
         <>
@@ -20,7 +20,7 @@ const Community = ({currentUser, sortedBulletins, jobs}) => {
             <div id="noticeboard">
                 <h1>Bulletin Board</h1>
                 <div id="noticeboard-inner">
-                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} />
+                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} deleteBulletin={deleteBulletin}/>
                 </div>
                 <h2>
                 <Link to='/bulletins/new' id="new-bulletin">
@@ -31,7 +31,7 @@ const Community = ({currentUser, sortedBulletins, jobs}) => {
             </div>
                 <div id="jobs-container">
                     <h2>Job List</h2>
-                    <JobList jobs={jobs} currentUser={currentUser} />
+                    <JobList jobs={jobs} currentUser={currentUser} deleteJob={deleteJob}/>
                     <h3>
                     <Link to='/jobs/new' id="new-job">
                         New Job
