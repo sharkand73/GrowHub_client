@@ -5,11 +5,11 @@ import {Link} from 'react-router-dom';
 // Purpose:
     // Render a list of all KnowHows
     
-const KnowHowList = ({currentUser, knowHows}) =>{
+const KnowHowList = ({currentUser, knowHows, userEditDelete}) =>{
 
     const knowHowArray = knowHows.map((knowHow, index) => {
         return(
-            <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser}/></li>
+            <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser} userEditDelete={userEditDelete}/></li>
         )
     })
 

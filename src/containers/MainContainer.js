@@ -151,6 +151,21 @@ const MainContainer = ({allotmentSettings}) =>{
     
     useEffect(() => getData(), [allotmentSettings]);
 
+    const userEditDelete = (currentUser, bulletin) => {
+        if (currentUser.email === bulletin.author.email) {
+            return(
+                <>
+                <div>
+                    <button type='button' onClick={deleteClick}>Delete</button>
+                </div>
+                <div>
+                    <button type='button' onclick={editClick}>Edit</button>
+                </div>
+                </>
+            )
+        }
+    }
+
 
     return(
 
@@ -186,7 +201,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs}/>
+                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs} userEditDelete={userEditDelete}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
@@ -198,7 +213,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
-                    return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
+                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} userEditDelete={userEditDelete}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{

@@ -5,7 +5,7 @@ import React from 'react';
 // Title
 // body
 
-const KnowHow = ({knowHow, currentUser}) =>{
+const KnowHow = ({knowHow, currentUser, userEditDelete}) =>{
 
     const monthLower = knowHow.month.toLowerCase();
     const month = monthLower[0].toUpperCase() + monthLower.slice(1);
@@ -18,6 +18,7 @@ const KnowHow = ({knowHow, currentUser}) =>{
                 <li>Applies to month: {month}</li>
                 <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
             </ul>
+            <>{userEditDelete}</>
         </div>
     )
 

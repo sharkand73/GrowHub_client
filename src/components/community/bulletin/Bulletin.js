@@ -4,13 +4,16 @@ import React from 'react';
 
 // Incoming props = BulletinItem
 
-const Bulletin = ({bulletin, currentUser}) =>{
+const Bulletin = ({bulletin, currentUser, userEditDelete}) =>{
+
+    
     
     return (
         <>
             <h1>{bulletin.title}</h1>
             <h3><span>{bulletin.author.shortName}</span> <span>{bulletin.date}</span></h3>
             <p>{bulletin.body}</p>
+            <>{userEditDelete}</>
         </>
     );
     }

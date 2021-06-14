@@ -9,14 +9,14 @@ import JobList from './job/JobList.js'
 
 // Outgoing props = BulletinItems, Jobs, User, onClick, onSubmit
 
-const Community = ({currentUser, bulletins, jobs}) => {
+const Community = ({currentUser, bulletins, jobs, userEditDelete}) => {
 
 
     return(
         <>
-        <BulletinList bulletins={bulletins} currentUser={currentUser} />
+        <BulletinList bulletins={bulletins} currentUser={currentUser} userEditDelete={userEditDelete} />
 
-        <JobList jobs={jobs} currentUser={currentUser} />
+        <JobList jobs={jobs} currentUser={currentUser} userEditDelete={userEditDelete}/>
         </>
     )
 }

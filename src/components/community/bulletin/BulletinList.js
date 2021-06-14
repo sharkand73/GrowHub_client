@@ -12,9 +12,9 @@ import {Link} from 'react-router-dom';
 const BulletinList = ({bulletins, currentUser}) =>{
 
 // map through BulletinItems prop and render a Bulletin.js for each bulletin it comes across
-const bulletinArray = bulletins.map((bulletin, index) => {
+const bulletinArray = bulletins.map((bulletin, index, userEditDelete) => {
     return(
-        <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
+        <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser} userEditDelete={userEditDelete}/></li>
     )
 })
 //will need to reverse this ^ array to put it into descending date order. 

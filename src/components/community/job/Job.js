@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const Job = ({job, currentUser}) =>{
+const Job = ({job, currentUser, userEditDelete}) =>{
     
     return (
         <div>
@@ -14,6 +14,7 @@ const Job = ({job, currentUser}) =>{
                 <li>Difficulty: {job.difficulty} carrots</li>
                 <li>Posted by {job.author.shortName} - <i>{job.date}</i></li>
             </ul>
+            <>{userEditDelete}</>
         </div>
     );
     }

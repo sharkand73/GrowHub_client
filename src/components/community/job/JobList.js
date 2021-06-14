@@ -9,12 +9,12 @@ import {Link} from 'react-router-dom';
 
 // Outgoing props = user
 
-const JobList = ({jobs, currentUser}) =>{
+const JobList = ({jobs, currentUser, userEditDelete}) =>{
 
 // map through Jobs prop and render a Job.js for each job it comes across
 const jobArray = jobs.map((job, index) => {
     return(
-        <li key={index}><Job job={job} currentUser={currentUser}/></li>
+        <li key={index}><Job job={job} currentUser={currentUser} userEditDelete={userEditDelete}/></li>
     )
 })
 
