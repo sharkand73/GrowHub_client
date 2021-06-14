@@ -182,5 +182,20 @@
     padding:10px;
     margin: 10px;
     box-shadow: 5px 5px 7px rgba(33,33,33,.7)
-
 }
+
+#large-post-it h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+#large-post-it div {
+    display: inline-block;
+    align-items: left;
+}
+
+#large-post-it div p {
+    font-size: 30px;
+    
+}
+

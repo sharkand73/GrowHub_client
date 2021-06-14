@@ -4,10 +4,12 @@ const BulletinDetails = ({bulletin, clickAway}) => {
 
     return(
         <div id = "large-post-it" onClick = {clickAway}>
-            <h1>{bulletin.title}</h1>
-            <h2>bulletin.author.shortName</h2>
-            <h3>bulletin.date</h3>
-            <p>bulletin.body</p>
+            <h2>{bulletin.title}</h2>
+            <h3>{bulletin.author.shortName}</h3>
+            <h3>{bulletin.date}</h3>
+            <div>
+            <p>{bulletin.body}</p>
+            </div>
         </div>
     )
 }
