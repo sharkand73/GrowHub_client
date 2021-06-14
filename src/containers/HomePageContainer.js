@@ -55,13 +55,14 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
                 
 
                 <div class="fixedHeightContainer" id="news-grid">
+                    <p class="news-header">Latest News</p>
                     <ul class="content news-text">
                     {bulletinsForRender}
                     </ul>
                 </div>
 
 
-                <div id="tips-grid" class="tip-text">
+                <div id="tips-grid"  class="tip-text" >
                     <Tip tips = {tips} />
                 </div>
 

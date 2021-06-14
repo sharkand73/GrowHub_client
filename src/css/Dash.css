@@ -49,6 +49,7 @@
     float:none;
     padding:3px; 
     background:white;
+    background-color: silver;
 }
 
 .content {
@@ -84,6 +85,7 @@
     font-size: 15px;
     font-family: 'Montserrat', sans-serif;
     color: rgb(82, 79, 79);
+    /* text-align: right; */
 }
 
 .news-text{
@@ -97,4 +99,11 @@
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     color: rgb(82, 79, 79);
+}
+
+.news-header{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
 }

@@ -51,41 +51,49 @@ const Login = ({users, setCurrentUser, currentUser}) => {
 
     return(
         <>
-        {/* <div class="background"> */}
+
         <div class="background" id="login-grid-container">
-            {/* <h1 class="welcome">GrowHub</h1> */}
-            <img id="logo-grid" class="logo" src={Logo} alt="Logo" />;
-            
-            <div id="login-grid" class="polytunnel" >
-      
-                <form onSubmit={handleSubmit}>
-                    {/* <p class="slogan form-inner">Grow, Share, Enjoy!</p> */}
-                    <div class="form-inner">
-                        <label class="label" name='username'>Username:</label>
-                        <input class="input" type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
-                    </div>
-                    <div class="form-inner">
-                        <label class="label" name='password'>Password:</label>
-                        <input class="input" type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
-                    </div>
-                    <div class="form-inner">
-                        <button class="loginPageButton" type='submit' >Login</button>
-                    </div>
-                    <div class="form-inner">
-                        {loginCheck === 1 ? <h3>Incorrect Password</h3> :null}
-                        {loginCheck === 2 ? <h3>User does not exist</h3> :null}
-                     </div>
-                    {currentUser ? <Redirect to="/" /> : null}
 
-                </form>
-
+            <div id="logo-grid">
+                <img class="logo" src={Logo} alt="Logo" />;
             </div>
 
-            <div id="account-grid" class="create-background">
-              <button  class="loginPageButton">
+            <div id="polytunnel-grid" class="polytunnel" >
+                <div id="poly-grid-container">
+                    <form id="poly1" onSubmit={handleSubmit}>
+
+                        <div class="form-inner">
+                            <label class="label" name='username'>Username:</label>
+                            <input class="input" type='text' placeholder='Username' name='username' id='username' onChange={handleChange} required/>
+                        </div>
+                        <div class="form-inner">
+                            <label class="label" name='password'>Password:</label>
+                            <input class="input" type='password' placeholder='******' name='password' id='password' onChange={handleChange} required/>
+                        </div>
+                        
+                        <div class="form-inner">
+                            <button class="loginPageButton" type='submit' >Login</button>
+                        </div>
+                        <div class="form-inner">
+                            {loginCheck === 1 ? <h3 class="no-margin">Incorrect Password</h3> :null}
+                            {loginCheck === 2 ? <h3 class="no-margin">User does not exist</h3> :null}
+                        </div>
+                        {currentUser ? <Redirect to="/" /> : null}
+                    </form>
+
+                    <div id="poly2" class="form-inner">
+                        <button  class="createAccountButton">
+                            <Link class="create-account" to="/users/new">Create Account</Link>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* <div id="account-grid" class="create-background">
+              <button  class="createAccountButton">
                     <Link class="create-account" to="/users/new">Create Account</Link>
               </button>
-            </div>
+            </div> */}
            
         </div>
 

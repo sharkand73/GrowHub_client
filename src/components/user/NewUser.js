@@ -54,7 +54,7 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
     return(
         <>
             <h3>Enter your info here to create an account</h3>
-            <p>If you require admin account functionality, please contact the site administrator</p>
+            <p>If you require administrator account functionality, please contact the site administrator at admin@allotmentplots.co.uk</p>
 
                 <form onSubmit={handleSubmit}>
                     <label name='shortName'>Username:</label>
