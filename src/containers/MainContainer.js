@@ -120,6 +120,7 @@ const MainContainer = ({allotmentSettings}) =>{
         jobs.splice(index);
         const request = new Request();
         request.delete("/api/jobs", job.id)
+    }
 
     const postUser = (newUser) => {
         // Re-initialize the newUserCheck state
@@ -150,12 +151,6 @@ const MainContainer = ({allotmentSettings}) =>{
             return plot.id === parseInt(plotId)
             }
         )
-    }
-
-    const findKnowHowById = (knowHowId) => {
-        return knowHows.find((knowHow) => {
-            return knowHow.id === parseInt(knowHowId)
-        })
     }
 
     const getDate = () => {
