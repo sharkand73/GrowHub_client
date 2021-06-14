@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Job from './Job.js';
-import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
@@ -13,13 +12,13 @@ const jobsByDeadline = jobs.sort((a, b) => {
     return a < b ? -1 : a > b ? 1 : 0;
 });
 
+
 const jobsRenderedByDeadline = jobsByDeadline.map((job, index) => {
+
     return(
         <li key={index}><Job job={job} currentUser={currentUser} deleteJob={deleteJob}/></li>
     )
 });
-
-
 
 return (
     <>    
