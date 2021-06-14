@@ -1,6 +1,8 @@
 import React from 'react';
 import BulletinList from './bulletin/BulletinList.js'
 import JobList from './job/JobList.js'
+import {Link} from 'react-router-dom';
+import '../../css/Community.css';
 
 
 // The purpose of this file is to render our BulletinList AND JobList
@@ -9,14 +11,34 @@ import JobList from './job/JobList.js'
 
 // Outgoing props = BulletinItems, Jobs, User, onClick, onSubmit
 
-const Community = ({currentUser, bulletins, jobs}) => {
+const Community = ({currentUser, sortedBulletins, jobs}) => {
 
 
     return(
         <>
-        <BulletinList bulletins={bulletins} currentUser={currentUser} />
-
-        <JobList jobs={jobs} currentUser={currentUser} />
+        <div id="community-container">
+            <div id="noticeboard">
+                <h1>Bulletin Board</h1>
+                <div id="noticeboard-inner">
+                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} />
+                </div>
+                <h2>
+                <Link to='/bulletins/new' id="new-bulletin">
+                    New Bulletin
+                </Link>
+                </h2>
+            
+            </div>
+                <div id="jobs-container">
+                    <h2>Job List</h2>
+                    <JobList jobs={jobs} currentUser={currentUser} />
+                    <h3>
+                    <Link to='/jobs/new' id="new-job">
+                        New Job
+                    </Link>
+                    </h3>
+                </div>
+        </div>    
         </>
     )
 }

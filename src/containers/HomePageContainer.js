@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import moment from 'moment';
 
 import Bulletin from '../components/community/bulletin/Bulletin';
 import Tip from '../components/community/tip/Tip';
@@ -9,33 +10,20 @@ import '../css/Dash.css';
 import LogoSmall from '../css/LogoSmall.png';
 
 
-// Renders weather widgets etc
-// Renders buttons for areas of the site
-// Renders some recent news bulletins (requires loop, find 3 most recent from bulletins prop, or something)
-// Renders tip of the month
-// Renders "hello {user}" message
-
-// Props to pass down:
-    // Plots = Plots & User
-    // KnowHows = KnowsHows & User
-    // Community = Bulletins, Jobs, User
+const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulletins}) =>{
+    
+    // Filter out non-committee member posts
+    const committeeBulletins = sortedBulletins.filter(bulletin => bulletin.author.position !== "NONE" || "INACTIVE");
 
 
-// OTHER INFO:
-    // It will probably be easier to actually make separate components for weather widgets, quick bulletins, tips etc
-    // Makes the Rendering a bit simpler. Don't need to have all the HTML here under one giant conditional render
+    // Slice the most recent 3
+    const threeBulletins = committeeBulletins.slice(0,3);
 
-const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate}) =>{
-
-    const committeeBulletins = bulletins.map((bulletin, index) => {
-            if (bulletin.author.position !== "NONE" || "INACTIVE"){
-                return(
-                    <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
-                )
-            }
-            return null;
-        })
-
+    // Map through the threeBulletins to create an li element
+    const bulletinsForRender = threeBulletins.map((bulletin, index) => {
+        return <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
+    })
+    
     return(
         <>
         <div id="dash-grid-container" >
@@ -60,7 +48,7 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate})
 
                 <div  id="weather-grid" class="weather-text">
                     <h3>Todays date:</h3>
-                    {getDate()}
+                    {moment().format('DD MMMM YYYY')}
 
                     <Weather weatherData={weatherData}/>
                 </div>
@@ -68,7 +56,7 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate})
 
                 <div class="fixedHeightContainer" id="news-grid">
                     <ul class="content news-text">
-                    {committeeBulletins}
+                    {bulletinsForRender}
                     </ul>
                 </div>
 
@@ -78,7 +66,6 @@ const HomePageContainer = ({currentUser, bulletins, tips, weatherData, getDate})
                 </div>
 
         </div>
-
         </>
     )
 

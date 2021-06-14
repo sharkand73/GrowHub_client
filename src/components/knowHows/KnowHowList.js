@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useState} from 'react';
 import KnowHow from './KnowHow.js';
 import {Link} from 'react-router-dom';
 
@@ -7,7 +7,24 @@ import {Link} from 'react-router-dom';
     
 const KnowHowList = ({currentUser, knowHows}) =>{
 
-    const knowHowArray = knowHows.map((knowHow, index) => {
+    const [filteredKnowhows, setFilteredKnowhows] = useState(knowHows);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthOptions = months.map((month, index) => 
+    (<option key={index} value={month.toUpperCase()}>{month}</option>)
+    )
+
+    const onChange = (e) => {
+        let monthSelected = e.target.value;
+        //console.log(monthSelected);
+        let tempKnowhows = [];
+        if (monthSelected === "All"){monthSelected = ""};
+        tempKnowhows = knowHows.filter((item) =>
+            (item.month.includes(monthSelected)));
+        setFilteredKnowhows(tempKnowhows);
+        }
+    
+
+    const knowHowArray = filteredKnowhows.map((knowHow, index) => {
         return(
             <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser}/></li>
         )
@@ -15,14 +32,21 @@ const KnowHowList = ({currentUser, knowHows}) =>{
 
     return(
         <>
-            <h3>Here are all the Know Hows</h3>
+            <h3>Month-related gardening advice:</h3>
+            <form>
+                <label htmlFor="month-select">By month</label>
+                <select onChange={onChange}>
+                    <option value='All'>All</option>
+                    {monthOptions}
+                </select>
+            </form>
             <ul>
                 {knowHowArray}
             </ul>
 
             <button>
                 <Link to='/knowhows/new'>
-                    New Know How
+                    Add know-how
                 </Link>
             </button>
 
