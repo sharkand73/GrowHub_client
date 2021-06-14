@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import KnowHow from './KnowHow.js';
 import {Link} from 'react-router-dom';
 
@@ -6,6 +6,13 @@ import {Link} from 'react-router-dom';
     // Render a list of all KnowHows
     
 const KnowHowList = ({currentUser, knowHows}) =>{
+
+    const [filteredKnowhow, setFilteredKnowhow] = useState(KnowHow);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthOptions = months.map((month, index) => 
+    (<select key={index} value={month.toUpperCase()}>{month}</select>)
+    )
+
 
     const knowHowArray = knowHows.map((knowHow, index) => {
         return(
@@ -15,7 +22,13 @@ const KnowHowList = ({currentUser, knowHows}) =>{
 
     return(
         <>
-            <h3>Here are all the Know Hows</h3>
+            <h3>Month-related gardening advice:</h3>
+            <form>
+                <select>
+                    <option value='All'>All</option>
+                    {monthOptions}
+                </select>
+            </form>
             <ul>
                 {knowHowArray}
             </ul>

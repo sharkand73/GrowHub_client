@@ -10,6 +10,8 @@ const KnowHow = ({knowHow, currentUser}) =>{
     const monthLower = knowHow.month.toLowerCase();
     const month = monthLower[0].toUpperCase() + monthLower.slice(1);
 
+
+
     return(
         <div>
             <h4>{knowHow.title}</h4>
