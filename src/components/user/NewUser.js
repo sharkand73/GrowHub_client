@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
+import '../../css/NewUser.css';
+
 const NewUser = ({postUser, getDate, newUserCheck}) => {
 
     const year = getDate().slice(6, 11)
@@ -53,9 +55,14 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
 
     return(
         <>
-            <h3>Enter your info here to create an account</h3>
-            <p>If you require administrator account functionality, please contact the site administrator at admin@allotmentplots.co.uk</p>
+        <div id="new-user-container">
 
+            <div id="text-grid">
+                <h3>Enter your info here to create an account</h3>
+                <p>If you require administrator account functionality, please contact the site administrator at admin@allotmentplots.co.uk</p>
+            </div>
+
+            <div id="form-grid">
                 <form onSubmit={handleSubmit}>
                     <label name='shortName'>Username:</label>
                     <input type='text' name='shortName' id='shortName' placeholder='Sharkanator' onChange={handleChange} required />
@@ -73,6 +80,8 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
                 </form>
 
                 {submitResponse()}
+            </div>
+        </div>
         </>
     )
 

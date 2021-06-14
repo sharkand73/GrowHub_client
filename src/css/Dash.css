@@ -95,7 +95,7 @@
     list-style: none;
 }
 
-.weather-text{
+.dash-text{
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     color: rgb(82, 79, 79);
@@ -106,4 +106,5 @@
     font-size: 40px;
     font-weight: 600;
     color: white;
+    padding-left:40px;
 }
