@@ -4,17 +4,17 @@ import React from 'react';
 
 // Incoming props = BulletinItem
 
-const Bulletin = ({bulletin, currentUser, deleteClick, editClick}) =>{
+const Bulletin = ({bulletin, currentUser, deleteBulletin}) =>{
 
     const bulletinEditDelete = () => {
         if (currentUser.email === bulletin.author.email) {
             return(
                 <>
                 <div>
-                    <button type='button' onClick={deleteClick}>Delete</button>
+                    <button type='button' onClick={() => deleteBulletin(bulletin)}>Delete</button>
                 </div>
                 <div>
-                    <button type='button' onclick={editClick}>Edit</button>
+                    <button type='button'>Edit</button>
                 </div>
                 </>
             )

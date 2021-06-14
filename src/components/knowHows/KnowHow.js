@@ -5,17 +5,17 @@ import React from 'react';
 // Title
 // body
 
-const KnowHow = ({knowHow, currentUser, deleteClick, editClick}) =>{
+const KnowHow = ({knowHow, currentUser, deleteKnowhow}) =>{
 
     const knowHowEditDelete = () => {
         if (currentUser.email === knowHow.author.email) {
             return(
                 <>
                 <div>
-                    <button type='button' onClick={deleteClick}>Delete</button>
+                    <button type='button' onClick={() => deleteKnowhow(knowHow)}>Delete</button>
                 </div>
                 <div>
-                    <button type='button' onclick={editClick}>Edit</button>
+                    <button type='button'>Edit</button>
                 </div>
                 </>
             )

@@ -69,11 +69,11 @@ const MainContainer = ({allotmentSettings}) =>{
         )
     }
 
-    const deleteKnowHow = (knowHow) => {
-        const knowHowId = findKnowHowById(knowHow.id);
-        knowHows.splice(knowHowId);
+    const deleteKnowhow = (knowHow) => {
+        const index = knowHows.indexOf(knowHow);
+        knowHows.splice(index);
         const request = new Request();
-        request.delete("/api/knowhows", knowHow)
+        request.delete("/api/knowhows/" + knowHow.id)
     }
 
     const postBulletin = (bulletin) => {
@@ -90,10 +90,10 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const deleteBulletin = (bulletin) => {
-        const bulletinId = findBulletinById(bulletin.id);
-        bulletins.splice(bulletinId);
+        const index = bulletins.indexOf(bulletin);
+        bulletins.splice(index);
         const request = new Request();
-        request.delete("/api/bulletins", bulletin)
+        request.delete("/api/bulletins", bulletin.id)
     }
 
     const postJob = (job) => {
@@ -112,10 +112,10 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const deleteJob = (job) => {
-        const jobId = findBulletinById(job.id);
-        jobs.splice(jobId);
+        const index = jobs.indexOf(job);
+        jobs.splice(index);
         const request = new Request();
-        request.delete("/api/jobs", jobs)
+        request.delete("/api/jobs", job.id)
     }
 
     const findPlotById = (plotId) => {
@@ -193,14 +193,6 @@ const MainContainer = ({allotmentSettings}) =>{
     
     useEffect(() => getData(), [allotmentSettings]);
 
-    const deleteClick = (e) => {
-        
-    }
-
-    const editClick = (e) => {
-        console.log(e.target.value)
-    }
-
     return(
 
         <Router>
@@ -235,7 +227,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs} deleteClick={deleteClick} editClick={editClick}/>
+                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
@@ -243,11 +235,11 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/bulletins/new' component = {() =>{
-                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin} getDate={getDate}/>
+                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin} getDate={getDate} />
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
-                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} deleteClick={deleteClick} editClick={editClick}/>
+                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} deleteKnowhow={deleteKnowhow}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{

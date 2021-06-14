@@ -2,17 +2,17 @@ import React from 'react';
 
 
 
-const Job = ({job, currentUser, deleteClick, editClick}) =>{
+const Job = ({job, currentUser, deleteJob}) =>{
 
     const jobEditDelete = () => {
         if (currentUser.email === job.author.email) {
             return(
                 <>
                 <div>
-                    <button type='button' onClick={deleteClick}>Delete</button>
+                    <button type='button' onClick={() => deleteJob(job)}>Delete</button>
                 </div>
                 <div>
-                    <button type='button' onclick={editClick}>Edit</button>
+                    <button type='button'>Edit</button>
                 </div>
                 </>
             )
