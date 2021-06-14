@@ -300,9 +300,10 @@ const MainContainer = ({allotmentSettings}) =>{
 
                 <Route render={() => {
                     return(
-                        <>
-                            <h1>DIS PAGE NO EXIST</h1> 
-                        </>
+                        <div>
+                            <h2>This page does not exist.</h2>
+                            <p>If you encountered this error unexpectedly, please contact Andy S.</p>
+                        </div>
                     )
                 }} />
 
