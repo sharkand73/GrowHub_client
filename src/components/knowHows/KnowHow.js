@@ -18,7 +18,7 @@ const KnowHow = ({knowHow, currentUser, userEditDelete}) =>{
                 <li>Applies to month: {month}</li>
                 <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
             </ul>
-            <>{userEditDelete}</>
+            <>{userEditDelete(currentUser, knowHow)}</>
         </div>
     )
 

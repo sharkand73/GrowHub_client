@@ -14,7 +14,7 @@ const Job = ({job, currentUser, userEditDelete}) =>{
                 <li>Difficulty: {job.difficulty} carrots</li>
                 <li>Posted by {job.author.shortName} - <i>{job.date}</i></li>
             </ul>
-            <>{userEditDelete}</>
+            <>{userEditDelete(currentUser, job)}</>
         </div>
     );
     }

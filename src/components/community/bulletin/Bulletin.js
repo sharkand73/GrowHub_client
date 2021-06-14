@@ -13,7 +13,7 @@ const Bulletin = ({bulletin, currentUser, userEditDelete}) =>{
             <h1>{bulletin.title}</h1>
             <h3><span>{bulletin.author.shortName}</span> <span>{bulletin.date}</span></h3>
             <p>{bulletin.body}</p>
-            <>{userEditDelete}</>
+            <>{userEditDelete(currentUser, bulletin)}</>
         </>
     );
     }

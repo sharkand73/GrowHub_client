@@ -151,8 +151,8 @@ const MainContainer = ({allotmentSettings}) =>{
     
     useEffect(() => getData(), [allotmentSettings]);
 
-    const userEditDelete = (currentUser, bulletin) => {
-        if (currentUser.email === bulletin.author.email) {
+    const userEditDelete = (currentUser, prop) => {
+        if (currentUser.email === prop.author.email) {
             return(
                 <>
                 <div>
