@@ -7,10 +7,10 @@ import {Link} from 'react-router-dom';
     
 const KnowHowList = ({currentUser, knowHows}) =>{
 
-    const [filteredKnowhow, setFilteredKnowhow] = useState(KnowHow);
+    const [filteredKnowhows, setFilteredKnowhows] = useState(knowHows);
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const monthOptions = months.map((month, index) => 
-    (<select key={index} value={month.toUpperCase()}>{month}</select>)
+    (<option key={index} value={month.toUpperCase()}>{month}</option>)
     )
 
 
