@@ -6,10 +6,15 @@ import Bulletin from '../components/community/bulletin/Bulletin';
 import Tip from '../components/community/tip/Tip';
 import Weather from '../components/community/weather';
 
+import '../css/Dash.css';
+import LogoSmall from '../css/LogoSmall.png';
+
+
 const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulletins}) =>{
     
     // Filter out non-committee member posts
     const committeeBulletins = sortedBulletins.filter(bulletin => bulletin.author.position !== "NONE" || "INACTIVE");
+
 
     // Slice the most recent 3
     const threeBulletins = committeeBulletins.slice(0,3);
@@ -21,36 +26,46 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
     
     return(
         <>
-        <h2>This is our home page container</h2>
+        <div id="dash-grid-container" >
 
-        <div>
-            <ul>
-                {bulletinsForRender}
-            </ul>
+                 <div id="logo-grid2">
+                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                 </div>
 
-            <div>
-                <Tip tips = {tips} />
-            </div>
-            <div>
-                <h3>Todays date:</h3>
-                {moment().format('DD MMMM YYYY')}
-            </div>
-            <div><Weather weatherData={weatherData}/></div>
-        
+                 <div id="paths-grid">
+                    <Link to="/plots">
+                        <button class="path-button">Plots</button>
+                    </Link>
+
+                    <Link to="/knowhows">
+                        <button class="path-button">Know Hows</button>
+                    </Link>
+
+                    <Link to="/community">
+                        <button class="path-button">Community</button>
+                    </Link>
+                </div>
+
+                <div  id="weather-grid" class="weather-text">
+                    <h3>Todays date:</h3>
+                    {moment().format('DD MMMM YYYY')}
+
+                    <Weather weatherData={weatherData}/>
+                </div>
+                
+
+                <div class="fixedHeightContainer" id="news-grid">
+                    <ul class="content news-text">
+                    {bulletinsForRender}
+                    </ul>
+                </div>
+
+
+                <div id="tips-grid" class="tip-text">
+                    <Tip tips = {tips} />
+                </div>
+
         </div>
-
-        <Link to="/plots">
-            <button>Plots</button>
-        </Link>
-
-        <Link to="/knowhows">
-            <button>Know Hows</button>
-        </Link>
-
-        <Link to="/community">
-            <button>Community</button>
-        </Link>
-        
         </>
     )
 

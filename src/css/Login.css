@@ -1,4 +1,33 @@
-/* Login */
+ /* GRID */
+
+ #login-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+    grid-template-rows: repeat(5, 0.5fr);
+    /* grid-template-rows: 0.3fr 0.3fr 0.1fr 0.3fr 0.1fr; */
+    /* grid-template-rows: 10% 20% 40% 35% 5%; */
+  }
+
+#logo-grid{
+    grid-column-start:2;
+    grid-row-start: 2;
+  }
+
+#login-grid{
+    grid-column-start:2;
+    grid-row-start: 4;
+    grid-row-end: 4;
+  }
+
+#account-grid{
+    grid-column-start:2;
+    grid-row-start: 5;
+    grid-row-end: 5;
+  }
+
+
+/* OTHER */
+
 .background{
     background-image: url(Aerial.png);
     background-position: center center;
@@ -25,7 +54,7 @@
     border-top-left-radius: 300px;
     border-top-right-radius: 300px;
     width: 600px;
-    height: 400px;
+    height: 300px;
 }
 
 .slogan{
@@ -66,7 +95,7 @@ input::placeholder {
         justify-content: center;
     }
 
-.loginbutton{
+.loginPageButton{
         font-size: 25px;
         font-weight: 300;
         font-family: 'Montserrat', sans-serif;
@@ -77,26 +106,26 @@ input::placeholder {
         outline: none;
         cursor: pointer;
         padding: 20px;
+        
     }
 
 
+.create-account{
+        font-size: 20px;
+        font-weight: 300;
+        font-family: 'Montserrat', sans-serif;
+        color: grey;
+        text-decoration: none;
 
-    /* GRID */
+    }
 
-#login-grid-container {
-        display: grid;
-        grid-template-columns: repeat(3, 4fr);
-        grid-template-rows: repeat(4, 3fr);
-      }
-
-#logo-grid{
-        grid-column-start:2;
-        grid-row-start: 2;
-      }
-
-
-#login-grid{
-        grid-column-start:2;
-        grid-row-start: 4;
-      }
-
+.create-background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    opacity: 85%;
+    width: 600px;
+    height: 30px;
+    padding-bottom: 25px;
+}
