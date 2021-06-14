@@ -5,7 +5,22 @@ import React from 'react';
 // Title
 // body
 
-const KnowHow = ({knowHow, currentUser, userEditDelete}) =>{
+const KnowHow = ({knowHow, currentUser, deleteClick, editClick}) =>{
+
+    const knowHowEditDelete = () => {
+        if (currentUser.email === knowHow.author.email) {
+            return(
+                <>
+                <div>
+                    <button type='button' onClick={deleteClick}>Delete</button>
+                </div>
+                <div>
+                    <button type='button' onclick={editClick}>Edit</button>
+                </div>
+                </>
+            )
+        }
+    }
 
     const monthLower = knowHow.month.toLowerCase();
     const month = monthLower[0].toUpperCase() + monthLower.slice(1);
@@ -18,7 +33,7 @@ const KnowHow = ({knowHow, currentUser, userEditDelete}) =>{
                 <li>Applies to month: {month}</li>
                 <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
             </ul>
-            <>{userEditDelete(currentUser, knowHow)}</>
+            <>{knowHowEditDelete()}</>
         </div>
     )
 

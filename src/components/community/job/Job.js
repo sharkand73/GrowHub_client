@@ -2,7 +2,22 @@ import React from 'react';
 
 
 
-const Job = ({job, currentUser, userEditDelete}) =>{
+const Job = ({job, currentUser, deleteClick, editClick}) =>{
+
+    const jobEditDelete = () => {
+        if (currentUser.email === job.author.email) {
+            return(
+                <>
+                <div>
+                    <button type='button' onClick={deleteClick}>Delete</button>
+                </div>
+                <div>
+                    <button type='button' onclick={editClick}>Edit</button>
+                </div>
+                </>
+            )
+        }
+    }
     
     return (
         <div>
@@ -14,7 +29,7 @@ const Job = ({job, currentUser, userEditDelete}) =>{
                 <li>Difficulty: {job.difficulty} carrots</li>
                 <li>Posted by {job.author.shortName} - <i>{job.date}</i></li>
             </ul>
-            <>{userEditDelete(currentUser, job)}</>
+            <>{jobEditDelete()}</>
         </div>
     );
     }

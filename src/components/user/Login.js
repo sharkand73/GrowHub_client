@@ -37,6 +37,7 @@ const Login = ({users, setCurrentUser, currentUser}) => {
             if (foundUser.password === formData.password){
                 console.log("user found, password matched")
                 setCurrentUser(foundUser);
+                console.log(currentUser);
             } 
             // Otherwise reload the login page (Would like some kind of rendered error here, probably another component at /login/fail route)
             else {

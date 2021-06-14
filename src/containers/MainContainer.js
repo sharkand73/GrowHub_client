@@ -151,21 +151,13 @@ const MainContainer = ({allotmentSettings}) =>{
     
     useEffect(() => getData(), [allotmentSettings]);
 
-    const userEditDelete = (currentUser, prop) => {
-        if (currentUser.email === prop.author.email) {
-            return(
-                <>
-                <div>
-                    <button type='button' onClick={deleteClick}>Delete</button>
-                </div>
-                <div>
-                    <button type='button' onclick={editClick}>Edit</button>
-                </div>
-                </>
-            )
-        }
+    const deleteClick = (e) => {
+        console.log(e.target.value)
     }
 
+    const editClick = (e) => {
+        console.log(e.target.value)
+    }
 
     return(
 
@@ -201,7 +193,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs} userEditDelete={userEditDelete}/>
+                    return <Community currentUser={currentUser} bulletins={bulletins} jobs={jobs} deleteClick={deleteClick} editClick={editClick}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
@@ -213,7 +205,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
-                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} userEditDelete={userEditDelete}/>
+                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} deleteClick={deleteClick} editClick={editClick}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{
@@ -224,7 +216,7 @@ const MainContainer = ({allotmentSettings}) =>{
                     return(
                         <>
                             <h3>Please login to continue</h3>
-                            <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+                            <Login users={allUsers} setCurrentUser={setCurrentUser} currentUser={currentUser} />
                         </>
                     )
                 }}/>
