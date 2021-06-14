@@ -16,10 +16,12 @@ const Plot = ({plot, currentUser}) =>{
     const url = "/plots/" + plot.id;
 
     return(
-        <div >
-        <Link  to={url} >
+        <div class="flexPlots">
+        <Link class="no-decoration" to={url} >
             <button class="plotSpacing">
-                <h4 class="plotText"> {plot.areaName} </h4>
+
+                <p class="plotText"> {plot.areaName} </p>
+
             </button>
         </Link>
         </div>

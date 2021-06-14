@@ -77,8 +77,8 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
             <div id="other-plots-grid">
                 <p>Other Plots:</p>
 
-                <div  class="flexWrapper">
-                    <ul class="flexPlots">
+                <div>
+                    <ul class="flexWrapper">
                         {otherPlotArray}
                     </ul>
                 </div>
