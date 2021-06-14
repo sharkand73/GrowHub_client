@@ -5,6 +5,14 @@ import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
 const Job = ({job, currentUser, deleteJob}) =>{
 
+    function getCarrots(job){
+        let carrots = [];
+        for(let i=1; i<=job.difficulty; i++){
+            carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
+        }    
+    return carrots;
+    }
+
     const jobEditDelete = () => {
         if (currentUser.email === job.author.email) {
             return(
@@ -21,7 +29,7 @@ const Job = ({job, currentUser, deleteJob}) =>{
     return (
         <div>
             <div id="job-item">{job.title}</div> 
-            <div>{job.carrots}</div>
+            <div>{getCarrots(job)}</div>
             <>{jobEditDelete()}</>
         </div>
     );
