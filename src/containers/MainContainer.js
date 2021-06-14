@@ -7,10 +7,14 @@ import HomePageContainer from './HomePageContainer';
 import Request from '../helpers/request';
 import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
-import PlotList from '../components/plots/PlotList';
+
 import KnowHowList from '../components/knowHows/KnowHowList';
+import KnowHowDetail from '../components/knowHows/KnowHowDetail';
 import NewKnowHow from '../components/knowHows/NewKnowHow';
+
 import Community from '../components/community/Community';
+
+import PlotList from '../components/plots/PlotList';
 import PlotDetail from '../components/plots/PlotDetail';
 
 import NewJob from '../components/community/job/NewJob';
@@ -72,8 +76,6 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const postJob = (job) => {
         jobs.push(job);
-        console.log("postJob, job:")
-        console.log(job);
         const request = new Request();
         request.post("/api/jobs", job);
     }
@@ -108,6 +110,12 @@ const MainContainer = ({allotmentSettings}) =>{
             return plot.id === parseInt(plotId)
             }
         )
+    }
+
+    const findKnowHowById = (knowHowId) => {
+        return knowHows.find((knowHow) => {
+            return knowHow.id === parseInt(knowHowId)
+        })
     }
 
     const getDate = () => {
@@ -212,8 +220,6 @@ const MainContainer = ({allotmentSettings}) =>{
                     return <PlotList currentUser={currentUser} plots={plots} allotmentSettings={allotmentSettings} />
                 }} currentUser={currentUser}/>
 
-
-
                 <Route exact path = "/plots/:id" render = {(props) => {
                     const id = props.match.params.id;
                     const foundPlot = findPlotById(id);
@@ -235,6 +241,12 @@ const MainContainer = ({allotmentSettings}) =>{
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
                     return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
                 }} currentUser={currentUser}/>
+
+                <Route exact path = "/knowhows/:id" render = {(props) => {
+                    const id = props.match.params.id;
+                    const foundKnowHow = findKnowHowById(id);
+                    return foundKnowHow? <KnowHowDetail currentUser={currentUser} knowHow={foundKnowHow} />: <Redirect to="/knowhows" />
+                }} currentUser={currentUser} />                 
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{
                     return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months} getDate={getDate}/>
