@@ -19,35 +19,42 @@
 }
 
 #noticeboard h1 {
+    font-family: 'Reenie Beanie';
     font-weight: bold;
     font-size: 3rem;
   }
 
 #noticeboard h2 {
+    font-family: 'Reenie Beanie';
     font-weight: bold;
     font-size: 1.8rem;
   }
 
   #noticeboard h3 {
+    font-family: 'Reenie Beanie';
     font-weight: bold;
     font-size: 1.2rem;
   }
    
   #noticeboard p {
+    font-family: 'Reenie Beanie';
     font-size: 1rem;
     font-weight: normal;
   }
    
  #noticeboard ul,li{
+    font-family: 'Reenie Beanie';
     list-style:none;
   }
 
  #noticeboard ul{
+    font-family: 'Reenie Beanie';
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  #noticeboard ul li div{
+  #noticeboard ul li #post-it{
+    font-family: 'Reenie Beanie';
     text-decoration:none;
     color: black;
     background:#ffc;
@@ -58,31 +65,32 @@
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
   }
 
-  #noticeboard ul li div:hover{
+  #noticeboard ul li #post-it:hover{
+    font-family: 'Reenie Beanie';
     background:#fdc;
   }
 
-  #noticeboard ul li div{
+  #noticeboard ul li #post-it{
     transform: rotate(-6deg);
   }
 
-  #noticeboard ul li:nth-child(even) div{
+  #noticeboard ul li:nth-child(even) #post-it{
     transform:rotate(4deg);
     position:relative;
     top:5px;
   }
-  #noticeboard ul li:nth-child(3n) div{
+  #noticeboard ul li:nth-child(3n) #post-it{
     transform:rotate(-3deg);
     position:relative;
     top:-5px;
   }
-  #noticeboard ul li:nth-child(5n) div{
+  #noticeboard ul li:nth-child(5n) #post-it{
     transform:rotate(5deg);
     position:relative;
     top:-10px;
   }
 
-  #noticeboard ul li{
+  #post-it{
     margin:1em;
   }
 

@@ -9,11 +9,9 @@ const Job = ({job, currentUser, deleteJob}) =>{
         if (currentUser.email === job.author.email) {
             return(
                 <>
-                <div>
-                    <button type='button' onClick={() => deleteJob(job)}>Delete</button>
-                </div>
-                <div>
-                    <button type='button'>Edit</button>
+                <div className="">       
+                    <span className='edit'>Edit</span>
+                    <span className='delete' onClick={() => deleteJob(job)}>Delete</span>
                 </div>
                 </>
             )
@@ -22,8 +20,8 @@ const Job = ({job, currentUser, deleteJob}) =>{
     
     return (
         <div>
-            <span id="job-item">{job.title}</span> 
-            {job.carrots}
+            <div id="job-item">{job.title}</div> 
+            <div>{job.carrots}</div>
             <>{jobEditDelete()}</>
         </div>
     );

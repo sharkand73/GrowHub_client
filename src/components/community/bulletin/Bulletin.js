@@ -11,10 +11,8 @@ const Bulletin = ({bulletin, currentUser, deleteBulletin}) =>{
             return(
                 <>
                 <div>
-                    <button type='button' onClick={() => deleteBulletin(bulletin)}>Delete</button>
-                </div>
-                <div>
-                    <button type='button'>Edit</button>
+                    <span className="edit">Edit</span>
+                    <span className="delete" onClick={() => deleteBulletin(bulletin)}>Delete</span>
                 </div>
                 </>
             )
@@ -22,12 +20,12 @@ const Bulletin = ({bulletin, currentUser, deleteBulletin}) =>{
     }
     
     return (
-        <div className="post-it-container">
+        <button id="post-it">
             <h2>{bulletin.title}</h2>
-            <h3><span id="bulletin-author">{bulletin.author.shortName}</span> <span id="bulletin-date">{bulletin.date}</span></h3>
+            <h3><span id="bulletin-author">{bulletin.author.shortName}</span> <span value={bulletin.id} id="bulletin-date">{bulletin.date}</span></h3>
             {/* <p>{bulletin.body}</p> */}
             <>{bulletinEditDelete()}</>
-        </div >
+        </button>
     );
     }
 
