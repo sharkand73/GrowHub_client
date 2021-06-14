@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import moment from 'moment';
 
 import Bulletin from '../components/community/bulletin/Bulletin';
 import Tip from '../components/community/tip/Tip';
@@ -32,7 +33,7 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
             </div>
             <div>
                 <h3>Todays date:</h3>
-                {getDate()}
+                {moment().format('DD MMMM YYYY')}
             </div>
             <div><Weather weatherData={weatherData}/></div>
         
