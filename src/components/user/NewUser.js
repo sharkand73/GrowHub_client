@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import '../../css/NewUser.css';
+import LogoSmall from '../../css/LogoSmall.png';
 
 const NewUser = ({postUser, getDate, newUserCheck}) => {
 
@@ -57,9 +58,13 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
         <>
         <div id="new-user-container">
 
+            <div id="logo-grid2">
+                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            </div>
+
             <div id="text-grid">
-                <h3>Enter your info here to create an account</h3>
-                <p>If you require administrator account functionality, please contact the site administrator at admin@allotmentplots.co.uk</p>
+                <p class="newUserHeader">Enter your details to create an account</p>
+                <p class="newUserText">If you require administrator account functionality, please contact the site administrator at admin@allotmentplots.co.uk</p>
             </div>
 
             <div id="form-grid">
