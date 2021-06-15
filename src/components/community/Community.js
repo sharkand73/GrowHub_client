@@ -16,14 +16,13 @@ import '../../css/Community.css';
 // Outgoing props = BulletinItems, Jobs, User, onClick, onSubmit
 
 
-const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob}) => {
+const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob, getDate, editBulletin}) => {
 
     const [selectedBulletin, setSelectedBulletin] = useState();
     const [selectedJob, setSelectedJob] = useState();
 
     const displayBulletin = (result) => {
         setSelectedBulletin(result);
-        console.log(selectedBulletin);
     }
 
     const clickAway = () => {
@@ -54,8 +53,8 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
                 <h1>Bulletin Board</h1>
                 
                 <div id="noticeboard-inner">
-                    {selectedBulletin? <BulletinDetails bulletin={selectedBulletin} clickAway={clickAway} deleteBulletin={deleteBulletin} currentUser={currentUser}/>:
-                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} displayBulletin={displayBulletin}/>}
+                    {selectedBulletin? <BulletinDetails bulletin={selectedBulletin} clickAway={clickAway} deleteBulletin={deleteBulletin} currentUser={currentUser} getDate={getDate} editBulletin={editBulletin} />:
+                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} displayBulletin={displayBulletin} getDate={getDate} selectedBulletin={selectedBulletin} />}
                 </div>
                 <h2>
                 <Link to='/bulletins/new' id="new-bulletin">

@@ -87,16 +87,32 @@ const MainContainer = ({allotmentSettings}) =>{
         setKnowHows(newKnowHowList);
     }
 
-    const editKnowHow = (knowHow) => {
-        const url = "/api/knowhows/" + knowHow.id
+    const editKnowHow = (oldKnowhow, newKnowhow) => {
+        const url = "/api/knowhows/" + oldKnowhow.id
+        const tempKnowhowList = [...knowHows];
+        const index = tempKnowhowList.indexOf(oldKnowhow);
+        tempKnowhowList.splice(index, 1);
+        tempKnowhowList.push(newKnowhow);
+        setKnowHows(tempKnowhowList);
         const request = new Request();
-        request.put(url, knowHow);
+        request.put(url, newKnowhow);
     }
 
     const postBulletin = (bulletin) => {
         bulletins.push(bulletin);
         const request = new Request();
         request.post("/api/bulletins", bulletin);
+    }
+
+    const editBulletin = (oldBulletin, newBulletin) => {
+        const url = "/api/bulletins/" + oldBulletin.id
+        const tempBulletinList = [...bulletins];
+        const index = tempBulletinList.indexOf(oldBulletin);
+        tempBulletinList.splice(index, 1);
+        tempBulletinList.push(newBulletin);
+        setBulletins(tempBulletinList);
+        const request = new Request();
+        request.put(url, newBulletin);
     }
 
     const findBulletinById = (bulletinId) => {
@@ -113,7 +129,7 @@ const MainContainer = ({allotmentSettings}) =>{
         const request = new Request();
         request.delete("/api/bulletins", bulletin.id)
         setBulletins(newBulletinList);
-    }
+    } 
 
     const postJob = (job) => {
         jobs.push(job);
@@ -283,7 +299,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob}/>
+                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob} editBulletin={editBulletin} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{

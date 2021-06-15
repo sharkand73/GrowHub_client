@@ -32,7 +32,7 @@ const EditKnowHow = ({currentUser, knowHow, months, date, editKnowHow, setEditBu
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormData(formData);
-        editKnowHow(formData);
+        editKnowHow(knowHow, formData);
     }
 
     return(
