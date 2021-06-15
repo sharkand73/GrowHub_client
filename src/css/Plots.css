@@ -55,11 +55,11 @@
 
 .plotText{
     font-size: 23px;
-    font-weight: 200;
+    font-weight: 200px;
     font-family: 'Montserrat', sans-serif;
     padding: 10px;
     margin: 5px 30px;
-    color: rgb(82, 79, 79);
+    color: rgb(152, 88, 88);
 }
 
 .no-decoration{
@@ -68,6 +68,6 @@
 
 .plotText2{
 font-size: 25px;
-font-weight: 200;
+font-weight: 200px;
 font-family: 'Montserrat', sans-serif;
 }
