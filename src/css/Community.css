@@ -152,11 +152,11 @@
     color: #ef7215;
 }
 
-#new-job {
+.link-job {
     text-decoration: none;
 }
 
-#new-job:hover {
+.link-job:hover {
     color: cornflowerblue;
     text-decoration: none;
 }
@@ -213,3 +213,11 @@
   color: red;
 }
 
+.job-item-container:hover {
+  background-color: #ffc;
+}
+
+#job-details-heading {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
