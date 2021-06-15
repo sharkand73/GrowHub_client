@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import KnowHow from './KnowHow.js';
 import {Link} from 'react-router-dom';
+import EditKnowHow from './EditKnowHow.js';
 
 import '../../css/Knowhow.css';
 import '../../css/Dash.css';
@@ -9,7 +10,11 @@ import LogoSmall from '../../css/LogoSmall.png';
 // Purpose:
     // Render a list of all KnowHows
     
-const KnowHowList = ({currentUser, knowHows, deleteKnowhow}) => {
+const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow}) => {
+
+    const [selectedKnowhow, setSelectedKnowhow] = useState(null);
+
+    const date = getDate();
 
     const [filteredKnowhows, setFilteredKnowhows] = useState(knowHows);
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -26,16 +31,26 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow}) => {
             (item.month.includes(monthSelected)));
         setFilteredKnowhows(tempKnowhows);
         }
+
+    const editClick = (item) => {
+        setSelectedKnowhow(item);
+    }
+
+    const removeEdit = () => {
+        setSelectedKnowhow(null)
+    }
     
 
     const knowHowArray = filteredKnowhows.map((knowHow, index) => {
         return(
-            <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser} deleteKnowhow={deleteKnowhow}/></li>
+            <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser} deleteKnowhow={deleteKnowhow} editClick={editClick} /></li>
         )
     })
 
+
     return(
         <>
+
         <div id="knowledge-container">
 
             <div id="logo-grid2">
@@ -68,6 +83,10 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow}) => {
                 <ul>
                     {knowHowArray}
                 </ul>
+      
+                <div>
+                    {selectedKnowhow ? <EditKnowHow currentUser={currentUser} knowHow={selectedKnowhow} months={months} date={date} editKnowHow={editKnowHow} removeEdit={removeEdit}/> : null}
+                </div>
             </div>
 
             {/* <div id="buttons-grid">

@@ -28,11 +28,11 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
         <>
         <div id="dash-grid-container" >
 
-                 <div id="logo-grid2">
-                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
-                 </div>
+                <div id="logo-grid2">
+                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                </div>
 
-                 <div id="paths-grid">
+                <div id="paths-grid">
                     <Link to="/plots">
                         <button class="path-button">Plots</button>
                     </Link>
