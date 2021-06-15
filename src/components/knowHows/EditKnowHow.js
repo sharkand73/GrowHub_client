@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
-const EditKnowHow = (currentUser, knowHow, months, getDate, editKnowHow, setEditButtonClicked) => {
+const EditKnowHow = ({currentUser, knowHow, months, date, editKnowHow, setEditButtonClicked, removeEdit}) => {
     
-    const date = getDate();
 
     const [formData, setFormData] = useState({
         date: date,
         author: currentUser,
         title: "",
         body: "",
-        month: ""
+        month: "",
+        id: knowHow.id
     })
-    const [formCheck, setFormCheck] = useState(null);
 
 
     const monthOptions = months.map((month, index) => {
@@ -32,8 +31,6 @@ const EditKnowHow = (currentUser, knowHow, months, getDate, editKnowHow, setEdit
         e.preventDefault();
         setFormData(formData);
         editKnowHow(formData);
-        setFormCheck(1);
-        setEditButtonClicked(false);
     }
 
     return(
@@ -54,8 +51,10 @@ const EditKnowHow = (currentUser, knowHow, months, getDate, editKnowHow, setEdit
 
                 <button type='submit'>Update Know How</button>
             </form>
-
-            {formCheck ? <Redirect to="/knowhows" />:null}</>
+            <div>
+                <button onClick={removeEdit}>X</button>
+            </div>
+        </>
     )
     
 }

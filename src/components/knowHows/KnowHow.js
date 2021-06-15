@@ -2,13 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import EditKnowHow from './EditKnowHow.js'
 
-const KnowHow = ({knowHow, currentUser, deleteKnowhow, months, getDate, editKnowHow}) =>{
+const KnowHow = ({knowHow, currentUser, deleteKnowhow, editClick}) =>{
 
-    // const [editButtonClicked, setEditButtonClicked] = useState(false)
-
-    // useEffect(() => {
-    //     setEditButtonClicked(false)
-    // }, [])
 
     const knowHowEditDelete = () => {
         if (currentUser.email === knowHow.author.email) {
@@ -18,10 +13,9 @@ const KnowHow = ({knowHow, currentUser, deleteKnowhow, months, getDate, editKnow
                     <button type='button' onClick={() => deleteKnowhow(knowHow)}>Delete</button>
                 </div>
                 <div>
-                    <button type='button'  >Edit</button>
+                    <button type='button' onClick={() => editClick(knowHow)} >Edit</button>
                 </div>
-                {/* {editButtonClicked ? <EditKnowHow knowHow={knowHow} months={months} getDate={getDate} editKnowHow={editKnowHow} editButtonClicked={editButtonClicked}/> : null} */}
-                </>
+                </>  
             )
         }
     }
