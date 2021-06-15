@@ -33,6 +33,7 @@ const MainContainer = ({allotmentSettings}) =>{
     const [allUsers, setAllUsers] = useState([]);
     const [communalAreas, setCommunalAreas] = useState([]);
     const [newUserCheck, setNewUserCheck] = useState(0);
+    const [replies, setReplies] = useState([]);
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -45,9 +46,10 @@ const MainContainer = ({allotmentSettings}) =>{
         const tipsPromise = request.get('/api/tips');
         const allUsersPromise = request.get('/api/users');
         const communalAreasPromise = request.get('/api/communals');
+        const repliesPromise = request.get('/api/replies');
         
 
-        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise])
+        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise, repliesPromise])
             .then((data) => {
                 setPlots(data[0]);
                 setKnowHows(data[1]);
@@ -56,6 +58,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 setTips(data[4]);
                 setAllUsers(data[5]);
                 setCommunalAreas(data[6]);
+                setReplies(data[7]);
             })}
 
     useEffect(()=>{requestAll()}, [])
@@ -232,6 +235,13 @@ const MainContainer = ({allotmentSettings}) =>{
     
     useEffect(() => getData(), [allotmentSettings]);
 
+    const postKnowHowReply = (reply) => {
+        replies.push(reply);
+        console.log(replies);
+        const request = new Request();
+        request.post("/api/replies", reply);
+    }
+
     return(
 
         <Router>
@@ -284,7 +294,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 <Route exact path = "/knowhows/:id" render = {(props) => {
                     const id = props.match.params.id;
                     const foundKnowHow = findKnowHowById(id);
-                    return foundKnowHow? <KnowHowDetail currentUser={currentUser} knowHow={foundKnowHow} />: <Redirect to="/knowhows" />
+                    return foundKnowHow? <KnowHowDetail currentUser={currentUser} knowHow={foundKnowHow} getDate={getDate} postReply={postKnowHowReply}/>: <Redirect to="/knowhows" />
                 }} currentUser={currentUser} />                 
 
                 <Route path = "/login" render={() => {
