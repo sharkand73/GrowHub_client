@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Redirect} from 'react-router-dom';
 
 const Reply = ({knowHow, getDate, currentUser,  postReply}) => {
 
@@ -22,20 +23,24 @@ const Reply = ({knowHow, getDate, currentUser,  postReply}) => {
         e.preventDefault();
         setFormData(formData);
         postReply(formData);
-        // setFormCheck(1);
+        setFormCheck(1);
     }
 
     // String body, String date, User author, TextContent textContent
 
+    const url = "/knowHows/" + knowHow.id;
+
     return(
         <>
-        <p>This will be a reply form</p>
+        <p>Enter your reply here!</p>
 
         <form onSubmit={handleSubmit}>
         <input type='text' name='body' id='body' onChange={handleChange} required /> 
 
         <button type='submit'>Submit Reply</button>
         </form>
+
+        {formCheck ? <Redirect to={url} />:null}
 
     </>
     )
