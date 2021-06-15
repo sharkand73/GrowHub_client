@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const EditBulletin = ({currentUser, bulletin, editBulletin, removeEdit, getDate}) => {
+const EditBulletin = ({currentUser, bulletin, editBulletin, getDate, reverseEditClick}) => {
 
     const date = getDate();
 
@@ -21,8 +21,8 @@ const EditBulletin = ({currentUser, bulletin, editBulletin, removeEdit, getDate}
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormData(formData);
-        editBulletin(formData);
-        removeEdit();
+        editBulletin(bulletin, formData);
+        reverseEditClick();
     }
     
     return(
@@ -31,10 +31,10 @@ const EditBulletin = ({currentUser, bulletin, editBulletin, removeEdit, getDate}
                 <form onSubmit={handleSubmit}>
     
                     <label name='title'>Title:</label>
-                    <input type='text' name='title' id='title' onChange={handleChange} required />
+                    <input type='text' name='title' id='title' onChange={handleChange} defaultValue={bulletin.title} required />
     
                     <label name='body'>Your Bulletin:</label>
-                    <input type='text' name='body' id='body' onChange={handleChange} required /> 
+                    <input type='text' name='body' id='body' onChange={handleChange} defaultValue={bulletin.body} required /> 
     
                     <button type='submit'>Submit New Bulletin</button>
                 </form>

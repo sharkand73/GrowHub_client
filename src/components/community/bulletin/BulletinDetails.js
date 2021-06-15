@@ -1,17 +1,42 @@
-import React from 'react';
+import React, {useState} from 'react';
+import EditBulletin from './EditBulletin';
 
-const BulletinDetails = ({bulletin, clickAway, deleteBulletin, currentUser}) => {
+const BulletinDetails = ({bulletin, clickAway, deleteBulletin, currentUser, getDate, editBulletin}) => {
+
+    const [editClick, setEditClick] = useState(null)
+
+    const handleEdit = (item) => {
+        setEditClick(item)
+    }
+
+    const reverseEditClick = () => {
+        setEditClick(null)
+    }
+
     
     const bulletinEditDelete = () => {
         // console.log(`Current user: ${currentUser.id}`);
         // console.log(`Bulletin author ${bulletin.author.id}`);
+
+        const editForm = () => {
+            if (editClick){
+                return(
+                    <div>
+                        <EditBulletin bulletin={bulletin} currentUser={currentUser} getDate={getDate} editBulletin={editBulletin} reverseEditClick={reverseEditClick} /> 
+                    </div>
+                )
+            }
+        }
+
         if (currentUser.email === bulletin.author.email) {
-            return(        
+            return(   
+                <>     
                 <div className = "edit-delete">
-                    <span className="edit-text">Edit</span>
+                    <span className="edit-text" onClick={() => handleEdit(bulletin)} >Edit</span>
                     <span className="delete-text" onClick={() => deleteBulletin(bulletin)}>Delete</span>
                 </div>
-                
+                <>{editForm()}</>
+                </>
             )
         }
     }

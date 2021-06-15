@@ -9,23 +9,14 @@ import EditBulletin from './EditBulletin.js';
 
 // Outgoing props = user
 
-const BulletinList = ({currentUser, sortedBulletins, deleteBulletin, displayBulletin, editBulletin, getDate}) =>{
+const BulletinList = ({currentUser, sortedBulletins, deleteBulletin, displayBulletin, editBulletin}) =>{
 
-    const [selectedBulletin, setSelectedBulletin] = useState(null);
-
-    const editClick = (item) => {
-        setSelectedBulletin(item);
-    }
-
-    const removeEdit = () => {
-        setSelectedBulletin(null)
-    }
 
 // map through BulletinItems prop and render a Bulletin.js for each bulletin it comes across
 const bulletinArray = sortedBulletins.map((bulletin, index) => {
     return(
         
-        <li className="bulletin-postit" key={index}><Bulletin bulletin={bulletin} currentUser={currentUser} deleteBulletin={deleteBulletin} displayBulletin={displayBulletin} editClick={editClick} /></li>
+        <li className="bulletin-postit" key={index}><Bulletin bulletin={bulletin} currentUser={currentUser} deleteBulletin={deleteBulletin} displayBulletin={displayBulletin} editBulletin={editBulletin} /></li>
     )
 })
 
@@ -36,10 +27,6 @@ return (
         <ul>
             {bulletinArray}
         </ul>
-        <div>
-            {selectedBulletin ? <EditBulletin currentUser={currentUser} bulletin={selectedBulletin} editBulletin={editBulletin} removeEdit={removeEdit} getDate={getDate} /> : null}
-        </div>
-
     </div>
 );
 }
