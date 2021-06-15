@@ -47,10 +47,12 @@
 
 .form_field{
     margin: 20px;
+    width: 300px;  
+
 }
 
 .form_input{
-    width: 200px;  
+    width: 300px;  
 }
 
 .field_size{
@@ -87,7 +89,9 @@
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
     color: rgb(82, 79, 79);
+    width: 300px;
 }
+
 
 .createButton{
     font-size: 20px;

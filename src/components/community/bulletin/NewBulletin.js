@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
+import '../../../css/Bulletin.css';
+import LogoSmall from '../../../css/LogoSmall.png';
+import '../../../css/NewUser.css';
+
 const NewBulletin = ({currentUser, postBulletin, getDate}) => {
 
     const date = getDate();
@@ -28,19 +32,43 @@ const NewBulletin = ({currentUser, postBulletin, getDate}) => {
 
     return(
     <>
-         <h3>Enter your new Bulletin here!</h3>
+    <div id="newBulletin-container">
+
+        <div id="logo-grid2">
+            <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+        </div>
+
+        <div id="header-grid">
+            <p class="new-kHw">Enter your new Bulletin here!</p>
+        </div>
+
+        <div id="form-grid2">
+
             <form onSubmit={handleSubmit}>
 
-                <label name='title'>Title:</label>
-                <input type='text' name='title' id='title' onChange={handleChange} required />
+            <div class="form-wrapper">
 
-                <label name='body'>Your Bulletin:</label>
-                <input type='text' name='body' id='body' onChange={handleChange} required /> 
+                <div class="form_field form_input">
+                    <label class="form_text" name='title'>Title:</label>
+                    <input class="field_size" type='text' name='title' id='title' onChange={handleChange} required />
+                </div>
 
-                <button type='submit'>Submit New Bulletin</button>
+                <div class="form_field form_input">
+                    <label class="form_text" name='body'>Your Bulletin:</label>
+                    <input class="field_size3" type='text' name='body' id='body' onChange={handleChange} required /> 
+                </div>
+
+                <div id="form-button2">           
+                <button class="edit-button3" type='submit'>Submit New Bulletin</button>
+                </div>
+
+            </div>
             </form>
 
             {formCheck ? <Redirect to="/community" />:null}
+        </div>
+
+    </div>
     </>
     )
 }
