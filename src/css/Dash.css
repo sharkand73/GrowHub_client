@@ -81,7 +81,7 @@
 /* TEXT */
 
 .tip-text{
-    font-size: 15px;
+    font-size: 20px;
     font-family: 'Montserrat', sans-serif;
     color: rgb(82, 79, 79);
     /* text-align: right; */
@@ -94,16 +94,24 @@
     list-style: none;
 }
 
-.dash-text{
-    font-size: 18px;
+.text3{
+    font-size: 15px;
     font-family: 'Montserrat', sans-serif;
     color: rgb(82, 79, 79);
 }
 
 .news-header{
     font-family: 'Montserrat', sans-serif;
+    color: white;
     font-size: 40px;
     font-weight: 600;
-    color: white;
     padding-left:40px;
+}
+
+.header{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 30px;
+    font-weight: 600;
+    padding-left:0px;
 }

@@ -46,11 +46,11 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
                     </Link>
                 </div>
 
-                <div  id="weather-grid" class="dash-text">
-                    <h3>Todays date:</h3>
+                <div  id="weather-grid" class="text3">
+                    <p class="header">Todays date</p>
                     {moment().format('DD MMMM YYYY')}
 
-                    <Weather weatherData={weatherData}/>
+                    <Weather class="header" weatherData={weatherData}/>
                 </div>
                 
 
@@ -62,7 +62,7 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
                 </div>
 
 
-                <div id="tips-grid"  class="tip-text" >
+                <div id="tips-grid" >
                     <Tip tips = {tips} />
                 </div>
 

@@ -15,8 +15,8 @@ const Tip = ({tips}) => {
 
     return (
         <div>
-            <h2>Tip for {thisMonth}: <span>{tip.title}</span></h2>
-            <p class="dash-text">{tip.body}</p>
+            <p class="header">Tip for {thisMonth}: <span>{tip.title}</span></p>
+            <p class="text3">{tip.body}</p>
 
             {/*  Debugging
             
