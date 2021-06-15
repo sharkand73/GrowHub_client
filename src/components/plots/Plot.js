@@ -3,15 +3,7 @@ import {Link} from 'react-router-dom'
 
 import '../../css/Plots.css';
 
-// Props Incoming:
-    // Takes in a plot prop
-
-
-// Will return an li element with plot name, plot picture, whatever we add down the line
-
-// will need to link to the plot detail page with an onclick
-
-const Plot = ({plot, currentUser}) =>{
+const Plot = ({plot}) =>{
 
     const url = "/plots/" + plot.id;
 
