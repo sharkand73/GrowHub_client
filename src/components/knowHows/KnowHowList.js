@@ -58,7 +58,7 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow
             </div>
 
             <div id="header-grid">
-                <p class="header">Share your knowledge and learn in the knowhows bank!</p>
+                <p class="kWh-header">Share your knowledge and learn in the knowhows bank!</p>
             </div>
 
             <div id="filter-grid" class="intro-flex">
