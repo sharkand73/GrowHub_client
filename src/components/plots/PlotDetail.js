@@ -14,7 +14,7 @@ const PlotDetail = ({currentUser, plot}) =>{
     return plotHolders;
     }
 
-    const plotComments = plot.comments.map((comment) => (<PlotComment comment={comment} currentUser={currentUser}/>))
+    const plotComments = plot.comments.map((comment, index) => (<li><PlotComment key={index} comment={comment} currentUser={currentUser}/></li>))
 
     return(
         <>

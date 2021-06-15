@@ -47,7 +47,7 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
                 </div>
 
                 <div  id="weather-grid" class="text3">
-                    <p class="header">Todays date</p>
+                    <p class="header">Today's date</p>
                     {moment().format('DD MMMM YYYY')}
 
                     <Weather class="header" weatherData={weatherData}/>
