@@ -1,16 +1,25 @@
 /* NavBar */
 .navWrap{
-    /* background-color:white; */
+    display: flex;
     font-size: 25px;
     font-weight: 200;
     font-family: 'Montserrat', sans-serif;
-    display: flex;
     align-items: center;
-    padding: 10px;
+    margin-top:5px 0px 5px 0px;
+
+
 }
 
 .navItem{
     color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navUser{
+    color: green;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     text-decoration: none;
@@ -27,11 +36,31 @@
 .right{
     list-style: none;
     margin-left: auto;
-    padding-right: 20px;
+    padding-right: 30px;
+    padding-left: 20px;
 }
 
 .navLine{
 background-color: silver;
-padding: 5px;
+/* padding: 1px; */
+margin:0px;
 
+}
+
+.logoutButton{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;  
+}
+
+.slim{
+    margin: 0px;
+    padding: 5px;
 }

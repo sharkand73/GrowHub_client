@@ -11,9 +11,10 @@
 #logo-grid{
     grid-column-start:2;
     grid-row-start: 2;
+    grid-row-end: 2;
   }
 
-#login-grid{
+#polytunnel-grid{
     grid-column-start:2;
     grid-row-start: 4;
     grid-row-end: 4;
@@ -23,6 +24,26 @@
     grid-column-start:2;
     grid-row-start: 5;
     grid-row-end: 5;
+  }
+
+#poly-grid-container {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: repeat(5, 0.1fr);
+    /* grid-template-rows: 0.3fr 0.3fr 0.1fr 0.3fr 0.1fr; */
+    /* grid-template-rows: 10% 20% 40% 35% 5%; */
+  }
+
+#poly1{
+    grid-column-start:2;
+    grid-row-start: 3;
+    grid-row-end: 3;
+  }
+
+#poly2{
+    grid-column-start:2;
+    grid-row-start: 4;
+    grid-row-end: 4;
   }
 
 
@@ -41,7 +62,8 @@
 }
 
 .logo{
-    height: 300px;  
+    margin-top: 80px;
+    height: 315px;  
 }
 
 .polytunnel{
@@ -54,7 +76,7 @@
     border-top-left-radius: 300px;
     border-top-right-radius: 300px;
     width: 600px;
-    height: 300px;
+    height: 400px;
 }
 
 .slogan{
@@ -105,8 +127,16 @@ input::placeholder {
         border: none;
         outline: none;
         cursor: pointer;
-        padding: 20px;
-        
+        padding: 20px;   
+    }
+
+.createAccountButton{
+        appearance: none;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 20px;   
     }
 
 
@@ -116,7 +146,6 @@ input::placeholder {
         font-family: 'Montserrat', sans-serif;
         color: grey;
         text-decoration: none;
-
     }
 
 .create-background{
@@ -128,4 +157,12 @@ input::placeholder {
     width: 600px;
     height: 30px;
     padding-bottom: 25px;
+}
+
+.no-margin{
+    margin:0px;
+}
+
+.no-padding{
+    padding:0px;
 }
