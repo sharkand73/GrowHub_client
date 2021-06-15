@@ -56,9 +56,9 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow}) => {
                     </select>
                 </form>
                 
-                <button class="flex-button-right">
-                    <Link to='/knowhows/new'>
-                        Add know-how
+                <button class="flex-button-right button">
+                    <Link class="cleanLink" to='/knowhows/new'>
+                        Add Knowhow
                     </Link>
                 </button>
 

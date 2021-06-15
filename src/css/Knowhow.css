@@ -58,3 +58,26 @@
 
 /* OTHER */
 
+.button{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;   
+    text-decoration: none;
+}
+
+.cleanLink{
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;   
+    text-decoration: none;
+    color:green;
+}
