@@ -133,7 +133,7 @@ const MainContainer = ({allotmentSettings}) =>{
         const index = newJobList.indexOf(job);
         newJobList.splice(index, 1);
         const request = new Request();
-        request.delete("/api/jobs", job.id)
+        request.delete("/api/jobs/" + job.id)
         setJobs(newJobList);
     }
 
