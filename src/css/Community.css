@@ -199,3 +199,15 @@
     
 }
 
+#edit-text, delete-text {
+  color: white;
+}
+
+#edit-text:hover {
+  color: blue;
+}
+
+#delete-text:hover {
+  color: red;
+}
+

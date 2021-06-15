@@ -18,6 +18,8 @@ const bulletinArray = sortedBulletins.map((bulletin, index) => {
     )
 })
 
+
+
 return (
     <div id = "noticeboard-list">
         <ul>
