@@ -1,6 +1,7 @@
 import React from 'react';
+import NewKnowHowReply from './NewKnowHowReply';
 
-const KnowHowDetail = ({knowHow, currentUser}) => {
+const KnowHowDetail = ({knowHow, currentUser, getDate, postReply}) => {
 
     const monthLower = knowHow.month.toLowerCase();
     const month = monthLower[0].toUpperCase() + monthLower.slice(1);
@@ -24,7 +25,8 @@ const KnowHowDetail = ({knowHow, currentUser}) => {
         if (knowHow.replies.length >=2){
             return(
                 <div>
-                    <h3>Replies:</h3>
+                    <h3>All Replies:</h3>
+
                     <ul>
                         {getReplies()}
                     </ul>
@@ -42,6 +44,9 @@ const KnowHowDetail = ({knowHow, currentUser}) => {
                 <li>Applies to month: {month}</li>
                 <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
             </ul>
+
+            <h3>Write a new reply:</h3>
+            <NewKnowHowReply knowHow={knowHow} currentUser={currentUser} getDate={getDate}  postReply={postReply}/>
 
             {getRepliesSection()}
         </>

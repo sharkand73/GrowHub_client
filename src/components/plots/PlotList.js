@@ -8,8 +8,19 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
     // const plotsMap = allotmentSettings.mapFilepath;
     
-    // Current user's plots. ***There is currently an issue with this at the back end!***
-    const currentUserPlots = currentUser.plots;
+    // const currentUserPlots = currentUser.plots; // OLD when users actually had plots brought through to front end, now IGNORED
+
+    const currentUserPlots = [];
+
+// NEW Method that searches through plots and grabs the users plots
+    const plotsFill = plots.forEach((plot) => {
+        for (let user of plot.users){
+            if (user.shortName === currentUser.shortName){
+                currentUserPlots.push(plot)
+            }
+        }
+    })
+
     const currentUserPlotsTally = currentUserPlots.length;
     const plotsPlural = (currentUserPlotsTally > 1);
     
