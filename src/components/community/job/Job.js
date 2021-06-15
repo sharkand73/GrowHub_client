@@ -27,7 +27,7 @@ const Job = ({job, currentUser, displayJob}) =>{
     // }
     
     return (
-        <div>
+        <div onClick={()=>displayJob(job)} className = "job-item-container">
             <div id="job-item" onClick={()=>displayJob(job)}>{job.title}</div> 
             <div>{getCarrots(job)}</div>
         </div>

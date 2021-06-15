@@ -213,3 +213,7 @@
   color: red;
 }
 
+.job-item-container:hover {
+  background-color: #ffc;
+}
+
