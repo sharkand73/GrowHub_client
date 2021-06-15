@@ -12,6 +12,7 @@ const JobDetails = ({job, getCarrots, jobClickAway}) => {
                 <li>Description:</li>
                 <li>{job.body}</li>
                 <li>Difficulty: {getCarrots(job)}</li>
+                <li>Author: {job.author.shortName}</li>
             </ul>
             <h3 className="link-job" onClick = {()=>jobClickAway()}>
                 Back
