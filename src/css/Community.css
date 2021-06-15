@@ -1,5 +1,7 @@
 #community-container {
     display: flex;
+    background-color: #009A17;
+    height: 650px;
 }
 
 
@@ -118,6 +120,7 @@
 #new-bulletin {
     color: white;
     text-decoration: none;
+    
 }
 
 #new-bulletin:hover {
@@ -152,11 +155,11 @@
     color: #ef7215;
 }
 
-#new-job {
+.link-job {
     text-decoration: none;
 }
 
-#new-job:hover {
+.link-job:hover {
     color: cornflowerblue;
     text-decoration: none;
 }
@@ -170,6 +173,10 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+}
+
+#jobs-container .edit-delete {
+  width: 65%;
 }
 
 #large-post-it {
@@ -199,6 +206,20 @@
     
 }
 
+.job-edit-text, .job-delete-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: darkblue;
+}
+
+.job-edit-text:hover {
+  color: cyan;
+}
+
+.job-delete-text:hover {
+  color: red;
+}
+
 .edit-text, .delete-text {
   font-size: 24px;
   font-weight: bold;
@@ -213,3 +234,11 @@
   color: red;
 }
 
+.job-item-container:hover {
+  background-color: #ffc;
+}
+
+#job-details-heading {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

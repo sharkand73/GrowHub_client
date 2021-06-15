@@ -55,7 +55,7 @@ const Login = ({users, setCurrentUser, currentUser}) => {
         <div class="background" id="login-grid-container">
 
             <div id="logo-grid">
-                <img class="logo" src={Logo} alt="Logo" />;
+                <img class="logo" src={Logo} alt="Logo" />
             </div>
 
             <div id="polytunnel-grid" class="polytunnel" >
@@ -88,15 +88,12 @@ const Login = ({users, setCurrentUser, currentUser}) => {
                     </div>
                 </div>
             </div>
-
             {/* <div id="account-grid" class="create-background">
               <button  class="createAccountButton">
                     <Link class="create-account" to="/users/new">Create Account</Link>
               </button>
-            </div> */}
-           
+            </div> */}  
         </div>
-
         </>
     )
 }

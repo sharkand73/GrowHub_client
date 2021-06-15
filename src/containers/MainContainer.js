@@ -149,7 +149,7 @@ const MainContainer = ({allotmentSettings}) =>{
         const index = newJobList.indexOf(job);
         newJobList.splice(index, 1);
         const request = new Request();
-        request.delete("/api/jobs", job.id)
+        request.delete("/api/jobs/" + job.id)
         setJobs(newJobList);
     }
 
@@ -265,13 +265,12 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const postKnowHowReply = (reply) => {
         replies.push(reply);
-        console.log(replies);
+        setKnowHows(knowHows);
         const request = new Request();
         request.post("/api/replies", reply);
     }
 
     return(
-
         <Router>
 
         <> 
@@ -322,7 +321,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 <Route exact path = "/knowhows/:id" render = {(props) => {
                     const id = props.match.params.id;
                     const foundKnowHow = findKnowHowById(id);
-                    return foundKnowHow? <KnowHowDetail currentUser={currentUser} knowHow={foundKnowHow} getDate={getDate} postReply={postKnowHowReply}/>: <Redirect to="/knowhows" />
+                    return foundKnowHow? <KnowHowDetail currentUser={currentUser} knowHow={foundKnowHow} getDate={getDate} postReply={postKnowHowReply} replies={replies}/>: <Redirect to="/knowhows" />
                 }} currentUser={currentUser} />                 
 
                 <Route path = "/login" render={() => {
@@ -350,7 +349,6 @@ const MainContainer = ({allotmentSettings}) =>{
         </>
         </Router>
     )
-
 }
 
 export default MainContainer;

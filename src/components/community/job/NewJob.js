@@ -33,6 +33,17 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
         setFormData(formData);
     }
 
+    const handleDeadline = () => {
+        const stringDate = formData.deadline
+        const dd = stringDate.slice(8, 10);
+        const mm = stringDate.slice(5, 7);
+        const yyyy = stringDate.slice(0, 4);
+        const newDeadline = `${dd}/${mm}/${yyyy}`
+        console.log(newDeadline)
+        formData.deadline = newDeadline;
+        setFormData(formData);
+    }
+
     const handleDifficulty = (e) => {
         formData['difficulty'] = parseInt(e.target.value)
         setFormData(formData);
@@ -40,8 +51,17 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        handleDeadline();
         postJob(formData);
         setFormCheck(1);
+    }
+
+    const getMinDate = () => {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
+        return `${yyyy}-${mm}-${dd}`
     }
 
     return(
@@ -56,13 +76,13 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
             <input type='text' name='body' id='body' onChange={handleChange} required /> 
 
             <label name='area'>Area it applies to:</label>
-            <select name='area' id='area' onChange={handleArea}>
+            <select name='area' id='area' min={date} onChange={handleArea}>
                 <option selected disabled>Area</option>
                 {communalAreaOptions}
             </select>
             
             <label name='deadline'>Due Date:</label>
-            <input type='text' name='deadline' id='deadline' placeholder={date} onChange={handleChange} required />
+            <input type='date' name='deadline' id='deadline' min={getMinDate()} default={getMinDate()} onChange={handleChange} required />
 
             <label name='difficulty'>Difficulty:</label>
             <input type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} required />
@@ -71,6 +91,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
         </form>
 
         {formCheck ? <Redirect to="/community" />:null}
+
 
     </>
     )

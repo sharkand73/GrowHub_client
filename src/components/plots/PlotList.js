@@ -54,7 +54,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     // Renders a Plot object for current user plot
     const currentUserPlotArray = currentUserPlots.map((plot, index) => {
     return(
-        <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+        <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser}/></li>
     )
     })
 
@@ -62,7 +62,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     const otherPlotArray = otherPlots.map((plot, index) => {
         return(
 
-            <li key={index + currentUserPlotsTally}><Plot plot={plot} currentUser={currentUser}/></li>
+            <li key={index + currentUserPlotsTally}><Plot plot={plot} plots={plots} currentUser={currentUser}/></li>
             
         )
     })
@@ -87,6 +87,10 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     //     return plotArray
     // }
 
+    const userPlotLength = currentUserPlotArray.length
+    const plotsStatement = userPlotLength > 0 ? 'Other Plots:' : 'All Plots:'
+    const idSet = userPlotLength > 0 ? 'other-plots-grid' : 'your-plots-grid';
+
     return(
         <>
         <div id="plots-grid-container">
@@ -97,6 +101,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
             {/* <h3>Adding history to your plot is optional. </h3> */}
 
+            {userPlotLength > 0 ?
             <div id="your-plots-grid">
                 <p class="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>
         
@@ -106,9 +111,10 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
                     </ul>
                 </div>
             </div>
+            :null}
 
-            <div id="other-plots-grid">
-                <p class="plotText2">Other Plots:</p>
+            <div id={idSet}>
+                <p class="plotText2">{plotsStatement}</p>
 
                 <div>
                     <ul class="flexWrapper">

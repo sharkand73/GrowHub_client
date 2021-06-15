@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import BulletinList from './bulletin/BulletinList.js'
-import BulletinDetails from './bulletin/BulletinDetails.js'
-import JobList from './job/JobList.js'
+import BulletinList from './bulletin/BulletinList.js';
+import BulletinDetails from './bulletin/BulletinDetails.js';
+import JobList from './job/JobList.js';
+import JobDetails from './job/JobDetails.js';
 import {Link} from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCarrot } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Community.css';
 
 
@@ -16,6 +19,7 @@ import '../../css/Community.css';
 const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob, getDate, editBulletin}) => {
 
     const [selectedBulletin, setSelectedBulletin] = useState();
+    const [selectedJob, setSelectedJob] = useState();
 
     const displayBulletin = (result) => {
         setSelectedBulletin(result);
@@ -23,6 +27,23 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
 
     const clickAway = () => {
         setSelectedBulletin(null);
+    }
+
+    const displayJob = (result) => {
+        setSelectedJob(result);
+        console.log(selectedJob);
+    }
+
+    const jobClickAway = () => {
+        setSelectedJob(null);
+    }
+
+    function getCarrots(job){
+        let carrots = [];
+        for(let i=1; i<=job.difficulty; i++){
+            carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
+        }    
+    return carrots;
     }
 
     return(
@@ -43,13 +64,8 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
             
             </div>
                 <div id="jobs-container">
-                    <h2>Job List</h2>
-                    <JobList jobs={jobs} currentUser={currentUser} deleteJob={deleteJob}/>
-                    <h3>
-                    <Link to='/jobs/new' id="new-job">
-                        New Job
-                    </Link>
-                    </h3>
+                    {selectedJob? <JobDetails job = {selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots} jobClickAway={jobClickAway}/>:
+                    <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} getCarrots = {getCarrots}/>}
                 </div>
         </div>    
         </>

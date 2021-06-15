@@ -1,36 +1,33 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
 
-const Job = ({job, currentUser, deleteJob}) =>{
+const Job = ({job, currentUser, displayJob, getCarrots}) =>{
 
-    function getCarrots(job){
-        let carrots = [];
-        for(let i=1; i<=job.difficulty; i++){
-            carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
-        }    
-    return carrots;
-    }
+    // function getCarrots(job){
+    //     let carrots = [];
+    //     for(let i=1; i<=job.difficulty; i++){
+    //         carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
+    //     }    
+    // return carrots;
+    // }
 
-    const jobEditDelete = () => {
-        if (currentUser.email === job.author.email) {
-            return(
-                <>
-                <div className="">       
-                    <span className='edit'>Edit</span>
-                    <span className='delete' onClick={() => deleteJob(job)}>Delete</span>
-                </div>
-                </>
-            )
-        }
-    }
+    // const jobEditDelete = () => {
+    //     if (currentUser.email === job.author.email) {
+    //         return(
+    //             <>
+    //             <div className="">       
+    //                 <span className='edit'>Edit</span>
+    //                 <span className='delete' onClick={() => deleteJob(job)}>Delete</span>
+    //             </div>
+    //             </>
+    //         )
+    //     }
+    // }
     
     return (
-        <div>
-            <div id="job-item">{job.title}</div> 
+        <div onClick={()=>displayJob(job)} className = "job-item-container">
+            <div id="job-item" onClick={()=>displayJob(job)}>{job.title}</div> 
             <div>{getCarrots(job)}</div>
-            <>{jobEditDelete()}</>
         </div>
     );
     }
