@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import KnowHow from './KnowHow.js';
 import {Link} from 'react-router-dom';
 
+import '../../css/Knowhow.css';
+import LogoSmall from '../../css/LogoSmall.png';
+
 // Purpose:
     // Render a list of all KnowHows
     
@@ -32,24 +35,38 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow}) => {
 
     return(
         <>
+        <div id="knowledge-container">
+
+            <div id="logo-grid2">
+                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            </div>
+
+            <div id="intro-grid">
             <h3>Month-related gardening advice:</h3>
-            <form>
-                <label htmlFor="month-select">By month</label>
-                <select onChange={onChange}>
-                    <option value='All'>All</option>
-                    {monthOptions}
-                </select>
-            </form>
-            <ul>
-                {knowHowArray}
-            </ul>
+                <form>
+                    <label htmlFor="month-select">By month</label>
+                    <select onChange={onChange}>
+                        <option value='All'>All</option>
+                        {monthOptions}
+                    </select>
+                </form>
+            </div>
 
-            <button>
-                <Link to='/knowhows/new'>
-                    Add know-how
-                </Link>
-            </button>
+            <div id="body-grid">
+                <ul>
+                    {knowHowArray}
+                </ul>
+            </div>
 
+            <div id="buttons-grid">
+                <button>
+                    <Link to='/knowhows/new'>
+                        Add know-how
+                    </Link>
+                </button>
+            </div>
+
+        </div>
         </>
     )
 }
