@@ -3,7 +3,7 @@ import Job from './Job.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
-const JobList = ({jobs, currentUser, deleteJob}) =>{
+const JobList = ({jobs, currentUser, displayJob}) =>{
 
 // Sorts jobs by deadline date, most urgent at top
 const jobsByDeadline = jobs.sort((a, b) => {
@@ -16,12 +16,13 @@ const jobsByDeadline = jobs.sort((a, b) => {
 const jobsRenderedByDeadline = jobsByDeadline.map((job, index) => {
 
     return(
-        <li key={index}><Job job={job} currentUser={currentUser} deleteJob={deleteJob}/></li>
+        <li key={index}><Job job={job} currentUser={currentUser} displayJob={displayJob}/></li>
     )
 });
 
 return (
     <>    
+        <h2>Job List</h2>
         <ul>
             {jobsRenderedByDeadline}
         </ul>

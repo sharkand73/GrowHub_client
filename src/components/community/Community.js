@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import BulletinList from './bulletin/BulletinList.js'
-import BulletinDetails from './bulletin/BulletinDetails.js'
-import JobList from './job/JobList.js'
+import BulletinList from './bulletin/BulletinList.js';
+import BulletinDetails from './bulletin/BulletinDetails.js';
+import JobList from './job/JobList.js';
+import JobDetails from './job/JobDetails.js';
 import {Link} from 'react-router-dom';
 import '../../css/Community.css';
 
@@ -16,6 +17,7 @@ import '../../css/Community.css';
 const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob}) => {
 
     const [selectedBulletin, setSelectedBulletin] = useState();
+    const [selectedJob, setSelectedJob] = useState();
 
     const displayBulletin = (result) => {
         setSelectedBulletin(result);
@@ -24,6 +26,15 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
 
     const clickAway = () => {
         setSelectedBulletin(null);
+    }
+
+    const displayJob = (result) => {
+        setSelectedJob(result);
+        console.log(selectedJob);
+    }
+
+    const jobClickAway = () => {
+        setSelectedJob(null);
     }
 
     return(
@@ -44,8 +55,8 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
             
             </div>
                 <div id="jobs-container">
-                    <h2>Job List</h2>
-                    <JobList jobs={jobs} currentUser={currentUser} deleteJob={deleteJob}/>
+                    {selectedJob? <JobDetails job = {selectedJob} currentUser={currentUser} deleteJob={deleteJob}/>:
+                    <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} />}
                     <h3>
                     <Link to='/jobs/new' id="new-job">
                         New Job
