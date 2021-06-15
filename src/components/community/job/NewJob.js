@@ -92,6 +92,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate}) => {
 
         {formCheck ? <Redirect to="/community" />:null}
 
+
     </>
     )
 }
