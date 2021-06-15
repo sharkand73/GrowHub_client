@@ -54,7 +54,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     // Renders a Plot object for current user plot
     const currentUserPlotArray = currentUserPlots.map((plot, index) => {
     return(
-        <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
+        <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser}/></li>
     )
     })
 
@@ -62,7 +62,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     const otherPlotArray = otherPlots.map((plot, index) => {
         return(
 
-            <li key={index + currentUserPlotsTally}><Plot plot={plot} currentUser={currentUser}/></li>
+            <li key={index + currentUserPlotsTally}><Plot plot={plot} plots={plots} currentUser={currentUser}/></li>
             
         )
     })
