@@ -65,13 +65,8 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
             
             </div>
                 <div id="jobs-container">
-                    {selectedJob? <JobDetails job = {selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots}/>:
+                    {selectedJob? <JobDetails job = {selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots} jobClickAway={jobClickAway}/>:
                     <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} getCarrots = {getCarrots}/>}
-                    <h3>
-                    <Link to='/jobs/new' id="new-job">
-                        New Job
-                    </Link>
-                    </h3>
                 </div>
         </div>    
         </>

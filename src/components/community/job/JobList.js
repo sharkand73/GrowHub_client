@@ -1,5 +1,6 @@
 import React from 'react';
 import Job from './Job.js';
+import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
@@ -26,7 +27,12 @@ return (
         <ul>
             {jobsRenderedByDeadline}
         </ul>
-    </>
+        <h3>
+            <Link to='/jobs/new' className="link-job">
+                New Job
+            </Link>
+        </h3>
+</>
 );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Job from './Job';
 
-const JobDetails = ({job, getCarrots}) => {
+const JobDetails = ({job, getCarrots, jobClickAway}) => {
 
     return (
         <>
@@ -13,6 +13,9 @@ const JobDetails = ({job, getCarrots}) => {
                 <li>{job.body}</li>
                 <li>Difficulty: {getCarrots(job)}</li>
             </ul>
+            <h3 className="link-job" onClick = {()=>jobClickAway()}>
+                Back
+            </h3>
         </>
     )
 }
