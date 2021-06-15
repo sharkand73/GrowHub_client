@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import moment from 'moment';
 
-import Bulletin from '../components/community/bulletin/Bulletin';
+import NewsItem from '../components/community/bulletin/NewsItem';
 import Tip from '../components/community/tip/Tip';
 import Weather from '../components/community/weather';
 
@@ -21,7 +21,7 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
 
     // Map through the threeBulletins to create an li element
     const bulletinsForRender = threeBulletins.map((bulletin, index) => {
-        return <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
+        return <li key={index}><NewsItem bulletin={bulletin} currentUser={currentUser}/></li>
     })
     
     return(
