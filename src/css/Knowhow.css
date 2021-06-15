@@ -77,7 +77,110 @@
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 20px;   
     text-decoration: none;
+}
+
+
+
+/* TEXT */
+.kHw-title{
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left:0px;
+}
+
+.kHw-content{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 400;
+
+}
+
+.kHw-month{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.kHw-author{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 600;
+    padding-top: 10px;
+}
+
+.kHw-filter{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    margin: 24px 15px 24px 24px;
+}
+
+.kHw-edit{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.noLine{
+    text-decoration: none;
+    list-style: none;
+}
+
+.filter-box{
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    width: 120px;
+}
+
+/* DELETE & EDIT BUTTONS */
+
+.edit-button{
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
     color:green;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;    
+}
+
+.delete-button{
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:red;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;     
+}
+
+.createAccountButton{
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;   
+}
+
+/* EDIT FORM */
+
+.edit-form{
+    margin: 40px;
 }

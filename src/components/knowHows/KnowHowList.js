@@ -58,21 +58,21 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow
             </div>
 
             <div id="header-grid">
-                <p class="header">Month-related gardening advice:</p>
+                <p class="header">Share your knowledge and learn in the knowhows bank!</p>
             </div>
 
             <div id="filter-grid" class="intro-flex">
 
                 <form>
-                    <label htmlFor="month-select">By month</label>
-                    <select onChange={onChange}>
+                    <label class="kHw-filter" htmlFor="month-select">Search by month</label>
+                    <select class="filter-box" onChange={onChange}>
                         <option value='All'>All</option>
                         {monthOptions}
                     </select>
                 </form>
                 
                 <button class="flex-button-right button">
-                    <Link class="cleanLink" to='/knowhows/new'>
+                    <Link class="cleanLink kHw-filter" to='/knowhows/new'>
                         Add Knowhow
                     </Link>
                 </button>
@@ -88,14 +88,6 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow
                     {selectedKnowhow ? <EditKnowHow currentUser={currentUser} knowHow={selectedKnowhow} months={months} date={date} editKnowHow={editKnowHow} removeEdit={removeEdit}/> : null}
                 </div>
             </div>
-
-            {/* <div id="buttons-grid">
-                <button>
-                    <Link to='/knowhows/new'>
-                        Add know-how
-                    </Link>
-                </button>
-            </div> */}
 
         </div>
         </>
