@@ -33,8 +33,8 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
                 <h1>Bulletin Board</h1>
                 
                 <div id="noticeboard-inner">
-                    {selectedBulletin? <BulletinDetails bulletin={selectedBulletin} clickAway={clickAway}/>:
-                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} deleteBulletin={deleteBulletin} displayBulletin={displayBulletin}/>}
+                    {selectedBulletin? <BulletinDetails bulletin={selectedBulletin} clickAway={clickAway} deleteBulletin={deleteBulletin} currentUser={currentUser}/>:
+                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} displayBulletin={displayBulletin}/>}
                 </div>
                 <h2>
                 <Link to='/bulletins/new' id="new-bulletin">
