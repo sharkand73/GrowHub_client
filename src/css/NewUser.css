@@ -32,3 +32,50 @@
     color: rgb(82, 79, 79);
     padding-left:0px;
 }
+
+
+
+
+.form_wrapper{
+    list-style-type: none;
+    display: block;
+}
+
+.form_field{
+    margin: 10px;
+}
+
+.form_input{
+    width: 200px;
+}
+
+.field_size{
+    width: 210px;
+    height: 20px;
+}
+
+.field_size2{
+    width: 100px;
+    height: 20px;
+}
+
+
+.form_text{
+    font-size: 15px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+}
+
+.createButton{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color:green;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px 0px 0px 8px;   
+}

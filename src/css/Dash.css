@@ -48,7 +48,6 @@
 .fixedHeightContainer {
     float:none;
     padding:3px; 
-    background:white;
     background-color: silver;
 }
 
@@ -70,7 +69,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 /* LOGO */

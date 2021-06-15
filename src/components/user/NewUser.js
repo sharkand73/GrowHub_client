@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 
 import '../../css/NewUser.css';
 import LogoSmall from '../../css/LogoSmall.png';
+import '../../css/Login.css';
 
 const NewUser = ({postUser, getDate, newUserCheck}) => {
 
@@ -69,21 +70,32 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
 
             <div id="form-grid">
                 <form onSubmit={handleSubmit}>
-                    <label name='shortName'>Username:</label>
-                    <input type='text' name='shortName' id='shortName' placeholder='Sharkanator' onChange={handleChange} required />
+                    <div class="form-wrapper">
 
-                    <label name='email'>Email Address:</label>
-                    <input type='text' name='email' id='email' placeholder='soilmuncher96@yipee.com' onChange={handleChange} required /> 
+                    <div class="form_field form_input">
+                    <label class="form_text" name='shortName'>Username:</label>
+                    <input class="field_size" type='text' name='shortName' id='shortName' placeholder='Sharkanator' onChange={handleChange} required />
+                    </div>
 
-                    <label name='password'>Password:</label>
-                    <input type='password' name='password' id='password' onChange={handleChange} required /> 
+                    <div class="form_field form_input">
+                    <label class="form_text" name='email'>Email Address:</label>
+                    <input class="field_size" type='text' name='email' id='email' placeholder='soilmuncher96@yipee.com' onChange={handleChange} required /> 
+                    </div>
 
-                    <label name='yearJoined'>Year you first got your plot (yyyy)</label>
-                    <input type='number' name='yearJoined' id='yearJoined' min='1990' max={year} defaultValue={year} onChange={handleYear} required /> 
+                    <div class="form_field form_input">
+                    <label class="form_text" name='password'>Password:</label>
+                    <input class="field_size" type='password' name='password' id='password' onChange={handleChange} required /> 
+                    </div>
 
-                    <button type='submit'>Create Account</button>
+                    <div class="form_field form_input">
+                    <label class="form_text" name='yearJoined'>Year you first got your plot (yyyy) </label>
+                    <input class="field_size2" type='number' name='yearJoined' id='yearJoined' min='1990' max={year} defaultValue={year} onChange={handleYear} required /> 
+                    </div>
+
+                    <button class="createButton" type='submit'>Create Account</button>
+
+                    </div>
                 </form>
-
                 {submitResponse()}
             </div>
         </div>
