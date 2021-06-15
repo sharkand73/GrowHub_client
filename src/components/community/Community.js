@@ -4,6 +4,8 @@ import BulletinDetails from './bulletin/BulletinDetails.js';
 import JobList from './job/JobList.js';
 import JobDetails from './job/JobDetails.js';
 import {Link} from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCarrot } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Community.css';
 
 
@@ -37,6 +39,14 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
         setSelectedJob(null);
     }
 
+    function getCarrots(job){
+        let carrots = [];
+        for(let i=1; i<=job.difficulty; i++){
+            carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
+        }    
+    return carrots;
+    }
+
     return(
         <>
         <div id="community-container">
@@ -55,8 +65,8 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
             
             </div>
                 <div id="jobs-container">
-                    {selectedJob? <JobDetails job = {selectedJob} currentUser={currentUser} deleteJob={deleteJob}/>:
-                    <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} />}
+                    {selectedJob? <JobDetails job = {selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots}/>:
+                    <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} getCarrots = {getCarrots}/>}
                     <h3>
                     <Link to='/jobs/new' id="new-job">
                         New Job

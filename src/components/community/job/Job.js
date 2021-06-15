@@ -1,17 +1,15 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
 
-const Job = ({job, currentUser, displayJob}) =>{
+const Job = ({job, currentUser, displayJob, getCarrots}) =>{
 
-    function getCarrots(job){
-        let carrots = [];
-        for(let i=1; i<=job.difficulty; i++){
-            carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
-        }    
-    return carrots;
-    }
+    // function getCarrots(job){
+    //     let carrots = [];
+    //     for(let i=1; i<=job.difficulty; i++){
+    //         carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
+    //     }    
+    // return carrots;
+    // }
 
     // const jobEditDelete = () => {
     //     if (currentUser.email === job.author.email) {
