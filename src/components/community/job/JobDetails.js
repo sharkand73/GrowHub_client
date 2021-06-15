@@ -1,7 +1,19 @@
 import React from 'react';
 import Job from './Job';
 
-const JobDetails = ({job, getCarrots, jobClickAway}) => {
+const JobDetails = ({job, getCarrots, jobClickAway, currentUser, deleteJob}) => {
+
+    const jobEditDelete = () => {
+        if (currentUser.id === job.author.id) {
+            return(        
+                <div className = "edit-delete">
+                    <span className="job-edit-text">Edit</span> 
+                    <span className="job-delete-text" onClick={() => deleteJob(job)}>Delete</span>
+                </div>
+                
+            )
+        }
+    }
 
     return (
         <>
@@ -14,6 +26,7 @@ const JobDetails = ({job, getCarrots, jobClickAway}) => {
                 <li>Difficulty: {getCarrots(job)}</li>
                 <li>Author: {job.author.shortName}</li>
             </ul>
+            {jobEditDelete()}
             <h3 className="link-job" onClick = {()=>jobClickAway()}>
                 Back
             </h3>

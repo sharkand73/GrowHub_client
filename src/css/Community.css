@@ -118,6 +118,7 @@
 #new-bulletin {
     color: white;
     text-decoration: none;
+    
 }
 
 #new-bulletin:hover {
@@ -172,6 +173,10 @@
     justify-content: space-between;
 }
 
+#jobs-container .edit-delete {
+  width: 65%;
+}
+
 #large-post-it {
     color: black;
     width: 400px;
@@ -197,6 +202,20 @@
 #large-post-it div p {
     font-size: 30px;
     
+}
+
+.job-edit-text, .job-delete-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: darkblue;
+}
+
+.job-edit-text:hover {
+  color: cyan;
+}
+
+.job-delete-text:hover {
+  color: red;
 }
 
 .edit-text, .delete-text {
