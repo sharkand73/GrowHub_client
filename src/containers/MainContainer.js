@@ -68,10 +68,38 @@ const MainContainer = ({allotmentSettings}) =>{
         request.post("/api/knowhows", knowHow);
     }
 
+    const findKnowHowById = (knowHowId) => {
+        return knowHows.find((knowHow) => {
+            return knowHow.id === parseInt(knowHowId)
+            }
+        )
+    }
+
+    const deleteKnowhow = (knowHow) => {
+        const index = knowHows.indexOf(knowHow);
+        knowHows.splice(index);
+        const request = new Request();
+        request.delete("/api/knowhows/" + knowHow.id)
+    }
+
     const postBulletin = (bulletin) => {
         bulletins.push(bulletin);
         const request = new Request();
         request.post("/api/bulletins", bulletin);
+    }
+
+    const findBulletinById = (bulletinId) => {
+        return bulletins.find((bulletin) => {
+            return bulletin.id === parseInt(bulletinId)
+            }
+        )
+    }
+
+    const deleteBulletin = (bulletin) => {
+        const index = bulletins.indexOf(bulletin);
+        bulletins.splice(index);
+        const request = new Request();
+        request.delete("/api/bulletins", bulletin.id)
     }
 
     const postJob = (job) => {
@@ -79,7 +107,20 @@ const MainContainer = ({allotmentSettings}) =>{
         const request = new Request();
         request.post("/api/jobs", job);
     }
+    
+    const findJobById = (jobId) => {
+        return jobs.find((job) => {
+            return job.id === parseInt(jobId)
+            }
+        )
+    }
 
+    const deleteJob = (job) => {
+        const index = jobs.indexOf(job);
+        jobs.splice(index);
+        const request = new Request();
+        request.delete("/api/jobs", job.id)
+    }
 
     const postUser = (newUser) => {
         // Re-initialize the newUserCheck state
@@ -112,12 +153,6 @@ const MainContainer = ({allotmentSettings}) =>{
         )
     }
 
-    const findKnowHowById = (knowHowId) => {
-        return knowHows.find((knowHow) => {
-            return knowHow.id === parseInt(knowHowId)
-        })
-    }
-
     const getDate = () => {
         const today = new Date();
         const dd = String(today.getDate()).padStart(2, '0');
@@ -136,6 +171,7 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const sortedBulletins = sortByReverseDate(bulletins);
+
 
 // weather data and api fetch
     
@@ -196,7 +232,6 @@ const MainContainer = ({allotmentSettings}) =>{
     
     useEffect(() => getData(), [allotmentSettings]);
 
-
     return(
 
         <Router>
@@ -227,7 +262,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs}/>
+                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
@@ -235,11 +270,11 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/bulletins/new' component = {() =>{
-                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin} getDate={getDate}/>
+                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin} getDate={getDate} />
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
-                    return <KnowHowList currentUser={currentUser} knowHows={knowHows}/>
+                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} deleteKnowhow={deleteKnowhow}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{
@@ -266,9 +301,10 @@ const MainContainer = ({allotmentSettings}) =>{
 
                 <Route render={() => {
                     return(
-                        <>
-                            <h1>DIS PAGE NO EXIST</h1> 
-                        </>
+                        <div>
+                            <h2>This page does not exist.</h2>
+                            <p>If you encountered this error unexpectedly, please contact Andy S.</p>
+                        </div>
                     )
                 }} />
 

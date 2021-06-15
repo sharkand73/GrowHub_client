@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 // Purpose:
     // Render a list of all KnowHows
     
-const KnowHowList = ({currentUser, knowHows}) =>{
+const KnowHowList = ({currentUser, knowHows, deleteKnowhow}) => {
 
     const [filteredKnowhows, setFilteredKnowhows] = useState(knowHows);
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -26,7 +26,7 @@ const KnowHowList = ({currentUser, knowHows}) =>{
 
     const knowHowArray = filteredKnowhows.map((knowHow, index) => {
         return(
-            <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser}/></li>
+            <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser} deleteKnowhow={deleteKnowhow}/></li>
         )
     })
 

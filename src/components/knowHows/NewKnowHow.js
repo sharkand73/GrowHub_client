@@ -22,7 +22,7 @@ const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
         setFormData(formData)
-      }
+    }
 
     const handleMonth = (e) => {
         formData['month'] = months[e.target.value].toUpperCase();

@@ -12,9 +12,11 @@ const Weather = ({weatherData}) => {
         (weatherData.weather[0].main === "")? (<h1>Loading weather...</h1>):
         <>
         <h1>Weather</h1>
+
         <h3>{location}</h3>
         <p class="dash-text">Outlook: {description}</p>
         <p class="dash-text"><span>Max: {max}C</span> <span>Min: {min}C</span></p>
+
        </>
         }
      </div>
