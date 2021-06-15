@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 
+import '../../../css/Bulletin.css';
+
 const EditBulletin = ({currentUser, bulletin, editBulletin, getDate, reverseEditClick}) => {
 
     const date = getDate();
@@ -31,12 +33,12 @@ const EditBulletin = ({currentUser, bulletin, editBulletin, getDate, reverseEdit
                 <form onSubmit={handleSubmit}>
     
                     <label name='title'>Title:</label>
-                    <input type='text' name='title' id='title' onChange={handleChange} defaultValue={bulletin.title} required />
+                    <input class="field_size1" type='text' name='title' id='title' onChange={handleChange} defaultValue={bulletin.title} required />
     
                     <label name='body'>Your Bulletin:</label>
-                    <input type='text' name='body' id='body' onChange={handleChange} defaultValue={bulletin.body} required /> 
+                    <input class="field_size1" type='text' name='body' id='body' onChange={handleChange} defaultValue={bulletin.body} required /> 
     
-                    <button type='submit'>Submit New Bulletin</button>
+                    <button class="createButton1" type='submit'>Submit New Bulletin</button>
                 </form>
         </>
         )

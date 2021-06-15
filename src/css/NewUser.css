@@ -43,7 +43,6 @@
 .form_wrapper{
     list-style-type: none;
     display: block;
-
 }
 
 .form_field{
@@ -51,9 +50,7 @@
 }
 
 .form_input{
-    width: 200px;
-
-    
+    width: 200px;  
 }
 
 .field_size{

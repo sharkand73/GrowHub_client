@@ -1,6 +1,9 @@
 import React from 'react';
 import PlotComment from './PlotComment';
 
+import '../../css/Plots.css';
+import LogoSmall from '../../css/LogoSmall.png';
+
 const PlotDetail = ({currentUser, plot, plots}) =>{
 
     const getPlotHolders = () => {
@@ -28,18 +31,30 @@ const PlotDetail = ({currentUser, plot, plots}) =>{
 
     return(
         <>
-            <h3>Details for {plot.areaName}</h3>
-            <ul>
-                <li>Plot Number: {plot.plotNumber}</li>
-                <li>Dimensions: {plot.length}m x {plot.breadth}m</li>
-                <li>Area: {plotSize} m&sup2;</li>
+        <div id="plots-grid-container2">
+
+            <div id="logo-grid">
+                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            </div>
+
+            <div id="plot-details-grid">
+            <p class="plot-detail1">Details for {plot.areaName}</p>
+            <ul class="margin">
+                <li class="plot-detail2"> - Plot Number: {plot.plotNumber}</li>
+                <li class="plot-detail2"> - Dimensions: {plot.length}m x {plot.breadth}m</li>
+                <li class="plot-detail2"> - Area: {plotSize} m&sup2;</li>
                 {/* <li>Numer of plots bigger than this: {calculatePlotSizeIndex(plotSize)}</li> */}
-                <li>Inclination: {plot.isFlat ? "flat" : "slope"}</li>
-                <li>Plotholders: {getPlotHolders()}</li>
+                <li class="plot-detail2"> - Inclination: {plot.isFlat ? "flat" : "slope"}</li>
+                <li class="plot-detail2"> - Plot holders: {getPlotHolders()}</li>
             </ul>
-            <h3>Plot history:</h3>
-            {plot.comments?<ul>{plotComments}</ul>: null}
-            
+            </div>
+
+            <div id="plot-history-grid">
+                <p class="plot-detail1">Plot history</p>
+                {plot.comments?<ul  class="plot-detail2">{plotComments}</ul>: null}
+            </div>
+        
+        </div>  
         </>
     )
 
