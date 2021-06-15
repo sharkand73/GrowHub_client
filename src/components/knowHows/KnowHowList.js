@@ -3,6 +3,10 @@ import KnowHow from './KnowHow.js';
 import {Link} from 'react-router-dom';
 import EditKnowHow from './EditKnowHow.js';
 
+import '../../css/Knowhow.css';
+import '../../css/Dash.css';
+import LogoSmall from '../../css/LogoSmall.png';
+
 // Purpose:
     // Render a list of all KnowHows
     
@@ -46,27 +50,54 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow
 
     return(
         <>
-            <h3>Month-related gardening advice:</h3>
-            <form>
-                <label htmlFor="month-select">By month</label>
-                <select onChange={onChange}>
-                    <option value='All'>All</option>
-                    {monthOptions}
-                </select>
-            </form>
-            <ul>
-                {knowHowArray}
-            </ul>
+
+        <div id="knowledge-container">
+
+            <div id="logo-grid2">
+                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            </div>
+
+            <div id="header-grid">
+                <p class="header">Month-related gardening advice:</p>
+            </div>
+
+            <div id="filter-grid" class="intro-flex">
+
+                <form>
+                    <label htmlFor="month-select">By month</label>
+                    <select onChange={onChange}>
+                        <option value='All'>All</option>
+                        {monthOptions}
+                    </select>
+                </form>
+                
+                <button class="flex-button-right button">
+                    <Link class="cleanLink" to='/knowhows/new'>
+                        Add Knowhow
+                    </Link>
+                </button>
+
+            </div>
+
+            <div id="body-grid">
+                <ul>
+                    {knowHowArray}
+                </ul>
+      
                 <div>
                     {selectedKnowhow ? <EditKnowHow currentUser={currentUser} knowHow={selectedKnowhow} months={months} date={date} editKnowHow={editKnowHow} removeEdit={removeEdit}/> : null}
                 </div>
+            </div>
 
-            <button>
-                <Link to='/knowhows/new'>
-                    Add know-how
-                </Link>
-            </button>
+            {/* <div id="buttons-grid">
+                <button>
+                    <Link to='/knowhows/new'>
+                        Add know-how
+                    </Link>
+                </button>
+            </div> */}
 
+        </div>
         </>
     )
 }
