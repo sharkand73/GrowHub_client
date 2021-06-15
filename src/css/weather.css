@@ -1,0 +1,35 @@
+#weather-widget h1 {
+    margin: 30px 0 0 0;
+    
+}
+
+#max-temp {
+    color: red;
+}
+
+#min-temp {
+    color: blue;
+}
+
+.dash-text {
+    margin: 5px 0;
+}
+
+#widget-image {
+    width: 75px;
+    height: 75px;
+}
+
+#image-temp {
+    display: flex;
+    align-content: flex-start;
+    justify-content: flex-start;
+}
+
+#temperature {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-around;
+}
+
