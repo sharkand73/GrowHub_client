@@ -79,11 +79,12 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const deleteKnowhow = (knowHow) => {
-        const index = knowHows.indexOf(knowHow);
-        knowHows.splice(index);
-        setKnowHows(knowHows);
+        const newKnowHowList = [...knowHows];
+        const index = newKnowHowList.indexOf(knowHow);
+        newKnowHowList.splice(index, 1);
         const request = new Request();
         request.delete("/api/knowhows/" + knowHow.id);
+        setKnowHows(newKnowHowList);
     }
 
     const editKnowHow = (knowHow) => {
@@ -106,10 +107,12 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const deleteBulletin = (bulletin) => {
-        const index = bulletins.indexOf(bulletin);
-        bulletins.splice(index);
+        const newBulletinList = [...bulletins];
+        const index = newBulletinList.indexOf(bulletin);
+        newBulletinList.splice(index, 1);
         const request = new Request();
         request.delete("/api/bulletins", bulletin.id)
+        setBulletins(newBulletinList);
     }
 
     const postJob = (job) => {
@@ -126,10 +129,12 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const deleteJob = (job) => {
-        const index = jobs.indexOf(job);
-        jobs.splice(index);
+        const newJobList = [...jobs];
+        const index = newJobList.indexOf(job);
+        newJobList.splice(index, 1);
         const request = new Request();
         request.delete("/api/jobs", job.id)
+        setJobs(newJobList);
     }
 
     const postUser = (newUser) => {
