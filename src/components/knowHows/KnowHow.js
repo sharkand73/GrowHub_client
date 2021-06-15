@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
+import EditKnowHow from './EditKnowHow.js'
 
-const KnowHow = ({knowHow, currentUser, deleteKnowhow}) =>{
+const KnowHow = ({knowHow, currentUser, deleteKnowhow, editClick}) =>{
+
 
     const knowHowEditDelete = () => {
         if (currentUser.email === knowHow.author.email) {
@@ -11,9 +13,9 @@ const KnowHow = ({knowHow, currentUser, deleteKnowhow}) =>{
                     <button type='button' onClick={() => deleteKnowhow(knowHow)}>Delete</button>
                 </div>
                 <div>
-                    <button type='button'>Edit</button>
+                    <button type='button' onClick={() => editClick(knowHow)} >Edit</button>
                 </div>
-                </>
+                </>  
             )
         }
     }

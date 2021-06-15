@@ -81,8 +81,15 @@ const MainContainer = ({allotmentSettings}) =>{
     const deleteKnowhow = (knowHow) => {
         const index = knowHows.indexOf(knowHow);
         knowHows.splice(index);
+        setKnowHows(knowHows);
         const request = new Request();
-        request.delete("/api/knowhows/" + knowHow.id)
+        request.delete("/api/knowhows/" + knowHow.id);
+    }
+
+    const editKnowHow = (knowHow) => {
+        const url = "/api/knowhows/" + knowHow.id
+        const request = new Request();
+        request.put(url, knowHow);
     }
 
     const postBulletin = (bulletin) => {
@@ -284,7 +291,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
-                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} deleteKnowhow={deleteKnowhow}/>
+                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} deleteKnowhow={deleteKnowhow} getDate={getDate} editKnowHow={editKnowHow}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{

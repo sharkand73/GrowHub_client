@@ -28,6 +28,8 @@ class Request {
       }
 
       put(url, payload){
+        console.log("Final payload being sent via POST:")
+        console.log(payload);
         return fetch(url, {
           method: "PUT",
           headers: {'Content-Type': 'application/json'},
