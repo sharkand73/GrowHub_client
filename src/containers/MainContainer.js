@@ -250,7 +250,6 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     return(
-
         <Router>
 
         <> 
@@ -329,7 +328,6 @@ const MainContainer = ({allotmentSettings}) =>{
         </>
         </Router>
     )
-
 }
 
 export default MainContainer;

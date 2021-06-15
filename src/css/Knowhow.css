@@ -29,6 +29,7 @@
 #filter-grid{
     grid-column-start:3;
     grid-row-start: 3;
+
 }
 
 #body-grid{
@@ -67,7 +68,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 20px;   
+    padding: 0px;   
     text-decoration: none;
 }
 
@@ -77,7 +78,158 @@
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 20px;   
     text-decoration: none;
+}
+
+
+
+/* TEXT */
+
+.kWh-header{
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    font-size: 40px;
+    font-weight: 400;
+    padding-left:35px;
+}
+
+.kHw-title{
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left:0px;
+    padding-top: 30px;
+}
+
+.kHw-content{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.kHw-month{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+.kHw-author{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+.kHw-filter{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    margin: 0px 15px 0px 24px;
+}
+
+.kHw-edit{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.noLine{
+    text-decoration: none;
+    list-style: none;
+}
+
+.filter-box{
+    padding: 5px 10px;
+    margin-bottom: 0px;
+    width: 120px;
+}
+
+/* DELETE & EDIT BUTTONS */
+
+.edit-button{
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
     color:green;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;    
+}
+
+.delete-button{
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:red;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;     
+}
+
+.createAccountButton{
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;   
+}
+
+/* EDIT FORM */
+
+.edit-form{
+    margin: 40px;
+}
+
+/* NEW KNOWHOW GRID */
+
+#form-grid2{
+    grid-column-start:3;
+    grid-row-start: 3;
+
+}
+
+#form-button2{
+    grid-column-start:3;
+    grid-row-start: 3;
+
+}
+
+/* NEW KNOWHOW FORM */
+
+
+.edit-button2{
+    font-size: 18px;
+    font-weight: 300;
+    width: 230px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:green;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 20px 0px; 
+}
+
+.new-kHw{
+    font-family: 'Montserrat', sans-serif;
+    color:green;
+    font-size: 30px;
+    font-weight: 300;
+    padding-left:18px;
 }

@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
+import '../../css/Knowhow.css';
+import '../../css/NewUser.css';
+import LogoSmall from '../../css/LogoSmall.png';
+
+
 const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
 
     const date = getDate();
@@ -39,25 +44,49 @@ const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
 
     return(
         <>
-            <h3>Enter your new Know How here!</h3>
-            <form onSubmit={handleSubmit}>
-                <label name='title'>Title:</label>
-                <input type='text' name='title' id='title' onChange={handleChange} required />
 
-                <label name='body'>Your Know How:</label>
-                <input type='text' name='body' id='body' maxlength="255" onChange={handleChange} required /> 
+        <div id="knowledge-container">
 
-                <label name='month'>Month your knowhow applies to:</label>
-                <select name='month' id='month' onChange={handleMonth}>
-                    <option selected disabled>Month</option>
-                    {monthOptions}
-                </select>
+            <div id="logo-grid2">
+                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            </div>
 
-                <button type='submit'>Submit New Know How</button>
-            </form>
+            <div id="header-grid">
+                <p class="new-kHw">Enter your knowhow</p>
+            </div>
 
-            {formCheck ? <Redirect to="/knowhows" />:null}
+            <div id="form-grid2">
+                <form onSubmit={handleSubmit}>
 
+                <div class="form-wrapper">
+
+                    <div class="form_field form_input">
+                        <label class="form_text" name='title'>Title:</label>
+                        <input class="field_size" type='text' name='title' id='title' onChange={handleChange} required />
+                    </div>
+
+                    <div class="form_field form_input">
+                        <label class="form_text" name='body'>Your Know How:</label>
+                        <input class="field_size3" type='text' name='body' id='body' maxlength="255" onChange={handleChange} required /> 
+                    </div>
+
+                    <div class="form_field form_input">
+                        <label class="form_text" name='month'>Month your knowhow applies to:</label>
+                        <select class="field_size" name='month' id='month' onChange={handleMonth}>
+                            <option selected disabled>Month</option>
+                            {monthOptions}
+                        </select>
+                    </div>
+
+                    <div id="form-button2">
+                        <button class="edit-button2" type='submit'>Submit new knowhow</button>
+                    </div>
+                </div>
+                </form>
+
+                {formCheck ? <Redirect to="/knowhows" />:null}
+            </div>
+        </div>
         </>
     )
 

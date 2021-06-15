@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import EditKnowHow from './EditKnowHow.js'
 
+import '../../css/Knowhow.css';
+import '../../css/Dash.css';
+
+
 const KnowHow = ({knowHow, currentUser, deleteKnowhow, editClick}) =>{
 
 
@@ -10,10 +14,10 @@ const KnowHow = ({knowHow, currentUser, deleteKnowhow, editClick}) =>{
             return(
                 <>
                 <div>
-                    <button type='button' onClick={() => deleteKnowhow(knowHow)}>Delete</button>
+                    <button class="delete-button"  type='button' onClick={() => deleteKnowhow(knowHow)}>Delete</button>
                 </div>
                 <div>
-                    <button type='button' onClick={() => editClick(knowHow)} >Edit</button>
+                    <button class="edit-button" type='button' onClick={() => editClick(knowHow)} >Edit</button>
                 </div>
                 </>  
             )
@@ -27,15 +31,17 @@ const KnowHow = ({knowHow, currentUser, deleteKnowhow, editClick}) =>{
 
     return(
         <div>
-            <Link to={url}>
-                <h4>{knowHow.title}</h4>
+            <Link class="noLine" to={url}>
+                <p class="kHw-title">{knowHow.title}</p>
                 <ul>
-                    <li>{knowHow.body}</li>
-                    <li>Applies to month: {month}</li>
-                    <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
+                    <li class="kHw-month">Applies to month: {month}</li>
+                    <li class="kHw-content">{knowHow.body}</li>
+                    <li class="kHw-author">Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
                 </ul>
             </Link>
+            <div>
             <>{knowHowEditDelete()}</>
+            </div>
         </div>
     )
 

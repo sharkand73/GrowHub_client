@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
+import '../../css/Knowhow.css';
+import '../../css/NewUser.css';
 
 const EditKnowHow = ({currentUser, knowHow, months, date, editKnowHow, setEditButtonClicked, removeEdit}) => {
     
@@ -35,25 +37,44 @@ const EditKnowHow = ({currentUser, knowHow, months, date, editKnowHow, setEditBu
 
     return(
         <>
-        <h3>Edit your knowhow here!</h3>
+        <div class="edit-form">
+        <p class="kHw-edit">Edit your knowhow below</p>
+
+        <div id="form-grid">
         <form onSubmit={handleSubmit}>
-                <label name='title'>Title:</label>
-                <input type='text' name='title' id='title' onChange={handleChange} placeholder={knowHow.title} required />
 
-                <label name='body'>Your Know How:</label>
-                <input type='text' name='body' id='body' onChange={handleChange} placeholder={knowHow.body} required /> 
+            <div class="form-wrapper">
 
-                <label name='month'>Month your knowhow applies to:</label>
-                <select name='month' id='month' onChange={handleMonth}>
-                    <option selected disabled>Month</option>
-                    {monthOptions}
-                </select>
+                <div class="form_field form_input">
+                    <label class="form_text" name='title'>Title:</label>
+                    <input class="field_size" type='text' name='title' id='title' onChange={handleChange} placeholder={knowHow.title} required />
+                </div>
 
-                <button type='submit'>Update Know How</button>
-            </form>
-            <div>
-                <button onClick={removeEdit}>X</button>
+                <div class="form_field form_input">
+                    <label class="form_text" name='body'>Your Knowhow:</label>
+                    <input class="field_size3" type='text' name='body' id='body' onChange={handleChange} placeholder={knowHow.body} required /> 
+                </div>
+
+                <div class="form_field form_input">
+                    <label class="form_text" name='month'>Month your knowhow applies to:</label>
+                    <select class="field_size" name='month' id='month' onChange={handleMonth}>
+                        <option selected disabled>Month</option>
+                        {monthOptions}
+                    </select>
+                </div>
+
+                <div>
+                    <br /> <button class="edit-button" type='submit'>Update Knowhow</button>
+                </div>
+
+                <div>
+                    <button class="delete-button" onClick={removeEdit}>Delete knowhow</button>
+                </div>
+
             </div>
+        </form>
+        </div>
+        </div>
         </>
     )
     
