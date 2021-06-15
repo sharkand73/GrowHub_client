@@ -8,22 +8,55 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
 
     // const plotsMap = allotmentSettings.mapFilepath;
     
-    // Current user's plots. ***There is currently an issue with this at the back end!***
-    const currentUserPlots = currentUser.plots;
+    // const currentUserPlots = currentUser.plots; // OLD when users actually had plots brought through to front end, now IGNORED
+
+    const currentUserPlots = [];
+
+// NEW Method that searches through plots and grabs the users plots
+    const plotsFill = plots.forEach((plot) => {
+        for (let user of plot.users){
+            if (user.shortName === currentUser.shortName){
+                currentUserPlots.push(plot)
+            }
+        }
+    })
+
     const currentUserPlotsTally = currentUserPlots.length;
     const plotsPlural = (currentUserPlotsTally > 1);
-    // This filters out the above plot items from {plots}.  
-    // A plot of the current user will have an index of 0,1,2, etc. in currentUserPlots.  
-    // A non-plot will have indexOf returning -1, on the other hand.
+    
+    // A convoluted method to filter out the current user's plots
+    // The original filter wasn't working with plot objects, so
+    // I have done it with plot Ids and the used findById to populate
+    // new array "otherPlots".
+    const userPlotIds = currentUserPlots.map((plot) => plot.id);
+    const allPlotIds = plots.map((plot) => plot.id);
+    const otherPlotIds = allPlotIds.filter((id) => (userPlotIds.indexOf(id) === -1) );
+    const findPlotById = function(id){
+        return plots.find((plot) => (plot.id === id));
+    } 
+    let otherPlots = [];
+    for(let id of otherPlotIds){
+        otherPlots.push(findPlotById(id));
+    }
 
-    const otherPlots = plots.filter((plot) => (currentUserPlots.indexOf(plot) === -1));
+    // The two algorithms below did not work.
+
+    // 1) const otherPlots = plots.filter((plot) => (currentUserPlots.indexOf(plot) === -1));
+    
+    // 2) let otherPlots = [];
+    //  for(let plot of plots){
+    //      if (currentUserPlots.indexOf(plot) > -1){
+    //          otherPlots.push(plot);
+    //      }
+    //  }
+
 
     // Renders a Plot object for current user plot
     const currentUserPlotArray = currentUserPlots.map((plot, index) => {
     return(
         <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
     )
-})
+    })
 
     // Renders a Plot object for each plot in otherPlots
     const otherPlotArray = otherPlots.map((plot, index) => {

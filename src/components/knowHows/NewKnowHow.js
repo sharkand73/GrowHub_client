@@ -45,7 +45,7 @@ const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
                 <input type='text' name='title' id='title' onChange={handleChange} required />
 
                 <label name='body'>Your Know How:</label>
-                <input type='text' name='body' id='body' onChange={handleChange} required /> 
+                <input type='text' name='body' id='body' maxlength="255" onChange={handleChange} required /> 
 
                 <label name='month'>Month your knowhow applies to:</label>
                 <select name='month' id='month' onChange={handleMonth}>

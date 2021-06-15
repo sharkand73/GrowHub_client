@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
+import '../../css/NewUser.css';
+import LogoSmall from '../../css/LogoSmall.png';
+import '../../css/Login.css';
+
 const NewUser = ({postUser, getDate, newUserCheck}) => {
 
     const year = getDate().slice(6, 11)
@@ -53,26 +57,48 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
 
     return(
         <>
-            <h3>Enter your info here to create an account</h3>
-            <p>If you require admin account functionality, please contact the site administrator</p>
+        <div id="new-user-container">
 
+            <div id="logo-grid2">
+                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            </div>
+
+            <div id="text-grid">
+                <p class="newUserHeader">Enter your details to create an account</p>
+                <p class="newUserText">If you require administrator account functionality, please contact the site administrator at admin@allotmentplots.co.uk</p>
+            </div>
+
+            <div id="form-grid">
                 <form onSubmit={handleSubmit}>
-                    <label name='shortName'>Username:</label>
-                    <input type='text' name='shortName' id='shortName' placeholder='Sharkanator' onChange={handleChange} required />
+                    <div class="form-wrapper">
 
-                    <label name='email'>Email Address:</label>
-                    <input type='text' name='email' id='email' placeholder='soilmuncher96@yipee.com' onChange={handleChange} required /> 
+                    <div class="form_field form_input">
+                    <label class="form_text" name='shortName'>Username:</label>
+                    <input class="field_size" type='text' name='shortName' id='shortName' placeholder='Sharkanator' onChange={handleChange} required />
+                    </div>
 
-                    <label name='password'>Password:</label>
-                    <input type='password' name='password' id='password' onChange={handleChange} required /> 
+                    <div class="form_field form_input">
+                    <label class="form_text" name='email'>Email Address:</label>
+                    <input class="field_size" type='text' name='email' id='email' placeholder='soilmuncher96@yipee.com' onChange={handleChange} required /> 
+                    </div>
 
-                    <label name='yearJoined'>Year you first got your plot (yyyy)</label>
-                    <input type='number' name='yearJoined' id='yearJoined' min='1990' max={year} defaultValue={year} onChange={handleYear} required /> 
+                    <div class="form_field form_input">
+                    <label class="form_text" name='password'>Password:</label>
+                    <input class="field_size" type='password' name='password' id='password' onChange={handleChange} required /> 
+                    </div>
 
-                    <button type='submit'>Create Account</button>
+                    <div class="form_field form_input">
+                    <label class="form_text" name='yearJoined'>Year you first got your plot (yyyy) </label>
+                    <input class="field_size2" type='number' name='yearJoined' id='yearJoined' min='1990' max={year} defaultValue={year} onChange={handleYear} required /> 
+                    </div>
+
+                    <button class="createButton" type='submit'>Create Account</button>
+
+                    </div>
                 </form>
-
                 {submitResponse()}
+            </div>
+        </div>
         </>
     )
 

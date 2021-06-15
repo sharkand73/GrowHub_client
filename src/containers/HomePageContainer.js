@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import moment from 'moment';
 
-import Bulletin from '../components/community/bulletin/Bulletin';
+import NewsItem from '../components/community/bulletin/NewsItem';
 import Tip from '../components/community/tip/Tip';
 import Weather from '../components/community/weather';
 
@@ -21,7 +21,7 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
 
     // Map through the threeBulletins to create an li element
     const bulletinsForRender = threeBulletins.map((bulletin, index) => {
-        return <li key={index}><Bulletin bulletin={bulletin} currentUser={currentUser}/></li>
+        return <li key={index}><NewsItem bulletin={bulletin} currentUser={currentUser}/></li>
     })
     
     return(
@@ -46,7 +46,7 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
                     </Link>
                 </div>
 
-                <div  id="weather-grid" class="weather-text">
+                <div  id="weather-grid" class="dash-text">
                     <h3>Todays date:</h3>
                     {moment().format('DD MMMM YYYY')}
 
@@ -55,13 +55,14 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
                 
 
                 <div class="fixedHeightContainer" id="news-grid">
+                    <p class="news-header">Latest News</p>
                     <ul class="content news-text">
                     {bulletinsForRender}
                     </ul>
                 </div>
 
 
-                <div id="tips-grid" class="tip-text">
+                <div id="tips-grid"  class="tip-text" >
                     <Tip tips = {tips} />
                 </div>
 

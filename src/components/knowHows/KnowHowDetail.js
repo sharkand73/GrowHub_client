@@ -1,31 +1,32 @@
 import React from 'react';
+import NewKnowHowReply from './NewKnowHowReply';
 
-const KnowHowDetail = ({knowHow, currentUser}) => {
+const KnowHowDetail = ({knowHow, currentUser, getDate, postReply}) => {
 
     const monthLower = knowHow.month.toLowerCase();
     const month = monthLower[0].toUpperCase() + monthLower.slice(1);
-
-    // String date, User author, String title, String body, Month month
-
 
     const getReplies = () => {
         return knowHow.replies.map((reply, index) => {
                 return (
                     <li key={index}>
-                        <ul>
-                            <li>{reply.body}</li>
-                            <li>By: {reply.author} on {reply.date}</li>
-                        </ul>
+                        <div>
+                            <h4>{reply.body}</h4>
+                            <p><i>By: {reply.author.shortName} on {reply.date}</i></p>
+                        </div>
+                        {/* LINE BREAK, DELETE ONCE CSS IS IN */}
+                        <br></br>
                     </li>
                 )
         })
     }
 
     const getRepliesSection = () => {
-        if (knowHow.replies){
+        if (knowHow.replies.length >=2){
             return(
                 <div>
-                    <h3>Replies:</h3>
+                    <h3>All Replies:</h3>
+
                     <ul>
                         {getReplies()}
                     </ul>
@@ -43,6 +44,9 @@ const KnowHowDetail = ({knowHow, currentUser}) => {
                 <li>Applies to month: {month}</li>
                 <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
             </ul>
+
+            <h3>Write a new reply:</h3>
+            <NewKnowHowReply knowHow={knowHow} currentUser={currentUser} getDate={getDate}  postReply={postReply}/>
 
             {getRepliesSection()}
         </>
