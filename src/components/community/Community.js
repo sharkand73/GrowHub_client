@@ -13,7 +13,7 @@ import '../../css/Community.css';
 // Outgoing props = BulletinItems, Jobs, User, onClick, onSubmit
 
 
-const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob}) => {
+const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob, getDate}) => {
 
     const [selectedBulletin, setSelectedBulletin] = useState();
 
@@ -34,7 +34,7 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
                 
                 <div id="noticeboard-inner">
                     {selectedBulletin? <BulletinDetails bulletin={selectedBulletin} clickAway={clickAway} deleteBulletin={deleteBulletin} currentUser={currentUser}/>:
-                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} displayBulletin={displayBulletin}/>}
+                    <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} displayBulletin={displayBulletin} getDate={getDate} />}
                 </div>
                 <h2>
                 <Link to='/bulletins/new' id="new-bulletin">

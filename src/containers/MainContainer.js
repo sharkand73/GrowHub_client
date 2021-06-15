@@ -99,6 +99,12 @@ const MainContainer = ({allotmentSettings}) =>{
         request.post("/api/bulletins", bulletin);
     }
 
+    const editBulletin = (bulletin) => {
+        const url = "/api/bulletins/" + bulletin.id
+        const request = new Request();
+        request.put(url, bulletin);
+    }
+
     const findBulletinById = (bulletinId) => {
         return bulletins.find((bulletin) => {
             return bulletin.id === parseInt(bulletinId)
@@ -113,7 +119,7 @@ const MainContainer = ({allotmentSettings}) =>{
         const request = new Request();
         request.delete("/api/bulletins", bulletin.id)
         setBulletins(newBulletinList);
-    }
+    } 
 
     const postJob = (job) => {
         jobs.push(job);
@@ -284,7 +290,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob}/>
+                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob} editBulletin={editBulletin} getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
