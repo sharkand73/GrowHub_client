@@ -15,7 +15,7 @@ const Weather = ({weatherData}) => {
 
         <h3>{location}</h3>
         <p class="dash-text">Outlook: {description}</p>
-        <p class="dash-text"><span>Max: {max}C</span> <span>Min: {min}C</span></p>
+        <p class="dash-text"><span>Max: {max}&#176;C</span> <span>Min: {min}&#176;C</span></p>
 
        </>
         }
