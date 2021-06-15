@@ -115,3 +115,7 @@
     font-weight: 600;
     padding-left:0px;
 }
+
+p.header {
+    margin-bottom: 5px;
+}
