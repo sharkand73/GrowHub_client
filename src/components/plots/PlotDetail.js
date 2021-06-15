@@ -1,4 +1,5 @@
 import React from 'react';
+import PlotComment from './PlotComment';
 
 const PlotDetail = ({currentUser, plot}) =>{
 
@@ -13,8 +14,7 @@ const PlotDetail = ({currentUser, plot}) =>{
     return plotHolders;
     }
 
-    console.log(plot.areaName);
-    console.log(plot.users);
+    const plotComments = plot.comments.map((comment) => (<PlotComment comment={comment} currentUser={currentUser}/>))
 
     return(
         <>
@@ -26,7 +26,8 @@ const PlotDetail = ({currentUser, plot}) =>{
                 <li>Plotholders: {getPlotHolders()}</li>
             </ul>
             <h3>Plot history:</h3>
-            <p>Inserts plot comments here</p>
+            {plot.comments?<ul>{plotComments}</ul>: null}
+            
         </>
     )
 
