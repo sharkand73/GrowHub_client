@@ -6,8 +6,7 @@ const BulletinDetails = ({bulletin, clickAway, deleteBulletin, currentUser}) => 
         // console.log(`Current user: ${currentUser.id}`);
         // console.log(`Bulletin author ${bulletin.author.id}`);
         if (currentUser.email === bulletin.author.email) {
-            return(
-            
+            return(        
                 <div className = "edit-delete">
                     <span className="edit-text">Edit</span>
                     <span className="delete-text" onClick={() => deleteBulletin(bulletin)}>Delete</span>
@@ -26,7 +25,7 @@ const BulletinDetails = ({bulletin, clickAway, deleteBulletin, currentUser}) => 
                 <p>{bulletin.body}</p>
                 </div>
             </div>
-            {bulletinEditDelete}
+            {bulletinEditDelete()}
         </div>
     )
 }

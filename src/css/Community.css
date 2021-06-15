@@ -199,15 +199,17 @@
     
 }
 
-#edit-text, delete-text {
+.edit-text, .delete-text {
+  font-size: 24px;
+  font-weight: bold;
   color: white;
 }
 
-#edit-text:hover {
+.edit-text:hover {
   color: blue;
 }
 
-#delete-text:hover {
+.delete-text:hover {
   color: red;
 }
 
