@@ -72,6 +72,7 @@
     text-decoration: none;
 }
 
+
 .cleanLink{
     appearance: none;
     background: none;
@@ -79,6 +80,10 @@
     outline: none;
     cursor: pointer;
     text-decoration: none;
+}
+
+.cleanLink:hover {
+    color: greenyellow;
 }
 
 
@@ -101,6 +106,22 @@
     padding-left:0px;
     padding-top: 30px;
 }
+
+.kHw-title:hover {
+    font-size: 21px;
+    transition: .3s ease-in-out;
+
+}
+
+.kHw-title2{
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left:0px;
+    padding-top: 30px;
+}
+
 
 .kHw-content{
     font-family: 'Montserrat', sans-serif;
@@ -155,6 +176,8 @@
     list-style: none;
 }
 
+
+
 .filter-box{
     padding: 5px 10px;
     margin-bottom: 0px;
@@ -189,6 +212,14 @@
     padding: 10px;     
 }
 
+.edit-button:hover {
+    color: greenyellow;
+}
+.delete-button:hover {
+    color: greenyellow;
+}
+
+
 .createAccountButton{
     appearance: none;
     background: none;
@@ -208,7 +239,11 @@
     appearance: none;
     background: none;
     cursor: pointer;
-    padding: 15px 0px 0px 0px;    
+    padding: 15px 0px 0px 0px;
+}
+
+.submit-button:hover {
+    color: greenyellow;
 }
 
 /* EDIT FORM */
@@ -250,6 +285,10 @@
     background: none;
     cursor: pointer;
     padding: 20px 0px; 
+}
+
+.edit-button2:hover {
+    color: greenyellow;
 }
 
 .new-kHw{

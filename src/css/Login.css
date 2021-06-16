@@ -132,6 +132,10 @@ input::placeholder {
         padding: 20px;   
     }
 
+.loginPageButton:hover {
+        color: greenyellow;
+    }
+
 .createAccountButton{
         appearance: none;
         background: none;
@@ -139,6 +143,10 @@ input::placeholder {
         outline: none;
         cursor: pointer;
         padding: 20px;   
+    }
+
+.createAccountButton:hover {
+        color:black;
     }
 
 
@@ -149,7 +157,10 @@ input::placeholder {
         color: grey;
         text-decoration: none;
     }
-
+    
+.create-account:hover {
+        color:black;
+    }
 .create-background{
     display: flex;
     justify-content: center;

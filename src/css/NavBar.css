@@ -17,6 +17,10 @@
     cursor: pointer;
 }
 
+.navItem:hover {
+    color: green;
+}
+
 .navUser{
     color: green;
     font-family: 'Montserrat', sans-serif;
@@ -57,6 +61,10 @@ margin:0px;
     outline: none;
     cursor: pointer;
     padding: 5px;  
+}
+
+.logoutButton:hover {
+    color: green;
 }
 
 .slim{

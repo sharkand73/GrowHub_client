@@ -39,7 +39,9 @@ const Reply = ({knowHow, getDate, currentUser,  postReply}) => {
 
         <br />
 
+        <div class="submit-button">
         <button class="submit-button" type='submit'>Submit reply</button>
+        </div>
         </form>
 
         {formCheck ? <Redirect to={url} />:null}

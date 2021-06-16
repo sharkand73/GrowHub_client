@@ -109,6 +109,10 @@
     padding: 20px 0px; 
 }
 
+.edit-button3:hover {
+    color: greenyellow;
+}
+
 .new-kHw{
     font-family: 'Montserrat', sans-serif;
     color:green;

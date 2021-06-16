@@ -54,6 +54,7 @@
 .content {
     overflow:auto;
     background:#fff;
+    height: 300px;
 }
 
 

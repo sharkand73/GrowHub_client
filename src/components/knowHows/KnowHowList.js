@@ -55,7 +55,7 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow
         <div id="knowledge-container">
 
             <div id="logo-grid2">
-                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
 
             <div id="header-grid">
@@ -84,7 +84,7 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow
                 <ul>
                     {knowHowArray}
                 </ul>
-      
+
                 <div>
                     {selectedKnowhow ? <EditKnowHow currentUser={currentUser} knowHow={selectedKnowhow} months={months} date={date} editKnowHow={editKnowHow} removeEdit={removeEdit}/> : null}
                 </div>

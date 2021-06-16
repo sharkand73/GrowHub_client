@@ -92,8 +92,6 @@ const PlotList = ({currentUser, plots}) =>{
                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
 
-            {/* <h3>Adding history to your plot is optional. </h3> */}
-
             {userPlotLength > 0 ?
             <div id="your-plots-grid">
                 <p class="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>
@@ -110,16 +108,11 @@ const PlotList = ({currentUser, plots}) =>{
                 <p class="plotText2">{plotsStatement}</p>
 
                 <div>
-                    <ul class="flexWrapper">
+                    <ul class="flexWrapper plotText3">
                         {otherPlotArray}
                     </ul>
                 </div>
             </div>
-
-            {/* <p>shifted plots</p>
-            <ul>
-                {newPlotsArray()}
-            </ul> */}
 
         </div>
         </>
