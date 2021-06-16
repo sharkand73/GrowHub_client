@@ -157,6 +157,17 @@ const MainContainer = ({allotmentSettings}) =>{
         setJobs(newJobList);
     }
 
+    const editJob = (oldJob, newJob) => {
+        const url = "/api/jobs/" + oldJob.id
+        const tempJobList = [...jobs];
+        const index = tempJobList.indexOf(oldJob);
+        tempJobList.splice(index, 1);
+        tempJobList.push(newJob);
+        setJobs(tempJobList);
+        const request = new Request();
+        request.put(url, newJob);
+    }
+
     const postUser = (newUser) => {
         // Re-initialize the newUserCheck state
         setNewUserCheck(0);
@@ -332,6 +343,7 @@ const MainContainer = ({allotmentSettings}) =>{
                     getDate={getDate}
                     postJob={postJob}
                     communalAreas={communalAreas}
+                    editJob={editJob}
                     />
                 }} currentUser={currentUser}/>
 

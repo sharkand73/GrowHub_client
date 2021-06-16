@@ -2,7 +2,7 @@ import React from 'react';
 import EditJob from './EditJob.js';
 import JobDetails from './JobDetails.js';
 
-const JobSelected = ({job, getCarrots, jobClickAway, currentUser, deleteJob, jobStatus, setJobStatus}) => {
+const JobSelected = ({job, getCarrots, jobClickAway, currentUser, deleteJob, jobStatus, setJobStatus, communalAreas, editJob}) => {
 
     const jobEditDelete = () => {
         if (currentUser.id === job.author.id) {
@@ -15,7 +15,7 @@ const JobSelected = ({job, getCarrots, jobClickAway, currentUser, deleteJob, job
     }
 
     if (jobStatus === 'edit') {
-        return <EditJob job={job} setJobStatus={setJobStatus}/>;
+        return <EditJob job={job} setJobStatus={setJobStatus} currentUser={currentUser} communalAreas={communalAreas} editJob={editJob}/>;
     }
     return (
     <>
