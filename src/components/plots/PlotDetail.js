@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PlotComment from './PlotComment';
+import NewPlotComment from './NewPlotComment';
+import {Redirect} from 'react-router-dom';
+
 
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
 
-const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
+const PlotDetail = ({currentUser, plot, plots, getDate, postComment}) =>{
+
+    const [backHandler, setBackHandler] = useState(0);
 
     const getPlotHolders = () => {
     let plotHolders = "";
@@ -35,6 +40,10 @@ const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
     return plotSizes.filter((size) => (size > mySize)).length;
     }
 
+    const handleBackClick= () => {
+        setBackHandler(1);
+    }
+
     return(
         <>
         <div id="plots-grid-container2">
@@ -56,13 +65,19 @@ const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
             </div>
         
 
+
             <div id="plot-history-grid">
                 <p class="plot-detail1">Plot history</p>
+                
+                <NewPlotComment plot={plot} getDate={getDate} currentUser={currentUser}  postComment={postComment}/>
+                
                 {plot.comments?<ul  class="plot-detail2">{plotComments}</ul>: null}
             </div>
-            <div className = "plot-back" onClick = {()=>setSelectedPlot(null)}>
+            <div className = "plot-back" onClick = {()=> handleBackClick()}>
                 Back
             </div>
+
+            {backHandler === 1 ? <Redirect to='/plots'/> : null}
         </div>  
         </>
     )

@@ -34,6 +34,7 @@ const MainContainer = ({allotmentSettings}) =>{
     const [communalAreas, setCommunalAreas] = useState([]);
     const [newUserCheck, setNewUserCheck] = useState(0);
     const [replies, setReplies] = useState([]);
+    const [comments, setComments] = useState([]);
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -47,9 +48,11 @@ const MainContainer = ({allotmentSettings}) =>{
         const allUsersPromise = request.get('/api/users');
         const communalAreasPromise = request.get('/api/communals');
         const repliesPromise = request.get('/api/replies');
+        const commentsPromise = request.get('/api/comments');
+
         
 
-        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise, repliesPromise])
+        Promise.all([plotsPromise, knowHowsPromise, bulletinsPromise, jobsPromise, tipsPromise, allUsersPromise, communalAreasPromise, repliesPromise, commentsPromise])
             .then((data) => {
                 setPlots(data[0]);
                 setKnowHows(data[1]);
@@ -59,6 +62,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 setAllUsers(data[5]);
                 setCommunalAreas(data[6]);
                 setReplies(data[7]);
+                setComments(data[8]);
             })}
 
     useEffect(()=>{requestAll()}, [])
@@ -270,6 +274,13 @@ const MainContainer = ({allotmentSettings}) =>{
         request.post("/api/replies", reply);
     }
 
+    const postComment = (comment) => {
+        comments.push(comment);
+        setPlots(plots);
+        const request = new Request();
+        request.post("/api/comments", comment);
+    }
+
     return(
         <Router>
 
@@ -289,13 +300,24 @@ const MainContainer = ({allotmentSettings}) =>{
                     }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/plots' component = {() =>{
-                    return <PlotList currentUser={currentUser} plots={plots} allotmentSettings={allotmentSettings} />
+                    return <PlotList 
+                    currentUser={currentUser} 
+                    plots={plots} 
+                    allotmentSettings={allotmentSettings} 
+                    getDate={getDate} 
+                    postComment={postComment}/>
                 }} currentUser={currentUser}/>
 
                 <Route exact path = "/plots/:id" render = {(props) => {
                     const id = props.match.params.id;
                     const foundPlot = findPlotById(id);
-                    return foundPlot ? <PlotDetail currentUser={currentUser} plot={foundPlot} />: <Redirect to="/plots" />
+                    return foundPlot ? <PlotDetail 
+                    currentUser={currentUser} 
+                    plot={foundPlot} 
+                    plots={plots} 
+                    getDate={getDate}
+                    postComment={postComment}
+                    />: <Redirect to="/plots" />
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
