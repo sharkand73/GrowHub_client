@@ -38,7 +38,7 @@ const EditBulletin = ({currentUser, bulletin, editBulletin, getDate, reverseEdit
                     <label name='body'>Your Bulletin:</label>
                     <input class="field_size1" type='text' name='body' id='body' onChange={handleChange} defaultValue={bulletin.body} required /> 
     
-                    <button class="createButton1" type='submit'>Submit New Bulletin</button>
+                    <button class="createButton1" type='submit'>Submit Updated Bulletin</button>
                 </form>
         </>
         )
