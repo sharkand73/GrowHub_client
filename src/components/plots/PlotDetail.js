@@ -72,9 +72,8 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
             </ul>
             </div>
 
-
-
             <div id="plot-history-grid">
+
 
                 <NewPlotComment plot={plot} getDate={getDate} currentUser={currentUser}  postComment={postComment}/>
                 {commentsArrayLength > 0 ?
@@ -87,7 +86,7 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
                 : null}          
             </div>
 
-            <div className = "plot-back" onClick = {()=> handleBackClick()}>
+            <div id="plot-details-grid" className = "plot-back" onClick = {()=> handleBackClick()}>
 
                 Back
             </div>

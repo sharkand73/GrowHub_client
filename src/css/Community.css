@@ -34,13 +34,13 @@
     font-weight: bold;
     font-size: 1.2rem;
   }
-   
+  
   #noticeboard p {
     font-size: 1rem;
     font-weight: normal;
   }
-   
- #noticeboard ul,li{
+  
+#noticeboard ul,li{
     list-style:none;
     padding-top: 0;
   }
@@ -50,7 +50,7 @@
     padding-top: 0;
   }
 
- #noticeboard  ul{
+#noticeboard  ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

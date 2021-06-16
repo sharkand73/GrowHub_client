@@ -46,18 +46,18 @@ const EditKnowHow = ({currentUser, knowHow, months, date, editKnowHow, setEditBu
 
                 <div class="form_field form_input">
                     <label class="form_text" name='title'>Title:</label>
-                    <input class="field_size" type='text' name='title' id='title' onChange={handleChange} placeholder={knowHow.title} required />
+                    <input class="field_size" type='text' name='title' id='title' onChange={handleChange} placeholder={knowHow.title} defaultValue={knowHow.title} required />
                 </div>
 
                 <div class="form_field form_input">
                     <label class="form_text" name='body'>Your Knowhow:</label>
-                    <input class="field_size3" type='text' name='body' id='body' onChange={handleChange} placeholder={knowHow.body} required /> 
+                    <input class="field_size3" type='text' name='body' id='body' onChange={handleChange} placeholder={knowHow.body} defaultValue={knowHow.body} required /> 
                 </div>
 
                 <div class="form_field form_input">
                     <label class="form_text" name='month'>Month your knowhow applies to:</label>
-                    <select class="field_size" name='month' id='month' onChange={handleMonth}>
-                        <option selected disabled>Month</option>
+                    <select class="field_size" name='month' id='month' onChange={handleMonth} required>
+                        <option selected disabled value="" >Month</option>
                         {monthOptions}
                     </select>
                 </div>

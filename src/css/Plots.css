@@ -82,9 +82,9 @@
 #plots-grid-container2{
     display: grid;
     width: 100vw;
-    height: 110vh;
+    height: 160vh;
     grid-template-columns: 4% 11% 70% 11% 4%;
-    grid-template-rows: 20% 30% 48% 2%;
+    grid-template-rows: 15% 20% 62% 3%;
 }
 
 #plot-details-grid{
@@ -111,12 +111,13 @@
 }
 
 .plot-detail2{
+    font-size: 15px;
+    font-weight: 300;
     font-family: 'Montserrat', sans-serif;
     color: rgb(82, 79, 79);
-    font-size: 15px;
-    font-weight: 400;
     height: 25px;
     }
+
 
 .margin{
     margin: 20px ;
@@ -134,4 +135,33 @@
     color: greenyellow;
 }
 
+/* NEW PLOT COMMENT */
 
+.plot_form_field{
+    margin: 20px;
+    width: 300px;  
+
+}
+
+.plot_form_input{
+    width: 300px;  
+    margin-left: 50px;
+}
+
+.edit-button4{
+    font-size: 18px;
+    font-weight: 300;
+    width: 210px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:green;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px 20px 40px 40px; 
+}
+
+.edit-button4:hover {
+    color: greenyellow;
+}
