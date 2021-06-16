@@ -58,9 +58,11 @@ const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
 
             <div id="plot-history-grid">
                 <p class="plot-detail1">Plot history</p>
-                {plot.comments?<ul  class="plot-detail2">{plotComments}</ul>: null}
+                <div class="content">
+                    {plot.comments?<ul  class="plot-detail2">{plotComments}</ul>: null}
+                </div>
             </div>
-            <div className = "plot-back" onClick = {()=>setSelectedPlot(null)}>
+            <div  id="plot-details-grid" className = "plot-back" onClick = {()=>setSelectedPlot(null)}>
                 Back
             </div>
         </div>  

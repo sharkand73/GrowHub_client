@@ -68,7 +68,7 @@ const EditKnowHow = ({currentUser, knowHow, months, date, editKnowHow, setEditBu
                 </div>
 
                 <div>
-                    <button class="delete-button" onClick={removeEdit}>Delete knowhow</button>
+                    <button class="delete-button" onClick={removeEdit}>Delete Knowhow</button>
                 </div>
 
             </div>

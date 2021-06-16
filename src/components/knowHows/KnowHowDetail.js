@@ -41,7 +41,7 @@ const KnowHowDetail = ({knowHow, currentUser, getDate, postReply, replies}) => {
             </div>
 
             <div id="header-grid">
-                <p class="kHw-title">Knowhow: {knowHow.title}</p>
+                <p class="kHw-title2">Knowhow: {knowHow.title}</p>
             </div>
             
             <div  id="form-grid2">
@@ -53,7 +53,7 @@ const KnowHowDetail = ({knowHow, currentUser, getDate, postReply, replies}) => {
             </div>
 
             <div id="form-grid3">
-                <p class="kHw-title">Add a comment:</p>
+                <p class="kHw-title2">Add a comment:</p>
                 <NewKnowHowReply knowHow={knowHow} currentUser={currentUser} getDate={getDate}  postReply={postReply}/>
 
                 {getReplies}

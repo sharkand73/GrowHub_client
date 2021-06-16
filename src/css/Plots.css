@@ -5,7 +5,7 @@
     width: 100vw;
     height: auto;
     grid-template-columns: 4% 11% 70% 11% 4%;
-    grid-template-rows: 20% 30% 45% 5%;
+    grid-template-rows: 20% 35% 48% 2%;
 }
 
 #logo-grid{
@@ -53,12 +53,14 @@
 }
 
 .plotText{
-    font-size: 23px;
-    font-weight: 200px;
     font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 20px;
+    font-weight: 300;
     padding: 10px;
     margin: 5px 30px;
-    color: rgb(152, 88, 88);
+    color: green;
+    border: green;
 }
 
 .no-decoration{
@@ -66,19 +68,23 @@
 }
 
 .plotText2{
-font-size: 25px;
-font-weight: 200px;
-font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 25px;
+    font-weight: 300;
+    padding-left:0px;
+    padding-top: 30px;
 }
+
 
 /* PLOT DETAIL GRID */
 
 #plots-grid-container2{
     display: grid;
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     grid-template-columns: 4% 11% 70% 11% 4%;
-    grid-template-rows: 25% 28% 47%;
+    grid-template-rows: 20% 30% 48% 2%;
 }
 
 #plot-details-grid{
@@ -92,6 +98,7 @@ font-family: 'Montserrat', sans-serif;
     grid-row-start: 3;
     grid-row-end: 3;
 }
+
 
 /* PLOT DETAIL TEXT */
 
@@ -118,10 +125,13 @@ font-family: 'Montserrat', sans-serif;
 .plot-back {
     color: green;
     font-size: 20px;
-    grid-column-start:4;
-    grid-row-start: 2  
+    text-align: right; 
+    padding: 0px;
+    margin: 0px;
 }
 
 .plot-back:hover {
-    color: lime;
+    color: greenyellow;
 }
+
+
