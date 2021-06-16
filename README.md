@@ -60,7 +60,7 @@ All users can post fun news that appear as sticky notes, and the top three most 
 
 ![Alt List of sticky note bulletins, and jobs on a paper styled background](README_images/bulletinAndJobList.png "Bulletins and Jobs")
 
-![Alt The bulletins and jobs edit pages, rendered similar to their parent list](README_images/bulletinAndJobEdit "Edit functionality")
+![Alt The bulletins and jobs edit pages, rendered similar to their parent list](README_images/bulletinAndJobEdit.png "Edit functionality")
 
 
 ## Next Steps
