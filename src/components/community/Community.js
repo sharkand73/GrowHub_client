@@ -84,11 +84,6 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
                     {selectedBulletin? <BulletinDetails bulletin={selectedBulletin} clickAway={clickAway} deleteBulletin={deleteBulletin} currentUser={currentUser} getDate={getDate} editBulletin={editBulletin} />:
                     <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} displayBulletin={displayBulletin} getDate={getDate} selectedBulletin={selectedBulletin} />}
                 </div>
-                <h2>
-                <Link to='/bulletins/new' id="new-bulletin">
-                    New Bulletin
-                </Link>
-                </h2>
             
             </div>
                 <div id="jobs-container">

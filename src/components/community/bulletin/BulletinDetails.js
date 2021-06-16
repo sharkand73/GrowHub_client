@@ -28,13 +28,20 @@ const BulletinDetails = ({bulletin, clickAway, deleteBulletin, currentUser, getD
             }
         }
 
-        if (currentUser.email === bulletin.author.email) {
+        const isAuthor = (currentUser.email === bulletin.author.email);
+
+        if (!editClick && isAuthor){
+            return (
+            <div className = "edit-delete">
+                <span className="edit-text" onClick={() => handleEdit(bulletin)} >Edit</span>
+                <span className="delete-text" onClick={() => deleteBulletin(bulletin)}>Delete</span>
+            </div>
+            )
+        }
+
+        if (editClick && isAuthor) {
             return(   
                 <>     
-                <div className = "edit-delete">
-                    <span className="edit-text" onClick={() => handleEdit(bulletin)} >Edit</span>
-                    <span className="delete-text" onClick={() => deleteBulletin(bulletin)}>Delete</span>
-                </div>
                 <>{editForm()}</>
                 </>
             )
