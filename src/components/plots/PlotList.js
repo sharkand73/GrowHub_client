@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import Plot from './Plot';
-import PlotDetail from './PlotDetail';
 import {Redirect} from 'react-router-dom';
 
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
 
-const PlotList = ({currentUser, plots, allotmentSettings, getDate, postComment}) =>{
+const PlotList = ({currentUser, plots}) =>{
 
     const [selectedPlot, setSelectedPlot] = useState(null);
 
@@ -17,7 +16,7 @@ const PlotList = ({currentUser, plots, allotmentSettings, getDate, postComment})
     const currentUserPlots = [];
 
 // NEW Method that searches through plots and grabs the users plots
-    const plotsFill = plots.forEach((plot) => {
+    plots.forEach((plot) => {
         for (let user of plot.users){
             if (user.shortName === currentUser.shortName){
                 currentUserPlots.push(plot)

@@ -26,6 +26,7 @@ const NewPlotComment = ({plot, getDate, currentUser,  postComment}) => {
         setFormData(formData);
         postComment(formData);
         setFormCheck(1);
+        document.querySelector('form').reset();
     }
 
     // String body, String date, User author, TextContent textContent

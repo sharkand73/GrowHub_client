@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlotComment = ({comment, currentUser}) => {
+const PlotComment = ({comment}) => {
     return (
         <div>
             <p><b>{comment.title}</b></p>

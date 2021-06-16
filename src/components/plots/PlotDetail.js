@@ -13,11 +13,11 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
 
     const commentsArray = [];
 
-    const getComments = comments.forEach((comment) => {
+    comments.forEach((comment) => {
         if (comment.plot.id === plot.id){
             commentsArray.push(
                 <li key={comment.index}>
-                    <PlotComment comment={comment} currentUser={currentUser}/>
+                    <PlotComment comment={comment}/>
                     <hr/>
                 </li>  
             )
@@ -35,14 +35,6 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
     }
     return plotHolders;
     }
-
-    // const plotComments = comments.plot.map((comment, index) => 
-    
-    //         <li><PlotComment key={index} comment={comment} currentUser={currentUser}/>
-    //         <hr/>
-    //         </li>  
-            
-    //     )
     
     const getArea = (length, breadth) => (Math.round(length * breadth * 10) / 10);
     const plotSize = getArea(plot.length, plot.breadth);
