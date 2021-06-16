@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
+import '../../css/Plots.css';
+
 const NewPlotComment = ({plot, getDate, currentUser,  postComment}) => {
 
     const date = getDate();
@@ -35,22 +37,24 @@ const NewPlotComment = ({plot, getDate, currentUser,  postComment}) => {
 
     return(
         <>
-        <p>Add New:</p>
+        <p  class="plot-detail1">Add New:</p>
 
         <form onSubmit={handleSubmit}>
 
-            <div class="form_field form_input">
+            <div class="plot_form_field plot_form_input">
                 <label class="form_text" name='title'>Title:</label>
+                <br />
                 <input class="field_size" type='text' name='title' id='title' onChange={handleChange} required /> 
             </div>
 
-            <div class="form_field form_input">
+            <div class="plot_form_field plot_form_input">
                 <label class="form_text" name='body'>Comment:</label>
+                <br />
                 <input class="field_size3" type='text' name='body' id='body' maxLength="255" onChange={handleChange} required /> 
             </div>
 
-            <div id="form-button2">
-                <button class="edit-button2" type='submit'>Submit Comment</button>
+            <div id="form-button">
+                <button class="edit-button4" type='submit'>Submit Comment</button>
                 </div>
         </form>
 
