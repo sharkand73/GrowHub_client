@@ -34,19 +34,33 @@ The following steps will get the app working locally for you.
 
 ## Basic functionality
 
-Once logged in, a user is directed to the dash board. They are presented with the current weather in the location of the allotment, a select number of bulletin posts by adminstrators, and a tip of the month.
-<!-- image of dash -->
+Initial log in page, styled to be a polytunnel:
 
-![Alt dashboard](README_images/home.png "Dashboard")
+![Alt login page with a background of an aerial view of an allotment](README_images/login.png "Login Page")
+
+
+Once logged in, a user is directed to the dash board. They are presented with the current weather in the location of the allotment, a select number of bulletin posts by adminstrators, and a tip of the month.
+
+![Alt dashboard home page, rendering a widget, some bulletins, and a tip of the month](README_images/home.png "Dashboard")
 
 They can then view all the plots in the allotment, see who owns them if they also a registered user, the size, and any notes the plot owner has added. These could be what they are currently growing, what improvements they have made, and any tips to help track their plot. A user can add such comments to their own plots.
 
+![Alt dashboard](README_images/plots.png "Plots")
+
 The bank of knowledge, knowhows, displays all local tips - particularly relevant to the Scottish climate when it comes to growing exotic vegetables. A user can add their own which they can edit and delete at will, and all users can comment on knowhows, reply to one another with additional tips.
 
-<!-- Image of knowhowlist -->
+![Alt A list of the know hows bank of knowledge](README_images/knowHowsList.png "KnowHows List")
+
+Comments:
+
+![Alt An individual know how and comments](README_images/knowHowDetail.png "KnowHows comments")
+
 
 All users can post fun news that appear as sticky notes, and the top three most recent ones posted by admins only, are then rendered on the dash board we saw earlier. Jobs display any tasks users need help with, with their difficulty of 1-5 represented by the number of carrots. Likewise as with knowhows, a user can edit and delete only their own bulletins and knowhows.
 
+![Alt List of sticky note bulletins, and jobs on a paper styled background](README_images/bulletinAndJobList.png "Bulletins and Jobs")
+
+![Alt The bulletins and jobs edit pages, rendered similar to their parent list](README_images/bulletinAndJobEdit "Edit functionality")
 
 
 ## Next Steps
