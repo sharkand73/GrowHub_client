@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 
+import '../../../css/NewJob.css';
+
 const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
 
     const [formData, setFormData] = useState({
@@ -54,30 +56,49 @@ const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
             <h1>Edit Job</h1>
 
             <form onSubmit={handleSubmit}>
-            <label name='title'>Title:</label>
+
+            <div  class="label_padding" >
+            <label  class="label_padding" name='title'>Title:</label>
             <br></br>
-            <input type='text' name='title' id='title' onChange={handleChange} defaultValue={job.title} required />
+            <input class="job_field_size" type='text' name='title' id='title' onChange={handleChange} defaultValue={job.title} required />
             <br></br>
-            <label name='body'>The Job:</label>
+            </div>
+
+            <div  class="label_padding" >
+            <label  class="label_padding" name='body'>The Job:</label>
             <br></br>
-            <input type='text' name='body' id='body' onChange={handleChange} defaultValue={job.body} required /> 
+            <input class="job_field_size" type='text' name='body' id='body' onChange={handleChange} defaultValue={job.body} required /> 
             <br></br>
-            <label name='area'>Area it applies to:</label>
+            </div>
+
+            <div  class="label_padding" >
+            <label class="label_padding" name='area'>Area it applies to:</label>
             <br></br>
-            <select name='area' id='area' onChange={handleArea}>
+            <select class="job_field_size" name='area' id='area' onChange={handleArea}>
                 <option selected disabled>Area</option>
                 {communalAreaOptions}
             </select>
             <br></br>
-            <label name='deadline'>Due Date:</label>
+            </div>
+
+            <div  class="label_padding" >
+            <label class="label_padding" name='deadline'>Due Date:</label>
             <br></br>
-            <input type='date' name='deadline' id='deadline' min={job.date} defaultValue={job.date} onChange={handleChange} required />
+            <input class="job_field_size" type='date' name='deadline' id='deadline' min={job.date} defaultValue={job.date} onChange={handleChange} required />
             <br></br>
-            <label name='difficulty'>Difficulty:</label>
+            </div>
+
+            <div  class="label_padding" >
+            <label class="label_padding" name='difficulty'>Difficulty:</label>
             <br></br>
-            <input type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} defaultValue={job.difficulty} required />
+            <input class="job_field_size" type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} defaultValue={job.difficulty} required />
             <br></br>
-            <button type='submit'>Edit Job</button>
+            </div>
+
+            <div class="createButton1">
+            <button class="createButton1" type='submit'>Edit Job</button>
+            </div>
+            
         </form>
 
         <h3 className="link-job" onClick = {()=>setJobStatus('show')}>
