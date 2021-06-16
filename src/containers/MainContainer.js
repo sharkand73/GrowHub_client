@@ -317,6 +317,7 @@ const MainContainer = ({allotmentSettings}) =>{
                     plots={plots} 
                     getDate={getDate}
                     postComment={postComment}
+                    comments={comments}
                     />: <Redirect to="/plots" />
                 }} currentUser={currentUser} /> 
 
@@ -335,25 +336,46 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
-                    return <NewJob currentUser={currentUser}  postJob={postJob} communalAreas={communalAreas} getDate={getDate}/>
+                    return <NewJob 
+                    currentUser={currentUser}  
+                    postJob={postJob} 
+                    communalAreas={communalAreas} 
+                    getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/bulletins/new' component = {() =>{
-                    return <NewBulletin currentUser={currentUser}  postBulletin={postBulletin} getDate={getDate} />
+                    return <NewBulletin 
+                    currentUser={currentUser}  
+                    postBulletin={postBulletin} 
+                    getDate={getDate} />
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows' component = {() =>{
-                    return <KnowHowList currentUser={currentUser} knowHows={knowHows} deleteKnowhow={deleteKnowhow} getDate={getDate} editKnowHow={editKnowHow}/>
+                    return <KnowHowList 
+                    currentUser={currentUser} 
+                    knowHows={knowHows} 
+                    deleteKnowhow={deleteKnowhow} 
+                    getDate={getDate} 
+                    editKnowHow={editKnowHow}/>
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/knowhows/new' component = {() =>{
-                    return <NewKnowHow currentUser={currentUser}  postKnowHow={postKnowHow} months={months} getDate={getDate}/>
+                    return <NewKnowHow 
+                    currentUser={currentUser}  
+                    postKnowHow={postKnowHow} 
+                    months={months} 
+                    getDate={getDate}/>
                 }} currentUser={currentUser}/>
 
                 <Route exact path = "/knowhows/:id" render = {(props) => {
                     const id = props.match.params.id;
                     const foundKnowHow = findKnowHowById(id);
-                    return foundKnowHow? <KnowHowDetail currentUser={currentUser} knowHow={foundKnowHow} getDate={getDate} postReply={postKnowHowReply} replies={replies}/>: <Redirect to="/knowhows" />
+                    return foundKnowHow? <KnowHowDetail 
+                    currentUser={currentUser} k
+                    nowHow={foundKnowHow} 
+                    getDate={getDate} 
+                    postReply={postKnowHowReply} 
+                    replies={replies}/>: <Redirect to="/knowhows" />
                 }} currentUser={currentUser} />                 
 
                 <Route path = "/login" render={() => {

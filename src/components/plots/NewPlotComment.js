@@ -22,6 +22,7 @@ const NewPlotComment = ({plot, getDate, currentUser,  postComment}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+    
         setFormData(formData);
         postComment(formData);
         setFormCheck(1);

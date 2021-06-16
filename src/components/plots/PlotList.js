@@ -71,26 +71,6 @@ const PlotList = ({currentUser, plots, allotmentSettings, getDate, postComment})
         )
     })
 
-    // const userPlots = currentUser.plots.map((plot, index) => {
-    //     return(
-    //         <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
-    //     )
-    // })
-
-
-    // This array would (should) return a single array with the users plots first
-    // const newPlotsArray = () => {
-    //     for (let userPlot in userPlots){
-    //         for (let plot in plots){
-    //             if (plot === userPlot){
-    //                 plots.remove(plot);
-    //                 plot.unshift(plot);
-    //             }
-    //         }
-    //     }
-    //     return plotArray
-    // }
-
     const userPlotLength = currentUserPlotArray.length
     const plotsStatement = userPlotLength > 0 ? 'Other Plots:' : 'All Plots:'
     const idSet = userPlotLength > 0 ? 'other-plots-grid' : 'your-plots-grid';
