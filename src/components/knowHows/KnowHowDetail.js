@@ -1,6 +1,11 @@
 import React from 'react';
 import NewKnowHowReply from './NewKnowHowReply';
 
+import '../../css/Knowhow.css';
+import '../../css/Dash.css';
+import LogoSmall from '../../css/LogoSmall.png';
+
+
 const KnowHowDetail = ({knowHow, currentUser, getDate, postReply, replies}) => {
 
     const monthLower = knowHow.month.toLowerCase();
@@ -28,24 +33,39 @@ const KnowHowDetail = ({knowHow, currentUser, getDate, postReply, replies}) => {
 
     return(
         <>
-            <h4>{knowHow.title}</h4>
-            <ul>
-                <li>{knowHow.body}</li>
-                <li>Applies to month: {month}</li>
-                <li>Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
-            </ul>
 
-            <h3>Write a new reply:</h3>
-            <NewKnowHowReply knowHow={knowHow} currentUser={currentUser} getDate={getDate}  postReply={postReply}/>
+        <div id="knowledge-container">
 
-            {getReplies}
-            {repliesArrayLength > 0 ? 
-            <div>
-                <h3>Replies:</h3>
-                {repliesArray}
+            <div id="logo-grid2">
+                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
-            : null}
+
+            <div id="header-grid">
+                <p class="kHw-title">Knowhow: {knowHow.title}</p>
+            </div>
             
+            <div  id="form-grid2">
+                <ul>
+                    <li  class="kHw-month">Applies to month: {month}</li>
+                    <li class="kHw-content">{knowHow.body}</li>
+                    <li class="kHw-author">Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
+                </ul>
+            </div>
+
+            <div id="form-grid3">
+                <p class="kHw-title">Add a comment:</p>
+                <NewKnowHowReply knowHow={knowHow} currentUser={currentUser} getDate={getDate}  postReply={postReply}/>
+
+                {getReplies}
+                {repliesArrayLength > 0 ? 
+                <div>
+                    <p class="kHw-title">Previous comments:</p>
+                    {repliesArray}
+                </div>
+                : null}
+            </div>
+
+        </div>   
         </>
     )
 }
