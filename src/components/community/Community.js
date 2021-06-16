@@ -51,7 +51,7 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
 
     const crudRoutes = {'all': <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} getCarrots = {getCarrots} setJobStatus={setJobStatus}/>,
                         'show': <JobSelected job={selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots} jobClickAway={jobClickAway} jobStatus={jobStatus} setJobStatus={setJobStatus}/>,
-                        'new':  <NewJob setJobStatus={setJobStatus}/>,
+                        'new':  <NewJob setJobStatus={setJobStatus} currentUser={currentUser} postJob={postJob} communalAreas={communalAreas} getDate={getDate} setJobStatus={setJobStatus}/>,
                         'edit': <EditJob setJobStatus={setJobStatus}/>
     }
 

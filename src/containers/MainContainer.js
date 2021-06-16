@@ -299,7 +299,17 @@ const MainContainer = ({allotmentSettings}) =>{
                 }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/community' component = {() =>{
-                    return <Community currentUser={currentUser} sortedBulletins={sortedBulletins} jobs={jobs} deleteBulletin={deleteBulletin} deleteJob={deleteJob} editBulletin={editBulletin} getDate={getDate}/>
+                    return <Community 
+                    currentUser={currentUser} 
+                    sortedBulletins={sortedBulletins} 
+                    jobs={jobs} 
+                    deleteBulletin={deleteBulletin} 
+                    deleteJob={deleteJob} 
+                    editBulletin={editBulletin} 
+                    getDate={getDate}
+                    postJob={postJob}
+                    communalAreas={communalAreas}
+                    />
                 }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/jobs/new' component = {() =>{
