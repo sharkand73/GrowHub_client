@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import BulletinList from './bulletin/BulletinList.js';
 import BulletinDetails from './bulletin/BulletinDetails.js';
 import JobList from './job/JobList.js';
-import JobDetails from './job/JobDetails.js';
+import JobSelected from './job/JobSelected.js';
+import NewJob from './job/NewJob.js';
+import EditJob from './job/EditJob.js';
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCarrot } from '@fortawesome/free-solid-svg-icons';
@@ -16,10 +18,11 @@ import '../../css/Community.css';
 // Outgoing props = BulletinItems, Jobs, User, onClick, onSubmit
 
 
-const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob, getDate, editBulletin}) => {
+const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob, getDate, editBulletin, postJob, communalAreas}) => {
 
     const [selectedBulletin, setSelectedBulletin] = useState();
     const [selectedJob, setSelectedJob] = useState();
+    const [jobStatus, setJobStatus] = useState('all');
 
     const displayBulletin = (result) => {
         setSelectedBulletin(result);
@@ -31,11 +34,11 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
 
     const displayJob = (result) => {
         setSelectedJob(result);
-        console.log(selectedJob);
     }
 
     const jobClickAway = () => {
         setSelectedJob(null);
+        setJobStatus("all");
     }
 
     function getCarrots(job){
@@ -44,6 +47,12 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
             carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
         }    
     return carrots;
+    }
+
+    const crudRoutes = {'all': <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} getCarrots = {getCarrots} setJobStatus={setJobStatus}/>,
+                        'show': <JobSelected job={selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots} jobClickAway={jobClickAway} jobStatus={jobStatus} setJobStatus={setJobStatus}/>,
+                        'new':  <NewJob setJobStatus={setJobStatus}/>,
+                        'edit': <EditJob setJobStatus={setJobStatus}/>
     }
 
     return(
@@ -64,8 +73,8 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
             
             </div>
                 <div id="jobs-container">
-                    {selectedJob? <JobDetails job = {selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots} jobClickAway={jobClickAway}/>:
-                    <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} getCarrots = {getCarrots}/>}
+                    {selectedJob? crudRoutes['show']:
+                    ( (jobStatus==='new')? crudRoutes['new']: crudRoutes['all'])}
                 </div>
         </div>    
         </>

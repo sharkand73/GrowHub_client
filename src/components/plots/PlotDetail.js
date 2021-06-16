@@ -4,7 +4,7 @@ import PlotComment from './PlotComment';
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
 
-const PlotDetail = ({currentUser, plot, plots}) =>{
+const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
 
     const getPlotHolders = () => {
     let plotHolders = "";
@@ -17,17 +17,23 @@ const PlotDetail = ({currentUser, plot, plots}) =>{
     return plotHolders;
     }
 
-    const plotComments = plot.comments.map((comment, index) => (<li><PlotComment key={index} comment={comment} currentUser={currentUser}/></li>))
+    const plotComments = plot.comments.map((comment, index) => 
+    
+            <li><PlotComment key={index} comment={comment} currentUser={currentUser}/>
+            <hr/>
+            </li>  
+            
+        )
+    
     const getArea = (length, breadth) => (Math.round(length * breadth * 10) / 10);
     const plotSize = getArea(plot.length, plot.breadth);
 
-    // const plotSizes = plots.map((item) => getArea(item.length, item.breadth));
+    const plotSizes = plots.map((item) => getArea(item.length, item.breadth));
 
     // calculates position in plot sizes league table
-    // const calculatePlotSizeIndex = function(mySize){
-    // return plotSizes.count((size) => (size > mySize))
-    // }
-
+    const calculateClassification = function(mySize){
+    return plotSizes.filter((size) => (size > mySize)).length;
+    }
 
     return(
         <>
@@ -43,17 +49,20 @@ const PlotDetail = ({currentUser, plot, plots}) =>{
                 <li class="plot-detail2"> - Plot Number: {plot.plotNumber}</li>
                 <li class="plot-detail2"> - Dimensions: {plot.length}m x {plot.breadth}m</li>
                 <li class="plot-detail2"> - Area: {plotSize} m&sup2;</li>
-                {/* <li>Numer of plots bigger than this: {calculatePlotSizeIndex(plotSize)}</li> */}
+                <li class="plot-detail2"> - classification: {calculateClassification(plotSize)}</li>
                 <li class="plot-detail2"> - Inclination: {plot.isFlat ? "flat" : "slope"}</li>
                 <li class="plot-detail2"> - Plot holders: {getPlotHolders()}</li>
             </ul>
             </div>
+        
 
             <div id="plot-history-grid">
                 <p class="plot-detail1">Plot history</p>
                 {plot.comments?<ul  class="plot-detail2">{plotComments}</ul>: null}
             </div>
-        
+            <div className = "plot-back" onClick = {()=>setSelectedPlot(null)}>
+                Back
+            </div>
         </div>  
         </>
     )
