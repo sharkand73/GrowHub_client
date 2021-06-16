@@ -1,0 +1,280 @@
+#community-container {
+    display: flex;
+    background-color: #009A17;
+    height: auto;
+}
+
+#noticeboard {
+    width: 60%;
+    height: auto;
+    /* font-family: lucida handwriting; */
+    font-family: 'Reenie Beanie';
+    background:#666;
+    color:white;
+    text-align: center;
+    padding-top: 5px;
+    border-width:20px;
+    border-style: solid;
+    border-color: tan;
+    border-radius: 5%;
+}
+
+#noticeboard h1 {
+    font-weight: bold;
+    font-size: 3rem;
+  }
+
+#noticeboard h2 {
+
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+
+  #noticeboard h3 {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  #noticeboard p {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  
+#noticeboard ul,li{
+    list-style:none;
+    padding-top: 0;
+  }
+
+  #noticeboard ul li h2{
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+#noticeboard  ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .post-it{
+    font-family: 'Reenie Beanie';
+    text-decoration:none;
+    color: black;
+    background:#ffc;
+    display:block;
+    height:190px;
+    width:190px;
+    padding:10px;
+    margin: 30px;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  }
+
+  #edit-bulletin-inner {
+    font-family: 'Reenie Beanie';
+    text-decoration:none;
+    color: black;
+    background:#ffc;
+    display:block;
+    height:110px;
+    width:80%;
+    padding:10px;
+    margin: 10px 30px 0px 30px;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  }
+
+.bulletin-label {
+  width: 70px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+  #noticeboard ul li .post-it:hover{
+    font-family: 'Reenie Beanie';
+    background:#fdc;
+  }
+
+  #noticeboard ul li .post-it{
+    transform: rotate(-6deg);
+  }
+
+  #noticeboard ul li:nth-child(even) .post-it{
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+  }
+  #noticeboard ul li:nth-child(3n) .post-it{
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+  }
+  #noticeboard ul li:nth-child(5n) .post-it{
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+  }
+
+  #post-it{
+    margin:30px;
+  }
+
+  #noticeboard #bulletin-author {
+      float: left;
+  }
+
+  #noticeboard #bulletin-date {
+    float: right;
+}
+
+/* #noticeboard:link {
+    color: white;
+    text-decoration: none;
+} */
+
+#noticeboard-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#new-bulletin {
+    color: white;
+    text-decoration: none;
+    
+}
+
+#new-bulletin:hover {
+    color: cyan;
+    text-decoration: none;
+}
+
+#jobs-container {
+    background-color: #f5f5f5;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    color: darkblue;
+    font-family: 'Reenie Beanie';
+    font-size: 30px;
+}
+
+#jobs-container li {
+    padding-bottom: 15px;
+    list-style: none;
+    border-bottom: 1px dotted #ccc;
+    text-indent: 25px;
+    height: auto;
+    padding: 10px;
+}
+
+
+.carrot {
+    color: #ef7215;
+}
+
+.link-job {
+    text-decoration: none;
+}
+
+.link-job:hover {
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+.flex-two {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-delete {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#jobs-container .edit-delete {
+  width: 65%;
+}
+
+#large-post-it {
+    color: black;
+    width: 400px;
+    height: 350px;
+    background:#fdc;
+    text-decoration:none;
+    display:block;
+    padding:10px;
+    margin: 10px;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7)
+}
+
+#large-post-it h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+#large-post-it div {
+    display: inline-block;
+    align-items: left;
+}
+
+#large-post-it div p {
+    font-size: 30px;
+    
+}
+
+.job-edit-text, .job-delete-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: darkblue;
+}
+
+.job-edit-text:hover {
+  color: cyan;
+}
+
+.job-delete-text:hover {
+  color: red;
+}
+
+.edit-text, .delete-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.edit-text:hover {
+  color: blue;
+}
+
+.delete-text:hover {
+  color: red;
+}
+
+.job-item-container:hover {
+  background-color: #ffc;
+}
+
+#job-details-heading {
+  appearance: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.bulletin-button {
+  font-family: 'Reenie Beanie';
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.bulletin-button:hover {
+  color: cyan;
+}

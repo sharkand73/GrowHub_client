@@ -1,0 +1,181 @@
+ /* GRID */
+
+ #login-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+    grid-template-rows: repeat(2, 0.4fr);
+    /* grid-template-rows: 0.3fr 0.3fr 0.1fr 0.3fr 0.1fr; */
+    /* grid-template-rows: 10% 20% 40% 35% 5%; */
+  }
+
+#logo-grid{
+    grid-column-start:2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+#polytunnel-grid{
+    grid-column-start:2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+
+#account-grid{
+    grid-column-start:2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+
+#poly-grid-container {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: repeat(5, 0.1fr);
+    /* grid-template-rows: 0.3fr 0.3fr 0.1fr 0.3fr 0.1fr; */
+    /* grid-template-rows: 10% 20% 40% 35% 5%; */
+  }
+
+#poly1{
+    grid-column-start:2;
+    grid-row-start: 3;
+    grid-row-end: 3;
+  }
+
+#poly2{
+    grid-column-start:2;
+    grid-row-start: 4;
+    grid-row-end: 4;
+  }
+
+
+/* OTHER */
+
+.background{
+    background-image: url(Aerial.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* height: 100vh; 
+    width:100vw; */
+    /* max-width: 100%;
+    max-height: 100%; */
+    /* background-size: 100%; */
+    background-attachment:fixed;
+
+}
+
+.logo{
+    margin-top: 80px;
+    height: 315px;  
+}
+
+.polytunnel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    opacity: 85%;
+    border: black;
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+    width: 600px;
+    height: 400px;
+}
+
+.slogan{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    /* color:green; */
+    padding-bottom: 20px;
+}
+
+.label{
+    text-align:right;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    }
+    
+.input{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid black;
+    padding: 0px 20px;
+    margin: 20px;
+    font-family: 'Montserrat', sans-serif;
+    }
+
+input::placeholder {
+        /* color:green; */
+        font-size: 1.0em;
+      }
+
+
+.form-inner{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+
+.loginPageButton{
+        font-size: 25px;
+        font-weight: 300;
+        font-family: 'Montserrat', sans-serif;
+        color:green;
+        appearance: none;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 20px;   
+    }
+
+.loginPageButton:hover {
+        color: greenyellow;
+    }
+
+.createAccountButton{
+        appearance: none;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 20px;   
+    }
+
+.createAccountButton:hover {
+        color:black;
+    }
+
+
+.create-account{
+        font-size: 20px;
+        font-weight: 300;
+        font-family: 'Montserrat', sans-serif;
+        color: grey;
+        text-decoration: none;
+    }
+    
+.create-account:hover {
+        color:black;
+    }
+.create-background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    opacity: 85%;
+    width: 600px;
+    height: 30px;
+    padding-bottom: 25px;
+}
+
+.no-margin{
+    margin:0px;
+}
+
+.no-padding{
+    padding:0px;
+}

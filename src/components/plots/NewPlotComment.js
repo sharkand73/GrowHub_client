@@ -1,0 +1,66 @@
+import React, {useState} from 'react';
+import {Redirect} from 'react-router-dom';
+
+import '../../css/Plots.css';
+
+const NewPlotComment = ({plot, getDate, currentUser,  postComment}) => {
+
+    const date = getDate();
+
+    const [formData, setFormData] = useState({
+        date: date,
+        author: currentUser,
+        title: "",
+        body: "",
+        plot: plot
+    })
+
+    const [formCheck, setFormCheck] = useState(null);
+
+    const handleChange = (e) => {
+        formData[e.target.id] = e.target.value;
+        setFormData(formData)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        setFormData(formData);
+        postComment(formData);
+        setFormCheck(1);
+        document.querySelector('form').reset();
+    }
+
+    // String body, String date, User author, TextContent textContent
+
+    const url = "/plots/" + plot.id;
+
+    return(
+        <>
+        <p  class="plot-detail1">Add New:</p>
+
+        <form onSubmit={handleSubmit}>
+
+            <div class="plot_form_field plot_form_input">
+                <label class="form_text" name='title'>Title:</label>
+                <br />
+                <input class="field_size" type='text' name='title' id='title' onChange={handleChange} required /> 
+            </div>
+
+            <div class="plot_form_field plot_form_input">
+                <label class="form_text" name='body'>Comment:</label>
+                <br />
+                <input class="field_size3" type='text' name='body' id='body' maxLength="255" onChange={handleChange} required /> 
+            </div>
+
+            <div id="form-button">
+                <button class="edit-button4" type='submit'>Submit Comment</button>
+                </div>
+        </form>
+
+        {formCheck ? <Redirect to={url} />:null}
+
+    </>
+    )
+}
+export default NewPlotComment;

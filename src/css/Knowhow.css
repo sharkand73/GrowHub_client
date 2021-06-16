@@ -1,0 +1,300 @@
+/* GRID */
+
+#knowledge-container{
+    display: grid;
+    /* width: 100vw;
+    height: 100hw; */
+    grid-template-columns: 4% 6% 80% 6% 4%;
+    grid-template-rows: repeat(5, 0.075fr);
+
+}
+
+#logo-grid2{
+    grid-column-start:2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    text-align: center;
+  }
+
+#header-grid{
+    grid-column-start:3;
+    grid-row-start: 2;
+}
+
+#buttons-grid{
+    grid-column-start:3;
+    grid-row-start: 3;
+}
+
+#filter-grid{
+    grid-column-start:3;
+    grid-row-start: 3;
+
+}
+
+#body-grid{
+    grid-column-start:3;
+    grid-row-start: 4;
+}
+
+
+
+/* FLEX */
+
+.intro-flex{
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.flex-button-right{
+    margin-left: auto;
+}
+
+.flex-intro-left{
+    margin-right: 1rem;
+}
+
+
+
+/* OTHER */
+
+.button{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0px;   
+    text-decoration: none;
+}
+
+
+.cleanLink{
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.cleanLink:hover {
+    color: greenyellow;
+}
+
+
+
+/* TEXT */
+
+.kWh-header{
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    font-size: 40px;
+    font-weight: 400;
+    padding-left:35px;
+}
+
+.kHw-title{
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left:0px;
+    padding-top: 30px;
+}
+
+.kHw-title:hover {
+    font-size: 21px;
+    transition: .3s ease-in-out;
+
+}
+
+.kHw-title2{
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left:0px;
+    padding-top: 30px;
+}
+
+
+.kHw-content{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.kHw-content2{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 400;
+    padding-left: 40px;
+}
+
+
+.kHw-month{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+.kHw-author{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+.kHw-filter{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    margin: 0px 15px 0px 24px;
+}
+
+.kHw-edit{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.noLine{
+    text-decoration: none;
+    list-style: none;
+}
+
+
+
+.filter-box{
+    padding: 5px 10px;
+    margin-bottom: 0px;
+    width: 120px;
+}
+
+/* DELETE & EDIT BUTTONS */
+
+.edit-button{
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:green;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;    
+}
+
+.delete-button{
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:red;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;     
+}
+
+.edit-button:hover {
+    color: greenyellow;
+}
+.delete-button:hover {
+    color: greenyellow;
+}
+
+
+.createAccountButton{
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;   
+}
+
+.submit-button{
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:grey;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 15px 0px 0px 0px;
+}
+
+.submit-button:hover {
+    color: greenyellow;
+}
+
+/* EDIT FORM */
+
+.edit-form{
+    margin: 40px;
+}
+
+/* NEW KNOWHOW GRID */
+
+#form-grid2{
+    grid-column-start:3;
+    grid-row-start: 3;
+}
+
+#form-grid3{
+    grid-column-start:3;
+    grid-row-start: 4;
+}
+
+#form-button2{
+    grid-column-start:3;
+    grid-row-start: 3;
+
+}
+
+/* NEW KNOWHOW FORM */
+
+
+.edit-button2{
+    font-size: 18px;
+    font-weight: 300;
+    width: 210px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:green;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 20px 0px; 
+}
+
+.edit-button2:hover {
+    color: greenyellow;
+}
+
+.new-kHw{
+    font-family: 'Montserrat', sans-serif;
+    color:green;
+    font-size: 30px;
+    font-weight: 300;
+    padding-left:18px;
+}

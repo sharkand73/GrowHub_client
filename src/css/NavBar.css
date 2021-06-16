@@ -1,0 +1,73 @@
+/* NavBar */
+.navWrap{
+    display: flex;
+    font-size: 25px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    margin-top:5px 0px 5px 0px;
+    flex-wrap: wrap;
+}
+
+.navItem{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navItem:hover {
+    color: green;
+}
+
+.navUser{
+    color: green;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.left{
+    list-style: none;
+    margin-right: 1rem;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+.right{
+    list-style: none;
+    margin-left: auto;
+    padding-right: 30px;
+    padding-left: 20px;
+}
+
+.navLine{
+background-color: silver;
+/* padding: 1px; */
+margin:0px;
+
+}
+
+.logoutButton{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;  
+}
+
+.logoutButton:hover {
+    color: green;
+}
+
+.slim{
+    margin: 0px;
+    padding: 5px;
+}

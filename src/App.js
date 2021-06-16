@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState, useEffect} from 'react';
+import MainContainer from './containers/MainContainer';
+import Request from './helpers/request';
+
 
 function App() {
+
+  const [allotmentSettings, setAllotmentSettings] = useState({});
+
+  const requestSettings = function(){
+    const request = new Request();
+
+    request.get('/api/allotmentsettings')
+    .then(data => {setAllotmentSettings(data[0])});
+  }
+  
+  useEffect(()=>{requestSettings()}, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <MainContainer allotmentSettings={allotmentSettings}/>
+    </>
   );
 }
 

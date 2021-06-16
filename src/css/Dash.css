@@ -1,0 +1,123 @@
+/* GRID */
+
+#dash-grid-container {
+        display: inline-grid;
+        grid-template-columns: 4fr 20fr 3fr 50fr 3fr 24fr 4fr;
+        grid-template-rows: repeat(8, 0.075fr);
+      }
+
+#news-grid{
+        display: grid;
+        grid-column-start:4;
+        grid-column-end:4;
+        grid-row-start: 2;
+        grid-row-end: 7;
+      }
+
+
+#weather-grid{
+        grid-column-start:2;
+        grid-column-end:3;
+        grid-row-start: 2;
+      }
+
+#tips-grid{
+        grid-column-start:6;
+        grid-column-end:6;
+        grid-row-start: 2;
+      }
+
+#paths-grid{
+        grid-column-start:4;
+        grid-row-start: 8;
+        grid-row-end: 8;
+        text-align: center;
+      }
+
+#logo-grid2{
+        grid-column-start:2;
+        grid-row-start: 1;
+        grid-row-end: 1;
+        text-align: center;
+      }
+
+
+
+/* SCROLLING NEWS */
+
+.fixedHeightContainer {
+    float:none;
+    padding:3px; 
+    background-color: silver;
+}
+
+.content {
+    overflow:auto;
+    background:#fff;
+    height: 300px;
+}
+
+
+/* PATH BUTTONS */
+
+.path-button{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color:green;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 40px 20px;
+}
+
+/* LOGO */
+
+.logo2{
+    height: 150px;  
+}
+
+/* TEXT */
+
+.tip-text{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    /* text-align: right; */
+}
+
+.news-text{
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    list-style: none;
+}
+
+.text3{
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+}
+
+.news-header{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+    padding-left:40px;
+
+}
+
+.header{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 30px;
+    font-weight: 600;
+    padding-left:0px;
+}
+
+p.header {
+    margin-bottom: 5px;
+}

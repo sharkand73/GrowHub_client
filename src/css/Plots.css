@@ -1,0 +1,167 @@
+/* PLOTS GRID */
+
+#plots-grid-container{
+    display: grid;
+    width: 100vw;
+    height: auto;
+    grid-template-columns: 4% 11% 70% 11% 4%;
+    grid-template-rows: 20% 35% 48% 2%;
+}
+
+#logo-grid{
+    grid-column-start:2;
+    grid-row-start: 1;
+}
+
+#your-plots-grid{
+    grid-column-start:3;
+    grid-row-start: 2;
+}
+
+#other-plots-grid{
+    grid-column-start:3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    /* overflow: hidden; */  
+}
+
+/* FLEX */
+.flexWrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    background-color: silver;
+    list-style: none;
+
+}
+
+
+.flexPlots{
+    display: flex;
+    margin: auto;
+    text-decoration: none;
+}
+
+
+
+/* PLOT STYLING */
+.plotSpacing{
+    padding: 10px;
+    margin: 30px 30px;
+}
+
+.plotText{
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px;
+    margin: 5px 30px;
+    color: green;
+    border: green;
+}
+
+.no-decoration{
+    text-decoration: none;
+}
+
+.plotText2{
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    font-size: 25px;
+    font-weight: 300;
+    padding-left:0px;
+    padding-top: 30px;
+}
+
+
+/* PLOT DETAIL GRID */
+
+#plots-grid-container2{
+    display: grid;
+    width: 100vw;
+    height: 160vh;
+    grid-template-columns: 4% 11% 70% 11% 4%;
+    grid-template-rows: 15% 20% 62% 3%;
+}
+
+#plot-details-grid{
+    grid-column-start:3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+#plot-history-grid{
+    grid-column-start:3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+
+/* PLOT DETAIL TEXT */
+
+.plot-detail1{
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: green;
+    margin: 0px 15px 0px 24px;
+}
+
+.plot-detail2{
+    font-size: 15px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    height: 25px;
+    }
+
+
+.margin{
+    margin: 20px ;
+}
+
+.plot-back {
+    color: green;
+    font-size: 20px;
+    text-align: right; 
+    padding: 0px;
+    margin: 0px;
+}
+
+.plot-back:hover {
+    color: greenyellow;
+}
+
+/* NEW PLOT COMMENT */
+
+.plot_form_field{
+    margin: 20px;
+    width: 300px;  
+
+}
+
+.plot_form_input{
+    width: 300px;  
+    margin-left: 50px;
+}
+
+.edit-button4{
+    font-size: 18px;
+    font-weight: 300;
+    width: 210px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:green;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px 20px 40px 40px; 
+}
+
+.edit-button4:hover {
+    color: greenyellow;
+}

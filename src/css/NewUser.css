@@ -1,0 +1,111 @@
+/* GRID */
+
+#new-user-container{
+    display: grid;
+    /* width: 100vw;
+    height: 100hw; */
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 0.5fr 0.2fr 0.5fr 0.5fr 0.5fr;
+}
+
+#text-grid{
+    grid-column-start:2;
+    grid-row-start: 2;
+}
+
+
+#form-grid{
+    grid-column-start:2;
+    grid-row-start: 3;
+}
+
+
+
+/* OTHER */
+
+.newUserText{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+}
+
+.newUserHeader{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(82, 79, 79);
+    padding-left:0px;
+}
+
+
+
+
+.form_wrapper{
+    list-style-type: none;
+    display: block;
+}
+
+.form_field{
+    margin: 20px;
+    width: 300px;  
+
+}
+
+.form_input{
+    width: 300px;  
+}
+
+.field_size{
+    width: 210px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid grey;
+}
+
+.field_size2{
+    width: 100px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid grey;
+}
+
+.field_size3{
+    width: 800px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid grey;
+}
+
+
+.form_text{
+    padding-top: 20px;
+    font-size: 15px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    width: 300px;
+}
+
+
+.createButton{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    color:green;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px 0px 0px 18px;   
+}
+
+.createButton:hover {
+    color: greenyellow;
+}
