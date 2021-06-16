@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Plot from './Plot';
+import PlotDetail from './PlotDetail';
 
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
 
 const PlotList = ({currentUser, plots, allotmentSettings}) =>{
+
+    const [selectedPlot, setSelectedPlot] = useState(null);
 
     // const plotsMap = allotmentSettings.mapFilepath;
     
@@ -54,7 +57,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     // Renders a Plot object for current user plot
     const currentUserPlotArray = currentUserPlots.map((plot, index) => {
     return(
-        <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser}/></li>
+        <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/></li>
     )
     })
 
@@ -62,7 +65,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     const otherPlotArray = otherPlots.map((plot, index) => {
         return(
 
-            <li key={index + currentUserPlotsTally}><Plot plot={plot} plots={plots} currentUser={currentUser}/></li>
+            <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/></li>
             
         )
     })
@@ -90,6 +93,8 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     const userPlotLength = currentUserPlotArray.length
     const plotsStatement = userPlotLength > 0 ? 'Other Plots:' : 'All Plots:'
     const idSet = userPlotLength > 0 ? 'other-plots-grid' : 'your-plots-grid';
+
+    if (selectedPlot){return <PlotDetail plot={selectedPlot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/>}
 
     return(
         <>
