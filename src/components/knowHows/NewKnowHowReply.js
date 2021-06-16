@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
+import '../../css/Knowhow.css';
+
 const Reply = ({knowHow, getDate, currentUser,  postReply}) => {
 
     const date = getDate();
@@ -32,16 +34,15 @@ const Reply = ({knowHow, getDate, currentUser,  postReply}) => {
 
     return(
         <>
-        <p>Enter your reply here!</p>
-
         <form onSubmit={handleSubmit}>
-        <input type='text' name='body' id='body' onChange={handleChange} required /> 
+        <input class="field_size3" type='text' name='body' id='body' onChange={handleChange} required /> 
 
-        <button type='submit'>Submit Reply</button>
+        <br />
+
+        <button class="submit-button" type='submit'>Submit reply</button>
         </form>
 
         {formCheck ? <Redirect to={url} />:null}
-
     </>
     )
 }

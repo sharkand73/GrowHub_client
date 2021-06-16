@@ -109,6 +109,15 @@
     font-weight: 400;
 }
 
+.kHw-content2{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(82, 79, 79);
+    font-size: 15px;
+    font-weight: 400;
+    padding-left: 40px;
+}
+
+
 .kHw-month{
     font-family: 'Montserrat', sans-serif;
     color: rgb(82, 79, 79);
@@ -187,6 +196,19 @@
     outline: none;
     cursor: pointer;
     padding: 20px;   
+}
+
+.submit-button{
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    color:grey;
+    border: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    padding: 15px 0px 0px 0px;    
 }
 
 /* EDIT FORM */

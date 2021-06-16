@@ -58,9 +58,15 @@ const KnowHowDetail = ({knowHow, currentUser, getDate, postReply, replies}) => {
 
                 {getReplies}
                 {repliesArrayLength > 0 ? 
-                <div>
+                
+                
+                <div> 
                     <p class="kHw-title">Previous comments:</p>
+
+                    <div class="kHw-content2">
                     {repliesArray}
+                    </div>
+                
                 </div>
                 : null}
             </div>
