@@ -37,7 +37,7 @@ The following steps will get the app working locally for you.
 Once logged in, a user is directed to the dash board. They are presented with the current weather in the location of the allotment, a select number of bulletin posts by adminstrators, and a tip of the month.
 <!-- image of dash -->
 
-![Alt dashboard]('./README_images/home.png' "Dashboard")
+![Alt dashboard](README_images/home.png "Dashboard")
 
 They can then view all the plots in the allotment, see who owns them if they also a registered user, the size, and any notes the plot owner has added. These could be what they are currently growing, what improvements they have made, and any tips to help track their plot. A user can add such comments to their own plots.
 
