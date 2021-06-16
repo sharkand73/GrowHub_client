@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
 
-const JobList = ({jobs, currentUser, displayJob, getCarrots}) =>{
+const JobList = ({jobs, currentUser, displayJob, getCarrots, setJobStatus}) =>{
 
 // Sorts jobs by deadline date, most urgent at top
 const jobsByDeadline = jobs.sort((a, b) => {
@@ -27,10 +27,8 @@ return (
         <ul>
             {jobsRenderedByDeadline}
         </ul>
-        <h3>
-            <Link to='/jobs/new' className="link-job">
-                New Job
-            </Link>
+        <h3 className="link-job" onClick={()=> setJobStatus('new')}>
+            New Job
         </h3>
 </>
 );

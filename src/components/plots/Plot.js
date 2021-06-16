@@ -3,19 +3,19 @@ import {Link} from 'react-router-dom'
 
 import '../../css/Plots.css';
 
-const Plot = ({plot}) =>{
+const Plot = ({plot, plots, setSelectedPlot}) =>{
 
     const url = "/plots/" + plot.id;
 
     return(
         <div class="flexPlots">
-        <Link class="no-decoration" to={url} >
-            <button class="plotSpacing">
+            <div class="no-decoration">
+                <button class="plotSpacing" onClick = {() => setSelectedPlot(plot)}>
 
-                <p class="plotText"> {plot.areaName} </p>
+                    <p class="plotText"> {plot.areaName} </p>
 
-            </button>
-        </Link>
+                </button>
+            </div>
         </div>
     )
 
