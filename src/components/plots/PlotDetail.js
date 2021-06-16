@@ -72,18 +72,20 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
             </ul>
             </div>
 
-            <div id="plot-history-new-grid">
-            <NewPlotComment plot={plot} getDate={getDate} currentUser={currentUser}  postComment={postComment}/>
+
+
+            <div id="plot-history-grid">
+                <NewPlotComment plot={plot} getDate={getDate} currentUser={currentUser}  postComment={postComment}/>
+                {commentsArrayLength > 0 ?
+                <>
+                    <p class="plot-detail1">Plot history:</p>   
+                    <ul class="plot-detail2">
+                        {commentsArray}
+                    </ul>  
+                </> 
+                : null}          
             </div>
 
-            {commentsArrayLength > 0 ?
-            <div id="plot-history-grid">
-                <p class="plot-detail1">Plot history:</p>   
-                <ul class="plot-detail2">
-                    {commentsArray}
-                </ul>             
-            </div>
-            : null}
 
 
             <div className = "plot-back" onClick = {()=> handleBackClick()}>
