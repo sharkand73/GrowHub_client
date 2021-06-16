@@ -383,8 +383,8 @@ const MainContainer = ({allotmentSettings}) =>{
                     const id = props.match.params.id;
                     const foundKnowHow = findKnowHowById(id);
                     return foundKnowHow? <KnowHowDetail 
-                    currentUser={currentUser} k
-                    nowHow={foundKnowHow} 
+                    currentUser={currentUser}
+                    knowHow={foundKnowHow} 
                     getDate={getDate} 
                     postReply={postKnowHowReply} 
                     replies={replies}/>: <Redirect to="/knowhows" />
