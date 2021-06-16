@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# GrowHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Growing your own food is an increasingly attractive hobby for many. People rent plots in allotments, and across many years gain a vast array of knowledge and experience, but still face trial and error each time they try something new. 
 
-## Available Scripts
+For all we know, the person who owns the plot right next to them has had success on said vegetable or growbed construction years back, but we don't know, and neither do those attempting to grow it or built it themselves. And one day, all of these people will have left and taken all the knowledge with them. The cycle begins anew.
 
-In the project directory, you can run:
+What we wanted to build, was a online portal that could not only offered a bank of shared knowledge, but could encourage active engagement amongst plotholders.
 
-### `npm start`
+In the short space of one week, we have completed our first iteration of such, called GrowHub.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+GrowHub, offers the opportunity for community.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technology used
+* The server was created with Java and Spring, using IntelliJ.
+* The client was created with JavaScript and React, using Visual Studio Code.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The following steps will get the app working locally for you.
 
-### `npm run build`
+### Starting the Server
+* Download a copy the Growbub_Server repo, and unzip
+* Open up a terminal window, and set the location to the Growhub_Server folder
+* Open up Growhub_Server in a capable suite (we used IntelliJ)
+* Run 'ServerApplication.java' to start up the server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Starting the Client 
+* Download a copy the Growbub_Client repo, and unzip
+* Open up a terminal window, and set the location to the Growhub_Client folder
+* In the terminal, run 'npm i'to install all relevant dependencies
+* After completion, run 'npm start' to start up the front end of the app
+* Open up 'http://localhost:3000' in your browser
+* Log in with username 'MadJan', password 'madjanlovesjam' for the best experience
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Basic functionality
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once logged in, a user is directed to the dash board. They are presented with the current weather in the location of the allotment, a select number of bulletin posts by adminstrators, and a tip of the month.
+<!-- image of dash -->
 
-### `npm run eject`
+They can then view all the plots in the allotment, see who owns them if they also a registered user, the size, and any notes the plot owner has added. These could be what they are currently growing, what improvements they have made, and any tips to help track their plot. A user can add such comments to their own plots.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The bank of knowledge, knowhows, displays all local tips - particularly relevant to the Scottish climate when it comes to growing exotic vegetables. A user can add their own which they can edit and delete at will, and all users can comment on knowhows, reply to one another with additional tips.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- Image of knowhowlist -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+All users can post fun news that appear as sticky notes, and the top three most recent ones posted by admins only, are then rendered on the dash board we saw earlier. Jobs display any tasks users need help with, with their difficulty of 1-5 represented by the number of carrots. Likewise as with knowhows, a user can edit and delete only their own bulletins and knowhows.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Next Steps
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The following features are other possible routes the project could take next.
+* The Plots will be rendered via an interactive map of the actual allotment
+* Greater admin functionality - ability to delete any posts, view users and have basic functionality such as removing accounts, and assigning plots to users
+* A forum for seed and harvest swaps for excess produce, to further enhance the desire for community
+* Scalability for other allotments
