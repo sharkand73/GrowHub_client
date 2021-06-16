@@ -18,7 +18,7 @@ import '../../css/Community.css';
 // Outgoing props = BulletinItems, Jobs, User, onClick, onSubmit
 
 
-const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob, getDate, editBulletin, postJob, communalAreas}) => {
+const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJob, getDate, editBulletin, postJob, communalAreas, editJob}) => {
 
     const [selectedBulletin, setSelectedBulletin] = useState();
     const [selectedJob, setSelectedJob] = useState();
@@ -50,7 +50,7 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
     }
 
     const crudRoutes = {'all': <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} getCarrots = {getCarrots} setJobStatus={setJobStatus}/>,
-                        'show': <JobSelected job={selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots} jobClickAway={jobClickAway} jobStatus={jobStatus} setJobStatus={setJobStatus}/>,
+                        'show': <JobSelected job={selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots} jobClickAway={jobClickAway} jobStatus={jobStatus} setJobStatus={setJobStatus} communalAreas={communalAreas} editJob={editJob} />,
                         'new':  <NewJob setJobStatus={setJobStatus} currentUser={currentUser} postJob={postJob} communalAreas={communalAreas} getDate={getDate} setJobStatus={setJobStatus}/>,
                         'edit': <EditJob setJobStatus={setJobStatus}/>
     }

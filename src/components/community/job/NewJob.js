@@ -76,7 +76,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate, setJobStatus}) =>
             <br></br>
             <label name='area'>Area it applies to:</label>
             <br></br>
-            <select name='area' id='area' min={date} onChange={handleArea}>
+            <select name='area' id='area' onChange={handleArea}>
                 <option selected disabled>Area</option>
                 {communalAreaOptions}
             </select>
