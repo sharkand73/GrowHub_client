@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import Plot from './Plot';
-import PlotDetail from './PlotDetail';
+import {Redirect} from 'react-router-dom';
 
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
 
-const PlotList = ({currentUser, plots, allotmentSettings}) =>{
+const PlotList = ({currentUser, plots}) =>{
 
     const [selectedPlot, setSelectedPlot] = useState(null);
 
@@ -16,7 +16,7 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
     const currentUserPlots = [];
 
 // NEW Method that searches through plots and grabs the users plots
-    const plotsFill = plots.forEach((plot) => {
+    plots.forEach((plot) => {
         for (let user of plot.users){
             if (user.shortName === currentUser.shortName){
                 currentUserPlots.push(plot)
@@ -70,31 +70,19 @@ const PlotList = ({currentUser, plots, allotmentSettings}) =>{
         )
     })
 
-    // const userPlots = currentUser.plots.map((plot, index) => {
-    //     return(
-    //         <li key={index}><Plot plot={plot} currentUser={currentUser}/></li>
-    //     )
-    // })
-
-
-    // This array would (should) return a single array with the users plots first
-    // const newPlotsArray = () => {
-    //     for (let userPlot in userPlots){
-    //         for (let plot in plots){
-    //             if (plot === userPlot){
-    //                 plots.remove(plot);
-    //                 plot.unshift(plot);
-    //             }
-    //         }
-    //     }
-    //     return plotArray
-    // }
-
     const userPlotLength = currentUserPlotArray.length
     const plotsStatement = userPlotLength > 0 ? 'Other Plots:' : 'All Plots:'
     const idSet = userPlotLength > 0 ? 'other-plots-grid' : 'your-plots-grid';
 
-    if (selectedPlot){return <PlotDetail plot={selectedPlot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/>}
+    if (selectedPlot){
+        const url = "/plots/" + selectedPlot.id;
+        return <Redirect to={url} />}
+        // return <PlotDetail plot={selectedPlot} 
+        //                                 plots={plots} 
+        //                                 currentUser={currentUser} 
+        //                                 setSelectedPlot={setSelectedPlot}
+        //                                 getDate={getDate}
+        //                                 postComment={postComment}/>}
 
     return(
         <>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
-import EditKnowHow from './EditKnowHow.js'
+
 
 import '../../css/Knowhow.css';
 import '../../css/Dash.css';
