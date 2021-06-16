@@ -60,7 +60,7 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
         <div id="new-user-container">
 
             <div id="logo-grid2">
-                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
 
             <div id="text-grid">

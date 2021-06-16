@@ -76,12 +76,12 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
 
             <div id="plot-history-grid">
 
-//                 <p class="plot-detail1">Plot history</p>
+{/* //                 <p class="plot-detail1">Plot history</p>
 //                 <div class="content">
 //                     {plot.comments?<ul  class="plot-detail2">{plotComments}</ul>: null}
 //                 </div>
 //             </div>
-//             <div  id="plot-details-grid" className = "plot-back" onClick = {()=>setSelectedPlot(null)}>
+//             <div  id="plot-details-grid" className = "plot-back" onClick = {()=>setSelectedPlot(null)}> */}
 
                 <NewPlotComment plot={plot} getDate={getDate} currentUser={currentUser}  postComment={postComment}/>
                 {commentsArrayLength > 0 ?
@@ -94,7 +94,7 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
                 : null}          
             </div>
 
-            <div className = "plot-back" onClick = {()=> handleBackClick()}>
+            <div id="plot-details-grid" className = "plot-back" onClick = {()=> handleBackClick()}>
 
                 Back
             </div>
