@@ -6,8 +6,7 @@
     font-family: 'Montserrat', sans-serif;
     align-items: center;
     margin-top:5px 0px 5px 0px;
-
-
+    flex-wrap: wrap;
 }
 
 .navItem{
