@@ -16,7 +16,7 @@ const Weather = ({weatherData}) => {
         <h1>Weather</h1>
         <h3>{location}</h3>
         <div id="image-temp">
-            <img id="widget-image" src={weatherIcon}/>
+            <img id="widget-image" src={weatherIcon} alt="probably clouds"/>
             <div id="temperature">
                 <p class="dash-text" id="max-temp">
                     {max}&#176;C
