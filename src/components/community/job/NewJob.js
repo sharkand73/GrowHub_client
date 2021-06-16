@@ -15,9 +15,6 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate, setJobStatus}) =>
         difficulty: 0
     })
 
-    const [formCheck, setFormCheck] = useState(null);
-
-
     const communalAreaOptions = communalAreas.map((communalArea, index) => {
         return <option value={index} key={index}>{communalArea.areaName}</option>
     });
@@ -53,7 +50,7 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate, setJobStatus}) =>
         e.preventDefault();
         handleDeadline();
         postJob(formData);
-        setFormCheck(1);
+        setJobStatus('all');
     }
 
     const getMinDate = () => {
@@ -70,27 +67,30 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate, setJobStatus}) =>
 
         <form onSubmit={handleSubmit}>
             <label name='title'>Title:</label>
+            <br></br>
             <input type='text' name='title' id='title' onChange={handleChange} required />
-
+            <br></br>
             <label name='body'>The Job:</label>
+            <br></br>
             <input type='text' name='body' id='body' onChange={handleChange} required /> 
-
+            <br></br>
             <label name='area'>Area it applies to:</label>
+            <br></br>
             <select name='area' id='area' min={date} onChange={handleArea}>
                 <option selected disabled>Area</option>
                 {communalAreaOptions}
             </select>
-            
+            <br></br>
             <label name='deadline'>Due Date:</label>
+            <br></br>
             <input type='date' name='deadline' id='deadline' min={getMinDate()} default={getMinDate()} onChange={handleChange} required />
-
+            <br></br>
             <label name='difficulty'>Difficulty:</label>
+            <br></br>
             <input type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} required />
-
+            <br></br>
             <button type='submit'>Submit New Job</button>
         </form>
-
-        {formCheck ? <Redirect to="/community" />:null}
 
         <h3 className="link-job" onClick = {()=>setJobStatus('all')}>
             Back
