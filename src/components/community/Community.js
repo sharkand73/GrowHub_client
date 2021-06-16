@@ -49,9 +49,28 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
     return carrots;
     }
 
-    const crudRoutes = {'all': <JobList jobs={jobs} currentUser={currentUser} displayJob={displayJob} getCarrots = {getCarrots} setJobStatus={setJobStatus}/>,
-                        'show': <JobSelected job={selectedJob} currentUser={currentUser} deleteJob={deleteJob} getCarrots={getCarrots} jobClickAway={jobClickAway} jobStatus={jobStatus} setJobStatus={setJobStatus} communalAreas={communalAreas} editJob={editJob} />,
-                        'new':  <NewJob setJobStatus={setJobStatus} currentUser={currentUser} postJob={postJob} communalAreas={communalAreas} getDate={getDate} setJobStatus={setJobStatus}/>,
+    const crudRoutes = {'all': <JobList jobs={jobs} 
+                            currentUser={currentUser} 
+                            displayJob={displayJob} 
+                            getCarrots = {getCarrots} 
+                            setJobStatus={setJobStatus}/>,
+                        'show': <JobSelected 
+                            job={selectedJob} 
+                            currentUser={currentUser} 
+                            deleteJob={deleteJob} 
+                            getCarrots={getCarrots} 
+                            jobClickAway={jobClickAway} 
+                            jobStatus={jobStatus} 
+                            setJobStatus={setJobStatus} 
+                            communalAreas={communalAreas} 
+                            editJob={editJob} />,
+                        'new':  <NewJob 
+                            setJobStatus={setJobStatus} 
+                            currentUser={currentUser} 
+                            postJob={postJob} 
+                            communalAreas={communalAreas} 
+                            getDate={getDate} 
+                            setJobStatus={setJobStatus}/>,
                         'edit': <EditJob setJobStatus={setJobStatus}/>
     }
 
@@ -65,11 +84,6 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
                     {selectedBulletin? <BulletinDetails bulletin={selectedBulletin} clickAway={clickAway} deleteBulletin={deleteBulletin} currentUser={currentUser} getDate={getDate} editBulletin={editBulletin} />:
                     <BulletinList sortedBulletins={sortedBulletins} currentUser={currentUser} displayBulletin={displayBulletin} getDate={getDate} selectedBulletin={selectedBulletin} />}
                 </div>
-                <h2>
-                <Link to='/bulletins/new' id="new-bulletin">
-                    New Bulletin
-                </Link>
-                </h2>
             
             </div>
                 <div id="jobs-container">

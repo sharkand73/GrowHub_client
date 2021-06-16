@@ -1,11 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-
 import '../../css/Plots.css';
 
-const Plot = ({plot, plots, setSelectedPlot}) =>{
-
-    const url = "/plots/" + plot.id;
+const Plot = ({plot, setSelectedPlot}) =>{
 
     return(
         <div class="flexPlots">

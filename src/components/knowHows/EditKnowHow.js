@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Redirect} from 'react-router-dom';
 import '../../css/Knowhow.css';
 import '../../css/NewUser.css';
 

@@ -1,10 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PlotComment from './PlotComment';
+import NewPlotComment from './NewPlotComment';
+import {Redirect} from 'react-router-dom';
+
 
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
 
-const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
+const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) =>{
+
+    const [backHandler, setBackHandler] = useState(0);
+
+    const commentsArray = [];
+
+    comments.forEach((comment) => {
+        if (comment.plot.id === plot.id){
+            commentsArray.push(
+                <li key={comment.index}>
+                    <PlotComment comment={comment}/>
+                    <hr/>
+                </li>  
+            )
+            }
+        }
+    )
 
     const getPlotHolders = () => {
     let plotHolders = "";
@@ -16,14 +35,6 @@ const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
     }
     return plotHolders;
     }
-
-    const plotComments = plot.comments.map((comment, index) => 
-    
-            <li><PlotComment key={index} comment={comment} currentUser={currentUser}/>
-            <hr/>
-            </li>  
-            
-        )
     
     const getArea = (length, breadth) => (Math.round(length * breadth * 10) / 10);
     const plotSize = getArea(plot.length, plot.breadth);
@@ -34,6 +45,12 @@ const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
     const calculateClassification = function(mySize){
     return plotSizes.filter((size) => (size > mySize)).length;
     }
+
+    const handleBackClick= () => {
+        setBackHandler(1);
+    }
+
+    const commentsArrayLength = commentsArray.length;
 
     return(
         <>
@@ -54,17 +71,35 @@ const PlotDetail = ({currentUser, plot, plots, setSelectedPlot}) =>{
                 <li class="plot-detail2"> - Plot holders: {getPlotHolders()}</li>
             </ul>
             </div>
-        
+
+
 
             <div id="plot-history-grid">
-                <p class="plot-detail1">Plot history</p>
-                <div class="content">
-                    {plot.comments?<ul  class="plot-detail2">{plotComments}</ul>: null}
-                </div>
+
+//                 <p class="plot-detail1">Plot history</p>
+//                 <div class="content">
+//                     {plot.comments?<ul  class="plot-detail2">{plotComments}</ul>: null}
+//                 </div>
+//             </div>
+//             <div  id="plot-details-grid" className = "plot-back" onClick = {()=>setSelectedPlot(null)}>
+
+                <NewPlotComment plot={plot} getDate={getDate} currentUser={currentUser}  postComment={postComment}/>
+                {commentsArrayLength > 0 ?
+                <>
+                    <p class="plot-detail1">Plot history:</p>   
+                    <ul class="plot-detail2">
+                        {commentsArray}
+                    </ul>  
+                </> 
+                : null}          
             </div>
-            <div  id="plot-details-grid" className = "plot-back" onClick = {()=>setSelectedPlot(null)}>
+
+            <div className = "plot-back" onClick = {()=> handleBackClick()}>
+
                 Back
             </div>
+
+            {backHandler === 1 ? <Redirect to='/plots'/> : null}
         </div>  
         </>
     )
