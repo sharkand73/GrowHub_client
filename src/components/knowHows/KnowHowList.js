@@ -43,10 +43,11 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow
 
     const knowHowArray = filteredKnowhows.map((knowHow, index) => {
         return(
-            <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser} deleteKnowhow={deleteKnowhow} editClick={editClick} /></li>
+            <li key={index}><KnowHow knowHow={knowHow} currentUser={currentUser} deleteKnowhow={deleteKnowhow} editClick={editClick} />
+            <hr/>
+            </li>
         )
     })
-
 
     return(
         <>

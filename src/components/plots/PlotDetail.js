@@ -17,7 +17,14 @@ const PlotDetail = ({currentUser, plot, plots}) =>{
     return plotHolders;
     }
 
-    const plotComments = plot.comments.map((comment, index) => (<li><PlotComment key={index} comment={comment} currentUser={currentUser}/></li>))
+    const plotComments = plot.comments.map((comment, index) => 
+    
+            <li><PlotComment key={index} comment={comment} currentUser={currentUser}/>
+            <hr/>
+            </li>  
+            
+        )
+    
     const getArea = (length, breadth) => (Math.round(length * breadth * 10) / 10);
     const plotSize = getArea(plot.length, plot.breadth);
 
