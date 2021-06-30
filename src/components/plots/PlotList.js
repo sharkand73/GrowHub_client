@@ -74,9 +74,6 @@ const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
 
     return (
         <>
-        <div id="logo-grid">
-                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
-            </div>
             {userPlotLength > 0 ?
             <div id="your-plots-grid">
                 <p class="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>

@@ -15,7 +15,11 @@ const PlotsHome = ({currentUser, plots}) =>{
     if (mapSelected) {
         return (
             <>
-            <button type="button" onClick={()=>{setMapSelected(false)}}>Grid View</button>
+            <div id="logo-grid">
+                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                <button type="button" onClick={()=>{setMapSelected(false)}}>Grid View</button>
+            </div>
+            
             <Map />   
             </>         
         )
@@ -23,8 +27,11 @@ const PlotsHome = ({currentUser, plots}) =>{
 
 return(
         <>
+        <div id="logo-grid">
+            <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            <button type="button" onClick={()=>{setMapSelected(true)}}>Map View</button>
+        </div>
         <div id="plots-grid-container">
-        <button type="button" onClick={()=>{setMapSelected(true)}}>Map View</button>
             <PlotList currentUser={currentUser} plots={plots} selectedPlot={selectedPlot} setSelectedPlot={setSelectedPlot} />
 
         </div>
