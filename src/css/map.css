@@ -1,0 +1,167 @@
+﻿body {
+    @import "compass/css3";
+    fill: none;
+}
+
+p {
+    color: darkred;
+}
+
+tspan {
+    color: black;
+}
+
+.plot {
+
+    fill: #3e7e00;
+    fill-opacity: 0.7;
+    /* color: black; */
+}
+
+.plotpath {
+    display: inline;
+    stroke: #000000;
+    stroke-width: 0.264583px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-opacity: 1
+}
+
+.plot:hover, .willow:hover {
+        fill-opacity: 0.5;
+    }
+
+
+.willow {
+    fill: #9acd32;
+    fill-opacity: 0.7;
+}
+
+.building {
+    stroke: #552200;
+    stroke-width: 0.264583px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-opacity: 1;
+    fill: gray;
+}
+
+    .building:hover {
+        fill-opacity: 0.7;
+    }
+
+.number {
+    font-size: 2.82222000000000017px;
+    line-height: 1.25;
+    font-family: sans-serif;
+    color: black;
+    /* fill: black; */
+    font-weight: 900;
+    white-space: pre;
+    /* shape-inside: url(#rect1418-83); */
+    display: inline;
+    opacity: 1;
+ 
+}
+
+.plot.number:hover {
+    fill-opacity: 0.5;
+}
+
+.area {
+    display:inline;
+    fill:none;
+    stroke:#000000;
+    stroke-width:0.264583px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+    fill: rosybrown;
+}
+
+.area:hover {
+    fill-opacity: 0.7;
+}
+
+#top-area, #middle-area {
+    display:inline;
+    opacity:1;
+    fill:none;
+    stroke:#000000;
+    stroke-width:0.26458300000000001px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+#bottom-area {
+    display:inline;
+    opacity:1;
+    fill:none;
+    stroke:#ffd5d5;
+    stroke-width:0.26458300000000001px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+#internal-path {
+    display:inline;
+    opacity:1;
+    fill:#ffd5d5;
+    stroke:#ffd5d5;
+    stroke-width:0.26458300000000001px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+#bottom-path {
+    display:inline;
+    opacity:1;
+    fill:#ffd5d5;
+    stroke:#f4d7d7;
+    stroke-width:0.475472;
+}
+
+#gate {
+    display:inline;
+    opacity:1;
+    fill:#333333;
+    stroke:#333333;
+    stroke-width:0.26162800000000003px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+#fence-1, #fence-2, #fence-4 {
+    display:inline;
+    opacity:1;
+    fill:none;
+    stroke:#000000;
+    stroke-width:0.26458300000000001px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+#fence-3 {
+    display:inline;
+    opacity:1;
+    fill:#ffd5d5;
+    stroke:#000000;
+    stroke-width:0.26458300000000001px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+#plot60-62 {
+    display:inline;
+    stroke:#000000;
+    stroke-width:0.264583px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}

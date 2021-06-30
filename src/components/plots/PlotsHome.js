@@ -4,10 +4,12 @@ import {Redirect} from 'react-router-dom';
 
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
+import Map from './Map';
 
 const PlotList = ({currentUser, plots}) =>{
 
     const [selectedPlot, setSelectedPlot] = useState(null);
+    const [mapSelected, setMapSelected] = useState(true);
 
     // const plotsMap = allotmentSettings.mapFilepath;
     
@@ -84,7 +86,13 @@ const PlotList = ({currentUser, plots}) =>{
         //                                 getDate={getDate}
         //                                 postComment={postComment}/>}
 
-    return(
+    if (mapSelected) {
+        return (
+            <Map />            
+        )
+        }
+
+return(
         <>
         <div id="plots-grid-container">
 

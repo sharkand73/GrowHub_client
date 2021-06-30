@@ -14,7 +14,7 @@ import NewKnowHow from '../components/knowHows/NewKnowHow';
 
 import Community from '../components/community/Community';
 
-import PlotList from '../components/plots/PlotList';
+import PlotsHome from '../components/plots/PlotsHome';
 import PlotDetail from '../components/plots/PlotDetail';
 
 import NewJob from '../components/community/job/NewJob';
@@ -269,8 +269,6 @@ const MainContainer = ({allotmentSettings}) =>{
     const getData = function(){
         const APIKey = allotmentSettings.apikey;
         const location = allotmentSettings.location;
-        // const APIKey = "0d820993802bd0122435be9caac2043d";
-        // const location = "Glasgow";
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}`)
             .then(results => results.json() )
             .then(data => {setWeatherData(data)})
@@ -311,10 +309,10 @@ const MainContainer = ({allotmentSettings}) =>{
                     }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/plots' component = {() =>{
-                    return <PlotList 
+                    return <PlotsHome 
                     currentUser={currentUser} 
                     plots={plots} 
-                    allotmentSettings={allotmentSettings} 
+                    mapExists={allotmentSettings.has} 
                     getDate={getDate} 
                     postComment={postComment}/>
                 }} currentUser={currentUser}/>
