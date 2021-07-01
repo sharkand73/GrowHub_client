@@ -1,10 +1,11 @@
 ﻿import React from 'react';
 import '../../css/map.css';
 
-const Map = () => {
+const Map = ({selectFromMap}) => {
 
    const onClick = (e) => {
       console.log(e.target.id);
+      selectFromMap(e.target.id);
    }
 
 return (

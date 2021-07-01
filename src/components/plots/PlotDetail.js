@@ -86,7 +86,7 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
                 : null}          
             </div>
 
-            <div id="plot-details-grid" className = "plot-back" onClick = {()=> handleBackClick()}>
+            <div id="plot-details-back" className = "plot-back" onClick = {()=> handleBackClick()}>
 
                 Back
             </div>

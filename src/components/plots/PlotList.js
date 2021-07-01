@@ -68,9 +68,6 @@ const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
     const plotsStatement = userPlotLength > 0 ? 'Other Plots:' : 'All Plots:'
     const idSet = userPlotLength > 0 ? 'other-plots-grid' : 'your-plots-grid';
 
-    if (selectedPlot){
-        const url = "/plots/" + selectedPlot.id;
-        return <Redirect to={url} />}
 
     return (
         <>

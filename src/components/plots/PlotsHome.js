@@ -12,6 +12,21 @@ const PlotsHome = ({currentUser, plots}) =>{
     const [selectedPlot, setSelectedPlot] = useState(null);
     const [mapSelected, setMapSelected] = useState(true);
 
+    const plotify = (number) => (`plot${number}`);
+
+    const findPlotByName = function(name){
+        return plots.find((plot) => (plotify(plot.plotNumber) === name));
+    }
+
+    const selectFromMap = (areaName) => {
+        const plotSelected = findPlotByName(areaName);
+        if (plotSelected){setSelectedPlot(plotSelected)}
+    }
+
+    if (selectedPlot){
+        const url = "/plots/" + selectedPlot.id;
+        return <Redirect to={url} />}    
+
     if (mapSelected) {
         return (
             <>
@@ -20,7 +35,7 @@ const PlotsHome = ({currentUser, plots}) =>{
                 <button type="button" onClick={()=>{setMapSelected(false)}}>Grid View</button>
             </div>
             
-            <Map />   
+            <Map selectFromMap={selectFromMap}/>   
             </>         
         )
         }
