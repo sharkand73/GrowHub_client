@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {Redirect} from 'react-router-dom';
+import React from 'react';
+//import {Redirect} from 'react-router-dom';
 
 import '../../css/Plots.css';
-import LogoSmall from '../../css/LogoSmall.png';
+//import LogoSmall from '../../css/LogoSmall.png';
 import Plot from './Plot';
 
 const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {

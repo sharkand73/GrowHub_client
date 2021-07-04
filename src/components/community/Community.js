@@ -5,7 +5,7 @@ import JobList from './job/JobList.js';
 import JobSelected from './job/JobSelected.js';
 import NewJob from './job/NewJob.js';
 import EditJob from './job/EditJob.js';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCarrot } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Community.css';
@@ -70,7 +70,7 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
                             postJob={postJob} 
                             communalAreas={communalAreas} 
                             getDate={getDate} 
-                            setJobStatus={setJobStatus}/>,
+                            />,
                         'edit': <EditJob setJobStatus={setJobStatus}/>
     }
 

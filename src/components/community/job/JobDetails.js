@@ -1,19 +1,6 @@
 import React from 'react';
-import EditJob from './EditJob.js';
 
 const JobDetails = ({job, getCarrots, jobClickAway, currentUser, deleteJob, jobStatus, setJobStatus}) => {
-
-    const jobEditDelete = () => {
-        if (currentUser.id === job.author.id) {
-            return(        
-                <div className = "edit-delete">
-                    <span className="job-edit-text">Edit</span> 
-                    <span className="job-delete-text" onClick={() => deleteJob(job)}>Delete</span>
-                </div>
-                
-            )
-        }
-    }
 
 
     return (

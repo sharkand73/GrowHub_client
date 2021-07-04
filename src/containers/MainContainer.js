@@ -119,12 +119,12 @@ const MainContainer = ({allotmentSettings}) =>{
         request.put(url, newBulletin);
     }
 
-    const findBulletinById = (bulletinId) => {
-        return bulletins.find((bulletin) => {
-            return bulletin.id === parseInt(bulletinId)
-            }
-        )
-    }
+    // const findBulletinById = (bulletinId) => {
+    //     return bulletins.find((bulletin) => {
+    //         return bulletin.id === parseInt(bulletinId)
+    //         }
+    //     )
+    // }
 
     const deleteBulletin = (bulletin) => {
         const newBulletinList = [...bulletins];
@@ -141,12 +141,12 @@ const MainContainer = ({allotmentSettings}) =>{
         request.post("/api/jobs", job);
     }
     
-    const findJobById = (jobId) => {
-        return jobs.find((job) => {
-            return job.id === parseInt(jobId)
-            }
-        )
-    }
+    // const findJobById = (jobId) => {
+    //     return jobs.find((job) => {
+    //         return job.id === parseInt(jobId)
+    //         }
+    //     )
+    // }
 
     const deleteJob = (job) => {
         const newJobList = [...jobs];

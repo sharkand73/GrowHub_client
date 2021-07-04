@@ -1,6 +1,5 @@
 import React from 'react';
 import Bulletin from './Bulletin.js';
-import EditBulletin from './EditBulletin.js';
 import {Link} from 'react-router-dom';
 
 
