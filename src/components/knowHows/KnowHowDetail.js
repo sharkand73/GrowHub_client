@@ -17,8 +17,8 @@ const KnowHowDetail = ({knowHow, currentUser, getDate, postReply, replies}) => {
         if (reply.knowhow.id === knowHow.id){
             repliesArray.push(
                 <li key={reply.index}>
-                    <div>
-                        <h4>{reply.body}</h4>
+                    <div key={reply.index}>
+                        <h4> {reply.body}</h4>
                         <p><i>By: {reply.author.shortName} on {reply.date}</i></p>
                     </div>
                     {/* LINE BREAK, DELETE ONCE CSS IS IN */}

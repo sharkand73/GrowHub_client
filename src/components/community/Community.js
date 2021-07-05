@@ -44,7 +44,7 @@ const Community = ({currentUser, sortedBulletins, jobs, deleteBulletin, deleteJo
     function getCarrots(job){
         let carrots = [];
         for(let i=1; i<=job.difficulty; i++){
-            carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot"/>)
+            carrots.push(<FontAwesomeIcon icon={faCarrot} className="carrot" key={i}/>)
         }    
     return carrots;
     }

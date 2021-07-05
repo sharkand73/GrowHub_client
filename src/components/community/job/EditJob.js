@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
 
     const [formData, setFormData] = useState({
+        id: job.id,
         date: job.date,
         author: currentUser,
         title: job.title,
@@ -12,9 +13,16 @@ const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
         difficulty: job.difficulty
     })
 
+    
     const communalAreaOptions = communalAreas.map((communalArea, index) => {
         return <option value={index} key={index}>{communalArea.areaName}</option>
     });
+
+    const indexOfCurrentCommunalArea = communalAreas.findIndex(
+        (item) => item.id === job.communal.id);
+
+    const currentOption = communalAreaOptions.splice(indexOfCurrentCommunalArea, 1);
+    communalAreaOptions.unshift(currentOption);
 
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
@@ -57,26 +65,25 @@ const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
             <form onSubmit={handleSubmit}>
             <label name='title'>Title:</label>
             <br></br>
-            <input type='text' name='title' id='title' onChange={handleChange} defaultValue={job.title} required />
+            <input type='text' name='title' id='title' onChange={handleChange} value={FormData.title} defaultValue={job.title} required />
             <br></br>
             <label name='body'>The Job:</label>
             <br></br>
-            <input type='text' name='body' id='body' onChange={handleChange} defaultValue={job.body} required /> 
+            <input type='text' name='body' id='body' onChange={handleChange} value={FormData.body} defaultValue={job.body} required /> 
             <br></br>
             <label name='area'>Area it applies to:</label>
             <br></br>
             <select name='area' id='area' onChange={handleArea}>
-                <option selected disabled>Area</option>
                 {communalAreaOptions}
             </select>
             <br></br>
             <label name='deadline'>Due Date:</label>
             <br></br>
-            <input type='date' name='deadline' id='deadline' min={job.date} defaultValue={job.date} onChange={handleChange} required />
+            <input type='date' name='deadline' id='deadline' min={job.date} defaultValue={job.date} placeholder={job.date} onChange={handleChange} />
             <br></br>
             <label name='difficulty'>Difficulty:</label>
             <br></br>
-            <input type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} defaultValue={job.difficulty} required />
+            <input type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} defaultValue={job.difficulty} />
             <br></br>
             <button type='submit'>Edit Job</button>
         </form>

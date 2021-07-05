@@ -67,7 +67,7 @@ const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
 
                     <div class="form_field form_input">
                         <label class="form_text" name='body'>Your Know How:</label>
-                        <input class="field_size3" type='text' name='body' id='body' maxlength="255" onChange={handleChange} required /> 
+                        <input class="field_size3" type='text' name='body' id='body' maxLength="255" onChange={handleChange} required /> 
                     </div>
 
                     <div class="form_field form_input">

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Job = ({job, currentUser, displayJob, getCarrots}) =>{
+const Job = ({job, displayJob, getCarrots}) =>{
 
     // function getCarrots(job){
     //     let carrots = [];
