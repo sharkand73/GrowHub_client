@@ -136,9 +136,10 @@ const MainContainer = ({allotmentSettings}) =>{
     } 
 
     const postJob = (job) => {
-        jobs.push(job);
         const request = new Request();
-        request.post("/api/jobs", job);
+        const newJob = request.post("/api/jobs", job)
+        .then(res => res.json())
+        .then((data) => setJobs([...jobs, data]));
     }
     
     // const findJobById = (jobId) => {
@@ -158,7 +159,7 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const editJob = (oldJob, newJob) => {
-        const url = "/api/jobs/" + oldJob.id
+        const url = "/api/jobs/" + oldJob.id;
         const tempJobList = [...jobs];
         const index = tempJobList.indexOf(oldJob);
         tempJobList.splice(index, 1);
