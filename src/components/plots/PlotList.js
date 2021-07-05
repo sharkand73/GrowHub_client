@@ -51,7 +51,7 @@ const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
     // Renders a Plot object for current user plot
     const currentUserPlotArray = currentUserPlots.map((plot, index) => {
     return(
-        <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/></li>
+        <li key={index}><Plot key={index} plot={plot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/></li>
     )
     })
 

@@ -160,6 +160,7 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const editJob = (oldJob, newJob) => {
         const url = "/api/jobs/" + oldJob.id;
+        newJob.id = oldJob.id;
         const tempJobList = [...jobs];
         const index = tempJobList.indexOf(oldJob);
         tempJobList.splice(index, 1);

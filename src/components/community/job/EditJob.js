@@ -5,11 +5,11 @@ const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
     const [formData, setFormData] = useState({
         date: job.date,
         author: currentUser,
-        title: "",
-        body: "",
-        communal: {},
-        deadline: "",
-        difficulty: 0
+        title: job.title,
+        body: job.body,
+        communal: job.communal,
+        deadline: job.deadline,
+        difficulty: job.difficulty
     })
 
     const communalAreaOptions = communalAreas.map((communalArea, index) => {
@@ -18,7 +18,7 @@ const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
 
     const handleChange = (e) => {
         formData[e.target.id] = e.target.value;
-        setFormData(formData)
+        setFormData(formData);
     }
 
     const handleArea = (e) => {
@@ -32,9 +32,10 @@ const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
         const mm = stringDate.slice(5, 7);
         const yyyy = stringDate.slice(0, 4);
         const newDeadline = `${dd}/${mm}/${yyyy}`
-        console.log(newDeadline)
+        //console.log(newDeadline)
         formData.deadline = newDeadline;
         setFormData(formData);
+        console.log(formData);
     }
 
     const handleDifficulty = (e) => {
