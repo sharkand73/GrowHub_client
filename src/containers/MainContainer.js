@@ -70,9 +70,14 @@ const MainContainer = ({allotmentSettings}) =>{
 
 
     const postKnowHow = (knowHow) => {
-        knowHows.push(knowHow);
+        // knowHows.push(knowHow);
         const request = new Request();
-        request.post("/api/knowhows", knowHow);
+        request.post("/api/knowhows", knowHow)
+        .then(res => res.json())
+        .then((data) => {
+            console.log('data back from db', data)
+            setKnowHows([...knowHows, data])
+        })
     }
 
     const findKnowHowById = (knowHowId) => {
@@ -103,9 +108,10 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const postBulletin = (bulletin) => {
-        bulletins.push(bulletin);
         const request = new Request();
-        request.post("/api/bulletins", bulletin);
+        request.post("/api/bulletins", bulletin)
+        .then(res => res.json())
+        .then((data) => setBulletins([...bulletins, data]));
     }
 
     const editBulletin = (oldBulletin, newBulletin) => {
@@ -160,7 +166,7 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const editJob = (oldJob, newJob) => {
         const url = "/api/jobs/" + oldJob.id;
-        newJob.id = oldJob.id;
+        //newJob.id = oldJob.id;
         const tempJobList = [...jobs];
         const index = tempJobList.indexOf(oldJob);
         tempJobList.splice(index, 1);
@@ -188,10 +194,11 @@ const MainContainer = ({allotmentSettings}) =>{
             }
         }
     
-        allUsers.push(newUser);
         const request = new Request();
-        request.post("/api/users", newUser);
-        return setNewUserCheck(3)
+        request.post("/api/users", newUser)
+        .then(res => res.json())
+        .then((data) => setAllUsers([...allUsers, data]))
+        return setNewUserCheck(3);
     }
 
     const findPlotById = (plotId) => {
@@ -279,17 +286,19 @@ const MainContainer = ({allotmentSettings}) =>{
     useEffect(() => getData(), [allotmentSettings]);
 
     const postKnowHowReply = (reply) => {
-        replies.push(reply);
         setKnowHows(knowHows);
         const request = new Request();
-        request.post("/api/replies", reply);
+        request.post("/api/replies", reply)
+        .then(res => res.json())
+        .then((data) => setReplies([...replies, data]));
     }
 
     const postComment = (comment) => {
-        comments.push(comment);
         setPlots(plots);
         const request = new Request();
-        request.post("/api/comments", comment);
+        request.post("/api/comments", comment)
+        .then(res => res.json())
+        .then((data) => setComments([...comments, data]));
     }
 
     return(

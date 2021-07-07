@@ -65,11 +65,11 @@ const EditJob = ({job, setJobStatus, communalAreas, currentUser, editJob}) => {
             <form onSubmit={handleSubmit}>
             <label name='title'>Title:</label>
             <br></br>
-            <input type='text' name='title' id='title' onChange={handleChange} value={FormData.title} defaultValue={job.title} required />
+            <input type='text' name='title' id='title' onChange={handleChange} defaultValue={job.title} required />
             <br></br>
             <label name='body'>The Job:</label>
             <br></br>
-            <input type='text' name='body' id='body' onChange={handleChange} value={FormData.body} defaultValue={job.body} required /> 
+            <input type='text' name='body' id='body' onChange={handleChange} defaultValue={job.body} required /> 
             <br></br>
             <label name='area'>Area it applies to:</label>
             <br></br>
