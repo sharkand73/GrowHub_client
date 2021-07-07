@@ -9,8 +9,8 @@ const EditBulletin = ({currentUser, bulletin, editBulletin, getDate, reverseEdit
     const [formData, setFormData] = useState({
         date: date,
         author: currentUser,
-        title: "",
-        body: "",
+        title: bulletin.title,
+        body: bulletin.body,
         id: bulletin.id
     })
 

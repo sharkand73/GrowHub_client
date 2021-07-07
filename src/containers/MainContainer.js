@@ -137,7 +137,7 @@ const MainContainer = ({allotmentSettings}) =>{
         const index = newBulletinList.indexOf(bulletin);
         newBulletinList.splice(index, 1);
         const request = new Request();
-        request.delete("/api/bulletins" + bulletin.id)
+        request.delete("/api/bulletins/" + bulletin.id)
         setBulletins(newBulletinList);
     } 
 

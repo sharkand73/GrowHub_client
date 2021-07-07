@@ -18,7 +18,7 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
             commentsArray.push(
                 <li key={comment.index}>
                     <PlotComment key={comment.index} comment={comment}/>
-                    <hr/>
+                    <hr key={comment.index} />
                 </li>  
             )
             }
