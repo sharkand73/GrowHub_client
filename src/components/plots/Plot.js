@@ -4,11 +4,11 @@ import '../../css/Plots.css';
 const Plot = ({plot, setSelectedPlot}) =>{
 
     return(
-        <div class="flexPlots">
-            <div class="no-decoration">
-                <button class="plotSpacing" onClick = {() => setSelectedPlot(plot)}>
+        <div className="flexPlots">
+            <div className="no-decoration">
+                <button className="plotSpacing" onClick = {() => setSelectedPlot(plot)}>
 
-                    <p class="plotText"> {plot.areaName} </p>
+                    <p className="plotText"> {plot.areaName} </p>
 
                 </button>
             </div>

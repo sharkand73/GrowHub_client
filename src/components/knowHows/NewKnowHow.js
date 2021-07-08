@@ -48,38 +48,38 @@ const NewKnowHow = ({currentUser, postKnowHow, months, getDate}) =>{
         <div id="knowledge-container">
 
             <div id="logo-grid2">
-                 <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                 <img  className="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
 
             <div id="header-grid">
-                <p class="new-kHw">Enter your knowhow</p>
+                <p className="new-kHw">Enter your knowhow</p>
             </div>
 
             <div id="form-grid2">
                 <form onSubmit={handleSubmit}>
 
-                <div class="form-wrapper">
+                <div className="form-wrapper">
 
-                    <div class="form_field form_input">
-                        <label class="form_text" name='title'>Title:</label>
-                        <input class="field_size" type='text' name='title' id='title' onChange={handleChange} required />
+                    <div className="form_field form_input">
+                        <label className="form_text" name='title'>Title:</label>
+                        <input className="field_size" type='text' name='title' id='title' onChange={handleChange} required />
                     </div>
 
-                    <div class="form_field form_input">
-                        <label class="form_text" name='body'>Your Know How:</label>
-                        <input class="field_size3" type='text' name='body' id='body' maxlength="255" onChange={handleChange} required /> 
+                    <div className="form_field form_input">
+                        <label className="form_text" name='body'>Your Know How:</label>
+                        <input className="field_size3" type='text' name='body' id='body' maxLength="255" onChange={handleChange} required /> 
                     </div>
 
-                    <div class="form_field form_input">
-                        <label class="form_text" name='month'>Month your knowhow applies to:</label>
-                        <select class="field_size" name='month' id='month' onChange={handleMonth}>
+                    <div className="form_field form_input">
+                        <label className="form_text" name='month'>Month your knowhow applies to:</label>
+                        <select className="field_size" name='month' id='month' onChange={handleMonth}>
                             <option selected disabled>Month</option>
                             {monthOptions}
                         </select>
                     </div>
 
                     <div id="form-button2">
-                        <button class="edit-button2" type='submit'>Submit new knowhow</button>
+                        <button className="edit-button2" type='submit'>Submit new knowhow</button>
                     </div>
                 </div>
                 </form>

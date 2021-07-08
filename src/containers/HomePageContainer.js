@@ -29,34 +29,34 @@ const HomePageContainer = ({currentUser, tips, weatherData, getDate, sortedBulle
         <div id="dash-grid-container" >
 
                 <div id="logo-grid2">
-                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                <img  className="logo2" src={LogoSmall} alt="LogoSmall" />
                 </div>
 
                 <div id="paths-grid">
                     <Link to="/plots">
-                        <button class="path-button">Plots</button>
+                        <button className="path-button">Plots</button>
                     </Link>
 
                     <Link to="/knowhows">
-                        <button class="path-button">Know Hows</button>
+                        <button className="path-button">Know Hows</button>
                     </Link>
 
                     <Link to="/community">
-                        <button class="path-button">Community</button>
+                        <button className="path-button">Community</button>
                     </Link>
                 </div>
 
-                <div  id="weather-grid" class="text3">
-                    <p class="header">Today's date</p>
+                <div  id="weather-grid" className="text3">
+                    <p className="header">Today's date</p>
                     {moment().format('DD MMMM YYYY')}
 
-                    <Weather class="header" weatherData={weatherData}/>
+                    <Weather className="header" weatherData={weatherData}/>
                 </div>
                 
 
-                <div class="fixedHeightContainer" id="news-grid">
-                    <p class="news-header">Latest News</p>
-                    <ul class="content news-text">
+                <div className="fixedHeightContainer" id="news-grid">
+                    <p className="news-header">Latest News</p>
+                    <ul className="content news-text">
                     {bulletinsForRender}
                     </ul>
                 </div>

@@ -1,17 +1,11 @@
-import React, {useState} from 'react';
-import Plot from './Plot';
-import {Redirect} from 'react-router-dom';
+import React from 'react';
+//import {Redirect} from 'react-router-dom';
 
 import '../../css/Plots.css';
-import LogoSmall from '../../css/LogoSmall.png';
+//import LogoSmall from '../../css/LogoSmall.png';
+import Plot from './Plot';
 
-const PlotList = ({currentUser, plots}) =>{
-
-    const [selectedPlot, setSelectedPlot] = useState(null);
-
-    // const plotsMap = allotmentSettings.mapFilepath;
-    
-    // const currentUserPlots = currentUser.plots; // OLD when users actually had plots brought through to front end, now IGNORED
+const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
 
     const currentUserPlots = [];
 
@@ -57,7 +51,7 @@ const PlotList = ({currentUser, plots}) =>{
     // Renders a Plot object for current user plot
     const currentUserPlotArray = currentUserPlots.map((plot, index) => {
     return(
-        <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/></li>
+        <li key={index}><Plot key={index} plot={plot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/></li>
     )
     })
 
@@ -74,30 +68,15 @@ const PlotList = ({currentUser, plots}) =>{
     const plotsStatement = userPlotLength > 0 ? 'Other Plots:' : 'All Plots:'
     const idSet = userPlotLength > 0 ? 'other-plots-grid' : 'your-plots-grid';
 
-    if (selectedPlot){
-        const url = "/plots/" + selectedPlot.id;
-        return <Redirect to={url} />}
-        // return <PlotDetail plot={selectedPlot} 
-        //                                 plots={plots} 
-        //                                 currentUser={currentUser} 
-        //                                 setSelectedPlot={setSelectedPlot}
-        //                                 getDate={getDate}
-        //                                 postComment={postComment}/>}
 
-    return(
+    return (
         <>
-        <div id="plots-grid-container">
-
-            <div id="logo-grid">
-                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
-            </div>
-
             {userPlotLength > 0 ?
             <div id="your-plots-grid">
-                <p class="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>
+                <p className="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>
         
                 <div>
-                    <ul class="flexWrapper">
+                    <ul className="flexWrapper">
                         {currentUserPlotArray}
                     </ul>
                 </div>
@@ -105,19 +84,16 @@ const PlotList = ({currentUser, plots}) =>{
             :null}
 
             <div id={idSet}>
-                <p class="plotText2">{plotsStatement}</p>
+                <p className="plotText2">{plotsStatement}</p>
 
                 <div>
-                    <ul class="flexWrapper plotText3">
+                    <ul className="flexWrapper plotText3">
                         {otherPlotArray}
                     </ul>
                 </div>
             </div>
-
-        </div>
-        </>
+            </>
     )
-
 }
 
-export default PlotList
+export default PlotList;

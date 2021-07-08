@@ -37,24 +37,24 @@ const NewPlotComment = ({plot, getDate, currentUser,  postComment}) => {
 
     return(
         <>
-        <p  class="plot-detail1">Add New:</p>
+        <p  className="plot-detail1">Add New:</p>
 
         <form onSubmit={handleSubmit}>
 
-            <div class="plot_form_field plot_form_input">
-                <label class="form_text" name='title'>Title:</label>
+            <div className="plot_form_field plot_form_input">
+                <label className="form_text" name='title'>Title:</label>
                 <br />
-                <input class="field_size" type='text' name='title' id='title' onChange={handleChange} required /> 
+                <input className="field_size" type='text' name='title' id='title' onChange={handleChange} required /> 
             </div>
 
-            <div class="plot_form_field plot_form_input">
-                <label class="form_text" name='body'>Comment:</label>
+            <div className="plot_form_field plot_form_input">
+                <label className="form_text" name='body'>Comment:</label>
                 <br />
-                <input class="field_size3" type='text' name='body' id='body' maxLength="255" onChange={handleChange} required /> 
+                <input className="field_size3" type='text' name='body' id='body' maxLength="255" onChange={handleChange} required /> 
             </div>
 
             <div id="form-button">
-                <button class="edit-button4" type='submit'>Submit Comment</button>
+                <button className="edit-button4" type='submit'>Submit Comment</button>
                 </div>
         </form>
 

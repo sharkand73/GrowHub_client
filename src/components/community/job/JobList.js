@@ -14,7 +14,7 @@ const jobsByDeadline = jobs.sort((a, b) => {
 const jobsRenderedByDeadline = jobsByDeadline.map((job, index) => {
 
     return(
-        <li key={index}><Job job={job} currentUser={currentUser} displayJob={displayJob} getCarrots={getCarrots}/></li>
+        <li key={index}><Job key={index} job={job} currentUser={currentUser} displayJob={displayJob} getCarrots={getCarrots}/></li>
     )
 });
 

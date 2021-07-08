@@ -35,31 +35,31 @@ const NewBulletin = ({currentUser, postBulletin, getDate}) => {
     <div id="newBulletin-container">
 
         <div id="logo-grid2">
-            <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            <img  className="logo2" src={LogoSmall} alt="LogoSmall" />
         </div>
 
         <div id="header-grid">
-            <p class="new-kHw">Enter your new Bulletin here!</p>
+            <p className="new-kHw">Enter your new Bulletin here!</p>
         </div>
 
         <div id="form-grid2">
 
             <form onSubmit={handleSubmit}>
 
-            <div class="form-wrapper">
+            <div className="form-wrapper">
 
-                <div class="form_field form_input">
-                    <label class="form_text" name='title'>Title:</label>
-                    <input class="field_size" type='text' name='title' id='title' onChange={handleChange} required />
+                <div className="form_field form_input">
+                    <label className="form_text" name='title'>Title:</label>
+                    <input className="field_size" type='text' name='title' id='title' onChange={handleChange} required />
                 </div>
 
-                <div class="form_field form_input">
-                    <label class="form_text" name='body'>Your Bulletin:</label>
-                    <input class="field_size3" type='text' name='body' id='body' onChange={handleChange} required /> 
+                <div className="form_field form_input">
+                    <label className="form_text" name='body'>Your Bulletin:</label>
+                    <input className="field_size3" type='text' name='body' id='body' onChange={handleChange} required /> 
                 </div>
 
                 <div id="form-button2">           
-                <button class="edit-button3" type='submit'>Submit New Bulletin</button>
+                <button className="edit-button3" type='submit'>Submit New Bulletin</button>
                 </div>
 
             </div>

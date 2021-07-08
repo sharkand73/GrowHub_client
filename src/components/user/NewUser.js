@@ -60,39 +60,39 @@ const NewUser = ({postUser, getDate, newUserCheck}) => {
         <div id="new-user-container">
 
             <div id="logo-grid2">
-                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                <img  className="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
 
             <div id="text-grid">
-                <p class="newUserHeader">Enter your details to create an account</p>
-                <p class="newUserText">If you require administrator account functionality, please contact the site administrator at admin@allotmentplots.co.uk</p>
+                <p className="newUserHeader">Enter your details to create an account</p>
+                <p className="newUserText">If you require administrator account functionality, please contact the site administrator at admin@allotmentplots.co.uk</p>
             </div>
 
             <div id="form-grid">
                 <form onSubmit={handleSubmit}>
-                    <div class="form-wrapper">
+                    <div className="form-wrapper">
 
-                    <div class="form_field form_input">
-                    <label class="form_text" name='shortName'>Username:</label>
-                    <input class="field_size" type='text' name='shortName' id='shortName' placeholder='Sharkanator' onChange={handleChange} required />
+                    <div className="form_field form_input">
+                    <label className="form_text" name='shortName'>Username:</label>
+                    <input className="field_size" type='text' name='shortName' id='shortName' placeholder='Sharkanator' onChange={handleChange} required />
                     </div>
 
-                    <div class="form_field form_input">
-                    <label class="form_text" name='email'>Email Address:</label>
-                    <input class="field_size" type='text' name='email' id='email' placeholder='soilmuncher96@yipee.com' onChange={handleChange} required /> 
+                    <div className="form_field form_input">
+                    <label className="form_text" name='email'>Email Address:</label>
+                    <input className="field_size" type='text' name='email' id='email' placeholder='soilmuncher96@yipee.com' onChange={handleChange} required /> 
                     </div>
 
-                    <div class="form_field form_input">
-                    <label class="form_text" name='password'>Password:</label>
-                    <input class="field_size" type='password' name='password' id='password' onChange={handleChange} required /> 
+                    <div className="form_field form_input">
+                    <label className="form_text" name='password'>Password:</label>
+                    <input className="field_size" type='password' name='password' id='password' onChange={handleChange} required /> 
                     </div>
 
-                    <div class="form_field form_input">
-                    <label class="form_text" name='yearJoined'>Year you first got your plot (yyyy) </label>
-                    <input class="field_size2" type='number' name='yearJoined' id='yearJoined' min='1990' max={year} defaultValue={year} onChange={handleYear} required /> 
+                    <div className="form_field form_input">
+                    <label className="form_text" name='yearJoined'>Year you first got your plot (yyyy) </label>
+                    <input className="field_size2" type='number' name='yearJoined' id='yearJoined' min='1990' max={year} defaultValue={year} onChange={handleYear} required /> 
                     </div>
 
-                    <button class="createButton" type='submit'>Create Account</button>
+                    <button className="createButton" type='submit'>Create Account</button>
 
                     </div>
                 </form>

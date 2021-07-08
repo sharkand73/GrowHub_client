@@ -55,25 +55,25 @@ const KnowHowList = ({currentUser, knowHows, deleteKnowhow, getDate, editKnowHow
         <div id="knowledge-container">
 
             <div id="logo-grid2">
-                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                <img  className="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
 
             <div id="header-grid">
-                <p class="kWh-header">Share your knowledge and learn in the knowhows bank!</p>
+                <p className="kWh-header">Share your knowledge and learn in the knowhows bank!</p>
             </div>
 
-            <div id="filter-grid" class="intro-flex">
+            <div id="filter-grid" className="intro-flex">
 
                 <form>
-                    <label class="kHw-filter" htmlFor="month-select">Search by month</label>
-                    <select class="filter-box" onChange={onChange}>
+                    <label className="kHw-filter" htmlFor="month-select">Search by month</label>
+                    <select className="filter-box" onChange={onChange}>
                         <option value='All'>All</option>
                         {monthOptions}
                     </select>
                 </form>
                 
-                <button class="flex-button-right button">
-                    <Link class="cleanLink kHw-filter" to='/knowhows/new'>
+                <button className="flex-button-right button">
+                    <Link className="cleanLink kHw-filter" to='/knowhows/new'>
                         Add Knowhow
                     </Link>
                 </button>

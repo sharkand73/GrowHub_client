@@ -14,7 +14,7 @@ import NewKnowHow from '../components/knowHows/NewKnowHow';
 
 import Community from '../components/community/Community';
 
-import PlotList from '../components/plots/PlotList';
+import PlotsHome from '../components/plots/PlotsHome';
 import PlotDetail from '../components/plots/PlotDetail';
 
 import NewJob from '../components/community/job/NewJob';
@@ -70,9 +70,14 @@ const MainContainer = ({allotmentSettings}) =>{
 
 
     const postKnowHow = (knowHow) => {
-        knowHows.push(knowHow);
+        // knowHows.push(knowHow);
         const request = new Request();
-        request.post("/api/knowhows", knowHow);
+        request.post("/api/knowhows", knowHow)
+        .then(res => res.json())
+        .then((data) => {
+            console.log('data back from db', data)
+            setKnowHows([...knowHows, data])
+        })
     }
 
     const findKnowHowById = (knowHowId) => {
@@ -103,9 +108,10 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const postBulletin = (bulletin) => {
-        bulletins.push(bulletin);
         const request = new Request();
-        request.post("/api/bulletins", bulletin);
+        request.post("/api/bulletins", bulletin)
+        .then(res => res.json())
+        .then((data) => setBulletins([...bulletins, data]));
     }
 
     const editBulletin = (oldBulletin, newBulletin) => {
@@ -119,34 +125,35 @@ const MainContainer = ({allotmentSettings}) =>{
         request.put(url, newBulletin);
     }
 
-    const findBulletinById = (bulletinId) => {
-        return bulletins.find((bulletin) => {
-            return bulletin.id === parseInt(bulletinId)
-            }
-        )
-    }
+    // const findBulletinById = (bulletinId) => {
+    //     return bulletins.find((bulletin) => {
+    //         return bulletin.id === parseInt(bulletinId)
+    //         }
+    //     )
+    // }
 
     const deleteBulletin = (bulletin) => {
         const newBulletinList = [...bulletins];
         const index = newBulletinList.indexOf(bulletin);
         newBulletinList.splice(index, 1);
         const request = new Request();
-        request.delete("/api/bulletins", bulletin.id)
+        request.delete("/api/bulletins/" + bulletin.id)
         setBulletins(newBulletinList);
     } 
 
     const postJob = (job) => {
-        jobs.push(job);
         const request = new Request();
-        request.post("/api/jobs", job);
+        const newJob = request.post("/api/jobs", job)
+        .then(res => res.json())
+        .then((data) => setJobs([...jobs, data]));
     }
     
-    const findJobById = (jobId) => {
-        return jobs.find((job) => {
-            return job.id === parseInt(jobId)
-            }
-        )
-    }
+    // const findJobById = (jobId) => {
+    //     return jobs.find((job) => {
+    //         return job.id === parseInt(jobId)
+    //         }
+    //     )
+    // }
 
     const deleteJob = (job) => {
         const newJobList = [...jobs];
@@ -158,7 +165,8 @@ const MainContainer = ({allotmentSettings}) =>{
     }
 
     const editJob = (oldJob, newJob) => {
-        const url = "/api/jobs/" + oldJob.id
+        const url = "/api/jobs/" + oldJob.id;
+        //newJob.id = oldJob.id;
         const tempJobList = [...jobs];
         const index = tempJobList.indexOf(oldJob);
         tempJobList.splice(index, 1);
@@ -186,10 +194,11 @@ const MainContainer = ({allotmentSettings}) =>{
             }
         }
     
-        allUsers.push(newUser);
         const request = new Request();
-        request.post("/api/users", newUser);
-        return setNewUserCheck(3)
+        request.post("/api/users", newUser)
+        .then(res => res.json())
+        .then((data) => setAllUsers([...allUsers, data]))
+        return setNewUserCheck(3);
     }
 
     const findPlotById = (plotId) => {
@@ -269,8 +278,6 @@ const MainContainer = ({allotmentSettings}) =>{
     const getData = function(){
         const APIKey = allotmentSettings.apikey;
         const location = allotmentSettings.location;
-        // const APIKey = "0d820993802bd0122435be9caac2043d";
-        // const location = "Glasgow";
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}`)
             .then(results => results.json() )
             .then(data => {setWeatherData(data)})
@@ -279,17 +286,19 @@ const MainContainer = ({allotmentSettings}) =>{
     useEffect(() => getData(), [allotmentSettings]);
 
     const postKnowHowReply = (reply) => {
-        replies.push(reply);
         setKnowHows(knowHows);
         const request = new Request();
-        request.post("/api/replies", reply);
+        request.post("/api/replies", reply)
+        .then(res => res.json())
+        .then((data) => setReplies([...replies, data]));
     }
 
     const postComment = (comment) => {
-        comments.push(comment);
         setPlots(plots);
         const request = new Request();
-        request.post("/api/comments", comment);
+        request.post("/api/comments", comment)
+        .then(res => res.json())
+        .then((data) => setComments([...comments, data]));
     }
 
     return(
@@ -311,10 +320,10 @@ const MainContainer = ({allotmentSettings}) =>{
                     }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path = '/plots' component = {() =>{
-                    return <PlotList 
+                    return <PlotsHome 
                     currentUser={currentUser} 
                     plots={plots} 
-                    allotmentSettings={allotmentSettings} 
+                    mapExists={allotmentSettings.has} 
                     getDate={getDate} 
                     postComment={postComment}/>
                 }} currentUser={currentUser}/>

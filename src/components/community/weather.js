@@ -18,15 +18,15 @@ const Weather = ({weatherData}) => {
         <div id="image-temp">
             <img id="widget-image" src={weatherIcon} alt="probably clouds"/>
             <div id="temperature">
-                <p class="dash-text" id="max-temp">
+                <p className="dash-text" id="max-temp">
                     {max}&#176;C
                 </p>
-                <p class="dash-text" id="min-temp">
+                <p className="dash-text" id="min-temp">
                     {min}&#176;C
                 </p>
             </div>
         </div>
-        <div class="dash-text">{description}</div>
+        <div className="dash-text">{description}</div>
         
 
        </div>

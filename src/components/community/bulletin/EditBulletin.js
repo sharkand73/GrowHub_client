@@ -9,8 +9,8 @@ const EditBulletin = ({currentUser, bulletin, editBulletin, getDate, reverseEdit
     const [formData, setFormData] = useState({
         date: date,
         author: currentUser,
-        title: "",
-        body: "",
+        title: bulletin.title,
+        body: bulletin.body,
         id: bulletin.id
     })
 
@@ -34,11 +34,11 @@ const EditBulletin = ({currentUser, bulletin, editBulletin, getDate, reverseEdit
                     <div id="edit-bulletin-inner">
                         <div>
                             <label name='title' className="bulletin-label">Title: </label>
-                            <input class="field_size1" type='text' name='title' id='title' onChange={handleChange} defaultValue={bulletin.title} required />
+                            <input className="field_size1" type='text' name='title' id='title' onChange={handleChange} defaultValue={bulletin.title} required />
                         </div>
                         <div>
                             <label name='body' className="bulletin-label">Your Bulletin: </label>
-                            <input class="field_size1" type='text' name='body' id='body' onChange={handleChange} defaultValue={bulletin.body} required /> 
+                            <input className="field_size1" type='text' name='body' id='body' onChange={handleChange} defaultValue={bulletin.body} required /> 
                         </div>
                     </div>
                     <div className="flex-two">
