@@ -67,41 +67,41 @@ const NewJob = ({currentUser, postJob, communalAreas, getDate, setJobStatus}) =>
         <h1>Enter new job</h1>
 
         <form onSubmit={handleSubmit}>
-            <div class="label_padding" >
-            <label class="label_padding" name='title'>Title:</label>
+            <div className="label_padding" >
+            <label className="label_padding" name='title'>Title:</label>
             <br></br>
-            <input class="job_field_size" type='text' name='title' id='title' onChange={handleChange} required />
-            <br></br>
-            </div>
-            <div class="label_padding">
-            <label class="label_padding" name='body'>The Job:</label>
-            <br></br>
-            <input class="job_field_size2" type='text' name='body' id='body' onChange={handleChange} required /> 
+            <input className="job_field_size" type='text' name='title' id='title' onChange={handleChange} required />
             <br></br>
             </div>
-            <div class="label_padding">
-            <label class="label_padding" name='area'>Area it applies to:</label>
+            <div className="label_padding">
+            <label className="label_padding" name='body'>The Job:</label>
             <br></br>
-            <select  class="job_field_size" name='area' id='area' onChange={handleArea}>
+            <input className="job_field_size2" type='text' name='body' id='body' onChange={handleChange} required /> 
+            <br></br>
+            </div>
+            <div className="label_padding">
+            <label className="label_padding" name='area'>Area it applies to:</label>
+            <br></br>
+            <select  className="job_field_size" name='area' id='area' onChange={handleArea}>
                 <option selected disabled>Area</option>
                 {communalAreaOptions}
             </select>
             <br></br>
             </div>
-            <div class="label_padding">
-            <label class="label_padding" name='deadline'>Due Date:</label>
+            <div className="label_padding">
+            <label className="label_padding" name='deadline'>Due Date:</label>
             <br></br>
-            <input class="job_field_size" type='date' name='deadline' id='deadline' min={getMinDate()} default={getMinDate()} onChange={handleChange} required />
-            <br></br>
-            </div>
-            <div class="label_padding">
-            <label class="label_padding" name='difficulty'>Difficulty:</label>
-            <br></br>
-            <input class="job_field_size" type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} required />
+            <input className="job_field_size" type='date' name='deadline' id='deadline' min={getMinDate()} default={getMinDate()} onChange={handleChange} required />
             <br></br>
             </div>
-            <div class="createButton1">
-            <button class="createButton1" type='submit'>Submit New Job</button>
+            <div className="label_padding">
+            <label className="label_padding" name='difficulty'>Difficulty:</label>
+            <br></br>
+            <input className="job_field_size" type='number' name='difficulty' id='difficulty' min='1' max='5' onChange={handleDifficulty} required />
+            <br></br>
+            </div>
+            <div className="createButton1">
+            <button className="createButton1" type='submit'>Submit New Job</button>
             </div>
         </form>
 

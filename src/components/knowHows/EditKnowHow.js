@@ -41,37 +41,37 @@ const EditKnowHow = ({currentUser, knowHow, months, date, editKnowHow, setEditBu
 
     return(
         <>
-        <div class="edit-form">
-        <p class="kHw-edit">Edit your knowhow below</p>
+        <div className="edit-form">
+        <p className="kHw-edit">Edit your knowhow below</p>
 
         <div id="form-grid">
         <form onSubmit={handleSubmit}>
 
-            <div class="form-wrapper">
+            <div className="form-wrapper">
 
-                <div class="form_field form_input">
-                    <label class="form_text" name='title'>Title:</label>
-                    <input class="field_size" type='text' name='title' id='title' onChange={handleChange} defaultValue={knowHow.title} required />
+                <div className="form_field form_input">
+                    <label className="form_text" name='title'>Title:</label>
+                    <input className="field_size" type='text' name='title' id='title' onChange={handleChange} defaultValue={knowHow.title} required />
                 </div>
 
-                <div class="form_field form_input">
-                    <label class="form_text" name='body'>Your Knowhow:</label>
-                    <input class="field_size3" type='text' name='body' id='body' onChange={handleChange} defaultValue={knowHow.body} required /> 
+                <div className="form_field form_input">
+                    <label className="form_text" name='body'>Your Knowhow:</label>
+                    <input className="field_size3" type='text' name='body' id='body' onChange={handleChange} defaultValue={knowHow.body} required /> 
                 </div>
 
-                <div class="form_field form_input">
-                    <label class="form_text" name='month'>Month your knowhow applies to:</label>
-                    <select class="field_size" name='month' id='month' onChange={handleMonth} required>
+                <div className="form_field form_input">
+                    <label className="form_text" name='month'>Month your knowhow applies to:</label>
+                    <select className="field_size" name='month' id='month' onChange={handleMonth} required>
                         {monthOptions}
                     </select>
                 </div>
 
                 <div>
-                    <br /> <button class="edit-button" type='submit'>Update Knowhow</button>
+                    <br /> <button className="edit-button" type='submit'>Update Knowhow</button>
                 </div>
 
                 <div>
-                    <button class="delete-button" onClick={removeEdit}>Delete Knowhow</button>
+                    <button className="delete-button" onClick={removeEdit}>Delete Knowhow</button>
                 </div>
 
             </div>

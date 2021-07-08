@@ -62,18 +62,18 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
         <div id="plots-grid-container2">
 
             <div id="logo-grid">
-                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                <img  className="logo2" src={LogoSmall} alt="LogoSmall" />
             </div>
 
             <div id="plot-details-grid">
-            <p class="plot-detail1">Details for {plot.areaName}</p>
-            <ul class="margin">
-                <li class="plot-detail2" key={1}> - Plot Number: {plot.plotNumber}</li>
-                <li class="plot-detail2" key={2}> - Dimensions: {plot.length}m x {plot.breadth}m</li>
-                <li class="plot-detail2" key={3}> - Area: {plotSize} m&sup2;</li>
-                <li class="plot-detail2" key={4}> - classification: {calculateClassification(plotSize)}</li>
-                <li class="plot-detail2" key={5}> - Inclination: {plot.isFlat ? "flat" : "slope"}</li>
-                <li class="plot-detail2" key={6}> - Plot holders: {getPlotHolders()}</li>
+            <p className="plot-detail1">Details for {plot.areaName}</p>
+            <ul className="margin">
+                <li className="plot-detail2" key={1}> - Plot Number: {plot.plotNumber}</li>
+                <li className="plot-detail2" key={2}> - Dimensions: {plot.length}m x {plot.breadth}m</li>
+                <li className="plot-detail2" key={3}> - Area: {plotSize} m&sup2;</li>
+                <li className="plot-detail2" key={4}> - classification: {calculateClassification(plotSize)}</li>
+                <li className="plot-detail2" key={5}> - Inclination: {plot.isFlat ? "flat" : "slope"}</li>
+                <li className="plot-detail2" key={6}> - Plot holders: {getPlotHolders()}</li>
             </ul>
             </div>
 
@@ -86,8 +86,8 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
                 {
                 commentsArrayLength > 0 ?
                 <>
-                    <p class="plot-detail1">Plot history:</p>   
-                    <ul class="plot-detail2">
+                    <p className="plot-detail1">Plot history:</p>   
+                    <ul className="plot-detail2">
                         {commentsArray}
                     </ul>  
                 </> 

@@ -73,10 +73,10 @@ const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
         <>
             {userPlotLength > 0 ?
             <div id="your-plots-grid">
-                <p class="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>
+                <p className="plotText2">Your Plot{plotsPlural? <span>s</span>: null}:</p>
         
                 <div>
-                    <ul class="flexWrapper">
+                    <ul className="flexWrapper">
                         {currentUserPlotArray}
                     </ul>
                 </div>
@@ -84,10 +84,10 @@ const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
             :null}
 
             <div id={idSet}>
-                <p class="plotText2">{plotsStatement}</p>
+                <p className="plotText2">{plotsStatement}</p>
 
                 <div>
-                    <ul class="flexWrapper plotText3">
+                    <ul className="flexWrapper plotText3">
                         {otherPlotArray}
                     </ul>
                 </div>

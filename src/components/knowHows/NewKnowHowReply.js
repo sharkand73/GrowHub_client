@@ -35,12 +35,12 @@ const Reply = ({knowHow, getDate, currentUser,  postReply}) => {
     return(
         <>
         <form onSubmit={handleSubmit}>
-        <input class="field_size3" type='text' name='body' id='body' onChange={handleChange} required /> 
+        <input className="field_size3" type='text' name='body' id='body' onChange={handleChange} required /> 
 
         <br />
 
-        <div class="submit-button">
-        <button class="submit-button" type='submit'>Submit reply</button>
+        <div className="submit-button">
+        <button className="submit-button" type='submit'>Submit reply</button>
         </div>
         </form>
 

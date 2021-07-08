@@ -31,7 +31,7 @@ const PlotsHome = ({currentUser, plots}) =>{
         return (
             <>
             <div id="logo-grid">
-                <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+                <img  className="logo2" src={LogoSmall} alt="LogoSmall" />
                 <button type="button" onClick={()=>{setMapSelected(false)}}>Grid View</button>
             </div>
             
@@ -43,7 +43,7 @@ const PlotsHome = ({currentUser, plots}) =>{
 return(
         <>
         <div id="logo-grid">
-            <img  class="logo2" src={LogoSmall} alt="LogoSmall" />
+            <img  className="logo2" src={LogoSmall} alt="LogoSmall" />
             <button type="button" onClick={()=>{setMapSelected(true)}}>Map View</button>
         </div>
         <div id="plots-grid-container">

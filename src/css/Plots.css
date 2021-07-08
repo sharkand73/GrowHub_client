@@ -139,6 +139,7 @@
 
 .plot-back:hover {
     color: greenyellow;
+    cursor: pointer;
 }
 
 /* NEW PLOT COMMENT */

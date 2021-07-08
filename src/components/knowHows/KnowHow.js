@@ -14,10 +14,10 @@ const KnowHow = ({knowHow, currentUser, deleteKnowhow, editClick}) =>{
             return(
                 <>
                 <div>
-                    <button class="delete-button"  type='button' onClick={() => deleteKnowhow(knowHow)}>Delete</button>
+                    <button className="delete-button"  type='button' onClick={() => deleteKnowhow(knowHow)}>Delete</button>
                 </div>
                 <div>
-                    <button class="edit-button" type='button' onClick={() => editClick(knowHow)} >Edit</button>
+                    <button className="edit-button" type='button' onClick={() => editClick(knowHow)} >Edit</button>
                 </div>
                 </>  
             )
@@ -31,12 +31,12 @@ const KnowHow = ({knowHow, currentUser, deleteKnowhow, editClick}) =>{
 
     return(
         <div>
-            <Link class="noLine" to={url}>
-                <p class="kHw-title">{knowHow.title}</p>
+            <Link className="noLine" to={url}>
+                <p className="kHw-title">{knowHow.title}</p>
                 <ul>
-                    <li class="kHw-month">Applies to month: {month}</li>
-                    <li class="kHw-content">{knowHow.body}</li>
-                    <li class="kHw-author">Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
+                    <li className="kHw-month">Applies to month: {month}</li>
+                    <li className="kHw-content">{knowHow.body}</li>
+                    <li className="kHw-author">Posted by {knowHow.author.shortName} - <i>{knowHow.date}</i></li>
                 </ul>
             </Link>
             <div>
