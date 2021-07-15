@@ -11,38 +11,38 @@ const NavBar = ({currentUser, setCurrentUser}) => {
     }
 
     return(
-        <header class="navLine">
+        <header className="navLine">
 
         <div>
         {currentUser ?
         <>
-                <ul class="navWrap navLine">
+                <ul className="navWrap navLine">
 
-                    <li class="left">
-                    <Link class="navItem" to="/plots">Plots</Link>
+                    <li className="left">
+                    <Link className="navItem" to="/plots">Plots</Link>
                     </li>
 
-                    <li class="left">
-                    <Link class="navItem" to="/knowhows">Knowhows</Link>
+                    <li className="left">
+                    <Link className="navItem" to="/knowhows">Knowhows</Link>
                     </li>
 
-                    <li class="left">
-                    <Link class="navItem" to="/community">Community</Link>
+                    <li className="left">
+                    <Link className="navItem" to="/community">Community</Link>
                     </li>
 
-                    <li class="left">
-                    <Link class="navItem" to="/">Home</Link>
+                    <li className="left">
+                    <Link className="navItem" to="/">Home</Link>
                     </li>
             
                 
-                    <div class="navItem right navUser">
+                    <div className="navItem right navUser">
                         {currentUser ?
                         <>
                             <li>
-                                <p class="slim" >{hello}</p>
+                                <p className="slim" >{hello}</p>
                             </li>
                             <li>
-                                <button class="logoutButton" onClick={() => {logout()}}>Logout </button>
+                                <button className="logoutButton" onClick={() => {logout()}}>Logout </button>
                             </li>
                         </>
                         : null}

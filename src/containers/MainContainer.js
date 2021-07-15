@@ -8,6 +8,8 @@ import Request from '../helpers/request';
 import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
 
+import Admin from '../components/user/Admin';
+
 import KnowHowList from '../components/knowHows/KnowHowList';
 import KnowHowDetail from '../components/knowHows/KnowHowDetail';
 import NewKnowHow from '../components/knowHows/NewKnowHow';
@@ -319,11 +321,20 @@ const MainContainer = ({allotmentSettings}) =>{
                         />)
                     }} currentUser={currentUser} /> 
 
+                <PrivateRoute exact path='/admin' component = {() => {
+                    return <Admin 
+                        currentUser={currentUser} 
+                        plots={plots} 
+                        mapExists={allotmentSettings.hasMap} 
+                        getDate={getDate} 
+                        postComment={postComment}/>
+                    }} currentUser={currentUser}/>
+
                 <PrivateRoute exact path = '/plots' component = {() =>{
                     return <PlotsHome 
                     currentUser={currentUser} 
                     plots={plots} 
-                    mapExists={allotmentSettings.has} 
+                    mapExists={allotmentSettings.hasMap} 
                     getDate={getDate} 
                     postComment={postComment}/>
                 }} currentUser={currentUser}/>
