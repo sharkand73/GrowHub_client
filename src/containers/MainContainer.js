@@ -8,7 +8,8 @@ import Request from '../helpers/request';
 import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
 
-import Admin from '../components/user/Admin';
+import Admin from '../components/admin/Admin';
+import AdminUsers from '../components/admin/AdminUsers';
 
 import KnowHowList from '../components/knowHows/KnowHowList';
 import KnowHowDetail from '../components/knowHows/KnowHowDetail';
@@ -145,7 +146,7 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const postJob = (job) => {
         const request = new Request();
-        const newJob = request.post("/api/jobs", job)
+        request.post("/api/jobs", job)
         .then(res => res.json())
         .then((data) => setJobs([...jobs, data]));
     }
@@ -278,11 +279,13 @@ const MainContainer = ({allotmentSettings}) =>{
     const [weatherData, setWeatherData] = useState(nullData);
 
     const getData = function(){
+        if (allotmentSettings){
         const APIKey = allotmentSettings.apikey;
         const location = allotmentSettings.location;
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKey}`)
             .then(results => results.json() )
             .then(data => {setWeatherData(data)})
+        }
         };
     
     useEffect(() => getData(), [allotmentSettings]);
@@ -322,12 +325,11 @@ const MainContainer = ({allotmentSettings}) =>{
                     }} currentUser={currentUser} /> 
 
                 <PrivateRoute exact path='/admin' component = {() => {
-                    return <Admin 
+                    return <AdminUsers 
                         currentUser={currentUser} 
                         plots={plots} 
-                        mapExists={allotmentSettings.hasMap} 
-                        getDate={getDate} 
-                        postComment={postComment}/>
+                        users={allUsers} 
+                        getDate={getDate} />
                     }} currentUser={currentUser}/>
 
                 <PrivateRoute exact path = '/plots' component = {() =>{

@@ -6,7 +6,7 @@ import Request from './helpers/request';
 
 function App() {
 
-  const [allotmentSettings, setAllotmentSettings] = useState({});
+  const [allotmentSettings, setAllotmentSettings] = useState(null);
 
   const requestSettings = function(){
     const request = new Request();
