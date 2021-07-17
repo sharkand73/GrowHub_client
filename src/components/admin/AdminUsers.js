@@ -25,6 +25,22 @@ const AdminUsers = ({users}) => {
 
     const usersArray = [...activeUsers, ...inactiveUsers];
 
+    const moveButton = (user) => {
+        if (isActive(user)){
+            return (
+                <button type="button" value={user.id} onClick={(e) => console.log(e.target.value)}>
+                    REMOVE
+                </button>
+            )
+        }
+        else {
+            return (
+                <button type="button" onClick={() => user.position="NONE"}>
+                    REINSTATE
+                </button>
+            )
+        }
+    } 
     const usersList = usersArray.map((user, index) => {
             return (
                 <tr key={index} style={ isActive(user) ? {color: 'blue'} : {color: 'grey'} }>
@@ -33,25 +49,91 @@ const AdminUsers = ({users}) => {
                     <td>{user.position}</td>
                     <td>{user.yearJoined}</td>
                     <td>{yearLeft(user)}</td>
-                    <td>UPDATE</td>
-                    <td>REMOVE</td>
+                    <td>
+                        <button type="button">
+                            UPDATE
+                        </button>
+                    </td>
+                    <td>
+                        {moveButton(user)}
+                    </td>
                 </tr>            
              )
     });
 
-    return (
-        <table>
-            <thead>
-                <th>USERNAME</th>
-                <th>POSITION</th>
-                <th>JOINED</th>
-                <th>LEFT</th>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Submit");
+    }
 
-            </thead>
-            <tbody>
-                {usersList}
-            </tbody>
-        </table>
+    const positionTypes = ['NONE', 'ORDINARY', 'TREASURER', 'SECRETARY', 'COMMUNICATIONS', 'CHAIR', 'INACTIVE'];
+    const positionTypeOptions = positionTypes.map((item, index) => {
+        return (<option key={index} value={item}>{item}</option>)
+    });
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <table>
+                <thead>
+                    <tr>
+                        <th>USERNAME</th>
+                        <th>POSITION</th>
+                        <th>JOINED</th>
+                        <th>LEFT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <select>
+                                {positionTypeOptions}
+                            </select>
+                        </td>
+                        <td>
+                            <select>
+                                <option>2010</option>
+                                <option>2011</option>
+                                <option>2012</option>
+                                <option>2013</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </select>                               
+                        </td>
+                        <td>
+                        <select>
+                                <option>----</option>
+                                <option>2010</option>
+                                <option>2011</option>
+                                <option>2012</option>
+                                <option>2013</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </select> 
+                        </td>
+                        <td>
+                            <button type="submit">ADD USER</button>
+                        </td>
+                    </tr>
+                
+                    {usersList}
+                </tbody>
+            </table>
+        </form>
     )
 
 }
