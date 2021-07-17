@@ -14,6 +14,19 @@ const AdminUsers = ({users}) => {
         }
     )
 
+    const currentYear = (new Date()).getFullYear();
+    let years = [];
+    for(let year = currentYear; year>2009; year--){
+        years.push(year);
+    }
+
+    const yearOptions = years.map((year, index) => <option key={index} value={year}>{year}</option>);
+
+    const positionTypes = ['NONE', 'ORDINARY', 'TREASURER', 'SECRETARY', 'COMMUNICATIONS', 'CHAIR', 'INACTIVE'];
+    const positionTypeOptions = positionTypes.map((item, index) => {
+        return (<option key={index} value={item} />)
+    });
+
     const isAdmin = (user) => {
         return (user.shortName === 'Admin')
     }
@@ -74,26 +87,29 @@ const AdminUsers = ({users}) => {
     });
 
     const handleName = (e) => {
-        formData.shortName = e.target.value;
-        setFormdata(formData);
+        let tempData = {...formData};
+        tempData.shortName = e.target.value;
+        setFormdata(tempData);
     }
 
     const handleSelect = (e) => {
         let newValue = e.target.value;
         if (e.target.id === 'yearLeft' && e.target.value === '----'){newValue = 0;} 
-        formData[e.target.id] = newValue;
-        setFormdata(formData);
+        let tempData = {...formData};
+        tempData[e.target.name] = newValue;
+        setFormdata(tempData);
     }    
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
+        let newUser = {...formData};
+        newUser.yearJoined = parseInt(formData.yearJoined);
+        newUser.yearLeft = parseInt(formData.yearLeft);
+        let currentYear = (new Date()).getFullYear().toString();
+        newUser.password = newUser.shortName.concat(currentYear);
+        console.log(newUser);
     }
-
-    const positionTypes = ['NONE', 'ORDINARY', 'TREASURER', 'SECRETARY', 'COMMUNICATIONS', 'CHAIR', 'INACTIVE'];
-    const positionTypeOptions = positionTypes.map((item, index) => {
-        return (<option key={index} value={item}>{item}</option>)
-    });
+        
 
     return (
         <form onSubmit={handleSubmit}>
@@ -109,44 +125,22 @@ const AdminUsers = ({users}) => {
                 <tbody>
                     <tr>
                         <td>
-                            <input type="text" onChange={handleName} autofocus required/>
+                            <input type="text" onChange={handleName} value={formData.shortName} autofocus required/>
                         </td>
                         <td>
-                            <select id="position" onChange={handleSelect}>
+                            <select name="position" onChange={handleSelect}>
                                 {positionTypeOptions}
                             </select>
                         </td>
                         <td>
-                            <select id="yearJoined" onChange={handleSelect}>
-                                <option>2021</option>
-                                <option>2020</option>
-                                <option>2019</option>
-                                <option>2018</option>
-                                <option>2017</option>
-                                <option>2016</option>
-                                <option>2015</option>
-                                <option>2014</option>
-                                <option>2013</option>
-                                <option>2012</option>
-                                <option>2011</option>
-                                <option>2010</option>
+                            <select name="yearJoined" onChange={handleSelect}>
+                                {yearOptions}
                             </select>                               
                         </td>
                         <td>
-                        <select id="yearLeft" onChange={handleSelect}>
-                                <option>----</option>
-                                <option>2021</option>
-                                <option>2020</option>
-                                <option>2019</option>
-                                <option>2018</option>
-                                <option>2017</option>
-                                <option>2016</option>
-                                <option>2015</option>
-                                <option>2014</option>
-                                <option>2013</option>
-                                <option>2012</option>
-                                <option>2011</option>
-                                <option>2010</option>
+                            <select name="yearLeft" onChange={handleSelect}>
+                                <option value={0}>----</option>
+                                {yearOptions}
                             </select> 
                         </td>
                         <td>
