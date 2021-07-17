@@ -206,7 +206,7 @@ const MainContainer = ({allotmentSettings}) =>{
 
     const adminPostUser = (newUser) => {
         const allUserNames = allUsers.map((user) => (user.shortName));
-        if (allUserNames.contains(newUser.shortname)) {
+        if (allUserNames.indexOf(newUser.shortname) > -1) {
             return null;
         }
         const request = new Request();
@@ -339,7 +339,7 @@ const MainContainer = ({allotmentSettings}) =>{
                 <PrivateRoute exact path='/admin' component = {() => {
                     return <AdminUsers 
                         currentUser={currentUser} 
-                        plots={plots} 
+                        adminPostUser={adminPostUser} 
                         users={allUsers} 
                         getDate={getDate} />
                     }} currentUser={currentUser}/>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const AdminUsers = ({users}) => {
+const AdminUsers = ({users, adminPostUser}) => {
 
     const [formData, setFormdata] = useState(
         {
@@ -24,7 +24,7 @@ const AdminUsers = ({users}) => {
 
     const positionTypes = ['NONE', 'ORDINARY', 'TREASURER', 'SECRETARY', 'COMMUNICATIONS', 'CHAIR', 'INACTIVE'];
     const positionTypeOptions = positionTypes.map((item, index) => {
-        return (<option key={index} value={item} />)
+        return (<option key={index} value={item}>{item}</option>)
     });
 
     const isAdmin = (user) => {
@@ -107,7 +107,7 @@ const AdminUsers = ({users}) => {
         newUser.yearLeft = parseInt(formData.yearLeft);
         let currentYear = (new Date()).getFullYear().toString();
         newUser.password = newUser.shortName.concat(currentYear);
-        console.log(newUser);
+        adminPostUser(newUser);
     }
         
 
