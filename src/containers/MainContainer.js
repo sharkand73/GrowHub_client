@@ -200,8 +200,20 @@ const MainContainer = ({allotmentSettings}) =>{
         const request = new Request();
         request.post("/api/users", newUser)
         .then(res => res.json())
-        .then((data) => setAllUsers([...allUsers, data]))
+        .then((data) => setAllUsers([...allUsers, data]));
         return setNewUserCheck(3);
+    }
+
+    const adminPostUser = (newUser) => {
+        const allUserNames = allUsers.map((user) => (user.shortName));
+        if (allUserNames.contains(newUser.shortname)) {
+            return null;
+        }
+        const request = new Request();
+        request.post("/api/users", newUser)
+        .then(res => res.json())
+        .then((data) => setAllUsers([...allUsers, data]));
+        return newUser;
     }
 
     const findPlotById = (plotId) => {
