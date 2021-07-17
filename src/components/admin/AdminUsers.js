@@ -1,6 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const AdminUsers = ({users}) => {
+
+    const [formData, setFormdata] = useState(
+        {
+            shortName: "",
+            position: "NONE",
+            yearJoined: 2021,
+            yearLeft: 0,
+            password: "",
+            plots: [],
+            crops: []
+        }
+    )
 
     const isAdmin = (user) => {
         return (user.shortName === 'Admin')
@@ -61,9 +73,21 @@ const AdminUsers = ({users}) => {
              )
     });
 
+    const handleName = (e) => {
+        formData.shortName = e.target.value;
+        setFormdata(formData);
+    }
+
+    const handleSelect = (e) => {
+        let newValue = e.target.value;
+        if (e.target.id === 'yearLeft' && e.target.value === '----'){newValue = 0;} 
+        formData[e.target.id] = newValue;
+        setFormdata(formData);
+    }    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submit");
+        console.log(formData);
     }
 
     const positionTypes = ['NONE', 'ORDINARY', 'TREASURER', 'SECRETARY', 'COMMUNICATIONS', 'CHAIR', 'INACTIVE'];
@@ -85,44 +109,44 @@ const AdminUsers = ({users}) => {
                 <tbody>
                     <tr>
                         <td>
-                            <input type="text" />
+                            <input type="text" onChange={handleName} autofocus required/>
                         </td>
                         <td>
-                            <select>
+                            <select id="position" onChange={handleSelect}>
                                 {positionTypeOptions}
                             </select>
                         </td>
                         <td>
-                            <select>
-                                <option>2010</option>
-                                <option>2011</option>
-                                <option>2012</option>
-                                <option>2013</option>
-                                <option>2014</option>
-                                <option>2015</option>
-                                <option>2016</option>
-                                <option>2017</option>
-                                <option>2018</option>
-                                <option>2019</option>
-                                <option>2020</option>
+                            <select id="yearJoined" onChange={handleSelect}>
                                 <option>2021</option>
+                                <option>2020</option>
+                                <option>2019</option>
+                                <option>2018</option>
+                                <option>2017</option>
+                                <option>2016</option>
+                                <option>2015</option>
+                                <option>2014</option>
+                                <option>2013</option>
+                                <option>2012</option>
+                                <option>2011</option>
+                                <option>2010</option>
                             </select>                               
                         </td>
                         <td>
-                        <select>
+                        <select id="yearLeft" onChange={handleSelect}>
                                 <option>----</option>
-                                <option>2010</option>
-                                <option>2011</option>
-                                <option>2012</option>
-                                <option>2013</option>
-                                <option>2014</option>
-                                <option>2015</option>
-                                <option>2016</option>
-                                <option>2017</option>
-                                <option>2018</option>
-                                <option>2019</option>
-                                <option>2020</option>
                                 <option>2021</option>
+                                <option>2020</option>
+                                <option>2019</option>
+                                <option>2018</option>
+                                <option>2017</option>
+                                <option>2016</option>
+                                <option>2015</option>
+                                <option>2014</option>
+                                <option>2013</option>
+                                <option>2012</option>
+                                <option>2011</option>
+                                <option>2010</option>
                             </select> 
                         </td>
                         <td>
