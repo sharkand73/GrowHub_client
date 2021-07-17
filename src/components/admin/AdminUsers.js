@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
+import AdminEditUser from './AdminEditUser';
 
-const AdminUsers = ({users, adminPostUser}) => {
+const AdminUsers = ({users, adminPostUser, adminEditUser}) => {
 
     const [formData, setFormdata] = useState(
         {
@@ -14,6 +15,9 @@ const AdminUsers = ({users, adminPostUser}) => {
         }
     )
 
+    //const [update, setUpdate] = useState(-1);
+
+
     const currentYear = (new Date()).getFullYear();
     let years = [];
     for(let year = currentYear; year>2009; year--){
@@ -21,6 +25,21 @@ const AdminUsers = ({users, adminPostUser}) => {
     }
 
     const yearOptions = years.map((year, index) => <option key={index} value={year}>{year}</option>);
+
+    const moveUser = (e) => {
+        const oldUser = users.find((user) => (user.id == e.target.value));
+        let newUser = {...oldUser};
+        if (oldUser.position === 'INACTIVE') {
+            newUser.position = 'NONE';
+            newUser.yearLeft = 0;
+        }
+        else {
+            newUser.position = 'INACTIVE';
+            newUser.yearLeft = currentYear;
+        }
+
+        adminEditUser(oldUser, newUser);
+    }
 
     const positionTypes = ['NONE', 'ORDINARY', 'TREASURER', 'SECRETARY', 'COMMUNICATIONS', 'CHAIR', 'INACTIVE'];
     const positionTypeOptions = positionTypes.map((item, index) => {
@@ -53,14 +72,14 @@ const AdminUsers = ({users, adminPostUser}) => {
     const moveButton = (user) => {
         if (isActive(user)){
             return (
-                <button type="button" value={user.id} onClick={(e) => console.log(e.target.value)}>
+                <button type="button" value={user.id} onClick={moveUser}>
                     REMOVE
                 </button>
             )
         }
         else {
             return (
-                <button type="button" onClick={() => user.position="NONE"}>
+                <button type="button" value={user.id} onClick={moveUser}>
                     REINSTATE
                 </button>
             )
@@ -68,21 +87,22 @@ const AdminUsers = ({users, adminPostUser}) => {
     } 
     const usersList = usersArray.map((user, index) => {
             return (
-                <tr key={index} style={ isActive(user) ? {color: 'blue'} : {color: 'grey'} }>
+                
+                    <tr key={index} style={ isActive(user) ? {color: 'blue'} : {color: 'grey'} }>
 
-                    <td>{user.shortName}</td>
-                    <td>{user.position}</td>
-                    <td>{user.yearJoined}</td>
-                    <td>{yearLeft(user)}</td>
-                    <td>
-                        <button type="button">
-                            UPDATE
-                        </button>
-                    </td>
-                    <td>
-                        {moveButton(user)}
-                    </td>
-                </tr>            
+                        <td>{user.shortName}</td>
+                        <td>{user.position}</td>
+                        <td>{user.yearJoined}</td>
+                        <td>{yearLeft(user)}</td>
+                        <td>
+                            <button type="button" onClick={() => console.log(`Update ${user.id}`)}>
+                                UPDATE
+                            </button>
+                        </td>
+                        <td>
+                            {moveButton(user)}
+                        </td>
+                    </tr>                       
              )
     });
 
@@ -125,7 +145,7 @@ const AdminUsers = ({users, adminPostUser}) => {
                 <tbody>
                     <tr>
                         <td>
-                            <input type="text" onChange={handleName} value={formData.shortName} autofocus required/>
+                            <input type="text" onChange={handleName} value={formData.shortName} autoFocus required/>
                         </td>
                         <td>
                             <select name="position" onChange={handleSelect}>

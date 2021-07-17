@@ -216,6 +216,18 @@ const MainContainer = ({allotmentSettings}) =>{
         return newUser;
     }
 
+    const adminEditUser = (oldUser, newUser) => {
+        const url = "/api/users/" + oldUser.id;
+        //newJob.id = oldJob.id;
+        const tempUserList = [...allUsers];
+        const index = tempUserList.indexOf(oldUser);
+        tempUserList.splice(index, 1);
+        tempUserList.push(newUser);
+        setAllUsers(tempUserList);
+        const request = new Request();
+        request.put(url, newUser);
+    }
+
     const findPlotById = (plotId) => {
         return plots.find((plot) => {
             return plot.id === parseInt(plotId)
@@ -339,7 +351,8 @@ const MainContainer = ({allotmentSettings}) =>{
                 <PrivateRoute exact path='/admin' component = {() => {
                     return <AdminUsers 
                         currentUser={currentUser} 
-                        adminPostUser={adminPostUser} 
+                        adminPostUser={adminPostUser}
+                        adminEditUser={adminEditUser} 
                         users={allUsers} 
                         getDate={getDate} />
                     }} currentUser={currentUser}/>
