@@ -8,7 +8,7 @@ import Request from '../helpers/request';
 import NavBar from '../components/NavBar';
 import PrivateRoute from '../components/user/PrivateRoute';
 
-import Admin from '../components/admin/Admin';
+//import Admin from '../components/admin/Admin';
 import AdminUsers from '../components/admin/AdminUsers';
 
 import KnowHowList from '../components/knowHows/KnowHowList';

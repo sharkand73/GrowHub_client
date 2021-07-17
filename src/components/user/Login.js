@@ -7,6 +7,8 @@ import '../../css/Login.css';
 
 const Login = ({users, setCurrentUser, currentUser}) => {
 
+    const bcrypt = require('bcryptjs');
+
     const [formData, setFormData] = useState({})
 
     const [loginCheck, setLoginCheck] = useState(0)
@@ -34,16 +36,12 @@ const Login = ({users, setCurrentUser, currentUser}) => {
         // If a user has been found
         if (foundUser){
 
-            // And if the password is the same as the one entered:
-            if (foundUser.password === formData.password){
-                setCurrentUser(foundUser);
-                        } 
-            // Else return an error, via setLoginCheck and conditional rendering
-            else {
-                setLoginCheck(1);
-            }
-        }
-        // If the user has not been found, as above
+            // And if the password is the same as the one entered, allow login, else return an error:        
+            bcrypt.compare(formData.password, foundUser.password)
+            .then(result => result ? setCurrentUser(foundUser) : setLoginCheck(1));
+            }               
+                            
+        // If the user has not been found, return an error
         else {
             setLoginCheck(2);
         }

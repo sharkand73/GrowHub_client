@@ -125,8 +125,7 @@ const AdminUsers = ({users, adminPostUser, adminEditUser}) => {
         let newUser = {...formData};
         newUser.yearJoined = parseInt(formData.yearJoined);
         newUser.yearLeft = parseInt(formData.yearLeft);
-        let currentYear = (new Date()).getFullYear().toString();
-        newUser.password = newUser.shortName.concat(currentYear);
+        newUser.password = "$2a$10$XNFLju.5UodnrFusfrlNu.dOr.NDLyTQjUtunRmA53isrFX/7sBYa";
         adminPostUser(newUser);
     }
         
