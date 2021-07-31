@@ -76,8 +76,8 @@ const Login = ({users, setCurrentUser, currentUser}) => {
                             {loginCheck === 1 ? <h3 className="no-margin">Incorrect Password</h3> :null}
                             {loginCheck === 2 ? <h3 className="no-margin">User does not exist</h3> :null}
                         </div>
-                        {(currentUser && (currentUser.shortName === 'Admin'))? <Redirect to="/admin" /> :null}
-                        {(currentUser && (currentUser.shortName !== 'Admin'))? <Redirect to="/" /> :null}
+                        {(currentUser && (currentUser.shortName === 'Admin')) && <Redirect to="/admin" /> }
+                        {(currentUser && (currentUser.shortName !== 'Admin')) && <Redirect to="/" /> }
                     </form>
 
                     <div id="poly2" className="form-inner">

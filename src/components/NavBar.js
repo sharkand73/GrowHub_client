@@ -31,7 +31,9 @@ const NavBar = ({currentUser, setCurrentUser}) => {
                     </li>
 
                     <li className="left">
-                    <Link className="navItem" to="/">Home</Link>
+                    { (currentUser.shortName === 'Admin') && <Link className="navItem" to="/admin">Home</Link> }
+                    { (currentUser.shortName !== 'Admin') && <Link className="navItem" to="/">{currentUser.shortName}</Link> }
+                    
                     </li>
             
                 

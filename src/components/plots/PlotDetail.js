@@ -71,7 +71,7 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
                 <li className="plot-detail2" key={1}> - Plot Number: {plot.plotNumber}</li>
                 <li className="plot-detail2" key={2}> - Dimensions: {plot.length}m x {plot.breadth}m</li>
                 <li className="plot-detail2" key={3}> - Area: {plotSize} m&sup2;</li>
-                <li className="plot-detail2" key={4}> - classification: {calculateClassification(plotSize)}</li>
+                <li className="plot-detail2" key={4}> - Classification: {calculateClassification(plotSize)}</li>
                 <li className="plot-detail2" key={5}> - Inclination: {plot.isFlat ? "flat" : "slope"}</li>
                 <li className="plot-detail2" key={6}> - Plot holders: {getPlotHolders()}</li>
             </ul>
