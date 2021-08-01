@@ -13,6 +13,8 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
 
     const commentsArray = [];
 
+    //const plotIndex = plots.indexOf(plot);
+
     comments.forEach((comment) => {
         if (comment.plot.id === plot.id){
             commentsArray.push(

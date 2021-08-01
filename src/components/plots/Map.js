@@ -4,7 +4,7 @@ import '../../css/map.css';
 const Map = ({selectFromMap}) => {
 
    const onClick = (e) => {
-      console.log(e.target.id);
+      //console.log(e.target.id);
       selectFromMap(e.target.id);
    }
 

@@ -5,11 +5,11 @@ import '../../css/Plots.css';
 //import LogoSmall from '../../css/LogoSmall.png';
 import Plot from './Plot';
 
-const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
+const PlotList = ({currentUser, plots, setPlotIndex, plotIndex}) => {
 
     const currentUserPlots = [];
 
-// NEW Method that searches through plots and grabs the users plots
+// NEW Method that searches through plots and grabs the user's plots
     plots.forEach((plot) => {
         for (let user of plot.users){
             if (user.shortName === currentUser.shortName){
@@ -51,7 +51,7 @@ const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
     // Renders a Plot object for current user plot
     const currentUserPlotArray = currentUserPlots.map((plot, index) => {
     return(
-        <li key={index}><Plot key={index} plot={plot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/></li>
+        <li key={index}><Plot key={index} plot={plot} plots={plots} currentUser={currentUser} plotIndex={plotIndex} setPlotIndex={setPlotIndex}/></li>
     )
     })
 
@@ -59,7 +59,7 @@ const PlotList = ({currentUser, plots, selectedPlot, setSelectedPlot}) => {
     const otherPlotArray = otherPlots.map((plot, index) => {
         return(
 
-            <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser} setSelectedPlot={setSelectedPlot}/></li>
+            <li key={index}><Plot plot={plot} plots={plots} currentUser={currentUser} plotIndex={plotIndex} setPlotIndex={setPlotIndex}/></li>
             
         )
     })

@@ -9,7 +9,7 @@ import PlotList from './PlotList';
 
 const PlotsHome = ({currentUser, plots}) =>{
 
-    const [selectedPlot, setSelectedPlot] = useState(null);
+    const [plotIndex, setPlotIndex] = useState(-1);
     const [mapSelected, setMapSelected] = useState(true);
 
     const plotify = (number) => (`plot${number}`);
@@ -20,11 +20,12 @@ const PlotsHome = ({currentUser, plots}) =>{
 
     const selectFromMap = (areaName) => {
         const plotSelected = findPlotByName(areaName);
-        if (plotSelected){setSelectedPlot(plotSelected)}
+        const indexSelected = plots.indexOf(plotSelected);
+        if (plotSelected){setPlotIndex(indexSelected)}
     }
 
-    if (selectedPlot){
-        const url = "/plots/" + selectedPlot.id;
+    if (plotIndex > -1){
+        const url = "/plots/" + plots[plotIndex].id;
         return <Redirect to={url} />}    
 
     if (mapSelected) {
@@ -47,7 +48,7 @@ return(
             <button type="button" onClick={()=>{setMapSelected(true)}}>Map View</button>
         </div>
         <div id="plots-grid-container">
-            <PlotList currentUser={currentUser} plots={plots} selectedPlot={selectedPlot} setSelectedPlot={setSelectedPlot} />
+            <PlotList currentUser={currentUser} plots={plots} plotIndex={plotIndex} setPlotIndex={setPlotIndex} />
 
         </div>
         </>
