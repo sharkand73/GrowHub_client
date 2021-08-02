@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {Redirect} from 'react-router-dom';
 
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
 import Map from './Map';
 import PlotList from './PlotList';
+import PlotDetail from './PlotDetail';
 
 
 const PlotsHome = ({currentUser, plots}) =>{
@@ -21,12 +21,15 @@ const PlotsHome = ({currentUser, plots}) =>{
     const selectFromMap = (areaName) => {
         const plotSelected = findPlotByName(areaName);
         const indexSelected = plots.indexOf(plotSelected);
+        //console.log(indexSelected);
         if (plotSelected){setPlotIndex(indexSelected)}
     }
 
     if (plotIndex > -1){
-        const url = "/plots/" + plots[plotIndex].id;
-        return <Redirect to={url} />}    
+        return (
+         <PlotDetail currentUser={currentUser} plots={plots} plotIndex={plotIndex} setPlotIndex={setPlotIndex} mapSelected={mapSelected} />    
+        )
+    }
 
     if (mapSelected) {
         return (
@@ -39,7 +42,7 @@ const PlotsHome = ({currentUser, plots}) =>{
             <Map selectFromMap={selectFromMap}/>   
             </>         
         )
-        }
+    }
 
 return(
         <>

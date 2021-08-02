@@ -1,31 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PlotComment from './PlotComment';
 import NewPlotComment from './NewPlotComment';
-import {Redirect} from 'react-router-dom';
-
 
 import '../../css/Plots.css';
 import LogoSmall from '../../css/LogoSmall.png';
 
-const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) =>{
+const PlotDetail = ({currentUser, plotIndex, setPlotIndex, plots, mapSelected}) =>{
 
-    const [backHandler, setBackHandler] = useState(0);
 
-    const commentsArray = [];
+    // const commentsArray = [];
 
-    //const plotIndex = plots.indexOf(plot);
+    // comments.forEach((comment) => {
+    //     if (comment.plot.id === plot.id){
+    //         commentsArray.push(
+    //             <li key={comment.index}>
+    //                 <PlotComment key={comment.index} comment={comment}/>
+    //                 <hr key={comment.index} />
+    //             </li>  
+    //         )
+    //         }
+    //     }
+    // )
 
-    comments.forEach((comment) => {
-        if (comment.plot.id === plot.id){
-            commentsArray.push(
-                <li key={comment.index}>
-                    <PlotComment key={comment.index} comment={comment}/>
-                    <hr key={comment.index} />
-                </li>  
-            )
-            }
-        }
-    )
+    const plot = plots[plotIndex];
 
     const getPlotHolders = () => {
     let plotHolders = "";
@@ -54,10 +51,16 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
     }
 
     const handleBackClick= () => {
-        setBackHandler(1);
+        setPlotIndex(-1);    
     }
 
-    const commentsArrayLength = commentsArray.length;
+    // const commentsArrayLength = commentsArray.length;
+
+    const scroll = (delta) => {
+        const numberOfPlots = plots.length;
+        const newIndex = (plotIndex + delta) % numberOfPlots;
+        setPlotIndex(newIndex);
+    }
 
     return(
         <>
@@ -68,18 +71,22 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
             </div>
 
             <div id="plot-details-grid">
-            <p className="plot-detail1">Details for {plot.areaName}</p>
-            <ul className="margin">
-                <li className="plot-detail2" key={1}> - Plot Number: {plot.plotNumber}</li>
-                <li className="plot-detail2" key={2}> - Dimensions: {plot.length}m x {plot.breadth}m</li>
-                <li className="plot-detail2" key={3}> - Area: {plotSize} m&sup2;</li>
-                <li className="plot-detail2" key={4}> - Classification: {calculateClassification(plotSize)}</li>
-                <li className="plot-detail2" key={5}> - Inclination: {plot.isFlat ? "flat" : "slope"}</li>
-                <li className="plot-detail2" key={6}> - Plot holders: {getPlotHolders()}</li>
-            </ul>
+                <p className="plot-detail1">Details for {plot.areaName}</p>
+                <ul className="margin">
+                    <li className="plot-detail2" key={1}> - Plot Number: {plot.plotNumber}</li>
+                    <li className="plot-detail2" key={2}> - Dimensions: {plot.length}m x {plot.breadth}m</li>
+                    <li className="plot-detail2" key={3}> - Area: {plotSize} m&sup2;</li>
+                    <li className="plot-detail2" key={4}> - Classification: {calculateClassification(plotSize)}</li>
+                    <li className="plot-detail2" key={5}> - Inclination: {plot.isFlat ? "flat" : "slope"}</li>
+                    <li className="plot-detail2" key={6}> - Plot holders: {getPlotHolders()}</li>
+                </ul>
+                
+                <div className="prev-next">
+                    <span className="plot-back" onClick={()=>scroll(-1)}>&lt;&lt;PREVIOUS</span> <span className="plot-back" onClick={()=>scroll(1)}>NEXT&gt;&gt;</span> 
+                </div>
             </div>
 
-            <div id="plot-history-grid">
+            {/* <div id="plot-history-grid">
 
                 {
                 isMyPlot() ?
@@ -95,14 +102,13 @@ const PlotDetail = ({currentUser, plot, plots, getDate, postComment, comments}) 
                 </> 
                 : null
                 }          
-            </div>
+            </div> */}
 
             <div id="plot-details-back" className = "plot-back" onClick = {()=> handleBackClick()}>
 
                 Back
             </div>
 
-            {backHandler === 1 ? <Redirect to='/plots'/> : null}
         </div>  
         </>
     )

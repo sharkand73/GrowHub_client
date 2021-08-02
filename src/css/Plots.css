@@ -172,3 +172,8 @@
 .edit-button4:hover {
     color: greenyellow;
 }
+
+.prev-next {
+    display: flex;
+    justify-content: space-between;
+}
